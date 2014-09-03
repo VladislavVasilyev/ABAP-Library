@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8"?>
+<R3TRCLAS>
+	<VSEOCLASS>
+		<CLSNAME>ZCL_VCS__BPCS__SCLO</CLSNAME>
+		<VERSION>1</VERSION>
+		<LANGU>R</LANGU>
+		<DESCRIPT>BPC: Script Logic</DESCRIPT>
+		<UUID>UytjtQsdAGLhAIAAwKizGQ==</UUID>
+		<CATEGORY>00</CATEGORY>
+		<EXPOSURE>2</EXPOSURE>
+		<STATE>1</STATE>
+		<RELEASE>0</RELEASE>
+		<AUTHOR>VVASILYEV00</AUTHOR>
+		<CREATEDON>2014-03-31</CREATEDON>
+		<CHANGEDON>0000-00-00</CHANGEDON>
+		<CHGDANYON>0000-00-00</CHGDANYON>
+		<CLSFINAL>X</CLSFINAL>
+		<CLSCCINCL>X</CLSCCINCL>
+		<FIXPT>X</FIXPT>
+		<UNICODE>X</UNICODE>
+		<R3RELEASE>701</R3RELEASE>
+		<CLSBCCAT>00</CLSBCCAT>
+		<DURATION_TYPE>0</DURATION_TYPE>
+		<RISK_LEVEL>0</RISK_LEVEL>
+	</VSEOCLASS>
+	<ATTRIBUTES>
+		<item>
+			<CLSNAME>ZCL_VCS__BPCS__SCLO</CLSNAME>
+			<CMPNAME>CD_V__APPSET_ID</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<DESCRIPT>BPC: значение</DESCRIPT>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>1</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-07-18</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-07-18</CHANGEDON>
+			<ATTDECLTYP>1</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>1</TYPTYPE>
+			<TYPE>UJ_VALUE</TYPE>
+			<SRCROW1>0</SRCROW1>
+			<SRCCOLUMN1>0</SRCCOLUMN1>
+			<SRCROW2>0</SRCROW2>
+			<SRCCOLUMN2>0</SRCCOLUMN2>
+			<R3RELEASE>701</R3RELEASE>
+			<TYPESRC_LENG>0</TYPESRC_LENG>
+		</item>
+	</ATTRIBUTES>
+	<TYPES>
+		<TYPES>
+			<item>
+				<CLSNAME>ZCL_VCS__BPCS__SCLO</CLSNAME>
+				<CMPNAME>TY_S__SCLO</CMPNAME>
+				<VERSION>1</VERSION>
+				<LANGU>R</LANGU>
+				<EXPOSURE>2</EXPOSURE>
+				<STATE>1</STATE>
+				<EDITORDER>1</EDITORDER>
+				<AUTHOR>VVASILYEV00</AUTHOR>
+				<CREATEDON>2014-03-31</CREATEDON>
+				<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+				<CHANGEDON>2014-07-18</CHANGEDON>
+				<TYPTYPE>4</TYPTYPE>
+				<SRCROW1>12</SRCROW1>
+				<SRCCOLUMN1>4</SRCCOLUMN1>
+				<SRCROW2>26</SRCROW2>
+				<SRCCOLUMN2>31</SRCCOLUMN2>
+				<TYPESRC_LENG>1158</TYPESRC_LENG>
+				<TYPESRC>begin of ty_s__sclo
+             , appset          type uj_appset_id           &quot;SAP BusinessObjects - Ид. набора приложений
+             , application     type uj_appl_id             &quot;SAP BusinessObjects - Ид. приложения
+             , filename        type uj_docname
+             , docname         type uj_docname             &quot;BPC: имя папки/документа
+             , docdesc         type uj_docdesc             &quot;BPC: описание документа
+             , doctype         type uj_doctype             &quot;BPC: вид документа
+             , owner           type uj_owner               &quot;BPC: ответственный за документ
+             , create_date     type uj_create_date         &quot;BPC: создать дату
+             , create_time     type uj_create_time         &quot;BPC: создать время
+             , lstmod_date     type uj_lstmod_date         &quot;BPC: дата последнего изменения
+             , lstmod_time     type uj_lstmod_time         &quot;BPC: время последнего изменения
+             , lstmod_user     type uj_lstmod_user         &quot;BPC: автор последнего изменения
+             , source          type zvcst_t__lgfsource     &quot;BPC: текст
+             , end of ty_s__sclo
+</TYPESRC>
+			</item>
+		</TYPES>
+		<TYPE_SOURCE>
+			<item>    begin of ty_s__sclo</item>
+			<item>             , appset          type uj_appset_id           &quot;SAP BusinessObjects - Ид. набора приложений</item>
+			<item>             , application     type uj_appl_id             &quot;SAP BusinessObjects - Ид. приложения</item>
+			<item>             , filename        type uj_docname</item>
+			<item>             , docname         type uj_docname             &quot;BPC: имя папки/документа</item>
+			<item>             , docdesc         type uj_docdesc             &quot;BPC: описание документа</item>
+			<item>             , doctype         type uj_doctype             &quot;BPC: вид документа</item>
+			<item>             , owner           type uj_owner               &quot;BPC: ответственный за документ</item>
+			<item>             , create_date     type uj_create_date         &quot;BPC: создать дату</item>
+			<item>             , create_time     type uj_create_time         &quot;BPC: создать время</item>
+			<item>             , lstmod_date     type uj_lstmod_date         &quot;BPC: дата последнего изменения</item>
+			<item>             , lstmod_time     type uj_lstmod_time         &quot;BPC: время последнего изменения</item>
+			<item>             , lstmod_user     type uj_lstmod_user         &quot;BPC: автор последнего изменения</item>
+			<item>             , source          type zvcst_t__lgfsource     &quot;BPC: текст</item>
+			<item>             , end of ty_s__sclo</item>
+		</TYPE_SOURCE>
+	</TYPES>
+	<INHERITANCE>
+		<CLSNAME>ZCL_VCS__BPCS__SCLO</CLSNAME>
+		<REFCLSNAME>ZCL_VCS_OBJECTS_STACK</REFCLSNAME>
+		<VERSION>1</VERSION>
+		<STATE>1</STATE>
+		<AUTHOR>VVASILYEV00</AUTHOR>
+		<CREATEDON>2014-03-31</CREATEDON>
+		<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+		<CHANGEDON>2014-03-31</CHANGEDON>
+	</INHERITANCE>
+	<EXPLORE_INHERITANCE>
+		<item>
+			<CLSNAME>ZCL_VCS_OBJECTS_STACK</CLSNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<UUID>UzErY+X7AGrhAIAAwKizGQ==</UUID>
+			<CATEGORY>00</CATEGORY>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<RELEASE>0</RELEASE>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-03-26</CREATEDON>
+			<CHANGEDON>0000-00-00</CHANGEDON>
+			<CHGDANYON>0000-00-00</CHGDANYON>
+			<CLSABSTRCT>X</CLSABSTRCT>
+			<CLSCCINCL>X</CLSCCINCL>
+			<FIXPT>X</FIXPT>
+			<UNICODE>X</UNICODE>
+			<R3RELEASE>701</R3RELEASE>
+			<CLSBCCAT>00</CLSBCCAT>
+			<DURATION_TYPE>0</DURATION_TYPE>
+			<RISK_LEVEL>0</RISK_LEVEL>
+		</item>
+	</EXPLORE_INHERITANCE>
+	<REDEFINITIONS>
+		<item>
+			<CLSNAME>ZCL_VCS__BPCS__SCLO</CLSNAME>
+			<REFCLSNAME>ZCL_VCS_OBJECTS_STACK</REFCLSNAME>
+			<VERSION>1</VERSION>
+			<MTDNAME>CREATE_OBJECT</MTDNAME>
+		</item>
+		<item>
+			<CLSNAME>ZCL_VCS__BPCS__SCLO</CLSNAME>
+			<REFCLSNAME>ZCL_VCS_OBJECTS_STACK</REFCLSNAME>
+			<VERSION>1</VERSION>
+			<MTDNAME>CREATE_PATH</MTDNAME>
+		</item>
+		<item>
+			<CLSNAME>ZCL_VCS__BPCS__SCLO</CLSNAME>
+			<REFCLSNAME>ZCL_VCS_OBJECTS_STACK</REFCLSNAME>
+			<VERSION>1</VERSION>
+			<MTDNAME>CROSSSOURCES</MTDNAME>
+		</item>
+		<item>
+			<CLSNAME>ZCL_VCS__BPCS__SCLO</CLSNAME>
+			<REFCLSNAME>ZCL_VCS_OBJECTS_STACK</REFCLSNAME>
+			<VERSION>1</VERSION>
+			<MTDNAME>GET_TYPE_OBJECT</MTDNAME>
+		</item>
+		<item>
+			<CLSNAME>ZCL_VCS__BPCS__SCLO</CLSNAME>
+			<REFCLSNAME>ZCL_VCS_OBJECTS_STACK</REFCLSNAME>
+			<VERSION>1</VERSION>
+			<MTDNAME>READ_OBJECT</MTDNAME>
+		</item>
+	</REDEFINITIONS>
+	<METHODS_REDEF>
+		<item>
+			<METHOD>
+				<CLSNAME>ZCL_VCS_OBJECTS_STACK</CLSNAME>
+				<CMPNAME>CREATE_OBJECT</CMPNAME>
+				<VERSION>1</VERSION>
+				<LANGU>R</LANGU>
+				<EXPOSURE>1</EXPOSURE>
+				<STATE>1</STATE>
+				<EDITORDER>1</EDITORDER>
+				<DISPID>0</DISPID>
+				<AUTHOR>VVASILYEV00</AUTHOR>
+				<CREATEDON>2014-03-26</CREATEDON>
+				<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+				<CHANGEDON>2014-04-01</CHANGEDON>
+				<MTDTYPE>0</MTDTYPE>
+				<MTDDECLTYP>0</MTDDECLTYP>
+				<MTDABSTRCT>X</MTDABSTRCT>
+				<MTDNEWEXC>X</MTDNEWEXC>
+				<R3RELEASE>701</R3RELEASE>
+				<BCMTDCAT>00</BCMTDCAT>
+				<BCMTDSYN>0</BCMTDSYN>
+			</METHOD>
+			<INCLUDE>
+				<CPDKEY>
+					<CLSNAME>ZCL_VCS__BPCS__SCLO</CLSNAME>
+					<CPDNAME>CREATE_OBJECT</CPDNAME>
+				</CPDKEY>
+				<INCNAME>ZCL_VCS__BPCS__SCLO===========CM001</INCNAME>
+			</INCLUDE>
+			<SOURCE>
+				<SOURCEID>CLAS.ZCL_VCS__BPCS__SCLO.CREATE_OBJECT.abap</SOURCEID>
+			</SOURCE>
+		</item>
+		<item>
+			<METHOD>
+				<CLSNAME>ZCL_VCS_OBJECTS_STACK</CLSNAME>
+				<CMPNAME>CREATE_PATH</CMPNAME>
+				<VERSION>1</VERSION>
+				<LANGU>R</LANGU>
+				<EXPOSURE>1</EXPOSURE>
+				<STATE>1</STATE>
+				<EDITORDER>0</EDITORDER>
+				<DISPID>0</DISPID>
+				<AUTHOR>VVASILYEV00</AUTHOR>
+				<CREATEDON>2014-03-27</CREATEDON>
+				<CHANGEDON>0000-00-00</CHANGEDON>
+				<MTDTYPE>0</MTDTYPE>
+				<MTDDECLTYP>0</MTDDECLTYP>
+				<MTDABSTRCT>X</MTDABSTRCT>
+				<R3RELEASE>701</R3RELEASE>
+				<BCMTDCAT>00</BCMTDCAT>
+				<BCMTDSYN>0</BCMTDSYN>
+			</METHOD>
+			<INCLUDE>
+				<CPDKEY>
+					<CLSNAME>ZCL_VCS__BPCS__SCLO</CLSNAME>
+					<CPDNAME>CREATE_PATH</CPDNAME>
+				</CPDKEY>
+				<INCNAME>ZCL_VCS__BPCS__SCLO===========CM002</INCNAME>
+			</INCLUDE>
+			<SOURCE>
+				<SOURCEID>CLAS.ZCL_VCS__BPCS__SCLO.CREATE_PATH.abap</SOURCEID>
+			</SOURCE>
+		</item>
+		<item>
+			<METHOD>
+				<CLSNAME>ZCL_VCS_OBJECTS_STACK</CLSNAME>
+				<CMPNAME>GET_TYPE_OBJECT</CMPNAME>
+				<VERSION>1</VERSION>
+				<LANGU>R</LANGU>
+				<EXPOSURE>1</EXPOSURE>
+				<STATE>1</STATE>
+				<EDITORDER>2</EDITORDER>
+				<DISPID>0</DISPID>
+				<AUTHOR>VVASILYEV00</AUTHOR>
+				<CREATEDON>2014-03-26</CREATEDON>
+				<CHANGEDON>0000-00-00</CHANGEDON>
+				<MTDTYPE>0</MTDTYPE>
+				<MTDDECLTYP>0</MTDDECLTYP>
+				<MTDABSTRCT>X</MTDABSTRCT>
+				<R3RELEASE>701</R3RELEASE>
+				<BCMTDCAT>00</BCMTDCAT>
+				<BCMTDSYN>0</BCMTDSYN>
+			</METHOD>
+			<INCLUDE>
+				<CPDKEY>
+					<CLSNAME>ZCL_VCS__BPCS__SCLO</CLSNAME>
+					<CPDNAME>GET_TYPE_OBJECT</CPDNAME>
+				</CPDKEY>
+				<INCNAME>ZCL_VCS__BPCS__SCLO===========CM003</INCNAME>
+			</INCLUDE>
+			<SOURCE>
+				<SOURCEID>CLAS.ZCL_VCS__BPCS__SCLO.GET_TYPE_OBJECT.abap</SOURCEID>
+			</SOURCE>
+		</item>
+		<item>
+			<METHOD>
+				<CLSNAME>ZCL_VCS_OBJECTS_STACK</CLSNAME>
+				<CMPNAME>READ_OBJECT</CMPNAME>
+				<VERSION>1</VERSION>
+				<LANGU>R</LANGU>
+				<EXPOSURE>1</EXPOSURE>
+				<STATE>1</STATE>
+				<EDITORDER>3</EDITORDER>
+				<DISPID>0</DISPID>
+				<AUTHOR>VVASILYEV00</AUTHOR>
+				<CREATEDON>2014-03-26</CREATEDON>
+				<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+				<CHANGEDON>2014-03-28</CHANGEDON>
+				<MTDTYPE>0</MTDTYPE>
+				<MTDDECLTYP>0</MTDDECLTYP>
+				<MTDABSTRCT>X</MTDABSTRCT>
+				<MTDNEWEXC>X</MTDNEWEXC>
+				<R3RELEASE>701</R3RELEASE>
+				<BCMTDCAT>00</BCMTDCAT>
+				<BCMTDSYN>0</BCMTDSYN>
+			</METHOD>
+			<INCLUDE>
+				<CPDKEY>
+					<CLSNAME>ZCL_VCS__BPCS__SCLO</CLSNAME>
+					<CPDNAME>READ_OBJECT</CPDNAME>
+				</CPDKEY>
+				<INCNAME>ZCL_VCS__BPCS__SCLO===========CM004</INCNAME>
+			</INCLUDE>
+			<SOURCE>
+				<SOURCEID>CLAS.ZCL_VCS__BPCS__SCLO.READ_OBJECT.abap</SOURCEID>
+			</SOURCE>
+		</item>
+		<item>
+			<METHOD>
+				<CLSNAME>ZCL_VCS_OBJECTS_STACK</CLSNAME>
+				<CMPNAME>CROSSSOURCES</CMPNAME>
+				<VERSION>1</VERSION>
+				<LANGU>R</LANGU>
+				<EXPOSURE>1</EXPOSURE>
+				<STATE>1</STATE>
+				<EDITORDER>2</EDITORDER>
+				<DISPID>0</DISPID>
+				<AUTHOR>VVASILYEV00</AUTHOR>
+				<CREATEDON>2014-03-31</CREATEDON>
+				<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+				<CHANGEDON>2014-03-31</CHANGEDON>
+				<MTDTYPE>0</MTDTYPE>
+				<MTDDECLTYP>0</MTDDECLTYP>
+				<MTDABSTRCT>X</MTDABSTRCT>
+				<R3RELEASE>701</R3RELEASE>
+				<BCMTDCAT>00</BCMTDCAT>
+				<BCMTDSYN>0</BCMTDSYN>
+			</METHOD>
+			<INCLUDE>
+				<CPDKEY>
+					<CLSNAME>ZCL_VCS__BPCS__SCLO</CLSNAME>
+					<CPDNAME>CROSSSOURCES</CPDNAME>
+				</CPDKEY>
+				<INCNAME>ZCL_VCS__BPCS__SCLO===========CM005</INCNAME>
+			</INCLUDE>
+			<SOURCE>
+				<SOURCEID>CLAS.ZCL_VCS__BPCS__SCLO.CROSSSOURCES.abap</SOURCEID>
+			</SOURCE>
+		</item>
+	</METHODS_REDEF>
+	<SECTIONS>
+		<item>
+			<LIMU>CPUB</LIMU>
+			<INCNAME>ZCL_VCS__BPCS__SCLO===========CU</INCNAME>
+			<SOURCE>
+				<SOURCEID>CLAS.ZCL_VCS__BPCS__SCLO.CPUB.abap</SOURCEID>
+			</SOURCE>
+		</item>
+		<item>
+			<LIMU>CPRI</LIMU>
+			<INCNAME>ZCL_VCS__BPCS__SCLO===========CI</INCNAME>
+			<SOURCE>
+				<SOURCEID>CLAS.ZCL_VCS__BPCS__SCLO.CPRI.abap</SOURCEID>
+			</SOURCE>
+		</item>
+		<item>
+			<LIMU>CPRO</LIMU>
+			<INCNAME>ZCL_VCS__BPCS__SCLO===========CO</INCNAME>
+			<SOURCE>
+				<SOURCEID>CLAS.ZCL_VCS__BPCS__SCLO.CPRO.abap</SOURCEID>
+			</SOURCE>
+		</item>
+	</SECTIONS>
+	<HEADER>
+		<PGMID>R3TR</PGMID>
+		<OBJECT>CLAS</OBJECT>
+		<OBJ_NAME>ZCL_VCS__BPCS__SCLO</OBJ_NAME>
+		<SRCSYSTEM>BP0</SRCSYSTEM>
+		<AUTHOR>VVASILYEV00</AUTHOR>
+		<DEVCLASS>ZVCS</DEVCLASS>
+		<CPROJECT> S</CPROJECT>
+		<MASTERLANG>R</MASTERLANG>
+		<PATHDEVC>ZVCS</PATHDEVC>
+	</HEADER>
+</R3TRCLAS>

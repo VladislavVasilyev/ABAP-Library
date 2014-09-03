@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+<R3TRCLAS>
+	<VSEOCLASS>
+		<CLSNAME>ZCL_VCS_R3TR___DYNPRO</CLSNAME>
+		<VERSION>1</VERSION>
+		<LANGU>R</LANGU>
+		<UUID>UxiWbonuAG7hAIAAwKizGQ==</UUID>
+		<CATEGORY>00</CATEGORY>
+		<EXPOSURE>2</EXPOSURE>
+		<STATE>1</STATE>
+		<RELEASE>0</RELEASE>
+		<AUTHOR>VVASILYEV00</AUTHOR>
+		<CREATEDON>2014-03-06</CREATEDON>
+		<CHANGEDON>0000-00-00</CHANGEDON>
+		<CHGDANYON>0000-00-00</CHGDANYON>
+		<CLSFINAL>X</CLSFINAL>
+		<CLSCCINCL>X</CLSCCINCL>
+		<FIXPT>X</FIXPT>
+		<UNICODE>X</UNICODE>
+		<R3RELEASE>701</R3RELEASE>
+		<CLSBCCAT>00</CLSBCCAT>
+		<DURATION_TYPE>0</DURATION_TYPE>
+		<RISK_LEVEL>0</RISK_LEVEL>
+	</VSEOCLASS>
+	<METHODS>
+		<item>
+			<CMPKEY>
+				<CLSNAME>ZCL_VCS_R3TR___DYNPRO</CLSNAME>
+				<CMPNAME>CREATE</CMPNAME>
+			</CMPKEY>
+			<METHOD>
+				<CLSNAME>ZCL_VCS_R3TR___DYNPRO</CLSNAME>
+				<CMPNAME>CREATE</CMPNAME>
+				<VERSION>1</VERSION>
+				<LANGU>R</LANGU>
+				<EXPOSURE>2</EXPOSURE>
+				<STATE>1</STATE>
+				<EDITORDER>0</EDITORDER>
+				<DISPID>0</DISPID>
+				<AUTHOR>VVASILYEV00</AUTHOR>
+				<CREATEDON>2014-03-12</CREATEDON>
+				<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+				<CHANGEDON>2014-04-01</CHANGEDON>
+				<MTDTYPE>0</MTDTYPE>
+				<MTDDECLTYP>1</MTDDECLTYP>
+				<MTDNEWEXC>X</MTDNEWEXC>
+				<R3RELEASE>701</R3RELEASE>
+				<BCMTDCAT>00</BCMTDCAT>
+				<BCMTDSYN>0</BCMTDSYN>
+			</METHOD>
+			<METHOD_DETAILS>
+				<IS_CLIF_METHOD>X</IS_CLIF_METHOD>
+				<IS_STATIC>X</IS_STATIC>
+			</METHOD_DETAILS>
+			<PARAMETERS>
+				<item>
+					<CLSNAME>ZCL_VCS_R3TR___DYNPRO</CLSNAME>
+					<CMPNAME>CREATE</CMPNAME>
+					<SCONAME>I_S__DYNPRO</SCONAME>
+					<VERSION>1</VERSION>
+					<LANGU>R</LANGU>
+					<CMPTYPE>1</CMPTYPE>
+					<MTDTYPE>0</MTDTYPE>
+					<EDITORDER>1</EDITORDER>
+					<DISPID>0</DISPID>
+					<AUTHOR>VVASILYEV00</AUTHOR>
+					<CREATEDON>2014-03-12</CREATEDON>
+					<CHANGEDON>0000-00-00</CHANGEDON>
+					<PARDECLTYP>0</PARDECLTYP>
+					<PARPASSTYP>1</PARPASSTYP>
+					<TYPTYPE>1</TYPTYPE>
+					<TYPE>TY_S__DYNPRO</TYPE>
+				</item>
+			</PARAMETERS>
+			<EXCEPTIONS>
+				<item>
+					<CLSNAME>ZCL_VCS_R3TR___DYNPRO</CLSNAME>
+					<CMPNAME>CREATE</CMPNAME>
+					<SCONAME>ZCX_VCS__CALL_MODULE_ERROR</SCONAME>
+					<VERSION>1</VERSION>
+					<LANGU>R</LANGU>
+					<MTDTYPE>0</MTDTYPE>
+					<EDITORDER>1</EDITORDER>
+					<AUTHOR>VVASILYEV00</AUTHOR>
+					<CREATEDON>2014-04-01</CREATEDON>
+					<CHANGEDON>0000-00-00</CHANGEDON>
+				</item>
+			</EXCEPTIONS>
+			<INCNAME>ZCL_VCS_R3TR___DYNPRO=========CM002</INCNAME>
+			<SOURCE>
+				<SOURCEID>CLAS.ZCL_VCS_R3TR___DYNPRO.CREATE.abap</SOURCEID>
+			</SOURCE>
+		</item>
+		<item>
+			<CMPKEY>
+				<CLSNAME>ZCL_VCS_R3TR___DYNPRO</CLSNAME>
+				<CMPNAME>READ</CMPNAME>
+			</CMPKEY>
+			<METHOD>
+				<CLSNAME>ZCL_VCS_R3TR___DYNPRO</CLSNAME>
+				<CMPNAME>READ</CMPNAME>
+				<VERSION>1</VERSION>
+				<LANGU>R</LANGU>
+				<EXPOSURE>2</EXPOSURE>
+				<STATE>1</STATE>
+				<EDITORDER>1</EDITORDER>
+				<DISPID>0</DISPID>
+				<AUTHOR>VVASILYEV00</AUTHOR>
+				<CREATEDON>2014-03-06</CREATEDON>
+				<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+				<CHANGEDON>2014-03-06</CHANGEDON>
+				<MTDTYPE>0</MTDTYPE>
+				<MTDDECLTYP>1</MTDDECLTYP>
+				<MTDNEWEXC>X</MTDNEWEXC>
+				<BCMTDCAT>00</BCMTDCAT>
+				<BCMTDSYN>0</BCMTDSYN>
+			</METHOD>
+			<METHOD_DETAILS>
+				<IS_CLIF_METHOD>X</IS_CLIF_METHOD>
+				<IS_STATIC>X</IS_STATIC>
+			</METHOD_DETAILS>
+			<PARAMETERS>
+				<item>
+					<CLSNAME>ZCL_VCS_R3TR___DYNPRO</CLSNAME>
+					<CMPNAME>READ</CMPNAME>
+					<SCONAME>I_S__DYNPRONAME</SCONAME>
+					<VERSION>1</VERSION>
+					<LANGU>R</LANGU>
+					<CMPTYPE>1</CMPTYPE>
+					<MTDTYPE>0</MTDTYPE>
+					<EDITORDER>1</EDITORDER>
+					<DISPID>0</DISPID>
+					<AUTHOR>VVASILYEV00</AUTHOR>
+					<CREATEDON>2014-03-06</CREATEDON>
+					<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+					<CHANGEDON>2014-03-06</CHANGEDON>
+					<PARDECLTYP>0</PARDECLTYP>
+					<PARPASSTYP>1</PARPASSTYP>
+					<TYPTYPE>1</TYPTYPE>
+					<TYPE>TY_S__DYNPRONAME</TYPE>
+				</item>
+				<item>
+					<CLSNAME>ZCL_VCS_R3TR___DYNPRO</CLSNAME>
+					<CMPNAME>READ</CMPNAME>
+					<SCONAME>E_S__DYNPRO</SCONAME>
+					<VERSION>1</VERSION>
+					<LANGU>R</LANGU>
+					<CMPTYPE>1</CMPTYPE>
+					<MTDTYPE>0</MTDTYPE>
+					<EDITORDER>2</EDITORDER>
+					<DISPID>0</DISPID>
+					<AUTHOR>VVASILYEV00</AUTHOR>
+					<CREATEDON>2014-03-06</CREATEDON>
+					<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+					<CHANGEDON>2014-03-06</CHANGEDON>
+					<PARDECLTYP>1</PARDECLTYP>
+					<PARPASSTYP>1</PARPASSTYP>
+					<TYPTYPE>1</TYPTYPE>
+					<TYPE>TY_S__DYNPRO</TYPE>
+				</item>
+			</PARAMETERS>
+			<EXCEPTIONS>
+				<item>
+					<CLSNAME>ZCL_VCS_R3TR___DYNPRO</CLSNAME>
+					<CMPNAME>READ</CMPNAME>
+					<SCONAME>ZCX_VCS__CALL_MODULE_ERROR</SCONAME>
+					<VERSION>1</VERSION>
+					<LANGU>R</LANGU>
+					<MTDTYPE>0</MTDTYPE>
+					<EDITORDER>1</EDITORDER>
+					<AUTHOR>VVASILYEV00</AUTHOR>
+					<CREATEDON>2014-04-01</CREATEDON>
+					<CHANGEDON>0000-00-00</CHANGEDON>
+				</item>
+			</EXCEPTIONS>
+			<INCNAME>ZCL_VCS_R3TR___DYNPRO=========CM001</INCNAME>
+			<SOURCE>
+				<SOURCEID>CLAS.ZCL_VCS_R3TR___DYNPRO.READ.abap</SOURCEID>
+			</SOURCE>
+		</item>
+	</METHODS>
+	<TYPES>
+		<TYPES>
+			<item>
+				<CLSNAME>ZCL_VCS_R3TR___DYNPRO</CLSNAME>
+				<CMPNAME>TY_S__DYNPRONAME</CMPNAME>
+				<VERSION>1</VERSION>
+				<LANGU>R</LANGU>
+				<EXPOSURE>2</EXPOSURE>
+				<STATE>1</STATE>
+				<EDITORDER>1</EDITORDER>
+				<AUTHOR>VVASILYEV00</AUTHOR>
+				<CREATEDON>2014-03-06</CREATEDON>
+				<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+				<CHANGEDON>2014-04-01</CHANGEDON>
+				<TYPTYPE>4</TYPTYPE>
+				<SRCROW1>11</SRCROW1>
+				<SRCCOLUMN1>4</SRCCOLUMN1>
+				<SRCROW2>14</SRCROW2>
+				<SRCCOLUMN2>31</SRCCOLUMN2>
+				<TYPESRC_LENG>134</TYPESRC_LENG>
+				<TYPESRC>begin of ty_s__dynproname,
+            progname type d020s-prog,
+         dynnr type d020s-dnum,
+         end of ty_s__dynproname
+</TYPESRC>
+			</item>
+			<item>
+				<CLSNAME>ZCL_VCS_R3TR___DYNPRO</CLSNAME>
+				<CMPNAME>TY_T__DYNPRONAME</CMPNAME>
+				<VERSION>1</VERSION>
+				<LANGU>R</LANGU>
+				<EXPOSURE>2</EXPOSURE>
+				<STATE>1</STATE>
+				<EDITORDER>2</EDITORDER>
+				<AUTHOR>VVASILYEV00</AUTHOR>
+				<CREATEDON>2014-03-06</CREATEDON>
+				<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+				<CHANGEDON>2014-04-01</CHANGEDON>
+				<TYPTYPE>4</TYPTYPE>
+				<SRCROW1>16</SRCROW1>
+				<SRCCOLUMN1>4</SRCCOLUMN1>
+				<SRCROW2>16</SRCROW2>
+				<SRCCOLUMN2>87</SRCCOLUMN2>
+				<TYPESRC_LENG>86</TYPESRC_LENG>
+				<TYPESRC>ty_t__dynproname type standard table of ty_s__dynproname with non-unique default key
+</TYPESRC>
+			</item>
+			<item>
+				<CLSNAME>ZCL_VCS_R3TR___DYNPRO</CLSNAME>
+				<CMPNAME>TY_S__DYNPRO</CMPNAME>
+				<VERSION>1</VERSION>
+				<LANGU>R</LANGU>
+				<EXPOSURE>2</EXPOSURE>
+				<STATE>1</STATE>
+				<EDITORDER>3</EDITORDER>
+				<AUTHOR>VVASILYEV00</AUTHOR>
+				<CREATEDON>2014-03-06</CREATEDON>
+				<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+				<CHANGEDON>2014-04-01</CHANGEDON>
+				<TYPTYPE>4</TYPTYPE>
+				<SRCROW1>18</SRCROW1>
+				<SRCCOLUMN1>4</SRCCOLUMN1>
+				<SRCROW2>28</SRCROW2>
+				<SRCCOLUMN2>30</SRCCOLUMN2>
+				<TYPESRC_LENG>457</TYPESRC_LENG>
+				<TYPESRC>begin of ty_s__dynpro,
+            progname type d020s-prog,
+            dynnr type d020s-dnum,
+            header type rpy_dyhead,
+            containers type dycatt_tab,
+            fields_to_containers type dyfatc_tab,
+            flow_logic type standard table of rpy_dyflow
+            with non-unique default key,
+            params type standard table of rpy_dypara
+            with non-unique default key,
+            end of ty_s__dynpro
+</TYPESRC>
+			</item>
+			<item>
+				<CLSNAME>ZCL_VCS_R3TR___DYNPRO</CLSNAME>
+				<CMPNAME>TY_T__DYNPRO</CMPNAME>
+				<VERSION>1</VERSION>
+				<LANGU>R</LANGU>
+				<EXPOSURE>2</EXPOSURE>
+				<STATE>1</STATE>
+				<EDITORDER>4</EDITORDER>
+				<AUTHOR>VVASILYEV00</AUTHOR>
+				<CREATEDON>2014-03-06</CREATEDON>
+				<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+				<CHANGEDON>2014-03-06</CHANGEDON>
+				<TYPTYPE>4</TYPTYPE>
+				<SRCROW1>30</SRCROW1>
+				<SRCCOLUMN1>4</SRCCOLUMN1>
+				<SRCROW2>31</SRCROW2>
+				<SRCCOLUMN2>32</SRCCOLUMN2>
+				<TYPESRC_LENG>85</TYPESRC_LENG>
+				<TYPESRC>ty_t__dynpro type standard table of ty_s__dynpro
+      with non-unique default key
+</TYPESRC>
+			</item>
+		</TYPES>
+		<TYPE_SOURCE>
+			<item>    begin of ty_s__dynproname,</item>
+			<item>            progname type d020s-prog,</item>
+			<item>         dynnr type d020s-dnum,</item>
+			<item>         end of ty_s__dynproname</item>
+			<item>    ty_t__dynproname type standard table of ty_s__dynproname with non-unique default key</item>
+			<item>    begin of ty_s__dynpro,</item>
+			<item>            progname type d020s-prog,</item>
+			<item>            dynnr type d020s-dnum,</item>
+			<item>            header type rpy_dyhead,</item>
+			<item>            containers type dycatt_tab,</item>
+			<item>            fields_to_containers type dyfatc_tab,</item>
+			<item>            flow_logic type standard table of rpy_dyflow</item>
+			<item>            with non-unique default key,</item>
+			<item>            params type standard table of rpy_dypara</item>
+			<item>            with non-unique default key,</item>
+			<item>            end of ty_s__dynpro</item>
+			<item>    ty_t__dynpro type standard table of ty_s__dynpro</item>
+			<item>      with non-unique default key</item>
+		</TYPE_SOURCE>
+	</TYPES>
+	<INHERITANCE>
+		<VERSION>0</VERSION>
+		<STATE>0</STATE>
+		<CREATEDON>0000-00-00</CREATEDON>
+		<CHANGEDON>0000-00-00</CHANGEDON>
+	</INHERITANCE>
+	<SECTIONS>
+		<item>
+			<LIMU>CPUB</LIMU>
+			<INCNAME>ZCL_VCS_R3TR___DYNPRO=========CU</INCNAME>
+			<SOURCE>
+				<SOURCEID>CLAS.ZCL_VCS_R3TR___DYNPRO.CPUB.abap</SOURCEID>
+			</SOURCE>
+		</item>
+		<item>
+			<LIMU>CPRI</LIMU>
+			<INCNAME>ZCL_VCS_R3TR___DYNPRO=========CI</INCNAME>
+			<SOURCE>
+				<SOURCEID>CLAS.ZCL_VCS_R3TR___DYNPRO.CPRI.abap</SOURCEID>
+			</SOURCE>
+		</item>
+		<item>
+			<LIMU>CPRO</LIMU>
+			<INCNAME>ZCL_VCS_R3TR___DYNPRO=========CO</INCNAME>
+			<SOURCE>
+				<SOURCEID>CLAS.ZCL_VCS_R3TR___DYNPRO.CPRO.abap</SOURCEID>
+			</SOURCE>
+		</item>
+	</SECTIONS>
+	<HEADER>
+		<PGMID>R3TR</PGMID>
+		<OBJECT>CLAS</OBJECT>
+		<OBJ_NAME>ZCL_VCS_R3TR___DYNPRO</OBJ_NAME>
+		<SRCSYSTEM>BP0</SRCSYSTEM>
+		<AUTHOR>VVASILYEV00</AUTHOR>
+		<DEVCLASS>ZVCS</DEVCLASS>
+		<CPROJECT> S</CPROJECT>
+		<MASTERLANG>R</MASTERLANG>
+		<PATHDEVC>ZVCS</PATHDEVC>
+	</HEADER>
+</R3TRCLAS>

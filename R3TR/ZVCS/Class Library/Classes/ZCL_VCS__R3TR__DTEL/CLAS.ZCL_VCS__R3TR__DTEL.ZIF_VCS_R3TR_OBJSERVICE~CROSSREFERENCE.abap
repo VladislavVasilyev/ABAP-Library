@@ -1,0 +1,2 @@
+method ZIF_VCS_R3TR_OBJSERVICE~CROSSREFERENCE.
+endmethod.

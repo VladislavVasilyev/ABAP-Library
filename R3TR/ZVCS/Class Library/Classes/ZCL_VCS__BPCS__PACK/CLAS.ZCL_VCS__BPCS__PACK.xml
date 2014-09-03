@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="utf-8"?>
+<R3TRCLAS>
+	<VSEOCLASS>
+		<CLSNAME>ZCL_VCS__BPCS__PACK</CLSNAME>
+		<VERSION>1</VERSION>
+		<LANGU>R</LANGU>
+		<DESCRIPT>BPC: Packages</DESCRIPT>
+		<UUID>UytjgwsdAGLhAIAAwKizGQ==</UUID>
+		<CATEGORY>00</CATEGORY>
+		<EXPOSURE>2</EXPOSURE>
+		<STATE>1</STATE>
+		<RELEASE>0</RELEASE>
+		<AUTHOR>VVASILYEV00</AUTHOR>
+		<CREATEDON>2014-03-31</CREATEDON>
+		<CHANGEDON>0000-00-00</CHANGEDON>
+		<CHGDANYON>0000-00-00</CHGDANYON>
+		<CLSFINAL>X</CLSFINAL>
+		<CLSCCINCL>X</CLSCCINCL>
+		<FIXPT>X</FIXPT>
+		<UNICODE>X</UNICODE>
+		<R3RELEASE>701</R3RELEASE>
+		<CLSBCCAT>00</CLSBCCAT>
+		<DURATION_TYPE>0</DURATION_TYPE>
+		<RISK_LEVEL>0</RISK_LEVEL>
+	</VSEOCLASS>
+	<TYPES>
+		<TYPES>
+			<item>
+				<CLSNAME>ZCL_VCS__BPCS__PACK</CLSNAME>
+				<CMPNAME>TY_S__LANGU</CMPNAME>
+				<VERSION>1</VERSION>
+				<LANGU>R</LANGU>
+				<EXPOSURE>2</EXPOSURE>
+				<STATE>1</STATE>
+				<EDITORDER>1</EDITORDER>
+				<AUTHOR>VVASILYEV00</AUTHOR>
+				<CREATEDON>2014-03-31</CREATEDON>
+				<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+				<CHANGEDON>2014-03-31</CHANGEDON>
+				<TYPTYPE>4</TYPTYPE>
+				<SRCROW1>12</SRCROW1>
+				<SRCCOLUMN1>4</SRCCOLUMN1>
+				<SRCROW2>15</SRCROW2>
+				<SRCCOLUMN2>27</SRCCOLUMN2>
+				<R3RELEASE>701</R3RELEASE>
+				<TYPESRC_LENG>117</TYPESRC_LENG>
+				<TYPESRC>begin of ty_s__langu
+        , langu type spras
+        , package_desc type uj_desc
+        , end of ty_s__langu
+</TYPESRC>
+			</item>
+			<item>
+				<CLSNAME>ZCL_VCS__BPCS__PACK</CLSNAME>
+				<CMPNAME>TY_T__LANGU</CMPNAME>
+				<VERSION>1</VERSION>
+				<LANGU>R</LANGU>
+				<EXPOSURE>2</EXPOSURE>
+				<STATE>1</STATE>
+				<EDITORDER>2</EDITORDER>
+				<AUTHOR>VVASILYEV00</AUTHOR>
+				<CREATEDON>2014-03-31</CREATEDON>
+				<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+				<CHANGEDON>2014-03-31</CHANGEDON>
+				<TYPTYPE>4</TYPTYPE>
+				<SRCROW1>17</SRCROW1>
+				<SRCCOLUMN1>4</SRCCOLUMN1>
+				<SRCROW2>17</SRCROW2>
+				<SRCCOLUMN2>69</SRCCOLUMN2>
+				<R3RELEASE>701</R3RELEASE>
+				<TYPESRC_LENG>68</TYPESRC_LENG>
+				<TYPESRC>ty_t__langu type sorted table of ty_s__langu with unique key langu
+</TYPESRC>
+			</item>
+			<item>
+				<CLSNAME>ZCL_VCS__BPCS__PACK</CLSNAME>
+				<CMPNAME>TY_S__PACK</CMPNAME>
+				<VERSION>1</VERSION>
+				<LANGU>R</LANGU>
+				<EXPOSURE>2</EXPOSURE>
+				<STATE>1</STATE>
+				<EDITORDER>3</EDITORDER>
+				<AUTHOR>VVASILYEV00</AUTHOR>
+				<CREATEDON>2014-03-31</CREATEDON>
+				<CHANGEDON>0000-00-00</CHANGEDON>
+				<TYPTYPE>4</TYPTYPE>
+				<SRCROW1>19</SRCROW1>
+				<SRCCOLUMN1>4</SRCCOLUMN1>
+				<SRCROW2>30</SRCROW2>
+				<SRCCOLUMN2>26</SRCCOLUMN2>
+				<R3RELEASE>701</R3RELEASE>
+				<TYPESRC_LENG>751</TYPESRC_LENG>
+				<TYPESRC>begin of ty_s__pack
+        , appset_id     type uj_appset_id   &quot; sap businessobjects - ид. набора приложений
+        , app_id        type uj_appl_id     &quot; sap businessobjects - ид. приложения
+        , team_id       type uj_team_id     &quot; bpc: ид. группы
+        , group_id      type uj_pack_grp_id &quot; bpc: ид. группы пакетов
+        , package_id    type uj_package_id  &quot; bpc: ид. пакета
+        , chain_id      type rspc_chain     &quot; цепочка процесса
+        , package_type  type uj_pack_type   &quot; bpc: вид пакета
+        , user_group    type uj_user_group  &quot; bpc: группа пользователей (вид задачи)
+        , langu         type ty_t__langu
+        , source        type table of string with non-unique default key
+        , end of ty_s__pack
+</TYPESRC>
+			</item>
+		</TYPES>
+		<TYPE_SOURCE>
+			<item>    begin of ty_s__langu</item>
+			<item>        , langu type spras</item>
+			<item>        , package_desc type uj_desc</item>
+			<item>        , end of ty_s__langu</item>
+			<item>    ty_t__langu type sorted table of ty_s__langu with unique key langu</item>
+			<item>    begin of ty_s__pack</item>
+			<item>        , appset_id     type uj_appset_id   &quot; sap businessobjects - ид. набора приложений</item>
+			<item>        , app_id        type uj_appl_id     &quot; sap businessobjects - ид. приложения</item>
+			<item>        , team_id       type uj_team_id     &quot; bpc: ид. группы</item>
+			<item>        , group_id      type uj_pack_grp_id &quot; bpc: ид. группы пакетов</item>
+			<item>        , package_id    type uj_package_id  &quot; bpc: ид. пакета</item>
+			<item>        , chain_id      type rspc_chain     &quot; цепочка процесса</item>
+			<item>        , package_type  type uj_pack_type   &quot; bpc: вид пакета</item>
+			<item>        , user_group    type uj_user_group  &quot; bpc: группа пользователей (вид задачи)</item>
+			<item>        , langu         type ty_t__langu</item>
+			<item>        , source        type table of string with non-unique default key</item>
+			<item>        , end of ty_s__pack</item>
+		</TYPE_SOURCE>
+	</TYPES>
+	<INHERITANCE>
+		<CLSNAME>ZCL_VCS__BPCS__PACK</CLSNAME>
+		<REFCLSNAME>ZCL_VCS_OBJECTS_STACK</REFCLSNAME>
+		<VERSION>1</VERSION>
+		<STATE>1</STATE>
+		<AUTHOR>VVASILYEV00</AUTHOR>
+		<CREATEDON>2014-03-31</CREATEDON>
+		<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+		<CHANGEDON>2014-03-31</CHANGEDON>
+	</INHERITANCE>
+	<EXPLORE_INHERITANCE>
+		<item>
+			<CLSNAME>ZCL_VCS_OBJECTS_STACK</CLSNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<UUID>UzErY+X7AGrhAIAAwKizGQ==</UUID>
+			<CATEGORY>00</CATEGORY>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<RELEASE>0</RELEASE>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-03-26</CREATEDON>
+			<CHANGEDON>0000-00-00</CHANGEDON>
+			<CHGDANYON>0000-00-00</CHGDANYON>
+			<CLSABSTRCT>X</CLSABSTRCT>
+			<CLSCCINCL>X</CLSCCINCL>
+			<FIXPT>X</FIXPT>
+			<UNICODE>X</UNICODE>
+			<R3RELEASE>701</R3RELEASE>
+			<CLSBCCAT>00</CLSBCCAT>
+			<DURATION_TYPE>0</DURATION_TYPE>
+			<RISK_LEVEL>0</RISK_LEVEL>
+		</item>
+	</EXPLORE_INHERITANCE>
+	<REDEFINITIONS>
+		<item>
+			<CLSNAME>ZCL_VCS__BPCS__PACK</CLSNAME>
+			<REFCLSNAME>ZCL_VCS_OBJECTS_STACK</REFCLSNAME>
+			<VERSION>1</VERSION>
+			<MTDNAME>CREATE_OBJECT</MTDNAME>
+		</item>
+		<item>
+			<CLSNAME>ZCL_VCS__BPCS__PACK</CLSNAME>
+			<REFCLSNAME>ZCL_VCS_OBJECTS_STACK</REFCLSNAME>
+			<VERSION>1</VERSION>
+			<MTDNAME>CREATE_PATH</MTDNAME>
+		</item>
+		<item>
+			<CLSNAME>ZCL_VCS__BPCS__PACK</CLSNAME>
+			<REFCLSNAME>ZCL_VCS_OBJECTS_STACK</REFCLSNAME>
+			<VERSION>1</VERSION>
+			<MTDNAME>CROSSSOURCES</MTDNAME>
+		</item>
+		<item>
+			<CLSNAME>ZCL_VCS__BPCS__PACK</CLSNAME>
+			<REFCLSNAME>ZCL_VCS_OBJECTS_STACK</REFCLSNAME>
+			<VERSION>1</VERSION>
+			<MTDNAME>GET_TYPE_OBJECT</MTDNAME>
+		</item>
+		<item>
+			<CLSNAME>ZCL_VCS__BPCS__PACK</CLSNAME>
+			<REFCLSNAME>ZCL_VCS_OBJECTS_STACK</REFCLSNAME>
+			<VERSION>1</VERSION>
+			<MTDNAME>READ_OBJECT</MTDNAME>
+		</item>
+	</REDEFINITIONS>
+	<METHODS_REDEF>
+		<item>
+			<METHOD>
+				<CLSNAME>ZCL_VCS_OBJECTS_STACK</CLSNAME>
+				<CMPNAME>CREATE_OBJECT</CMPNAME>
+				<VERSION>1</VERSION>
+				<LANGU>R</LANGU>
+				<EXPOSURE>1</EXPOSURE>
+				<STATE>1</STATE>
+				<EDITORDER>1</EDITORDER>
+				<DISPID>0</DISPID>
+				<AUTHOR>VVASILYEV00</AUTHOR>
+				<CREATEDON>2014-03-26</CREATEDON>
+				<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+				<CHANGEDON>2014-04-01</CHANGEDON>
+				<MTDTYPE>0</MTDTYPE>
+				<MTDDECLTYP>0</MTDDECLTYP>
+				<MTDABSTRCT>X</MTDABSTRCT>
+				<MTDNEWEXC>X</MTDNEWEXC>
+				<R3RELEASE>701</R3RELEASE>
+				<BCMTDCAT>00</BCMTDCAT>
+				<BCMTDSYN>0</BCMTDSYN>
+			</METHOD>
+			<INCLUDE>
+				<CPDKEY>
+					<CLSNAME>ZCL_VCS__BPCS__PACK</CLSNAME>
+					<CPDNAME>CREATE_OBJECT</CPDNAME>
+				</CPDKEY>
+				<INCNAME>ZCL_VCS__BPCS__PACK===========CM001</INCNAME>
+			</INCLUDE>
+			<SOURCE>
+				<SOURCEID>CLAS.ZCL_VCS__BPCS__PACK.CREATE_OBJECT.abap</SOURCEID>
+			</SOURCE>
+		</item>
+		<item>
+			<METHOD>
+				<CLSNAME>ZCL_VCS_OBJECTS_STACK</CLSNAME>
+				<CMPNAME>CREATE_PATH</CMPNAME>
+				<VERSION>1</VERSION>
+				<LANGU>R</LANGU>
+				<EXPOSURE>1</EXPOSURE>
+				<STATE>1</STATE>
+				<EDITORDER>0</EDITORDER>
+				<DISPID>0</DISPID>
+				<AUTHOR>VVASILYEV00</AUTHOR>
+				<CREATEDON>2014-03-27</CREATEDON>
+				<CHANGEDON>0000-00-00</CHANGEDON>
+				<MTDTYPE>0</MTDTYPE>
+				<MTDDECLTYP>0</MTDDECLTYP>
+				<MTDABSTRCT>X</MTDABSTRCT>
+				<R3RELEASE>701</R3RELEASE>
+				<BCMTDCAT>00</BCMTDCAT>
+				<BCMTDSYN>0</BCMTDSYN>
+			</METHOD>
+			<INCLUDE>
+				<CPDKEY>
+					<CLSNAME>ZCL_VCS__BPCS__PACK</CLSNAME>
+					<CPDNAME>CREATE_PATH</CPDNAME>
+				</CPDKEY>
+				<INCNAME>ZCL_VCS__BPCS__PACK===========CM002</INCNAME>
+			</INCLUDE>
+			<SOURCE>
+				<SOURCEID>CLAS.ZCL_VCS__BPCS__PACK.CREATE_PATH.abap</SOURCEID>
+			</SOURCE>
+		</item>
+		<item>
+			<METHOD>
+				<CLSNAME>ZCL_VCS_OBJECTS_STACK</CLSNAME>
+				<CMPNAME>GET_TYPE_OBJECT</CMPNAME>
+				<VERSION>1</VERSION>
+				<LANGU>R</LANGU>
+				<EXPOSURE>1</EXPOSURE>
+				<STATE>1</STATE>
+				<EDITORDER>2</EDITORDER>
+				<DISPID>0</DISPID>
+				<AUTHOR>VVASILYEV00</AUTHOR>
+				<CREATEDON>2014-03-26</CREATEDON>
+				<CHANGEDON>0000-00-00</CHANGEDON>
+				<MTDTYPE>0</MTDTYPE>
+				<MTDDECLTYP>0</MTDDECLTYP>
+				<MTDABSTRCT>X</MTDABSTRCT>
+				<R3RELEASE>701</R3RELEASE>
+				<BCMTDCAT>00</BCMTDCAT>
+				<BCMTDSYN>0</BCMTDSYN>
+			</METHOD>
+			<INCLUDE>
+				<CPDKEY>
+					<CLSNAME>ZCL_VCS__BPCS__PACK</CLSNAME>
+					<CPDNAME>GET_TYPE_OBJECT</CPDNAME>
+				</CPDKEY>
+				<INCNAME>ZCL_VCS__BPCS__PACK===========CM003</INCNAME>
+			</INCLUDE>
+			<SOURCE>
+				<SOURCEID>CLAS.ZCL_VCS__BPCS__PACK.GET_TYPE_OBJECT.abap</SOURCEID>
+			</SOURCE>
+		</item>
+		<item>
+			<METHOD>
+				<CLSNAME>ZCL_VCS_OBJECTS_STACK</CLSNAME>
+				<CMPNAME>READ_OBJECT</CMPNAME>
+				<VERSION>1</VERSION>
+				<LANGU>R</LANGU>
+				<EXPOSURE>1</EXPOSURE>
+				<STATE>1</STATE>
+				<EDITORDER>3</EDITORDER>
+				<DISPID>0</DISPID>
+				<AUTHOR>VVASILYEV00</AUTHOR>
+				<CREATEDON>2014-03-26</CREATEDON>
+				<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+				<CHANGEDON>2014-03-28</CHANGEDON>
+				<MTDTYPE>0</MTDTYPE>
+				<MTDDECLTYP>0</MTDDECLTYP>
+				<MTDABSTRCT>X</MTDABSTRCT>
+				<MTDNEWEXC>X</MTDNEWEXC>
+				<R3RELEASE>701</R3RELEASE>
+				<BCMTDCAT>00</BCMTDCAT>
+				<BCMTDSYN>0</BCMTDSYN>
+			</METHOD>
+			<INCLUDE>
+				<CPDKEY>
+					<CLSNAME>ZCL_VCS__BPCS__PACK</CLSNAME>
+					<CPDNAME>READ_OBJECT</CPDNAME>
+				</CPDKEY>
+				<INCNAME>ZCL_VCS__BPCS__PACK===========CM004</INCNAME>
+			</INCLUDE>
+			<SOURCE>
+				<SOURCEID>CLAS.ZCL_VCS__BPCS__PACK.READ_OBJECT.abap</SOURCEID>
+			</SOURCE>
+		</item>
+		<item>
+			<METHOD>
+				<CLSNAME>ZCL_VCS_OBJECTS_STACK</CLSNAME>
+				<CMPNAME>CROSSSOURCES</CMPNAME>
+				<VERSION>1</VERSION>
+				<LANGU>R</LANGU>
+				<EXPOSURE>1</EXPOSURE>
+				<STATE>1</STATE>
+				<EDITORDER>2</EDITORDER>
+				<DISPID>0</DISPID>
+				<AUTHOR>VVASILYEV00</AUTHOR>
+				<CREATEDON>2014-03-31</CREATEDON>
+				<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+				<CHANGEDON>2014-03-31</CHANGEDON>
+				<MTDTYPE>0</MTDTYPE>
+				<MTDDECLTYP>0</MTDDECLTYP>
+				<MTDABSTRCT>X</MTDABSTRCT>
+				<R3RELEASE>701</R3RELEASE>
+				<BCMTDCAT>00</BCMTDCAT>
+				<BCMTDSYN>0</BCMTDSYN>
+			</METHOD>
+			<INCLUDE>
+				<CPDKEY>
+					<CLSNAME>ZCL_VCS__BPCS__PACK</CLSNAME>
+					<CPDNAME>CROSSSOURCES</CPDNAME>
+				</CPDKEY>
+				<INCNAME>ZCL_VCS__BPCS__PACK===========CM005</INCNAME>
+			</INCLUDE>
+			<SOURCE>
+				<SOURCEID>CLAS.ZCL_VCS__BPCS__PACK.CROSSSOURCES.abap</SOURCEID>
+			</SOURCE>
+		</item>
+	</METHODS_REDEF>
+	<SECTIONS>
+		<item>
+			<LIMU>CPUB</LIMU>
+			<INCNAME>ZCL_VCS__BPCS__PACK===========CU</INCNAME>
+			<SOURCE>
+				<SOURCEID>CLAS.ZCL_VCS__BPCS__PACK.CPUB.abap</SOURCEID>
+			</SOURCE>
+		</item>
+		<item>
+			<LIMU>CPRI</LIMU>
+			<INCNAME>ZCL_VCS__BPCS__PACK===========CI</INCNAME>
+			<SOURCE>
+				<SOURCEID>CLAS.ZCL_VCS__BPCS__PACK.CPRI.abap</SOURCEID>
+			</SOURCE>
+		</item>
+		<item>
+			<LIMU>CPRO</LIMU>
+			<INCNAME>ZCL_VCS__BPCS__PACK===========CO</INCNAME>
+			<SOURCE>
+				<SOURCEID>CLAS.ZCL_VCS__BPCS__PACK.CPRO.abap</SOURCEID>
+			</SOURCE>
+		</item>
+	</SECTIONS>
+	<HEADER>
+		<PGMID>R3TR</PGMID>
+		<OBJECT>CLAS</OBJECT>
+		<OBJ_NAME>ZCL_VCS__BPCS__PACK</OBJ_NAME>
+		<SRCSYSTEM>BP0</SRCSYSTEM>
+		<AUTHOR>VVASILYEV00</AUTHOR>
+		<DEVCLASS>ZVCS</DEVCLASS>
+		<CPROJECT> S</CPROJECT>
+		<MASTERLANG>R</MASTERLANG>
+		<PATHDEVC>ZVCS</PATHDEVC>
+	</HEADER>
+</R3TRCLAS>

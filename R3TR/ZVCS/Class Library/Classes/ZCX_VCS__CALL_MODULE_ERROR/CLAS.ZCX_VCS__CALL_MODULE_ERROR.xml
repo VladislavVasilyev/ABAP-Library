@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="utf-8"?>
+<R3TRCLAS>
+	<VSEOCLASS>
+		<CLSNAME>ZCX_VCS__CALL_MODULE_ERROR</CLSNAME>
+		<VERSION>1</VERSION>
+		<LANGU>R</LANGU>
+		<UUID>UvwdcqSGALfhAIAAwKizGQ==</UUID>
+		<CATEGORY>40</CATEGORY>
+		<EXPOSURE>2</EXPOSURE>
+		<STATE>1</STATE>
+		<RELEASE>0</RELEASE>
+		<AUTHOR>VVASILYEV00</AUTHOR>
+		<CREATEDON>2014-03-03</CREATEDON>
+		<CHANGEDON>0000-00-00</CHANGEDON>
+		<CHGDANYON>0000-00-00</CHGDANYON>
+		<CLSCCINCL>X</CLSCCINCL>
+		<FIXPT>X</FIXPT>
+		<UNICODE>X</UNICODE>
+		<R3RELEASE>701</R3RELEASE>
+		<CLSBCCAT>00</CLSBCCAT>
+		<DURATION_TYPE>0</DURATION_TYPE>
+		<RISK_LEVEL>0</RISK_LEVEL>
+	</VSEOCLASS>
+	<ATTRIBUTES>
+		<item>
+			<CLSNAME>ZCX_VCS__CALL_MODULE_ERROR</CLSNAME>
+			<CMPNAME>ZCX_VCS__CALL_MODULE_ERROR</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>1</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-03-03</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-03-11</CHANGEDON>
+			<ATTDECLTYP>2</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>4</TYPTYPE>
+			<SRCROW1>13</SRCROW1>
+			<SRCCOLUMN1>4</SRCCOLUMN1>
+			<SRCROW2>20</SRCROW2>
+			<SRCCOLUMN2>36</SRCCOLUMN2>
+			<LOCKED>X</LOCKED>
+			<TYPESRC_LENG>352</TYPESRC_LENG>
+			<TYPESRC>begin of ZCX_VCS__CALL_MODULE_ERROR,
+      msgid type symsgid value &apos;ZMCL_VCS&apos;,
+      msgno type symsgno value &apos;009&apos;,
+      attr1 type scx_attrname value &apos;MODULE&apos;,
+      attr2 type scx_attrname value &apos;EXCEPTION&apos;,
+      attr3 type scx_attrname value &apos;ERROR_MESSAGE&apos;,
+      attr4 type scx_attrname value &apos;&apos;,
+    end of ZCX_VCS__CALL_MODULE_ERROR
+</TYPESRC>
+		</item>
+		<item>
+			<CLSNAME>ZCX_VCS__CALL_MODULE_ERROR</CLSNAME>
+			<CMPNAME>CX_ERROR_MESSAGE</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>2</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-03-05</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-03-11</CHANGEDON>
+			<ATTDECLTYP>2</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>4</TYPTYPE>
+			<SRCROW1>22</SRCROW1>
+			<SRCCOLUMN1>4</SRCCOLUMN1>
+			<SRCROW2>29</SRCROW2>
+			<SRCCOLUMN2>26</SRCCOLUMN2>
+			<LOCKED>X</LOCKED>
+			<TYPESRC_LENG>323</TYPESRC_LENG>
+			<TYPESRC>begin of CX_ERROR_MESSAGE,
+      msgid type symsgid value &apos;ZMCL_VCS&apos;,
+      msgno type symsgno value &apos;010&apos;,
+      attr1 type scx_attrname value &apos;MODULE&apos;,
+      attr2 type scx_attrname value &apos;ERROR_MESSAGE&apos;,
+      attr3 type scx_attrname value &apos;&apos;,
+      attr4 type scx_attrname value &apos;&apos;,
+    end of CX_ERROR_MESSAGE
+</TYPESRC>
+		</item>
+		<item>
+			<CLSNAME>ZCX_VCS__CALL_MODULE_ERROR</CLSNAME>
+			<CMPNAME>MODULE</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>3</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-03-03</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-03-11</CHANGEDON>
+			<ATTDECLTYP>0</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>1</TYPTYPE>
+			<TYPE>STRING</TYPE>
+			<SRCROW1>0</SRCROW1>
+			<SRCCOLUMN1>0</SRCCOLUMN1>
+			<SRCROW2>0</SRCROW2>
+			<SRCCOLUMN2>0</SRCCOLUMN2>
+			<TYPESRC_LENG>0</TYPESRC_LENG>
+		</item>
+		<item>
+			<CLSNAME>ZCX_VCS__CALL_MODULE_ERROR</CLSNAME>
+			<CMPNAME>ERROR_MESSAGE</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>4</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-03-05</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-03-11</CHANGEDON>
+			<ATTDECLTYP>0</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>1</TYPTYPE>
+			<TYPE>STRING</TYPE>
+			<SRCROW1>0</SRCROW1>
+			<SRCCOLUMN1>0</SRCCOLUMN1>
+			<SRCROW2>0</SRCROW2>
+			<SRCCOLUMN2>0</SRCCOLUMN2>
+			<TYPESRC_LENG>0</TYPESRC_LENG>
+		</item>
+		<item>
+			<CLSNAME>ZCX_VCS__CALL_MODULE_ERROR</CLSNAME>
+			<CMPNAME>EXC</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>5</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-03-06</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-03-11</CHANGEDON>
+			<ATTDECLTYP>2</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>4</TYPTYPE>
+			<SRCROW1>33</SRCROW1>
+			<SRCCOLUMN1>4</SRCCOLUMN1>
+			<SRCROW2>70</SRCROW2>
+			<SRCCOLUMN2>23</SRCCOLUMN2>
+			<TYPESRC_LENG>2622</TYPESRC_LENG>
+			<TYPESRC>begin of exc.
+    constants not_edited type string value &apos;NOT_EDITED&apos;.    &quot;#EC NOTEXT
+    constants class_not_existing type string value &apos;CLASS_NOT_EXISTING&apos;. &quot;#EC NOTEXT
+    constants not_existing type string value &apos;NOT_EXISTING&apos;. &quot;#EC NOTEXT
+    constants others type string value &apos;OTHERS&apos;.            &quot;#EC NOTEXT
+    constants is_interface type string value &apos;IS_INTERFACE&apos;. &quot;#EC NOTEXT
+    constants model_only type string value &apos;MODEL_ONLY&apos;.    &quot;#EC NOTEXT
+    constants comp_not_existing type string value &apos;COMP_NOT_EXISTING&apos;. &quot;#EC NOTEXT
+    constants deleted type string value &apos;DELETED&apos;.          &quot;#EC NOTEXT
+    constants is_event type string value &apos;IS_EVENT&apos;.        &quot;#EC NOTEXT
+    constants is_class type string value &apos;IS_CLASS&apos;.        &quot;#EC NOTEXT
+    constants is_type type string value &apos;IS_TYPE&apos;.          &quot;#EC NOTEXT
+    constants is_attribute type string value &apos;IS_ATTRIBUTE&apos;. &quot;#EC NOTEXT
+    constants no_method type string value &apos;NO_METHOD&apos;.      &quot;#EC NOTEXT
+    constants enqueue_table_full type string value &apos;ENQUEUE_TABLE_FULL&apos;. &quot;#EC NOTEXT
+    constants include_enqueued type string value &apos;INCLUDE_ENQUEUED&apos;. &quot;#EC NOTEXT
+    constants include_readerror type string value &apos;INCLUDE_READERROR&apos;. &quot;#EC NOTEXT
+    constants include_writeerror type string value &apos;INCLUDE_WRITEERROR&apos;. &quot;#EC NOTEXT
+    constants method_not_existing type string value &apos;METHOD_NOT_EXISTING&apos;. &quot;#EC NOTEXT
+    constants version_not_existing type string value &apos;VERSION_NOT_EXISTING&apos;. &quot;#EC NOTEXT
+    constants inactive_delete type string value &apos;INACTIVE_DELETE&apos;. &quot;#EC NOTEXT
+    constants inactive_new type string value &apos;INACTIVE_NEW&apos;. &quot;#EC NOTEXT
+    constants illegal_input type string value &apos;ILLEGAL_INPUT&apos;. &quot;#EC NOTEXT
+    constants function_not_found type string value &apos;FUNCTION_NOT_FOUND&apos;. &quot;#EC NOTEXT
+    constants invalid_name type string value &apos;INVALID_NAME&apos;. &quot;#EC NOTEXT
+    constants no_program type string value &apos;NO_PROGRAM&apos;.    &quot;#EC NOTEXT
+    constants delimeter_error type string value &apos;DELIMETER_ERROR&apos;. &quot;#EC NOTEXT
+    constants illegal_line_width type string value &apos;ILLEGAL_LINE_WIDTH&apos;. &quot;#EC NOTEXT
+    constants not_convertable type string value &apos;NOT_CONVERTABLE&apos;. &quot;#EC NOTEXT
+    constants not_scanable type string value &apos;NOT_SCANABLE&apos;. &quot;#EC NOTEXT
+    constants cancelled type string value `CANCELLED`.
+    constants not_found type string value `NOT_FOUND`.
+    constants permission_error type string value `PERMISSION_ERROR`.
+    constants put_failure type string value `PUT_FAILURE`.
+    constants put_refused type string value `PUT_REFUSED`.
+
+
+    constants end of exc
+</TYPESRC>
+		</item>
+		<item>
+			<CLSNAME>ZCX_VCS__CALL_MODULE_ERROR</CLSNAME>
+			<CMPNAME>MOD</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>6</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-03-06</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-03-11</CHANGEDON>
+			<ATTDECLTYP>2</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>4</TYPTYPE>
+			<SRCROW1>72</SRCROW1>
+			<SRCCOLUMN1>4</SRCCOLUMN1>
+			<SRCROW2>103</SRCROW2>
+			<SRCCOLUMN2>23</SRCCOLUMN2>
+			<TYPESRC_LENG>2269</TYPESRC_LENG>
+			<TYPESRC>begin of mod.
+    constants seo_class_get_include_source type string value `SEO_CLASS_GET_INCLUDE_SOURCE`.
+    constants seo_class_get_method_includes type string value `SEO_CLASS_GET_METHOD_INCLUDES`.
+    constants seo_class_get_type_source  type string value `SEOCLASS_GET_TYPE_SOURCE`.
+    constants seo_class_typeinfo_get type string value `SEO_CLASS_TYPEINFO_GET`.
+    constants ddif_doma_get type string value `DDIF_DOMA_GET`.
+    constants ddif_dtel_get type string value `DDIF_DTEL_GET`.
+    constants ddif_shlp_get type string value `DDIF_SHLP_GET`.
+    constants ddif_tabl_get type string value `DDIF_TABL_GET`.
+    constants ddif_ttyp_get type string value `DDIF_TTYP_GET`.
+    constants ddif_type_get type string value `DDIF_TYPE_GET`.
+    constants ddif_view_get type string value `DDIF_VIEW_GET`.
+    constants ddif_ttyp_activate type string value `DDIF_TTYP_ACTIVATE`.
+    constants seo_exception_read_all type string value `SEO_EXCEPTION_READ_ALL`.
+    constants seo_method_get type string value `SEO_METHOD_GET`.
+    constants seo_method_get_detail type string value `SEO_METHOD_GET_DETAIL`.
+    constants seo_method_get_source type string value `SEO_METHOD_GET_SOURCE`.
+    constants seo_parameter_read_all type string value `SEO_PARAMETER_READ_ALL`.
+    constants seo_interface_typeinfo_get type string value `SEO_INTERFACE_TYPEINFO_GET`.
+    constants pretty_printer type string value `PRETTY_PRINTER`.
+    constants read_source type string value `READ_SOURCE`.
+    constants rpy_functionmodule_read type string value `RPY_FUNCTIONMODULE_READ`.
+    constants rpy_dynpro_read  type string value `RPY_DYNPRO_READ`.
+    constants rpy_program_read  type string value `RPY_PROGRAM_READ`.
+    constants rs_get_all_includes type string value `RS_GET_ALL_INCLUDES`.
+    constants rs_progname_split type string value `RS_PROGNAME_SPLIT`.
+    constants seo_section_get_source type string value `SEO_SECTION_GET_SOURCE`.
+    constants seo_type_get type string value `SEO_TYPE_GET`.
+    constants abap_source_format type string value `ABAP_SOURCE_FORMAT`.
+    constants message_classes_get_info type string value `MESSAGE_CLASSES_GET_INFO`.
+    constants ddif_ttyp_put type string value `DDIF_TTYP_PUT`.
+    constants end of mod
+</TYPESRC>
+		</item>
+		<item>
+			<CLSNAME>ZCX_VCS__CALL_MODULE_ERROR</CLSNAME>
+			<CMPNAME>EXCEPTION</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>7</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-03-06</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-03-11</CHANGEDON>
+			<ATTDECLTYP>0</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>1</TYPTYPE>
+			<TYPE>STRING</TYPE>
+			<SRCROW1>0</SRCROW1>
+			<SRCCOLUMN1>0</SRCCOLUMN1>
+			<SRCROW2>0</SRCROW2>
+			<SRCCOLUMN2>0</SRCCOLUMN2>
+			<TYPESRC_LENG>0</TYPESRC_LENG>
+		</item>
+	</ATTRIBUTES>
+	<METHODS>
+		<item>
+			<CMPKEY>
+				<CLSNAME>ZCX_VCS__CALL_MODULE_ERROR</CLSNAME>
+				<CMPNAME>CONSTRUCTOR</CMPNAME>
+			</CMPKEY>
+			<METHOD>
+				<CLSNAME>ZCX_VCS__CALL_MODULE_ERROR</CLSNAME>
+				<CMPNAME>CONSTRUCTOR</CMPNAME>
+				<VERSION>1</VERSION>
+				<LANGU>R</LANGU>
+				<DESCRIPT>CONSTRUCTOR</DESCRIPT>
+				<EXPOSURE>2</EXPOSURE>
+				<STATE>1</STATE>
+				<EDITORDER>1</EDITORDER>
+				<DISPID>0</DISPID>
+				<AUTHOR>VVASILYEV00</AUTHOR>
+				<CREATEDON>2014-03-03</CREATEDON>
+				<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+				<CHANGEDON>2014-03-11</CHANGEDON>
+				<MTDTYPE>2</MTDTYPE>
+				<MTDDECLTYP>0</MTDDECLTYP>
+				<BCMTDCAT>00</BCMTDCAT>
+				<BCMTDSYN>0</BCMTDSYN>
+			</METHOD>
+			<METHOD_DETAILS>
+				<IS_CLIF_METHOD>X</IS_CLIF_METHOD>
+			</METHOD_DETAILS>
+			<PARAMETERS>
+				<item>
+					<CLSNAME>ZCX_VCS__CALL_MODULE_ERROR</CLSNAME>
+					<CMPNAME>CONSTRUCTOR</CMPNAME>
+					<SCONAME>TEXTID</SCONAME>
+					<VERSION>1</VERSION>
+					<LANGU>R</LANGU>
+					<CMPTYPE>1</CMPTYPE>
+					<MTDTYPE>2</MTDTYPE>
+					<EDITORDER>1</EDITORDER>
+					<DISPID>0</DISPID>
+					<AUTHOR>VVASILYEV00</AUTHOR>
+					<CREATEDON>2014-03-03</CREATEDON>
+					<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+					<CHANGEDON>2014-03-11</CHANGEDON>
+					<PARDECLTYP>0</PARDECLTYP>
+					<PARPASSTYP>1</PARPASSTYP>
+					<TYPTYPE>0</TYPTYPE>
+					<TYPE>IF_T100_MESSAGE=&amp;gt;T100KEY</TYPE>
+					<PAROPTIONL>X</PAROPTIONL>
+				</item>
+				<item>
+					<CLSNAME>ZCX_VCS__CALL_MODULE_ERROR</CLSNAME>
+					<CMPNAME>CONSTRUCTOR</CMPNAME>
+					<SCONAME>PREVIOUS</SCONAME>
+					<VERSION>1</VERSION>
+					<LANGU>R</LANGU>
+					<CMPTYPE>1</CMPTYPE>
+					<MTDTYPE>2</MTDTYPE>
+					<EDITORDER>2</EDITORDER>
+					<DISPID>0</DISPID>
+					<AUTHOR>VVASILYEV00</AUTHOR>
+					<CREATEDON>2014-03-03</CREATEDON>
+					<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+					<CHANGEDON>2014-03-11</CHANGEDON>
+					<PARDECLTYP>0</PARDECLTYP>
+					<PARPASSTYP>1</PARPASSTYP>
+					<TYPTYPE>0</TYPTYPE>
+					<TYPE>PREVIOUS</TYPE>
+					<PAROPTIONL>X</PAROPTIONL>
+				</item>
+				<item>
+					<CLSNAME>ZCX_VCS__CALL_MODULE_ERROR</CLSNAME>
+					<CMPNAME>CONSTRUCTOR</CMPNAME>
+					<SCONAME>MODULE</SCONAME>
+					<VERSION>1</VERSION>
+					<LANGU>R</LANGU>
+					<CMPTYPE>1</CMPTYPE>
+					<MTDTYPE>2</MTDTYPE>
+					<EDITORDER>3</EDITORDER>
+					<DISPID>0</DISPID>
+					<AUTHOR>VVASILYEV00</AUTHOR>
+					<CREATEDON>2014-03-03</CREATEDON>
+					<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+					<CHANGEDON>2014-03-11</CHANGEDON>
+					<PARDECLTYP>0</PARDECLTYP>
+					<PARPASSTYP>1</PARPASSTYP>
+					<TYPTYPE>1</TYPTYPE>
+					<TYPE>STRING</TYPE>
+					<PAROPTIONL>X</PAROPTIONL>
+				</item>
+				<item>
+					<CLSNAME>ZCX_VCS__CALL_MODULE_ERROR</CLSNAME>
+					<CMPNAME>CONSTRUCTOR</CMPNAME>
+					<SCONAME>ERROR_MESSAGE</SCONAME>
+					<VERSION>1</VERSION>
+					<LANGU>R</LANGU>
+					<CMPTYPE>1</CMPTYPE>
+					<MTDTYPE>2</MTDTYPE>
+					<EDITORDER>4</EDITORDER>
+					<DISPID>0</DISPID>
+					<AUTHOR>VVASILYEV00</AUTHOR>
+					<CREATEDON>2014-03-05</CREATEDON>
+					<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+					<CHANGEDON>2014-03-11</CHANGEDON>
+					<PARDECLTYP>0</PARDECLTYP>
+					<PARPASSTYP>1</PARPASSTYP>
+					<TYPTYPE>1</TYPTYPE>
+					<TYPE>STRING</TYPE>
+					<PAROPTIONL>X</PAROPTIONL>
+				</item>
+				<item>
+					<CLSNAME>ZCX_VCS__CALL_MODULE_ERROR</CLSNAME>
+					<CMPNAME>CONSTRUCTOR</CMPNAME>
+					<SCONAME>EXCEPTION</SCONAME>
+					<VERSION>1</VERSION>
+					<LANGU>R</LANGU>
+					<CMPTYPE>1</CMPTYPE>
+					<MTDTYPE>2</MTDTYPE>
+					<EDITORDER>5</EDITORDER>
+					<DISPID>0</DISPID>
+					<AUTHOR>VVASILYEV00</AUTHOR>
+					<CREATEDON>2014-03-06</CREATEDON>
+					<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+					<CHANGEDON>2014-03-11</CHANGEDON>
+					<PARDECLTYP>0</PARDECLTYP>
+					<PARPASSTYP>1</PARPASSTYP>
+					<TYPTYPE>1</TYPTYPE>
+					<TYPE>STRING</TYPE>
+					<PAROPTIONL>X</PAROPTIONL>
+				</item>
+			</PARAMETERS>
+			<INCNAME>ZCX_VCS__CALL_MODULE_ERROR====CM001</INCNAME>
+			<SOURCE>
+				<SOURCEID>CLAS.ZCX_VCS__CALL_MODULE_ERROR.CONSTRUCTOR.abap</SOURCEID>
+			</SOURCE>
+		</item>
+	</METHODS>
+	<IMPLEMENTINGS>
+		<IMPLEMENTINGS>
+			<item>
+				<CLSNAME>ZCX_VCS__CALL_MODULE_ERROR</CLSNAME>
+				<REFCLSNAME>IF_T100_MESSAGE</REFCLSNAME>
+				<VERSION>1</VERSION>
+				<EXPOSURE>2</EXPOSURE>
+				<STATE>1</STATE>
+				<AUTHOR>VVASILYEV00</AUTHOR>
+				<CREATEDON>2014-03-03</CREATEDON>
+				<CHANGEDON>0000-00-00</CHANGEDON>
+				<RELTYPE>1</RELTYPE>
+			</item>
+		</IMPLEMENTINGS>
+	</IMPLEMENTINGS>
+	<INHERITANCE>
+		<CLSNAME>ZCX_VCS__CALL_MODULE_ERROR</CLSNAME>
+		<REFCLSNAME>CX_STATIC_CHECK</REFCLSNAME>
+		<VERSION>1</VERSION>
+		<STATE>1</STATE>
+		<AUTHOR>VVASILYEV00</AUTHOR>
+		<CREATEDON>2014-03-03</CREATEDON>
+		<CHANGEDON>0000-00-00</CHANGEDON>
+	</INHERITANCE>
+	<EXPLORE_INHERITANCE>
+		<item>
+			<CLSNAME>CX_STATIC_CHECK</CLSNAME>
+			<VERSION>1</VERSION>
+			<LANGU>E</LANGU>
+			<DESCRIPT>Exceptions with Static and Dynamic Check of RAISING Clause</DESCRIPT>
+			<UUID>6bGGOQmuHmfhAAAAChFEew==</UUID>
+			<CATEGORY>40</CATEGORY>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<RELEASE>1</RELEASE>
+			<AUTHOR>SAP</AUTHOR>
+			<CREATEDON>2000-08-01</CREATEDON>
+			<CHANGEDBY>SAP</CHANGEDBY>
+			<CHANGEDON>2001-04-26</CHANGEDON>
+			<CHGDANYON>0000-00-00</CHGDANYON>
+			<CLSABSTRCT>X</CLSABSTRCT>
+			<FIXPT>X</FIXPT>
+			<UNICODE>X</UNICODE>
+			<R3RELEASE>50A</R3RELEASE>
+			<CLSBCCAT>00</CLSBCCAT>
+			<DURATION_TYPE>0</DURATION_TYPE>
+			<RISK_LEVEL>0</RISK_LEVEL>
+		</item>
+		<item>
+			<CLSNAME>CX_ROOT</CLSNAME>
+			<VERSION>1</VERSION>
+			<LANGU>E</LANGU>
+			<DESCRIPT>Abstract Superclass for All Global Exceptions</DESCRIPT>
+			<UUID>XL0zFsWo0xGxKQBgsGfcEQ==</UUID>
+			<CATEGORY>40</CATEGORY>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<RELEASE>1</RELEASE>
+			<AUTHOR>SAP</AUTHOR>
+			<CREATEDON>1999-12-02</CREATEDON>
+			<CHANGEDBY>SAP</CHANGEDBY>
+			<CHANGEDON>2001-04-26</CHANGEDON>
+			<CHGDANYON>0000-00-00</CHGDANYON>
+			<CLSABSTRCT>X</CLSABSTRCT>
+			<FIXPT>X</FIXPT>
+			<UNICODE>X</UNICODE>
+			<CLSBCCAT>00</CLSBCCAT>
+			<DURATION_TYPE>0</DURATION_TYPE>
+			<RISK_LEVEL>0</RISK_LEVEL>
+		</item>
+	</EXPLORE_INHERITANCE>
+	<SECTIONS>
+		<item>
+			<LIMU>CPUB</LIMU>
+			<INCNAME>ZCX_VCS__CALL_MODULE_ERROR====CU</INCNAME>
+			<SOURCE>
+				<SOURCEID>CLAS.ZCX_VCS__CALL_MODULE_ERROR.CPUB.abap</SOURCEID>
+			</SOURCE>
+		</item>
+		<item>
+			<LIMU>CPRI</LIMU>
+			<INCNAME>ZCX_VCS__CALL_MODULE_ERROR====CI</INCNAME>
+			<SOURCE>
+				<SOURCEID>CLAS.ZCX_VCS__CALL_MODULE_ERROR.CPRI.abap</SOURCEID>
+			</SOURCE>
+		</item>
+		<item>
+			<LIMU>CPRO</LIMU>
+			<INCNAME>ZCX_VCS__CALL_MODULE_ERROR====CO</INCNAME>
+			<SOURCE>
+				<SOURCEID>CLAS.ZCX_VCS__CALL_MODULE_ERROR.CPRO.abap</SOURCEID>
+			</SOURCE>
+		</item>
+	</SECTIONS>
+	<HEADER>
+		<PGMID>R3TR</PGMID>
+		<OBJECT>CLAS</OBJECT>
+		<OBJ_NAME>ZCX_VCS__CALL_MODULE_ERROR</OBJ_NAME>
+		<SRCSYSTEM>BP0</SRCSYSTEM>
+		<AUTHOR>VVASILYEV00</AUTHOR>
+		<DEVCLASS>ZVCS</DEVCLASS>
+		<CPROJECT> S</CPROJECT>
+		<MASTERLANG>R</MASTERLANG>
+		<PATHDEVC>ZVCS</PATHDEVC>
+	</HEADER>
+</R3TRCLAS>

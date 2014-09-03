@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<R3TRMSAG>
+	<NAME>ZMCL_VCS</NAME>
+	<T100>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>000</MSGNR>
+			<TEXT>&amp;1</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>001</MSGNR>
+			<TEXT>VCS: Reading the object R/3 &amp;1: &apos;&amp;2&apos; passed with error.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>002</MSGNR>
+			<TEXT>VCS: Downloading the object R/3 &amp;1: &apos;&amp;2&apos; passed with error.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>003</MSGNR>
+			<TEXT>VCS: Uploading the object R/3 &amp;1: &apos;&amp;2&apos; passed with error.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>004</MSGNR>
+			<TEXT>VCS: Creating the object R/3 &amp;1: &apos;&amp;2&apos; passed with error.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>005</MSGNR>
+			<TEXT>VCS: Reading the object BPC &amp;1: &apos;&amp;2&apos; (&amp;3.&amp;4) passed with error.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>006</MSGNR>
+			<TEXT>VCS: Downloading the object BPC &amp;1: &apos;&amp;2&apos; (&amp;3.&amp;4) passed with error.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>007</MSGNR>
+			<TEXT>VCS: Uploading the object BPC &amp;1: &apos;&amp;2&apos; (&amp;3.&amp;4) passed with error.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>008</MSGNR>
+			<TEXT>VCS: Creating the object BPC &amp;1: &apos;&amp;2&apos; (&amp;3.&amp;4) passed with error.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>009</MSGNR>
+			<TEXT>VCS: Process R/3 object &apos;&amp;1&apos;, name &apos;&amp;2&apos;, already exist.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>010</MSGNR>
+			<TEXT>Module &amp;1 call with exception: &apos;&amp;2&apos; (&amp;3)</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>011</MSGNR>
+			<TEXT>Module &amp;1 call with error message: &apos;&amp;2&apos;</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>012</MSGNR>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>013</MSGNR>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>016</MSGNR>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>017</MSGNR>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>018</MSGNR>
+		</item>
+	</T100>
+	<HEADER>
+		<PGMID>R3TR</PGMID>
+		<OBJECT>MSAG</OBJECT>
+		<OBJ_NAME>ZMCL_VCS</OBJ_NAME>
+		<SRCSYSTEM>BP0</SRCSYSTEM>
+		<AUTHOR>VVASILYEV00</AUTHOR>
+		<DEVCLASS>ZVCS</DEVCLASS>
+		<CPROJECT> S</CPROJECT>
+		<MASTERLANG>R</MASTERLANG>
+		<PATHDEVC>ZVCS</PATHDEVC>
+	</HEADER>
+</R3TRMSAG>
