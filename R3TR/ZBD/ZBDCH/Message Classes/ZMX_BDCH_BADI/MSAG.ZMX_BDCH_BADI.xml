@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<R3TRMSAG>
+	<NAME>ZMX_BDCH_BADI</NAME>
+	<T100>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>000</MSGNR>
+			<TEXT>Ошибка: параметр METHOD не описан при вызове BADI</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>000</MSGNR>
+			<TEXT>Ошибка: параметр METHOD не описан при вызове BADI.</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>001</MSGNR>
+			<TEXT>Ошибка: метод &amp;1 не существует</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>001</MSGNR>
+			<TEXT>Ошибка: метод &amp;1 не существует</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>002</MSGNR>
+			<TEXT>&amp;1</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>002</MSGNR>
+			<TEXT>&amp;1</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>003</MSGNR>
+			<TEXT>В ходе выполнения метода &amp;1 возникла особая ситуация</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>003</MSGNR>
+			<TEXT>В ходе выполнения метода &amp;1 возникла особая ситуация</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>004</MSGNR>
+			<TEXT>Во время время выполнения BADI возникла особая ситуация</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>004</MSGNR>
+			<TEXT>Во время время выполнения BADI возникла особая ситуация</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>005</MSGNR>
+			<TEXT>Запуск метода &amp;1 был отменен пользователем из скрипт логики</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>005</MSGNR>
+			<TEXT>Запуск метода &amp;1 был отменен пользователем из скрипт логики</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>006</MSGNR>
+			<TEXT>Выполнение пакета &amp;1, завершилось с ошибкой</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>006</MSGNR>
+			<TEXT>Выполнение пакета &amp;1, завершилось с ошибкой</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>007</MSGNR>
+			<TEXT>Package: &amp;1</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>007</MSGNR>
+			<TEXT>Пакет: &amp;1</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>008</MSGNR>
+			<TEXT>User: &amp;1</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>008</MSGNR>
+			<TEXT>Пользователь: &amp;1</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>009</MSGNR>
+			<TEXT>Begin Time: &amp;1</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>009</MSGNR>
+			<TEXT>Время запуска: &amp;1</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>010</MSGNR>
+			<TEXT>Process Time: &amp;1</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>010</MSGNR>
+			<TEXT>Время работы: &amp;1</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>011</MSGNR>
+			<TEXT>Work Status: OK</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>011</MSGNR>
+			<TEXT>Статус: &amp;1</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>012</MSGNR>
+			<TEXT>Work Status: ERROR</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>012</MSGNR>
+			<TEXT>Статус: ERROR</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>013</MSGNR>
+			<TEXT>------------------------------------------------------------</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>013</MSGNR>
+			<TEXT>------------------------------------------------------------</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>014</MSGNR>
+			<TEXT>Select elements:</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>014</MSGNR>
+			<TEXT>Выбор элементов:</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>015</MSGNR>
+			<TEXT>OK</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>015</MSGNR>
+			<TEXT>Успешно</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>016</MSGNR>
+			<TEXT>ERROR</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>016</MSGNR>
+			<TEXT>Ошибка</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>017</MSGNR>
+			<TEXT>Ошибка: параметр CLASS не описан при вызове BADI.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>017</MSGNR>
+			<TEXT>Ошибка: параметр CLASS не описан при вызове BADI.</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>018</MSGNR>
+			<TEXT>Выбор:</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>018</MSGNR>
+			<TEXT>Выбор:</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>019</MSGNR>
+			<TEXT>Предупреждение</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>019</MSGNR>
+			<TEXT>Предупреждение</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>020</MSGNR>
+			<TEXT>Chain ID: &amp;1 (&amp;2)</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>020</MSGNR>
+			<TEXT>Цепочка: &amp;1 (&amp;2)</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>021</MSGNR>
+			<TEXT>Variant: &amp;1 (&amp;2)</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>021</MSGNR>
+			<TEXT>Вариант процесса: &amp;1 (&amp;2)</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>022</MSGNR>
+			<TEXT>System: &amp;1</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>022</MSGNR>
+			<TEXT>Система: &amp;1</TEXT>
+		</item>
+	</T100>
+	<HEADER>
+		<PGMID>R3TR</PGMID>
+		<OBJECT>MSAG</OBJECT>
+		<OBJ_NAME>ZMX_BDCH_BADI</OBJ_NAME>
+		<SRCSYSTEM>BP0</SRCSYSTEM>
+		<AUTHOR>VVASILYEV00</AUTHOR>
+		<DEVCLASS>ZBDCH</DEVCLASS>
+		<CPROJECT> S</CPROJECT>
+		<MASTERLANG>E</MASTERLANG>
+		<PATHDEVC>ZBDCH</PATHDEVC>
+	</HEADER>
+</R3TRMSAG>

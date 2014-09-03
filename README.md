@@ -1,5 +1,8 @@
 ABAP-Library
 ============
-1. Commit from fork comp
+ZBD
+ - ZBD00 - ядро содержит набор библиотек для работы с приложениями BPC
+ - ZBDNL - обработчик LGF
+ - ZBDCH - параметрирование цепочек
 
 ABAP Library

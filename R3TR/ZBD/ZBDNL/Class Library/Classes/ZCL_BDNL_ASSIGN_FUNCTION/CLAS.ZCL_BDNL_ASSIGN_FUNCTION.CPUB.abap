@@ -1,0 +1,54 @@
+class ZCL_BDNL_ASSIGN_FUNCTION definition
+  public
+  final
+  create public .
+
+*"* public components of class ZCL_BDNL_ASSIGN_FUNCTION
+*"* do not include other source files here!!!
+public section.
+
+  class-methods GET_CH
+    importing
+      !I01 type ref to ZCL_BD00_APPL_TABLE
+      !I02 type UJ_DIM_NAME
+      !I03 type UJ_ATTR_NAME
+    exporting
+      !E type ANY .
+  class-methods MAP_DATASOURCE
+    importing
+      !I01 type ANY
+    exporting
+      !E type ANY .
+  class-methods MAP_INVENTORY_MP_CURR
+    importing
+      !I01 type ANY
+    exporting
+      !E type ANY .
+  class-methods SKIP_EQ
+    importing
+      !I01 type ANY
+      !I02 type ANY
+    exporting
+      !E type ANY
+    raising
+      ZCX_BDNL_SKIP_ASSIGN .
+  class-methods SKIP_NE
+    importing
+      !I01 type ANY
+      !I02 type ANY
+    exporting
+      !E type ANY
+    raising
+      ZCX_BDNL_SKIP_ASSIGN .
+  class-methods CHANGE_YEAR
+    importing
+      !I01 type ANY
+      !I02 type ANY
+    exporting
+      !E type ANY .
+  class-methods GET_TIME
+    importing
+      !I01 type ANY
+      !I02 type ANY
+    exporting
+      !E type ANY .

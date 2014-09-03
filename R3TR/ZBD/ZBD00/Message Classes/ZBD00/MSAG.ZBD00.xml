@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<R3TRMSAG>
+	<NAME>ZBD00</NAME>
+	<T100>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>000</MSGNR>
+			<TEXT>В процессе выполнения возникла особая ситуция</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>001</MSGNR>
+			<TEXT>Набор приложений &amp;1 не найден</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>002</MSGNR>
+			<TEXT>Приложения &amp;1 не существует в наборе приложений &amp;2</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>003</MSGNR>
+			<TEXT>Статистика для приложения &amp;1 набора приложений &amp;2 не собрана</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>004</MSGNR>
+			<TEXT>Индекс для приложения &amp;1 набора приложений &amp;2 не удален</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>005</MSGNR>
+			<TEXT>Индекс для приложения &amp;1 набора приложений &amp;2 не создан</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>006</MSGNR>
+			<TEXT>Инфопровайдер &quot;&amp;1&quot; не создан или не активен</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>007</MSGNR>
+			<TEXT>Измерения &amp;1 не существует в наборе приложений &amp;2</TEXT>
+		</item>
+	</T100>
+	<HEADER>
+		<PGMID>R3TR</PGMID>
+		<OBJECT>MSAG</OBJECT>
+		<OBJ_NAME>ZBD00</OBJ_NAME>
+		<SRCSYSTEM>BP0</SRCSYSTEM>
+		<AUTHOR>VVASILYEV00</AUTHOR>
+		<DEVCLASS>ZBD00</DEVCLASS>
+		<CPROJECT> S</CPROJECT>
+		<MASTERLANG>R</MASTERLANG>
+		<PATHDEVC>ZBD00</PATHDEVC>
+	</HEADER>
+</R3TRMSAG>

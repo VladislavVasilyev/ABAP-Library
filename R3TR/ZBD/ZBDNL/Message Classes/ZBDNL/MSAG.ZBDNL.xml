@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="utf-8"?>
+<R3TRMSAG>
+	<NAME>ZBDNL</NAME>
+	<T100>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>000</MSGNR>
+			<TEXT>Syntax error: Token `&amp;3`. Line &amp;1, Offset &amp;2.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>000</MSGNR>
+			<TEXT>Syntax error: Token `&amp;3`. Line &amp;1, Offset &amp;2.</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>001</MSGNR>
+			<TEXT>APPSET &quot;&amp;1&quot; is unknow.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>001</MSGNR>
+			<TEXT>APPSET &quot;&amp;1&quot; is unknow.</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>002</MSGNR>
+			<TEXT>APPLICATION &quot;&amp;1&quot; in APPSET &quot;&amp;2&quot; is unknow.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>002</MSGNR>
+			<TEXT>APPLICATION &quot;&amp;1&quot; in APPSET &quot;&amp;2&quot; is unknow.</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>003</MSGNR>
+			<TEXT>Expected &quot;&amp;1&quot;.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>003</MSGNR>
+			<TEXT>Expected &quot;&amp;1&quot;.</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>004</MSGNR>
+			<TEXT>DIMENSION &quot;&amp;1&quot; in APPSET &quot;&amp;2&quot; APPLICATION &quot;&amp;3&quot; is unknow.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>004</MSGNR>
+			<TEXT>DIMENSION &quot;&amp;1&quot; in APPSET &quot;&amp;2&quot; APPLICATION &quot;&amp;3&quot; is unknow.</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>005</MSGNR>
+			<TEXT>ATTRIBUTE &quot;&amp;1&quot; in DIMENSION &quot;&amp;2&quot; is unknow.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>005</MSGNR>
+			<TEXT>ATTRIBUTE &quot;&amp;1&quot; in DIMENSION &quot;&amp;2&quot; is unknow.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>006</MSGNR>
+			<TEXT>Unable to interpret &quot;&amp;1&quot;.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>007</MSGNR>
+			<TEXT>&quot;&amp;1&quot; has already been declared.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>008</MSGNR>
+			<TEXT>&quot;&amp;1&quot; expected after &quot;SELECT ... &quot;.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>009</MSGNR>
+			<TEXT>STANDARD, HASHED and GENERATE table can not have non-unique keys</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>010</MSGNR>
+			<TEXT>&quot;var1 AND var2&quot; expected after &quot;BEETWEN ... &quot;.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>011</MSGNR>
+			<TEXT>&quot;&amp;1&quot; expected after &quot;FILTER ...&quot;</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>012</MSGNR>
+			<TEXT>&quot;&amp;1&quot; expected after &quot;FILTERS ...&quot;</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>013</MSGNR>
+			<TEXT>Filter &quot;&amp;1&quot; is unknown.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>014</MSGNR>
+			<TEXT>Function &quot;&amp;1&quot; for WHERE returning NULL rows.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>015</MSGNR>
+			<TEXT>Defined only one MASTER table in CONTAINERS BEGIN ... .</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>016</MSGNR>
+			<TEXT>Variable &quot;&amp;1&quot; is not declared.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>017</MSGNR>
+			<TEXT>Variable name &quot;&amp;1&quot; does not correspond to the format [A-Z\_]([A-Z0-9\_])</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>018</MSGNR>
+			<TEXT>Table &quot;&amp;1&quot; is not defined in containers block.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>019</MSGNR>
+			<TEXT>No component exists with the name &quot;&amp;1&quot; in table &quot;&amp;2&quot;.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>020</MSGNR>
+			<TEXT>Not allowed to use recursive FILTER-POOLS &quot;&amp;1&quot;.</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>021</MSGNR>
+			<TEXT>Function &quot;&amp;1&quot; for WHERE conditions is not defined.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>021</MSGNR>
+			<TEXT>Function &quot;&amp;1&quot; for WHERE conditions is not defined.</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>022</MSGNR>
+			<TEXT>In hashed table &quot;&amp;1&quot; change is allowed only signeddata.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>022</MSGNR>
+			<TEXT>In hashed table &quot;&amp;1&quot; change is allowed only signeddata.</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>023</MSGNR>
+			<TEXT>INFOCUBE &quot;&amp;1&quot; is unknow or not active.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>023</MSGNR>
+			<TEXT>INFOCUBE &quot;&amp;1&quot; is unknow or not active.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>024</MSGNR>
+			<TEXT>You must specify key figures, because table &quot;&amp;1&quot; contains more one key.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>025</MSGNR>
+			<TEXT>Incorrect logical expression: &quot;&amp;1&quot; without subsequent &quot;&amp;2&quot;.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>026</MSGNR>
+			<TEXT>Incorrect logical expression: unable to interpret &quot;&amp;1&quot;.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>027</MSGNR>
+			<TEXT>APPLICATION or DIMENSION &quot;&amp;1&quot; in APPSET &quot;&amp;2&quot; is unknow.</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>028</MSGNR>
+			<TEXT>&quot;&amp;1&quot; expected after &quot;CONTAINERS ...&quot;</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>028</MSGNR>
+			<TEXT>&quot;&amp;1&quot; expected after &quot;CONTAINERS ...&quot;</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>029</MSGNR>
+			<TEXT>││├ &amp;1 package. Size &amp;2. Duration &amp;3.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>029</MSGNR>
+			<TEXT>││├ &amp;1 package. Size &amp;2. Duration &amp;3.</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>030</MSGNR>
+			<TEXT>│├ &amp;1 package. Size &amp;2. Duration &amp;3.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>030</MSGNR>
+			<TEXT>│├ &amp;1 package. Size &amp;2. Duration &amp;3.</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>031</MSGNR>
+			<TEXT>Uncorrect parameter &amp;1 in function &amp;2.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>031</MSGNR>
+			<TEXT>Uncorrect parameter &amp;1 in function &amp;2.</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>032</MSGNR>
+			<TEXT>The table STAVARV does not contain the variable &quot;&amp;1&quot;.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>032</MSGNR>
+			<TEXT>The table STAVARV does not contain the variable &quot;&amp;1&quot;.</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>033</MSGNR>
+			<TEXT>││├┬ &amp;1 rules for reading from table &quot;&amp;2&quot; type &amp;3:</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>033</MSGNR>
+			<TEXT>││├┬ &amp;1 rules for reading from table &quot;&amp;2&quot; type &amp;3:</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>034</MSGNR>
+			<TEXT>┌ Pocessing script logic &quot;&amp;1/&amp;2/&amp;3&quot;:</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>034</MSGNR>
+			<TEXT>┌ Pocessing script logic &quot;&amp;1/&amp;2/&amp;3&quot;:</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>035</MSGNR>
+			<TEXT>=========================================================================</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>035</MSGNR>
+			<TEXT>=========================================================================</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>036</MSGNR>
+			<TEXT>└ End of processing script logic &quot;&amp;1/&amp;2/&amp;3&quot;.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>036</MSGNR>
+			<TEXT>└ End of processing script logic &quot;&amp;1/&amp;2/&amp;3&quot;.</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>037</MSGNR>
+			<TEXT>-------------------------------------------------------------------------</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>037</MSGNR>
+			<TEXT>-------------------------------------------------------------------------</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>038</MSGNR>
+			<TEXT>│┌ Processing Cycle, for table &quot;&amp;1&quot; with package size &amp;2:</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>038</MSGNR>
+			<TEXT>│┌ Processing Cycle, for table &quot;&amp;1&quot; with package size &amp;2:</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>039</MSGNR>
+			<TEXT>│└ End of processing &quot;FOR&quot;, for table &quot;&amp;1&quot;.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>039</MSGNR>
+			<TEXT>│└ End of processing &quot;FOR&quot;, for table &quot;&amp;1&quot;.</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>040</MSGNR>
+			<TEXT>││┌ Create Rules:</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>040</MSGNR>
+			<TEXT>││┌ Create Rules:</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>041</MSGNR>
+			<TEXT>│││└ Key [ &amp;1 ]. Unique key. Optimal reading.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>041</MSGNR>
+			<TEXT>│││└ Key [ &amp;1 ]. Unique key. Optimal reading.</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>042</MSGNR>
+			<TEXT>│││└ Key [ &amp;1 ]. Not Unique key. Not optimal reading.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>042</MSGNR>
+			<TEXT>│││└ Key [ &amp;1 ]. Not Unique key. Not optimal reading.</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>043</MSGNR>
+			<TEXT>│││└ Key [ &amp;1 ]. Not Full Unique key. Not optimal reading.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>043</MSGNR>
+			<TEXT>│││└ Key [ &amp;1 ]. Not Full Unique key. Not optimal reading.</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>044</MSGNR>
+			<TEXT>│││└ Key [ &amp;1 ]. Not Full not Unique key. Not optimal reading.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>044</MSGNR>
+			<TEXT>│││└ Key [ &amp;1 ]. Not Full not Unique key. Not optimal reading.</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>045</MSGNR>
+			<TEXT>│││└ Key [ &amp;1 ]. Full not Unique key. Optimal reading.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>045</MSGNR>
+			<TEXT>│││└ Key [ &amp;1 ]. Full not Unique key. Optimal reading.</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>046</MSGNR>
+			<TEXT>││┌ Processed Packages for table &quot;&amp;1&quot;:</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>046</MSGNR>
+			<TEXT>││┌ Processed Packages for table &quot;&amp;1&quot;:</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>047</MSGNR>
+			<TEXT>│┌ Clearing in Appset &quot;&amp;1&quot; Application &quot;&amp;2&quot;.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>047</MSGNR>
+			<TEXT>│┌ Clearing in Appset &quot;&amp;1&quot; Application &quot;&amp;2&quot;.</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>048</MSGNR>
+			<TEXT>└─────────────────────────────────</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>048</MSGNR>
+			<TEXT>└─────────────────────────────────</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>049</MSGNR>
+			<TEXT>│└────────────────────────────────</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>049</MSGNR>
+			<TEXT>│└────────────────────────────────</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>050</MSGNR>
+			<TEXT>││└───────────────────────────────</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>050</MSGNR>
+			<TEXT>││└───────────────────────────────</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>051</MSGNR>
+			<TEXT>││├┬ &amp;1 rules for assing to table &quot;&amp;2&quot; type &amp;3:</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>051</MSGNR>
+			<TEXT>││├┬ &amp;1 rules for assing to table &quot;&amp;2&quot; type &amp;3:</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>052</MSGNR>
+			<TEXT>│││└ Fields [ &amp;1 ]. Key Figures [ &amp;2 ].</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>053</MSGNR>
+			<TEXT>Parallel task &amp;1. Number of process &amp;2.</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>054</MSGNR>
+			<TEXT>││┌ Commit tables:</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>054</MSGNR>
+			<TEXT>││┌ Commit tables:</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>055</MSGNR>
+			<TEXT>││├ Table &quot;&amp;1&quot;. Size &amp;2.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>055</MSGNR>
+			<TEXT>││├ Table &quot;&amp;1&quot;. Size &amp;2.</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>056</MSGNR>
+			<TEXT>Can not be saved. The table &quot;&amp;1&quot; contains a complete list of dimensions.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>056</MSGNR>
+			<TEXT>Can not be saved. The table &quot;&amp;1&quot; contains a complete list of dimensions.</TEXT>
+		</item>
+	</T100>
+	<HEADER>
+		<PGMID>R3TR</PGMID>
+		<OBJECT>MSAG</OBJECT>
+		<OBJ_NAME>ZBDNL</OBJ_NAME>
+		<SRCSYSTEM>BP0</SRCSYSTEM>
+		<AUTHOR>VVASILYEV00</AUTHOR>
+		<DEVCLASS>ZBDNL</DEVCLASS>
+		<CPROJECT> S</CPROJECT>
+		<MASTERLANG>R</MASTERLANG>
+		<PATHDEVC>ZBDNL</PATHDEVC>
+	</HEADER>
+</R3TRMSAG>

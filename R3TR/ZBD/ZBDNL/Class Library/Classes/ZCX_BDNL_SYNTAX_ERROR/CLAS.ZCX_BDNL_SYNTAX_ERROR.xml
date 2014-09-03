@@ -1,0 +1,1741 @@
+<?xml version="1.0" encoding="utf-8"?>
+<R3TRCLAS>
+	<VSEOCLASS>
+		<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+		<VERSION>1</VERSION>
+		<LANGU>R</LANGU>
+		<UUID>U2VKPMWNAL3hAIAAwKizGQ==</UUID>
+		<CATEGORY>40</CATEGORY>
+		<EXPOSURE>2</EXPOSURE>
+		<STATE>1</STATE>
+		<RELEASE>0</RELEASE>
+		<AUTHOR>VVASILYEV00</AUTHOR>
+		<CREATEDON>2014-05-05</CREATEDON>
+		<CHANGEDON>0000-00-00</CHANGEDON>
+		<CHGDANYON>0000-00-00</CHGDANYON>
+		<CLSCCINCL>X</CLSCCINCL>
+		<FIXPT>X</FIXPT>
+		<UNICODE>X</UNICODE>
+		<R3RELEASE>701</R3RELEASE>
+		<CLSBCCAT>00</CLSBCCAT>
+		<DURATION_TYPE>0</DURATION_TYPE>
+		<RISK_LEVEL>0</RISK_LEVEL>
+	</VSEOCLASS>
+	<ATTRIBUTES>
+		<item>
+			<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+			<CMPNAME>ZCX_BDNL_SYNTAX_ERROR</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>1</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-05-05</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-08-27</CHANGEDON>
+			<ATTDECLTYP>2</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>4</TYPTYPE>
+			<SRCROW1>13</SRCROW1>
+			<SRCCOLUMN1>4</SRCCOLUMN1>
+			<SRCROW2>20</SRCROW2>
+			<SRCCOLUMN2>31</SRCCOLUMN2>
+			<LOCKED>X</LOCKED>
+			<TYPESRC_LENG>326</TYPESRC_LENG>
+			<TYPESRC>begin of ZCX_BDNL_SYNTAX_ERROR,
+      msgid type symsgid value &apos;ZBDNL&apos;,
+      msgno type symsgno value &apos;000&apos;,
+      attr1 type scx_attrname value &apos;LINE&apos;,
+      attr2 type scx_attrname value &apos;OFFSET&apos;,
+      attr3 type scx_attrname value &apos;TOKEN&apos;,
+      attr4 type scx_attrname value &apos;&apos;,
+    end of ZCX_BDNL_SYNTAX_ERROR
+</TYPESRC>
+		</item>
+		<item>
+			<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+			<CMPNAME>ZCX_APPSET_UNKNOW</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>2</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-05-05</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-08-27</CHANGEDON>
+			<ATTDECLTYP>2</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>4</TYPTYPE>
+			<SRCROW1>22</SRCROW1>
+			<SRCCOLUMN1>4</SRCCOLUMN1>
+			<SRCROW2>29</SRCROW2>
+			<SRCCOLUMN2>27</SRCCOLUMN2>
+			<LOCKED>X</LOCKED>
+			<TYPESRC_LENG>312</TYPESRC_LENG>
+			<TYPESRC>begin of ZCX_APPSET_UNKNOW,
+      msgid type symsgid value &apos;ZBDNL&apos;,
+      msgno type symsgno value &apos;001&apos;,
+      attr1 type scx_attrname value &apos;APPSET_ID&apos;,
+      attr2 type scx_attrname value &apos;&apos;,
+      attr3 type scx_attrname value &apos;&apos;,
+      attr4 type scx_attrname value &apos;&apos;,
+    end of ZCX_APPSET_UNKNOW
+</TYPESRC>
+		</item>
+		<item>
+			<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+			<CMPNAME>ZCX_APPL_UNKNOW</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>3</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-05-05</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-08-27</CHANGEDON>
+			<ATTDECLTYP>2</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>4</TYPTYPE>
+			<SRCROW1>31</SRCROW1>
+			<SRCCOLUMN1>4</SRCCOLUMN1>
+			<SRCROW2>38</SRCROW2>
+			<SRCCOLUMN2>25</SRCCOLUMN2>
+			<LOCKED>X</LOCKED>
+			<TYPESRC_LENG>315</TYPESRC_LENG>
+			<TYPESRC>begin of ZCX_APPL_UNKNOW,
+      msgid type symsgid value &apos;ZBDNL&apos;,
+      msgno type symsgno value &apos;002&apos;,
+      attr1 type scx_attrname value &apos;APPL_ID&apos;,
+      attr2 type scx_attrname value &apos;APPSET_ID&apos;,
+      attr3 type scx_attrname value &apos;&apos;,
+      attr4 type scx_attrname value &apos;&apos;,
+    end of ZCX_APPL_UNKNOW
+</TYPESRC>
+		</item>
+		<item>
+			<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+			<CMPNAME>ZCX_EXPECTED</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>4</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-05-05</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-08-27</CHANGEDON>
+			<ATTDECLTYP>2</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>4</TYPTYPE>
+			<SRCROW1>40</SRCROW1>
+			<SRCCOLUMN1>4</SRCCOLUMN1>
+			<SRCROW2>47</SRCROW2>
+			<SRCCOLUMN2>22</SRCCOLUMN2>
+			<LOCKED>X</LOCKED>
+			<TYPESRC_LENG>301</TYPESRC_LENG>
+			<TYPESRC>begin of ZCX_EXPECTED,
+      msgid type symsgid value &apos;ZBDNL&apos;,
+      msgno type symsgno value &apos;003&apos;,
+      attr1 type scx_attrname value &apos;EXPECTED&apos;,
+      attr2 type scx_attrname value &apos;&apos;,
+      attr3 type scx_attrname value &apos;&apos;,
+      attr4 type scx_attrname value &apos;&apos;,
+    end of ZCX_EXPECTED
+</TYPESRC>
+		</item>
+		<item>
+			<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+			<CMPNAME>ZCX_DIMENSION</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>5</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-05-05</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-08-27</CHANGEDON>
+			<ATTDECLTYP>2</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>4</TYPTYPE>
+			<SRCROW1>49</SRCROW1>
+			<SRCCOLUMN1>4</SRCCOLUMN1>
+			<SRCROW2>56</SRCROW2>
+			<SRCCOLUMN2>23</SRCCOLUMN2>
+			<LOCKED>X</LOCKED>
+			<TYPESRC_LENG>320</TYPESRC_LENG>
+			<TYPESRC>begin of ZCX_DIMENSION,
+      msgid type symsgid value &apos;ZBDNL&apos;,
+      msgno type symsgno value &apos;004&apos;,
+      attr1 type scx_attrname value &apos;DIMENSION&apos;,
+      attr2 type scx_attrname value &apos;APPSET_ID&apos;,
+      attr3 type scx_attrname value &apos;APPL_ID&apos;,
+      attr4 type scx_attrname value &apos;&apos;,
+    end of ZCX_DIMENSION
+</TYPESRC>
+		</item>
+		<item>
+			<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+			<CMPNAME>ZCX_ATTRIBUTE</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>6</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-05-05</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-08-27</CHANGEDON>
+			<ATTDECLTYP>2</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>4</TYPTYPE>
+			<SRCROW1>58</SRCROW1>
+			<SRCCOLUMN1>4</SRCCOLUMN1>
+			<SRCROW2>65</SRCROW2>
+			<SRCCOLUMN2>23</SRCCOLUMN2>
+			<LOCKED>X</LOCKED>
+			<TYPESRC_LENG>313</TYPESRC_LENG>
+			<TYPESRC>begin of ZCX_ATTRIBUTE,
+      msgid type symsgid value &apos;ZBDNL&apos;,
+      msgno type symsgno value &apos;005&apos;,
+      attr1 type scx_attrname value &apos;ATTRIBUTE&apos;,
+      attr2 type scx_attrname value &apos;DIMENSION&apos;,
+      attr3 type scx_attrname value &apos;&apos;,
+      attr4 type scx_attrname value &apos;&apos;,
+    end of ZCX_ATTRIBUTE
+</TYPESRC>
+		</item>
+		<item>
+			<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+			<CMPNAME>ZCX_UNABLE_INTERPRET</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>7</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-05-05</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-08-27</CHANGEDON>
+			<ATTDECLTYP>2</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>4</TYPTYPE>
+			<SRCROW1>67</SRCROW1>
+			<SRCCOLUMN1>4</SRCCOLUMN1>
+			<SRCROW2>74</SRCROW2>
+			<SRCCOLUMN2>30</SRCCOLUMN2>
+			<LOCKED>X</LOCKED>
+			<TYPESRC_LENG>314</TYPESRC_LENG>
+			<TYPESRC>begin of ZCX_UNABLE_INTERPRET,
+      msgid type symsgid value &apos;ZBDNL&apos;,
+      msgno type symsgno value &apos;006&apos;,
+      attr1 type scx_attrname value &apos;TOKEN&apos;,
+      attr2 type scx_attrname value &apos;&apos;,
+      attr3 type scx_attrname value &apos;&apos;,
+      attr4 type scx_attrname value &apos;&apos;,
+    end of ZCX_UNABLE_INTERPRET
+</TYPESRC>
+		</item>
+		<item>
+			<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+			<CMPNAME>ZCX_HAS_DECLARATE</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>8</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-05-07</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-08-27</CHANGEDON>
+			<ATTDECLTYP>2</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>4</TYPTYPE>
+			<SRCROW1>76</SRCROW1>
+			<SRCCOLUMN1>4</SRCCOLUMN1>
+			<SRCROW2>83</SRCROW2>
+			<SRCCOLUMN2>27</SRCCOLUMN2>
+			<LOCKED>X</LOCKED>
+			<TYPESRC_LENG>308</TYPESRC_LENG>
+			<TYPESRC>begin of ZCX_HAS_DECLARATE,
+      msgid type symsgid value &apos;ZBDNL&apos;,
+      msgno type symsgno value &apos;007&apos;,
+      attr1 type scx_attrname value &apos;TOKEN&apos;,
+      attr2 type scx_attrname value &apos;&apos;,
+      attr3 type scx_attrname value &apos;&apos;,
+      attr4 type scx_attrname value &apos;&apos;,
+    end of ZCX_HAS_DECLARATE
+</TYPESRC>
+		</item>
+		<item>
+			<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+			<CMPNAME>ZCX_TABLE_NU</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>9</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-05-08</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-08-27</CHANGEDON>
+			<ATTDECLTYP>2</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>4</TYPTYPE>
+			<SRCROW1>85</SRCROW1>
+			<SRCCOLUMN1>4</SRCCOLUMN1>
+			<SRCROW2>92</SRCROW2>
+			<SRCCOLUMN2>22</SRCCOLUMN2>
+			<LOCKED>X</LOCKED>
+			<TYPESRC_LENG>293</TYPESRC_LENG>
+			<TYPESRC>begin of ZCX_TABLE_NU,
+      msgid type symsgid value &apos;ZBDNL&apos;,
+      msgno type symsgno value &apos;009&apos;,
+      attr1 type scx_attrname value &apos;&apos;,
+      attr2 type scx_attrname value &apos;&apos;,
+      attr3 type scx_attrname value &apos;&apos;,
+      attr4 type scx_attrname value &apos;&apos;,
+    end of ZCX_TABLE_NU
+</TYPESRC>
+		</item>
+		<item>
+			<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+			<CMPNAME>ZCX_AFTER_SELECT</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>10</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-05-08</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-08-27</CHANGEDON>
+			<ATTDECLTYP>2</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>4</TYPTYPE>
+			<SRCROW1>94</SRCROW1>
+			<SRCCOLUMN1>4</SRCCOLUMN1>
+			<SRCROW2>101</SRCROW2>
+			<SRCCOLUMN2>26</SRCCOLUMN2>
+			<LOCKED>X</LOCKED>
+			<TYPESRC_LENG>309</TYPESRC_LENG>
+			<TYPESRC>begin of ZCX_AFTER_SELECT,
+      msgid type symsgid value &apos;ZBDNL&apos;,
+      msgno type symsgno value &apos;008&apos;,
+      attr1 type scx_attrname value &apos;EXPECTED&apos;,
+      attr2 type scx_attrname value &apos;&apos;,
+      attr3 type scx_attrname value &apos;&apos;,
+      attr4 type scx_attrname value &apos;&apos;,
+    end of ZCX_AFTER_SELECT
+</TYPESRC>
+		</item>
+		<item>
+			<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+			<CMPNAME>ZCX_AFTER_BEETWEEN</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>11</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-05-08</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-08-27</CHANGEDON>
+			<ATTDECLTYP>2</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>4</TYPTYPE>
+			<SRCROW1>103</SRCROW1>
+			<SRCCOLUMN1>4</SRCCOLUMN1>
+			<SRCROW2>110</SRCROW2>
+			<SRCCOLUMN2>28</SRCCOLUMN2>
+			<LOCKED>X</LOCKED>
+			<TYPESRC_LENG>305</TYPESRC_LENG>
+			<TYPESRC>begin of ZCX_AFTER_BEETWEEN,
+      msgid type symsgid value &apos;ZBDNL&apos;,
+      msgno type symsgno value &apos;010&apos;,
+      attr1 type scx_attrname value &apos;&apos;,
+      attr2 type scx_attrname value &apos;&apos;,
+      attr3 type scx_attrname value &apos;&apos;,
+      attr4 type scx_attrname value &apos;&apos;,
+    end of ZCX_AFTER_BEETWEEN
+</TYPESRC>
+		</item>
+		<item>
+			<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+			<CMPNAME>ZCX_AFTER_FILTER</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>12</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-05-12</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-08-27</CHANGEDON>
+			<ATTDECLTYP>2</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>4</TYPTYPE>
+			<SRCROW1>112</SRCROW1>
+			<SRCCOLUMN1>4</SRCCOLUMN1>
+			<SRCROW2>119</SRCROW2>
+			<SRCCOLUMN2>26</SRCCOLUMN2>
+			<LOCKED>X</LOCKED>
+			<TYPESRC_LENG>309</TYPESRC_LENG>
+			<TYPESRC>begin of ZCX_AFTER_FILTER,
+      msgid type symsgid value &apos;ZBDNL&apos;,
+      msgno type symsgno value &apos;011&apos;,
+      attr1 type scx_attrname value &apos;EXPECTED&apos;,
+      attr2 type scx_attrname value &apos;&apos;,
+      attr3 type scx_attrname value &apos;&apos;,
+      attr4 type scx_attrname value &apos;&apos;,
+    end of ZCX_AFTER_FILTER
+</TYPESRC>
+		</item>
+		<item>
+			<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+			<CMPNAME>ZCX_AFTER_FILTERS</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>13</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-05-12</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-08-27</CHANGEDON>
+			<ATTDECLTYP>2</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>4</TYPTYPE>
+			<SRCROW1>121</SRCROW1>
+			<SRCCOLUMN1>4</SRCCOLUMN1>
+			<SRCROW2>128</SRCROW2>
+			<SRCCOLUMN2>27</SRCCOLUMN2>
+			<LOCKED>X</LOCKED>
+			<TYPESRC_LENG>311</TYPESRC_LENG>
+			<TYPESRC>begin of ZCX_AFTER_FILTERS,
+      msgid type symsgid value &apos;ZBDNL&apos;,
+      msgno type symsgno value &apos;012&apos;,
+      attr1 type scx_attrname value &apos;EXPECTED&apos;,
+      attr2 type scx_attrname value &apos;&apos;,
+      attr3 type scx_attrname value &apos;&apos;,
+      attr4 type scx_attrname value &apos;&apos;,
+    end of ZCX_AFTER_FILTERS
+</TYPESRC>
+		</item>
+		<item>
+			<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+			<CMPNAME>ZCX_FILTER_UNKNOW</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>14</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-05-12</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-08-27</CHANGEDON>
+			<ATTDECLTYP>2</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>4</TYPTYPE>
+			<SRCROW1>130</SRCROW1>
+			<SRCCOLUMN1>4</SRCCOLUMN1>
+			<SRCROW2>137</SRCROW2>
+			<SRCCOLUMN2>27</SRCCOLUMN2>
+			<LOCKED>X</LOCKED>
+			<TYPESRC_LENG>308</TYPESRC_LENG>
+			<TYPESRC>begin of ZCX_FILTER_UNKNOW,
+      msgid type symsgid value &apos;ZBDNL&apos;,
+      msgno type symsgno value &apos;013&apos;,
+      attr1 type scx_attrname value &apos;TOKEN&apos;,
+      attr2 type scx_attrname value &apos;&apos;,
+      attr3 type scx_attrname value &apos;&apos;,
+      attr4 type scx_attrname value &apos;&apos;,
+    end of ZCX_FILTER_UNKNOW
+</TYPESRC>
+		</item>
+		<item>
+			<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+			<CMPNAME>ZCX_FUNC_WHERE_RETURN0</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>15</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-05-14</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-08-27</CHANGEDON>
+			<ATTDECLTYP>2</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>4</TYPTYPE>
+			<SRCROW1>139</SRCROW1>
+			<SRCCOLUMN1>4</SRCCOLUMN1>
+			<SRCROW2>146</SRCROW2>
+			<SRCCOLUMN2>32</SRCCOLUMN2>
+			<LOCKED>X</LOCKED>
+			<TYPESRC_LENG>318</TYPESRC_LENG>
+			<TYPESRC>begin of ZCX_FUNC_WHERE_RETURN0,
+      msgid type symsgid value &apos;ZBDNL&apos;,
+      msgno type symsgno value &apos;014&apos;,
+      attr1 type scx_attrname value &apos;TOKEN&apos;,
+      attr2 type scx_attrname value &apos;&apos;,
+      attr3 type scx_attrname value &apos;&apos;,
+      attr4 type scx_attrname value &apos;&apos;,
+    end of ZCX_FUNC_WHERE_RETURN0
+</TYPESRC>
+		</item>
+		<item>
+			<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+			<CMPNAME>ZCX_ONE_MASTER</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>16</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-05-15</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-08-27</CHANGEDON>
+			<ATTDECLTYP>2</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>4</TYPTYPE>
+			<SRCROW1>148</SRCROW1>
+			<SRCCOLUMN1>4</SRCCOLUMN1>
+			<SRCROW2>155</SRCROW2>
+			<SRCCOLUMN2>24</SRCCOLUMN2>
+			<LOCKED>X</LOCKED>
+			<TYPESRC_LENG>297</TYPESRC_LENG>
+			<TYPESRC>begin of ZCX_ONE_MASTER,
+      msgid type symsgid value &apos;ZBDNL&apos;,
+      msgno type symsgno value &apos;015&apos;,
+      attr1 type scx_attrname value &apos;&apos;,
+      attr2 type scx_attrname value &apos;&apos;,
+      attr3 type scx_attrname value &apos;&apos;,
+      attr4 type scx_attrname value &apos;&apos;,
+    end of ZCX_ONE_MASTER
+</TYPESRC>
+		</item>
+		<item>
+			<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+			<CMPNAME>ZCX_VAR_DECLARED</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>17</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-05-15</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-08-27</CHANGEDON>
+			<ATTDECLTYP>2</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>4</TYPTYPE>
+			<SRCROW1>157</SRCROW1>
+			<SRCCOLUMN1>4</SRCCOLUMN1>
+			<SRCROW2>164</SRCROW2>
+			<SRCCOLUMN2>26</SRCCOLUMN2>
+			<LOCKED>X</LOCKED>
+			<TYPESRC_LENG>306</TYPESRC_LENG>
+			<TYPESRC>begin of ZCX_VAR_DECLARED,
+      msgid type symsgid value &apos;ZBDNL&apos;,
+      msgno type symsgno value &apos;016&apos;,
+      attr1 type scx_attrname value &apos;TOKEN&apos;,
+      attr2 type scx_attrname value &apos;&apos;,
+      attr3 type scx_attrname value &apos;&apos;,
+      attr4 type scx_attrname value &apos;&apos;,
+    end of ZCX_VAR_DECLARED
+</TYPESRC>
+		</item>
+		<item>
+			<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+			<CMPNAME>ZCX_FORMAT_NAME</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>18</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-05-19</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-08-27</CHANGEDON>
+			<ATTDECLTYP>2</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>4</TYPTYPE>
+			<SRCROW1>166</SRCROW1>
+			<SRCCOLUMN1>4</SRCCOLUMN1>
+			<SRCROW2>173</SRCROW2>
+			<SRCCOLUMN2>25</SRCCOLUMN2>
+			<LOCKED>X</LOCKED>
+			<TYPESRC_LENG>304</TYPESRC_LENG>
+			<TYPESRC>begin of ZCX_FORMAT_NAME,
+      msgid type symsgid value &apos;ZBDNL&apos;,
+      msgno type symsgno value &apos;017&apos;,
+      attr1 type scx_attrname value &apos;TOKEN&apos;,
+      attr2 type scx_attrname value &apos;&apos;,
+      attr3 type scx_attrname value &apos;&apos;,
+      attr4 type scx_attrname value &apos;&apos;,
+    end of ZCX_FORMAT_NAME
+</TYPESRC>
+		</item>
+		<item>
+			<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+			<CMPNAME>ZCX_TABLE_NOT_DEFINED</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>19</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-05-20</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-08-27</CHANGEDON>
+			<ATTDECLTYP>2</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>4</TYPTYPE>
+			<SRCROW1>175</SRCROW1>
+			<SRCCOLUMN1>4</SRCCOLUMN1>
+			<SRCROW2>182</SRCROW2>
+			<SRCCOLUMN2>31</SRCCOLUMN2>
+			<LOCKED>X</LOCKED>
+			<TYPESRC_LENG>316</TYPESRC_LENG>
+			<TYPESRC>begin of ZCX_TABLE_NOT_DEFINED,
+      msgid type symsgid value &apos;ZBDNL&apos;,
+      msgno type symsgno value &apos;018&apos;,
+      attr1 type scx_attrname value &apos;TOKEN&apos;,
+      attr2 type scx_attrname value &apos;&apos;,
+      attr3 type scx_attrname value &apos;&apos;,
+      attr4 type scx_attrname value &apos;&apos;,
+    end of ZCX_TABLE_NOT_DEFINED
+</TYPESRC>
+		</item>
+		<item>
+			<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+			<CMPNAME>ZCX_NO_COMPONENT_EXISTS</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>20</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-05-20</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-08-27</CHANGEDON>
+			<ATTDECLTYP>2</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>4</TYPTYPE>
+			<SRCROW1>184</SRCROW1>
+			<SRCCOLUMN1>4</SRCCOLUMN1>
+			<SRCROW2>191</SRCROW2>
+			<SRCCOLUMN2>33</SRCCOLUMN2>
+			<LOCKED>X</LOCKED>
+			<TYPESRC_LENG>329</TYPESRC_LENG>
+			<TYPESRC>begin of ZCX_NO_COMPONENT_EXISTS,
+      msgid type symsgid value &apos;ZBDNL&apos;,
+      msgno type symsgno value &apos;019&apos;,
+      attr1 type scx_attrname value &apos;TOKEN&apos;,
+      attr2 type scx_attrname value &apos;TABLENAME&apos;,
+      attr3 type scx_attrname value &apos;&apos;,
+      attr4 type scx_attrname value &apos;&apos;,
+    end of ZCX_NO_COMPONENT_EXISTS
+</TYPESRC>
+		</item>
+		<item>
+			<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+			<CMPNAME>ZCX_RECURSIVE_FILTERPOOLS</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>21</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-05-23</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-08-27</CHANGEDON>
+			<ATTDECLTYP>2</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>4</TYPTYPE>
+			<SRCROW1>193</SRCROW1>
+			<SRCCOLUMN1>4</SRCCOLUMN1>
+			<SRCROW2>200</SRCROW2>
+			<SRCCOLUMN2>35</SRCCOLUMN2>
+			<LOCKED>X</LOCKED>
+			<TYPESRC_LENG>324</TYPESRC_LENG>
+			<TYPESRC>begin of ZCX_RECURSIVE_FILTERPOOLS,
+      msgid type symsgid value &apos;ZBDNL&apos;,
+      msgno type symsgno value &apos;020&apos;,
+      attr1 type scx_attrname value &apos;TOKEN&apos;,
+      attr2 type scx_attrname value &apos;&apos;,
+      attr3 type scx_attrname value &apos;&apos;,
+      attr4 type scx_attrname value &apos;&apos;,
+    end of ZCX_RECURSIVE_FILTERPOOLS
+</TYPESRC>
+		</item>
+		<item>
+			<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+			<CMPNAME>ZCX_WHERE_FUNC_NOT_DEFINED</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>22</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-05-23</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-08-27</CHANGEDON>
+			<ATTDECLTYP>2</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>4</TYPTYPE>
+			<SRCROW1>202</SRCROW1>
+			<SRCCOLUMN1>4</SRCCOLUMN1>
+			<SRCROW2>209</SRCROW2>
+			<SRCCOLUMN2>36</SRCCOLUMN2>
+			<LOCKED>X</LOCKED>
+			<TYPESRC_LENG>326</TYPESRC_LENG>
+			<TYPESRC>begin of ZCX_WHERE_FUNC_NOT_DEFINED,
+      msgid type symsgid value &apos;ZBDNL&apos;,
+      msgno type symsgno value &apos;021&apos;,
+      attr1 type scx_attrname value &apos;TOKEN&apos;,
+      attr2 type scx_attrname value &apos;&apos;,
+      attr3 type scx_attrname value &apos;&apos;,
+      attr4 type scx_attrname value &apos;&apos;,
+    end of ZCX_WHERE_FUNC_NOT_DEFINED
+</TYPESRC>
+		</item>
+		<item>
+			<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+			<CMPNAME>ZCX_HASHED_NOT_CHANGE</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>23</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-07-07</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-08-27</CHANGEDON>
+			<ATTDECLTYP>2</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>4</TYPTYPE>
+			<SRCROW1>211</SRCROW1>
+			<SRCCOLUMN1>4</SRCCOLUMN1>
+			<SRCROW2>218</SRCROW2>
+			<SRCCOLUMN2>31</SRCCOLUMN2>
+			<LOCKED>X</LOCKED>
+			<TYPESRC_LENG>320</TYPESRC_LENG>
+			<TYPESRC>begin of ZCX_HASHED_NOT_CHANGE,
+      msgid type symsgid value &apos;ZBDNL&apos;,
+      msgno type symsgno value &apos;022&apos;,
+      attr1 type scx_attrname value &apos;TABLENAME&apos;,
+      attr2 type scx_attrname value &apos;&apos;,
+      attr3 type scx_attrname value &apos;&apos;,
+      attr4 type scx_attrname value &apos;&apos;,
+    end of ZCX_HASHED_NOT_CHANGE
+</TYPESRC>
+		</item>
+		<item>
+			<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+			<CMPNAME>ZCX_INFOCUBE_UNKNOW</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>24</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-07-09</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-08-27</CHANGEDON>
+			<ATTDECLTYP>2</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>4</TYPTYPE>
+			<SRCROW1>220</SRCROW1>
+			<SRCCOLUMN1>4</SRCCOLUMN1>
+			<SRCROW2>227</SRCROW2>
+			<SRCCOLUMN2>29</SRCCOLUMN2>
+			<LOCKED>X</LOCKED>
+			<TYPESRC_LENG>314</TYPESRC_LENG>
+			<TYPESRC>begin of ZCX_INFOCUBE_UNKNOW,
+      msgid type symsgid value &apos;ZBDNL&apos;,
+      msgno type symsgno value &apos;023&apos;,
+      attr1 type scx_attrname value &apos;APPL_ID&apos;,
+      attr2 type scx_attrname value &apos;&apos;,
+      attr3 type scx_attrname value &apos;&apos;,
+      attr4 type scx_attrname value &apos;&apos;,
+    end of ZCX_INFOCUBE_UNKNOW
+</TYPESRC>
+		</item>
+		<item>
+			<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+			<CMPNAME>ZCX_MORE_ONE_PARAM</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>25</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-07-09</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-08-27</CHANGEDON>
+			<ATTDECLTYP>2</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>4</TYPTYPE>
+			<SRCROW1>229</SRCROW1>
+			<SRCCOLUMN1>4</SRCCOLUMN1>
+			<SRCROW2>236</SRCROW2>
+			<SRCCOLUMN2>28</SRCCOLUMN2>
+			<LOCKED>X</LOCKED>
+			<TYPESRC_LENG>314</TYPESRC_LENG>
+			<TYPESRC>begin of ZCX_MORE_ONE_PARAM,
+      msgid type symsgid value &apos;ZBDNL&apos;,
+      msgno type symsgno value &apos;024&apos;,
+      attr1 type scx_attrname value &apos;TABLENAME&apos;,
+      attr2 type scx_attrname value &apos;&apos;,
+      attr3 type scx_attrname value &apos;&apos;,
+      attr4 type scx_attrname value &apos;&apos;,
+    end of ZCX_MORE_ONE_PARAM
+</TYPESRC>
+		</item>
+		<item>
+			<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+			<CMPNAME>ZCX_INC_LE_PARENT</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>26</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-07-15</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-08-27</CHANGEDON>
+			<ATTDECLTYP>2</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>4</TYPTYPE>
+			<SRCROW1>238</SRCROW1>
+			<SRCCOLUMN1>4</SRCCOLUMN1>
+			<SRCROW2>245</SRCROW2>
+			<SRCCOLUMN2>27</SRCCOLUMN2>
+			<LOCKED>X</LOCKED>
+			<TYPESRC_LENG>314</TYPESRC_LENG>
+			<TYPESRC>begin of ZCX_INC_LE_PARENT,
+      msgid type symsgid value &apos;ZBDNL&apos;,
+      msgno type symsgno value &apos;025&apos;,
+      attr1 type scx_attrname value &apos;TOKEN&apos;,
+      attr2 type scx_attrname value &apos;TOKEN1&apos;,
+      attr3 type scx_attrname value &apos;&apos;,
+      attr4 type scx_attrname value &apos;&apos;,
+    end of ZCX_INC_LE_PARENT
+</TYPESRC>
+		</item>
+		<item>
+			<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+			<CMPNAME>ZCX_LE_UNABLE_INTERPRET</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>39</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-07-16</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-08-27</CHANGEDON>
+			<ATTDECLTYP>2</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>4</TYPTYPE>
+			<SRCROW1>247</SRCROW1>
+			<SRCCOLUMN1>4</SRCCOLUMN1>
+			<SRCROW2>254</SRCROW2>
+			<SRCCOLUMN2>33</SRCCOLUMN2>
+			<LOCKED>X</LOCKED>
+			<TYPESRC_LENG>320</TYPESRC_LENG>
+			<TYPESRC>begin of ZCX_LE_UNABLE_INTERPRET,
+      msgid type symsgid value &apos;ZBDNL&apos;,
+      msgno type symsgno value &apos;026&apos;,
+      attr1 type scx_attrname value &apos;TOKEN&apos;,
+      attr2 type scx_attrname value &apos;&apos;,
+      attr3 type scx_attrname value &apos;&apos;,
+      attr4 type scx_attrname value &apos;&apos;,
+    end of ZCX_LE_UNABLE_INTERPRET
+</TYPESRC>
+		</item>
+		<item>
+			<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+			<CMPNAME>ZCX_APPL_OR_DIM_UNKNOW</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>40</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-08-08</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-08-27</CHANGEDON>
+			<ATTDECLTYP>2</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>4</TYPTYPE>
+			<SRCROW1>256</SRCROW1>
+			<SRCCOLUMN1>4</SRCCOLUMN1>
+			<SRCROW2>263</SRCROW2>
+			<SRCCOLUMN2>32</SRCCOLUMN2>
+			<LOCKED>X</LOCKED>
+			<TYPESRC_LENG>327</TYPESRC_LENG>
+			<TYPESRC>begin of ZCX_APPL_OR_DIM_UNKNOW,
+      msgid type symsgid value &apos;ZBDNL&apos;,
+      msgno type symsgno value &apos;027&apos;,
+      attr1 type scx_attrname value &apos;TOKEN&apos;,
+      attr2 type scx_attrname value &apos;APPSET_ID&apos;,
+      attr3 type scx_attrname value &apos;&apos;,
+      attr4 type scx_attrname value &apos;&apos;,
+    end of ZCX_APPL_OR_DIM_UNKNOW
+</TYPESRC>
+		</item>
+		<item>
+			<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+			<CMPNAME>ZCX_AFTER_CONTAINERS</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>41</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-08-14</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-08-27</CHANGEDON>
+			<ATTDECLTYP>2</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>4</TYPTYPE>
+			<SRCROW1>265</SRCROW1>
+			<SRCCOLUMN1>4</SRCCOLUMN1>
+			<SRCROW2>272</SRCROW2>
+			<SRCCOLUMN2>30</SRCCOLUMN2>
+			<LOCKED>X</LOCKED>
+			<TYPESRC_LENG>317</TYPESRC_LENG>
+			<TYPESRC>begin of ZCX_AFTER_CONTAINERS,
+      msgid type symsgid value &apos;ZBDNL&apos;,
+      msgno type symsgno value &apos;028&apos;,
+      attr1 type scx_attrname value &apos;EXPECTED&apos;,
+      attr2 type scx_attrname value &apos;&apos;,
+      attr3 type scx_attrname value &apos;&apos;,
+      attr4 type scx_attrname value &apos;&apos;,
+    end of ZCX_AFTER_CONTAINERS
+</TYPESRC>
+		</item>
+		<item>
+			<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+			<CMPNAME>ZCX_UNCORRECT_PARAM</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>42</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-08-18</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-08-27</CHANGEDON>
+			<ATTDECLTYP>2</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>4</TYPTYPE>
+			<SRCROW1>274</SRCROW1>
+			<SRCCOLUMN1>4</SRCCOLUMN1>
+			<SRCROW2>281</SRCROW2>
+			<SRCCOLUMN2>29</SRCCOLUMN2>
+			<LOCKED>X</LOCKED>
+			<TYPESRC_LENG>318</TYPESRC_LENG>
+			<TYPESRC>begin of ZCX_UNCORRECT_PARAM,
+      msgid type symsgid value &apos;ZBDNL&apos;,
+      msgno type symsgno value &apos;031&apos;,
+      attr1 type scx_attrname value &apos;TOKEN&apos;,
+      attr2 type scx_attrname value &apos;TOKEN1&apos;,
+      attr3 type scx_attrname value &apos;&apos;,
+      attr4 type scx_attrname value &apos;&apos;,
+    end of ZCX_UNCORRECT_PARAM
+</TYPESRC>
+		</item>
+		<item>
+			<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+			<CMPNAME>ZCX_STVARV_NOT_VAR</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>43</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-08-20</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-08-27</CHANGEDON>
+			<ATTDECLTYP>2</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>4</TYPTYPE>
+			<SRCROW1>283</SRCROW1>
+			<SRCCOLUMN1>4</SRCCOLUMN1>
+			<SRCROW2>290</SRCROW2>
+			<SRCCOLUMN2>28</SRCCOLUMN2>
+			<LOCKED>X</LOCKED>
+			<TYPESRC_LENG>310</TYPESRC_LENG>
+			<TYPESRC>begin of ZCX_STVARV_NOT_VAR,
+      msgid type symsgid value &apos;ZBDNL&apos;,
+      msgno type symsgno value &apos;032&apos;,
+      attr1 type scx_attrname value &apos;TOKEN&apos;,
+      attr2 type scx_attrname value &apos;&apos;,
+      attr3 type scx_attrname value &apos;&apos;,
+      attr4 type scx_attrname value &apos;&apos;,
+    end of ZCX_STVARV_NOT_VAR
+</TYPESRC>
+		</item>
+		<item>
+			<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+			<CMPNAME>ZCX_NO_CAN_SAVE</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>44</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-08-27</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-08-27</CHANGEDON>
+			<ATTDECLTYP>2</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>4</TYPTYPE>
+			<SRCROW1>292</SRCROW1>
+			<SRCCOLUMN1>4</SRCCOLUMN1>
+			<SRCROW2>299</SRCROW2>
+			<SRCCOLUMN2>25</SRCCOLUMN2>
+			<LOCKED>X</LOCKED>
+			<TYPESRC_LENG>308</TYPESRC_LENG>
+			<TYPESRC>begin of ZCX_NO_CAN_SAVE,
+      msgid type symsgid value &apos;ZBDNL&apos;,
+      msgno type symsgno value &apos;056&apos;,
+      attr1 type scx_attrname value &apos;TABLENAME&apos;,
+      attr2 type scx_attrname value &apos;&apos;,
+      attr3 type scx_attrname value &apos;&apos;,
+      attr4 type scx_attrname value &apos;&apos;,
+    end of ZCX_NO_CAN_SAVE
+</TYPESRC>
+		</item>
+		<item>
+			<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+			<CMPNAME>LINE</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>27</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-05-05</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-07-15</CHANGEDON>
+			<ATTDECLTYP>1</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>1</TYPTYPE>
+			<TYPE>I</TYPE>
+			<SRCROW1>0</SRCROW1>
+			<SRCCOLUMN1>0</SRCCOLUMN1>
+			<SRCROW2>0</SRCROW2>
+			<SRCCOLUMN2>0</SRCCOLUMN2>
+			<TYPESRC_LENG>0</TYPESRC_LENG>
+		</item>
+		<item>
+			<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+			<CMPNAME>OFFSET</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>28</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-05-05</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-07-15</CHANGEDON>
+			<ATTDECLTYP>1</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>1</TYPTYPE>
+			<TYPE>I</TYPE>
+			<SRCROW1>0</SRCROW1>
+			<SRCCOLUMN1>0</SRCCOLUMN1>
+			<SRCROW2>0</SRCROW2>
+			<SRCCOLUMN2>0</SRCCOLUMN2>
+			<TYPESRC_LENG>0</TYPESRC_LENG>
+		</item>
+		<item>
+			<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+			<CMPNAME>TOKEN</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>29</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-05-05</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-07-15</CHANGEDON>
+			<ATTDECLTYP>1</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>1</TYPTYPE>
+			<TYPE>STRING</TYPE>
+			<SRCROW1>0</SRCROW1>
+			<SRCCOLUMN1>0</SRCCOLUMN1>
+			<SRCROW2>0</SRCROW2>
+			<SRCCOLUMN2>0</SRCCOLUMN2>
+			<TYPESRC_LENG>0</TYPESRC_LENG>
+		</item>
+		<item>
+			<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+			<CMPNAME>APPSET_ID</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<DESCRIPT>SAP BusinessObjects - Ид. набора приложений</DESCRIPT>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>30</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-05-05</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-07-15</CHANGEDON>
+			<ATTDECLTYP>1</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>1</TYPTYPE>
+			<TYPE>UJ_APPSET_ID</TYPE>
+			<SRCROW1>0</SRCROW1>
+			<SRCCOLUMN1>0</SRCCOLUMN1>
+			<SRCROW2>0</SRCROW2>
+			<SRCCOLUMN2>0</SRCCOLUMN2>
+			<TYPESRC_LENG>0</TYPESRC_LENG>
+		</item>
+		<item>
+			<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+			<CMPNAME>APPL_ID</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<DESCRIPT>SAP BusinessObjects - Ид. приложения</DESCRIPT>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>31</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-05-05</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-07-15</CHANGEDON>
+			<ATTDECLTYP>1</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>1</TYPTYPE>
+			<TYPE>UJ_APPL_ID</TYPE>
+			<SRCROW1>0</SRCROW1>
+			<SRCCOLUMN1>0</SRCCOLUMN1>
+			<SRCROW2>0</SRCROW2>
+			<SRCCOLUMN2>0</SRCCOLUMN2>
+			<TYPESRC_LENG>0</TYPESRC_LENG>
+		</item>
+		<item>
+			<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+			<CMPNAME>EXPECTED</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>32</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-05-05</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-07-15</CHANGEDON>
+			<ATTDECLTYP>1</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>1</TYPTYPE>
+			<TYPE>STRING</TYPE>
+			<SRCROW1>0</SRCROW1>
+			<SRCCOLUMN1>0</SRCCOLUMN1>
+			<SRCROW2>0</SRCROW2>
+			<SRCCOLUMN2>0</SRCCOLUMN2>
+			<TYPESRC_LENG>0</TYPESRC_LENG>
+		</item>
+		<item>
+			<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+			<CMPNAME>INDEX</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>33</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-05-05</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-07-15</CHANGEDON>
+			<ATTDECLTYP>0</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>1</TYPTYPE>
+			<TYPE>I</TYPE>
+			<SRCROW1>0</SRCROW1>
+			<SRCCOLUMN1>0</SRCCOLUMN1>
+			<SRCROW2>0</SRCROW2>
+			<SRCCOLUMN2>0</SRCCOLUMN2>
+			<TYPESRC_LENG>0</TYPESRC_LENG>
+		</item>
+		<item>
+			<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+			<CMPNAME>DIMENSION</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<DESCRIPT>BPC: имя измерения</DESCRIPT>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>34</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-05-05</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-07-15</CHANGEDON>
+			<ATTDECLTYP>1</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>1</TYPTYPE>
+			<TYPE>UJ_DIM_NAME</TYPE>
+			<SRCROW1>0</SRCROW1>
+			<SRCCOLUMN1>0</SRCCOLUMN1>
+			<SRCROW2>0</SRCROW2>
+			<SRCCOLUMN2>0</SRCCOLUMN2>
+			<TYPESRC_LENG>0</TYPESRC_LENG>
+		</item>
+		<item>
+			<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+			<CMPNAME>ATTRIBUTE</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<DESCRIPT>BPC: имя атрибута</DESCRIPT>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>35</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-05-05</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-07-15</CHANGEDON>
+			<ATTDECLTYP>1</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>1</TYPTYPE>
+			<TYPE>UJ_ATTR_NAME</TYPE>
+			<SRCROW1>0</SRCROW1>
+			<SRCCOLUMN1>0</SRCCOLUMN1>
+			<SRCROW2>0</SRCROW2>
+			<SRCCOLUMN2>0</SRCCOLUMN2>
+			<R3RELEASE>701</R3RELEASE>
+			<TYPESRC_LENG>0</TYPESRC_LENG>
+		</item>
+		<item>
+			<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+			<CMPNAME>TABLENAME</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>36</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-05-20</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-07-15</CHANGEDON>
+			<ATTDECLTYP>1</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>1</TYPTYPE>
+			<TYPE>ZBNLT_V__TABLENAME</TYPE>
+			<SRCROW1>0</SRCROW1>
+			<SRCCOLUMN1>0</SRCCOLUMN1>
+			<SRCROW2>0</SRCROW2>
+			<SRCCOLUMN2>0</SRCCOLUMN2>
+			<R3RELEASE>701</R3RELEASE>
+			<TYPESRC_LENG>0</TYPESRC_LENG>
+		</item>
+		<item>
+			<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+			<CMPNAME>CURSOR</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>37</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-05-23</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-07-15</CHANGEDON>
+			<ATTDECLTYP>1</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>3</TYPTYPE>
+			<TYPE>ZCL_BDNL_CURSOR</TYPE>
+			<SRCROW1>0</SRCROW1>
+			<SRCCOLUMN1>0</SRCCOLUMN1>
+			<SRCROW2>0</SRCROW2>
+			<SRCCOLUMN2>0</SRCCOLUMN2>
+			<R3RELEASE>701</R3RELEASE>
+			<TYPESRC_LENG>0</TYPESRC_LENG>
+		</item>
+		<item>
+			<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+			<CMPNAME>TOKEN1</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>38</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-07-15</CREATEDON>
+			<CHANGEDON>0000-00-00</CHANGEDON>
+			<ATTDECLTYP>1</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>1</TYPTYPE>
+			<TYPE>STRING</TYPE>
+			<SRCROW1>0</SRCROW1>
+			<SRCCOLUMN1>0</SRCCOLUMN1>
+			<SRCROW2>0</SRCROW2>
+			<SRCCOLUMN2>0</SRCCOLUMN2>
+			<R3RELEASE>701</R3RELEASE>
+			<TYPESRC_LENG>0</TYPESRC_LENG>
+		</item>
+	</ATTRIBUTES>
+	<METHODS>
+		<item>
+			<CMPKEY>
+				<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+				<CMPNAME>CONSTRUCTOR</CMPNAME>
+			</CMPKEY>
+			<METHOD>
+				<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+				<CMPNAME>CONSTRUCTOR</CMPNAME>
+				<VERSION>1</VERSION>
+				<LANGU>R</LANGU>
+				<DESCRIPT>CONSTRUCTOR</DESCRIPT>
+				<EXPOSURE>2</EXPOSURE>
+				<STATE>1</STATE>
+				<EDITORDER>1</EDITORDER>
+				<DISPID>0</DISPID>
+				<AUTHOR>VVASILYEV00</AUTHOR>
+				<CREATEDON>2014-05-05</CREATEDON>
+				<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+				<CHANGEDON>2014-05-05</CHANGEDON>
+				<MTDTYPE>2</MTDTYPE>
+				<MTDDECLTYP>0</MTDDECLTYP>
+				<BCMTDCAT>00</BCMTDCAT>
+				<BCMTDSYN>0</BCMTDSYN>
+			</METHOD>
+			<METHOD_DETAILS>
+				<IS_CLIF_METHOD>X</IS_CLIF_METHOD>
+			</METHOD_DETAILS>
+			<PARAMETERS>
+				<item>
+					<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+					<CMPNAME>CONSTRUCTOR</CMPNAME>
+					<SCONAME>TEXTID</SCONAME>
+					<VERSION>1</VERSION>
+					<LANGU>R</LANGU>
+					<CMPTYPE>1</CMPTYPE>
+					<MTDTYPE>2</MTDTYPE>
+					<EDITORDER>1</EDITORDER>
+					<DISPID>0</DISPID>
+					<AUTHOR>VVASILYEV00</AUTHOR>
+					<CREATEDON>2014-05-05</CREATEDON>
+					<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+					<CHANGEDON>2014-08-27</CHANGEDON>
+					<PARDECLTYP>0</PARDECLTYP>
+					<PARPASSTYP>1</PARPASSTYP>
+					<TYPTYPE>0</TYPTYPE>
+					<TYPE>IF_T100_MESSAGE=&amp;gt;T100KEY</TYPE>
+					<PAROPTIONL>X</PAROPTIONL>
+				</item>
+				<item>
+					<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+					<CMPNAME>CONSTRUCTOR</CMPNAME>
+					<SCONAME>PREVIOUS</SCONAME>
+					<VERSION>1</VERSION>
+					<LANGU>R</LANGU>
+					<CMPTYPE>1</CMPTYPE>
+					<MTDTYPE>2</MTDTYPE>
+					<EDITORDER>2</EDITORDER>
+					<DISPID>0</DISPID>
+					<AUTHOR>VVASILYEV00</AUTHOR>
+					<CREATEDON>2014-05-05</CREATEDON>
+					<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+					<CHANGEDON>2014-08-27</CHANGEDON>
+					<PARDECLTYP>0</PARDECLTYP>
+					<PARPASSTYP>1</PARPASSTYP>
+					<TYPTYPE>0</TYPTYPE>
+					<TYPE>PREVIOUS</TYPE>
+					<PAROPTIONL>X</PAROPTIONL>
+				</item>
+				<item>
+					<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+					<CMPNAME>CONSTRUCTOR</CMPNAME>
+					<SCONAME>LINE</SCONAME>
+					<VERSION>1</VERSION>
+					<LANGU>R</LANGU>
+					<CMPTYPE>1</CMPTYPE>
+					<MTDTYPE>2</MTDTYPE>
+					<EDITORDER>3</EDITORDER>
+					<DISPID>0</DISPID>
+					<AUTHOR>VVASILYEV00</AUTHOR>
+					<CREATEDON>2014-05-05</CREATEDON>
+					<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+					<CHANGEDON>2014-08-27</CHANGEDON>
+					<PARDECLTYP>0</PARDECLTYP>
+					<PARPASSTYP>1</PARPASSTYP>
+					<TYPTYPE>1</TYPTYPE>
+					<TYPE>I</TYPE>
+					<PAROPTIONL>X</PAROPTIONL>
+				</item>
+				<item>
+					<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+					<CMPNAME>CONSTRUCTOR</CMPNAME>
+					<SCONAME>OFFSET</SCONAME>
+					<VERSION>1</VERSION>
+					<LANGU>R</LANGU>
+					<CMPTYPE>1</CMPTYPE>
+					<MTDTYPE>2</MTDTYPE>
+					<EDITORDER>4</EDITORDER>
+					<DISPID>0</DISPID>
+					<AUTHOR>VVASILYEV00</AUTHOR>
+					<CREATEDON>2014-05-05</CREATEDON>
+					<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+					<CHANGEDON>2014-08-27</CHANGEDON>
+					<PARDECLTYP>0</PARDECLTYP>
+					<PARPASSTYP>1</PARPASSTYP>
+					<TYPTYPE>1</TYPTYPE>
+					<TYPE>I</TYPE>
+					<PAROPTIONL>X</PAROPTIONL>
+				</item>
+				<item>
+					<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+					<CMPNAME>CONSTRUCTOR</CMPNAME>
+					<SCONAME>TOKEN</SCONAME>
+					<VERSION>1</VERSION>
+					<LANGU>R</LANGU>
+					<CMPTYPE>1</CMPTYPE>
+					<MTDTYPE>2</MTDTYPE>
+					<EDITORDER>5</EDITORDER>
+					<DISPID>0</DISPID>
+					<AUTHOR>VVASILYEV00</AUTHOR>
+					<CREATEDON>2014-05-05</CREATEDON>
+					<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+					<CHANGEDON>2014-08-27</CHANGEDON>
+					<PARDECLTYP>0</PARDECLTYP>
+					<PARPASSTYP>1</PARPASSTYP>
+					<TYPTYPE>1</TYPTYPE>
+					<TYPE>STRING</TYPE>
+					<PAROPTIONL>X</PAROPTIONL>
+				</item>
+				<item>
+					<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+					<CMPNAME>CONSTRUCTOR</CMPNAME>
+					<SCONAME>APPSET_ID</SCONAME>
+					<VERSION>1</VERSION>
+					<LANGU>R</LANGU>
+					<CMPTYPE>1</CMPTYPE>
+					<MTDTYPE>2</MTDTYPE>
+					<EDITORDER>6</EDITORDER>
+					<DISPID>0</DISPID>
+					<AUTHOR>VVASILYEV00</AUTHOR>
+					<CREATEDON>2014-05-05</CREATEDON>
+					<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+					<CHANGEDON>2014-08-27</CHANGEDON>
+					<PARDECLTYP>0</PARDECLTYP>
+					<PARPASSTYP>1</PARPASSTYP>
+					<TYPTYPE>1</TYPTYPE>
+					<TYPE>UJ_APPSET_ID</TYPE>
+					<PAROPTIONL>X</PAROPTIONL>
+				</item>
+				<item>
+					<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+					<CMPNAME>CONSTRUCTOR</CMPNAME>
+					<SCONAME>APPL_ID</SCONAME>
+					<VERSION>1</VERSION>
+					<LANGU>R</LANGU>
+					<CMPTYPE>1</CMPTYPE>
+					<MTDTYPE>2</MTDTYPE>
+					<EDITORDER>7</EDITORDER>
+					<DISPID>0</DISPID>
+					<AUTHOR>VVASILYEV00</AUTHOR>
+					<CREATEDON>2014-05-05</CREATEDON>
+					<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+					<CHANGEDON>2014-08-27</CHANGEDON>
+					<PARDECLTYP>0</PARDECLTYP>
+					<PARPASSTYP>1</PARPASSTYP>
+					<TYPTYPE>1</TYPTYPE>
+					<TYPE>UJ_APPL_ID</TYPE>
+					<PAROPTIONL>X</PAROPTIONL>
+				</item>
+				<item>
+					<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+					<CMPNAME>CONSTRUCTOR</CMPNAME>
+					<SCONAME>EXPECTED</SCONAME>
+					<VERSION>1</VERSION>
+					<LANGU>R</LANGU>
+					<CMPTYPE>1</CMPTYPE>
+					<MTDTYPE>2</MTDTYPE>
+					<EDITORDER>8</EDITORDER>
+					<DISPID>0</DISPID>
+					<AUTHOR>VVASILYEV00</AUTHOR>
+					<CREATEDON>2014-05-05</CREATEDON>
+					<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+					<CHANGEDON>2014-08-27</CHANGEDON>
+					<PARDECLTYP>0</PARDECLTYP>
+					<PARPASSTYP>1</PARPASSTYP>
+					<TYPTYPE>1</TYPTYPE>
+					<TYPE>STRING</TYPE>
+					<PAROPTIONL>X</PAROPTIONL>
+				</item>
+				<item>
+					<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+					<CMPNAME>CONSTRUCTOR</CMPNAME>
+					<SCONAME>INDEX</SCONAME>
+					<VERSION>1</VERSION>
+					<LANGU>R</LANGU>
+					<CMPTYPE>1</CMPTYPE>
+					<MTDTYPE>2</MTDTYPE>
+					<EDITORDER>9</EDITORDER>
+					<DISPID>0</DISPID>
+					<AUTHOR>VVASILYEV00</AUTHOR>
+					<CREATEDON>2014-05-05</CREATEDON>
+					<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+					<CHANGEDON>2014-08-27</CHANGEDON>
+					<PARDECLTYP>0</PARDECLTYP>
+					<PARPASSTYP>1</PARPASSTYP>
+					<TYPTYPE>1</TYPTYPE>
+					<TYPE>I</TYPE>
+					<PAROPTIONL>X</PAROPTIONL>
+				</item>
+				<item>
+					<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+					<CMPNAME>CONSTRUCTOR</CMPNAME>
+					<SCONAME>DIMENSION</SCONAME>
+					<VERSION>1</VERSION>
+					<LANGU>R</LANGU>
+					<CMPTYPE>1</CMPTYPE>
+					<MTDTYPE>2</MTDTYPE>
+					<EDITORDER>10</EDITORDER>
+					<DISPID>0</DISPID>
+					<AUTHOR>VVASILYEV00</AUTHOR>
+					<CREATEDON>2014-05-05</CREATEDON>
+					<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+					<CHANGEDON>2014-08-27</CHANGEDON>
+					<PARDECLTYP>0</PARDECLTYP>
+					<PARPASSTYP>1</PARPASSTYP>
+					<TYPTYPE>1</TYPTYPE>
+					<TYPE>UJ_DIM_NAME</TYPE>
+					<PAROPTIONL>X</PAROPTIONL>
+				</item>
+				<item>
+					<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+					<CMPNAME>CONSTRUCTOR</CMPNAME>
+					<SCONAME>ATTRIBUTE</SCONAME>
+					<VERSION>1</VERSION>
+					<LANGU>R</LANGU>
+					<CMPTYPE>1</CMPTYPE>
+					<MTDTYPE>2</MTDTYPE>
+					<EDITORDER>11</EDITORDER>
+					<DISPID>0</DISPID>
+					<AUTHOR>VVASILYEV00</AUTHOR>
+					<CREATEDON>2014-05-05</CREATEDON>
+					<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+					<CHANGEDON>2014-08-27</CHANGEDON>
+					<PARDECLTYP>0</PARDECLTYP>
+					<PARPASSTYP>1</PARPASSTYP>
+					<TYPTYPE>1</TYPTYPE>
+					<TYPE>UJ_ATTR_NAME</TYPE>
+					<PAROPTIONL>X</PAROPTIONL>
+				</item>
+				<item>
+					<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+					<CMPNAME>CONSTRUCTOR</CMPNAME>
+					<SCONAME>TABLENAME</SCONAME>
+					<VERSION>1</VERSION>
+					<LANGU>R</LANGU>
+					<CMPTYPE>1</CMPTYPE>
+					<MTDTYPE>2</MTDTYPE>
+					<EDITORDER>12</EDITORDER>
+					<DISPID>0</DISPID>
+					<AUTHOR>VVASILYEV00</AUTHOR>
+					<CREATEDON>2014-05-20</CREATEDON>
+					<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+					<CHANGEDON>2014-08-27</CHANGEDON>
+					<PARDECLTYP>0</PARDECLTYP>
+					<PARPASSTYP>1</PARPASSTYP>
+					<TYPTYPE>1</TYPTYPE>
+					<TYPE>ZBNLT_V__TABLENAME</TYPE>
+					<PAROPTIONL>X</PAROPTIONL>
+				</item>
+				<item>
+					<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+					<CMPNAME>CONSTRUCTOR</CMPNAME>
+					<SCONAME>CURSOR</SCONAME>
+					<VERSION>1</VERSION>
+					<LANGU>R</LANGU>
+					<CMPTYPE>1</CMPTYPE>
+					<MTDTYPE>2</MTDTYPE>
+					<EDITORDER>13</EDITORDER>
+					<DISPID>0</DISPID>
+					<AUTHOR>VVASILYEV00</AUTHOR>
+					<CREATEDON>2014-05-23</CREATEDON>
+					<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+					<CHANGEDON>2014-08-27</CHANGEDON>
+					<PARDECLTYP>0</PARDECLTYP>
+					<PARPASSTYP>1</PARPASSTYP>
+					<TYPTYPE>3</TYPTYPE>
+					<TYPE>ZCL_BDNL_CURSOR</TYPE>
+					<PAROPTIONL>X</PAROPTIONL>
+				</item>
+				<item>
+					<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+					<CMPNAME>CONSTRUCTOR</CMPNAME>
+					<SCONAME>TOKEN1</SCONAME>
+					<VERSION>1</VERSION>
+					<LANGU>R</LANGU>
+					<CMPTYPE>1</CMPTYPE>
+					<MTDTYPE>2</MTDTYPE>
+					<EDITORDER>14</EDITORDER>
+					<DISPID>0</DISPID>
+					<AUTHOR>VVASILYEV00</AUTHOR>
+					<CREATEDON>2014-07-15</CREATEDON>
+					<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+					<CHANGEDON>2014-08-27</CHANGEDON>
+					<PARDECLTYP>0</PARDECLTYP>
+					<PARPASSTYP>1</PARPASSTYP>
+					<TYPTYPE>1</TYPTYPE>
+					<TYPE>STRING</TYPE>
+					<PAROPTIONL>X</PAROPTIONL>
+				</item>
+			</PARAMETERS>
+			<INCNAME>ZCX_BDNL_SYNTAX_ERROR=========CM001</INCNAME>
+			<SOURCE>
+				<SOURCEID>CLAS.ZCX_BDNL_SYNTAX_ERROR.CONSTRUCTOR.abap</SOURCEID>
+			</SOURCE>
+		</item>
+	</METHODS>
+	<TYPEPUSAGES>
+		<item>
+			<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+			<TYPEGROUP>ZBNLT</TYPEGROUP>
+			<VERSION>1</VERSION>
+			<TPUTYPE>0</TPUTYPE>
+			<IMPLICIT>X</IMPLICIT>
+		</item>
+	</TYPEPUSAGES>
+	<IMPLEMENTINGS>
+		<IMPLEMENTINGS>
+			<item>
+				<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+				<REFCLSNAME>IF_T100_MESSAGE</REFCLSNAME>
+				<VERSION>1</VERSION>
+				<EXPOSURE>2</EXPOSURE>
+				<STATE>1</STATE>
+				<AUTHOR>VVASILYEV00</AUTHOR>
+				<CREATEDON>2014-05-05</CREATEDON>
+				<CHANGEDON>0000-00-00</CHANGEDON>
+				<RELTYPE>1</RELTYPE>
+			</item>
+		</IMPLEMENTINGS>
+	</IMPLEMENTINGS>
+	<INHERITANCE>
+		<CLSNAME>ZCX_BDNL_SYNTAX_ERROR</CLSNAME>
+		<REFCLSNAME>ZCX_BDNL_EXCEPTION</REFCLSNAME>
+		<VERSION>1</VERSION>
+		<STATE>1</STATE>
+		<AUTHOR>VVASILYEV00</AUTHOR>
+		<CREATEDON>2014-05-05</CREATEDON>
+		<CHANGEDON>0000-00-00</CHANGEDON>
+	</INHERITANCE>
+	<EXPLORE_INHERITANCE>
+		<item>
+			<CLSNAME>ZCX_BDNL_EXCEPTION</CLSNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<UUID>U10BkMwWQIXhAIAAwKizGQ==</UUID>
+			<CATEGORY>40</CATEGORY>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<RELEASE>0</RELEASE>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-04-28</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-04-28</CHANGEDON>
+			<CHGDANYON>0000-00-00</CHGDANYON>
+			<CLSCCINCL>X</CLSCCINCL>
+			<FIXPT>X</FIXPT>
+			<UNICODE>X</UNICODE>
+			<R3RELEASE>701</R3RELEASE>
+			<CLSBCCAT>00</CLSBCCAT>
+			<DURATION_TYPE>0</DURATION_TYPE>
+			<RISK_LEVEL>0</RISK_LEVEL>
+		</item>
+		<item>
+			<CLSNAME>CX_STATIC_CHECK</CLSNAME>
+			<VERSION>1</VERSION>
+			<LANGU>E</LANGU>
+			<DESCRIPT>Exceptions with Static and Dynamic Check of RAISING Clause</DESCRIPT>
+			<UUID>6bGGOQmuHmfhAAAAChFEew==</UUID>
+			<CATEGORY>40</CATEGORY>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<RELEASE>1</RELEASE>
+			<AUTHOR>SAP</AUTHOR>
+			<CREATEDON>2000-08-01</CREATEDON>
+			<CHANGEDBY>SAP</CHANGEDBY>
+			<CHANGEDON>2001-04-26</CHANGEDON>
+			<CHGDANYON>0000-00-00</CHGDANYON>
+			<CLSABSTRCT>X</CLSABSTRCT>
+			<FIXPT>X</FIXPT>
+			<UNICODE>X</UNICODE>
+			<R3RELEASE>50A</R3RELEASE>
+			<CLSBCCAT>00</CLSBCCAT>
+			<DURATION_TYPE>0</DURATION_TYPE>
+			<RISK_LEVEL>0</RISK_LEVEL>
+		</item>
+		<item>
+			<CLSNAME>CX_ROOT</CLSNAME>
+			<VERSION>1</VERSION>
+			<LANGU>E</LANGU>
+			<DESCRIPT>Abstract Superclass for All Global Exceptions</DESCRIPT>
+			<UUID>XL0zFsWo0xGxKQBgsGfcEQ==</UUID>
+			<CATEGORY>40</CATEGORY>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<RELEASE>1</RELEASE>
+			<AUTHOR>SAP</AUTHOR>
+			<CREATEDON>1999-12-02</CREATEDON>
+			<CHANGEDBY>SAP</CHANGEDBY>
+			<CHANGEDON>2001-04-26</CHANGEDON>
+			<CHGDANYON>0000-00-00</CHGDANYON>
+			<CLSABSTRCT>X</CLSABSTRCT>
+			<FIXPT>X</FIXPT>
+			<UNICODE>X</UNICODE>
+			<CLSBCCAT>00</CLSBCCAT>
+			<DURATION_TYPE>0</DURATION_TYPE>
+			<RISK_LEVEL>0</RISK_LEVEL>
+		</item>
+	</EXPLORE_INHERITANCE>
+	<SECTIONS>
+		<item>
+			<LIMU>CPUB</LIMU>
+			<INCNAME>ZCX_BDNL_SYNTAX_ERROR=========CU</INCNAME>
+			<SOURCE>
+				<SOURCEID>CLAS.ZCX_BDNL_SYNTAX_ERROR.CPUB.abap</SOURCEID>
+			</SOURCE>
+		</item>
+		<item>
+			<LIMU>CPRI</LIMU>
+			<INCNAME>ZCX_BDNL_SYNTAX_ERROR=========CI</INCNAME>
+			<SOURCE>
+				<SOURCEID>CLAS.ZCX_BDNL_SYNTAX_ERROR.CPRI.abap</SOURCEID>
+			</SOURCE>
+		</item>
+		<item>
+			<LIMU>CPRO</LIMU>
+			<INCNAME>ZCX_BDNL_SYNTAX_ERROR=========CO</INCNAME>
+			<SOURCE>
+				<SOURCEID>CLAS.ZCX_BDNL_SYNTAX_ERROR.CPRO.abap</SOURCEID>
+			</SOURCE>
+		</item>
+	</SECTIONS>
+	<HEADER>
+		<PGMID>R3TR</PGMID>
+		<OBJECT>CLAS</OBJECT>
+		<OBJ_NAME>ZCX_BDNL_SYNTAX_ERROR</OBJ_NAME>
+		<SRCSYSTEM>BP0</SRCSYSTEM>
+		<AUTHOR>VVASILYEV00</AUTHOR>
+		<DEVCLASS>ZBDNL</DEVCLASS>
+		<CPROJECT> S</CPROJECT>
+		<MASTERLANG>R</MASTERLANG>
+		<PATHDEVC>ZBDNL</PATHDEVC>
+	</HEADER>
+</R3TRCLAS>

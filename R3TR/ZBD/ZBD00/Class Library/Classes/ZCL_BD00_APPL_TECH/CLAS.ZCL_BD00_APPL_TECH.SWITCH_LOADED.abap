@@ -1,0 +1,3 @@
+method SWITCH_LOADED.
+ SWITCH_ICUBE_TRANS_BATCH(`L`).
+endmethod.
