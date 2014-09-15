@@ -8,7 +8,9 @@ method process_rspc.
   : lt_filter_tab           type ujd_th_dim_mem
   , l_filter_str            type string
   , lf_warning              type uj_flg
-  , lt_k_cv                 type ujk_t_cv.  " initial means to deal with the whole cube
+  , lt_k_cv                 type ujk_t_cv  " initial means to deal with the whole cube
+  , ld_s__user              type uj0_s_user
+  .
 
   gd_v__rspc_var  = i_v__rspc_var.
   gd_v__chain_id  = i_v__chain_id.
@@ -39,6 +41,13 @@ method process_rspc.
     exporting
       i_para = l_filter_str.
 
+  ld_s__user-user_id = d_user_id.
+
+  call method zcl_bd00_context=>set_context
+    exporting
+      i_appset_id = d_appset_id
+      i_appl_id   = d_appl_id
+      i_s__user   = ld_s__user.
 
 *--------------------------------------------------------------------*
 * run logic

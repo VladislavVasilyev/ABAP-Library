@@ -73,7 +73,7 @@ method get_parameter.
 
       catch cx_ujd_datamgr_error.
         gd_f__parallel_task = abap_false.
-        gd_v__num_tasks     = `4`.
+        gd_v__num_tasks     = zblnc_default_num_task.
     endtry.
   endif.
   if `TIME_ID`         = `TIME_ID`.

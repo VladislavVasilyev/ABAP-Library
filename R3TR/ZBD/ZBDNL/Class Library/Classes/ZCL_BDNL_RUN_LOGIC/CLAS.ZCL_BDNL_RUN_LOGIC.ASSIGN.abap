@@ -37,7 +37,6 @@ method assign.
               <ld_s__function>-bindparam.
         endloop.
 
-
         loop at <ld_s__assign>-check reference into gr_t__check.
           clear gd_v__check_index.
           if check_expr( abap_false ) = abap_false.

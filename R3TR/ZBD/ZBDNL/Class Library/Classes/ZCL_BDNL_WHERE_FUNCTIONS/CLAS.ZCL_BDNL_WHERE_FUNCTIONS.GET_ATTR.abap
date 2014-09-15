@@ -48,7 +48,7 @@ method get_attr.
   split ld_v__member at `,` into table ld_t__member.
 
   loop at ld_t__member into ld_v__member.
-    ld_v__member = cl_ujk_util=>bas( i_dim_name = dimension i_member = ld_v__member ).
+    ld_v__member = cl_ujk_util=>bas( i_dim_name = ld_v__dimension i_member = ld_v__member ).
     split ld_v__member at ',' into table ld_t__param.
   endloop.
 

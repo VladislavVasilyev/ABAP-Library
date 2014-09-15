@@ -12,6 +12,8 @@ method set_param.
   , ld_v__right       type string
   , ld_v__param_rate  type string
   , ld_v__string      type string
+  , l_value1           type string
+  , l_value2           type string
   .
 
   field-symbols
@@ -21,19 +23,20 @@ method set_param.
 *--------------------------------------------------------------------*
 * VARIABLE
 *--------------------------------------------------------------------*
+*  zcl_debug=>stop_program( ).
+
   loop at gd_t__param into ld_s__papam
-       where hashkey cp `VR(*)`.
+       where hashkey cp `$*`.
 
-    ld_v__length = strlen( ld_s__papam-hashkey ) - 3 - 1.
+*    ld_v__length = strlen( ld_s__papam-hashkey ) - 3 - 1.
 
-    concatenate `$` ld_s__papam-hashkey+3(ld_v__length) `$` into ld_s__variable-var.
+    concatenate ld_s__papam-hashkey `$` into ld_s__variable-var.
 
     ld_s__variable-val = ld_s__papam-hashvalue.
     replace '@' in ld_s__variable-val with ` `.
 
     insert ld_s__variable into table gd_t__variable.
   endloop.
-
 
   loop at gd_t__param into ld_s__papam. " переменные переданы из пакета
 
@@ -120,6 +123,29 @@ method set_param.
 
   endloop.
 *--------------------------------------------------------------------*
+
+*--------------------------------------------------------------------*
+* PARALLEL_TASK
+*--------------------------------------------------------------------*
+  read table gd_t__param
+       with table key hashkey = `PARALLEL_TASK`
+       into ld_s__papam.
+
+  if sy-subrc = 0.
+    condense ld_s__papam-hashvalue no-gaps.
+    split ld_s__papam-hashvalue at `|` into l_value1 l_value2 .
+
+    if l_value1 = `ON`.
+      gd_f__parallel_task = abap_true.
+    else.
+      gd_f__parallel_task = abap_false.
+    endif.
+
+    gd_v__num_tasks = l_value2.
+  else.
+    gd_f__parallel_task = abap_false.
+    gd_v__num_tasks     = zblnc_default_num_task.
+  endif.
 
 *--------------------------------------------------------------------*
 * DEBUG

@@ -3,6 +3,9 @@ method constructor.
   data
   : ld_s__class_reg           type ty_s_class_reg
   , ld_s__link_reestr         like line of gd_t__reestr_link
+  , lr_o__ujq_query_util      type ref to cl_ujq_query_util
+  , lt_range_valid            type uj0_t_sel
+  , lt_message                type uj0_t_message          "#EC NEEDED
   .
 
   call method super->constructor.
@@ -16,6 +19,18 @@ method constructor.
                                                 i_appl_id   = i_appl_id
                                                 i_type_pk   = i_type_pk
                                                 it_alias    = it_alias ).
+*      break-point.
+*      create object lr_o__ujq_query_util
+*        exporting
+*          i_appset_id = i_appset_id
+*          i_appl_id   = i_appl_id.
+*
+*      call method lr_o__ujq_query_util->check_security_rsdri
+*        exporting
+*          it_range   = it_range
+*        importing
+*          et_range   = lt_range_valid
+*          et_message = lt_message.
     else.
       if cd_s__appl_cust-dimension is initial.
         gr_o__model ?= zcl_bd00_model=>get_model_cust_appl( it_dim_list = it_dim_list

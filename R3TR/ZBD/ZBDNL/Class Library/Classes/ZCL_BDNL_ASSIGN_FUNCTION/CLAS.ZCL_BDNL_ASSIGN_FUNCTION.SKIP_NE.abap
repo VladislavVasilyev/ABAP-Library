@@ -21,6 +21,4 @@ method SKIP_NE.
     e = i01.
   endif.
 
-
-
 endmethod.

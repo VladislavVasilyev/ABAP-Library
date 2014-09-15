@@ -1,8 +1,8 @@
 method prim.
 
   constants
-  : cs_read         type string value `\$READ`
-  , cs_calc_begin   type string value `\$CALC`.
+  : cs_read             type string value `\$READ`
+  , cs_calc_begin       type string value `\$CALC`.
 
   data
   : lr_o__assign        type ref to zcl_bdnl_parser_calc

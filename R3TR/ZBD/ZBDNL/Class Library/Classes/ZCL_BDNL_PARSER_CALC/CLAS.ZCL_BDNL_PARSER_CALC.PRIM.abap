@@ -189,6 +189,7 @@ method prim.
                     "check dimension
                     read table ld_s__container-dimension
                          with key dimension = ld_s__custlink-sc-dimension
+                                  attribute = space
                          transporting no fields.
 
                     if sy-subrc ne 0.

@@ -29,6 +29,7 @@ method create_token.
                              & `([\~\(\)\.\*\\\-\+<>=\,\/])|`
                              & `(<=|<>|>=)|`
                              & `'([A-ZА-Я0-9\.\_\+\*\s\$\,]+)'|`
+                             & `''|`
                              & `\$FILTER-POOLS\>|`
                              & `(\-\d+|\<\d+)(\>|\.\d+\>)|`    " вещественные числа
                              & `(\/\/\*|\*\\\\|\/\/)`          " коментарии
@@ -51,7 +52,7 @@ method create_token.
       translate ld_s__tokenlist-token to upper case.
     endif.
 
-    if ld_s__tokenlist-token cp `'*'`.
+    if ld_s__tokenlist-token cp `'*'` or ld_s__tokenlist-token cp `''`.
       ld_s__tokenlist-f_letter = abap_true.
       replace all occurrences of `'` in ld_s__tokenlist-token with ``.
       ld_s__tokenlist-value = ld_s__tokenlist-token.

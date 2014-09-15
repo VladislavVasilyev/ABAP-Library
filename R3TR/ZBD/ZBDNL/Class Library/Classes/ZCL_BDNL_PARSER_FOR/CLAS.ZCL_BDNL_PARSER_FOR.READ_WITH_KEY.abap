@@ -137,11 +137,11 @@ method read_with_key.
               else.
                 "check dimension
                 read table ld_s__container-dimension
-                     with key dimension = ld_s__custlink-tg-dimension
+                     with key dimension = ld_s__custlink-sc-dimension
                      transporting no fields.
 
                 if sy-subrc ne 0.
-                  ld_v__string = ld_s__custlink-tg-dimension.
+                  ld_v__string = ld_s__custlink-sc-dimension.
                   raise exception type zcx_bdnl_syntax_error
                         exporting textid = zcx_bdnl_syntax_error=>zcx_no_component_exists
                                   token  = ld_v__string

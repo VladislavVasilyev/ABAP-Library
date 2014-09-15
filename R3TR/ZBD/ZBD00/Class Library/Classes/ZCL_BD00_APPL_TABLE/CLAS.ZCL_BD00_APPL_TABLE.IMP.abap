@@ -675,6 +675,8 @@ class lcl_process_data implementation.
 
           if <ld_s__dimension>-attribute is not initial.
             append <ld_s__dimension>-attribute to ld_t__attr_list.
+          else.
+            append uja00_cs_attr-id to ld_t__attr_list.
           endif.
         endloop.
 
@@ -921,6 +923,7 @@ class lcl_process_data implementation.
 
     assign lr_t__hashtable->* to <ld_t__hashtable>.
 
+*    zcl_debug=>stop_program( ).
 
     loop at          <ld_t__dimension> " dimension
         assigning    <ld_s__dimension>.
@@ -936,13 +939,14 @@ class lcl_process_data implementation.
 
       if ld_s__range-attribute is initial.
         ld_s__range-attribute = uja00_cs_attr-id.
+*        ld_s__range-dimension = uja00_cs_attr-id.
       endif.
 
       append ld_s__range to ld_t__sel.
     endloop.
 
     if ld_t__attr_list is initial.
-      append  uja00_cs_attr-calc to ld_t__attr_list.
+      append  uja00_cs_attr-id to ld_t__attr_list.
     endif.
 
     create object lr_o__mbr_data
@@ -1092,6 +1096,7 @@ class lcl_process_data implementation.
               i_appset_id           = go_appl->gd_v__appset_id
               i_appl_id             = go_appl->gd_v__appl_id
               i_mode                = i_mode
+              i_bpc_user            = zcl_bd00_context=>gd_s__user_id
 *        c_log_ses             = i_log_ses
 *        c_nr_pack             = i_nr_pack
             tables
@@ -1140,6 +1145,7 @@ class lcl_process_data implementation.
             i_appset_id           = go_appl->gd_v__appset_id
             i_appl_id             = go_appl->gd_v__appl_id
             i_mode                = i_mode
+            i_bpc_user            = zcl_bd00_context=>gd_s__user_id
 *        c_log_ses             = i_log_ses
 *        c_nr_pack             = i_nr_pack
           tables

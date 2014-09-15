@@ -73,6 +73,11 @@ method constructor.
       where appset_id = i_appset_id and
             application_id = i_appl_id and
             param = `PACKAGE_SIZE`.
+
+      if sy-subrc ne 0.
+       gd_v__package_size = 40000.
+      endif.
+
     return.
   endif.
 *--------------------------------------------------------------------*

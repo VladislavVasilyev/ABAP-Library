@@ -5,11 +5,11 @@ method if_ujd_task~process.
   , et_message.
 
   data
-  : lt_filter_tab type ujd_th_dim_mem
-  , l_filter_str  type string
-  , lf_warning    type uj_flg
-  , lt_k_cv       type ujk_t_cv.  " initial means to deal with the whole cube
-
+  : lt_filter_tab     type ujd_th_dim_mem
+  , l_filter_str      type string
+  , lf_warning        type uj_flg
+  , lt_k_cv           type ujk_t_cv  " initial means to deal with the whole cube
+  , lr_i__context     type ref to if_uj_context.
 
   get time stamp field gd_v__time_start.
 
@@ -36,7 +36,19 @@ method if_ujd_task~process.
     exporting
       i_para = l_filter_str.
 
+
   zcl_debug=>stop_program( gd_f__debug ).
+*--------------------------------------------------------------------*
+* Set_context
+*--------------------------------------------------------------------*
+  lr_i__context ?= cl_uj_context=>get_cur_context( ).
+
+  call method zcl_bd00_context=>set_context
+    exporting
+      i_appset_id = lr_i__context->d_appset_id
+      i_appl_id   = lr_i__context->d_appl_id
+      i_s__user   = lr_i__context->ds_user.
+*--------------------------------------------------------------------*
 
 *--------------------------------------------------------------------*
 * run logic

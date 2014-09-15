@@ -6,6 +6,7 @@ class ZCL_BDNL_PROCESS_LOGIC definition
 *"* public components of class ZCL_BDNL_PROCESS_LOGIC
 *"* do not include other source files here!!!
 public section.
+  type-pools UJD0 .
   type-pools ZBNLT .
 
   interfaces IF_BADI_INTERFACE .
@@ -22,8 +23,7 @@ public section.
   types:
     ty_t__script type sorted table of ty_s__script with unique key order .
 
-  data gr_o__badi_param type ref to zcl_bdnl_badi_params.
-
+  data GR_O__BADI_PARAM type ref to ZCL_BDNL_BADI_PARAMS .
   class-data CD_F__DEBUG type RS_BOOL read-only .
   class-data CD_V__APPL_ID type UJ_APPL_ID read-only .
   class-data CD_V__APPSET_ID type UJ_APPSET_ID read-only .

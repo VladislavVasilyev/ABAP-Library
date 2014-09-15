@@ -169,6 +169,8 @@ method create_container.
 
           ld_s__containers-read_mode = zbd0c_read_mode-gendim.
 
+          ld_s__containers-object->next_pack( zbd0c_read_mode-gendim ).
+
         endif.
       endif.
 

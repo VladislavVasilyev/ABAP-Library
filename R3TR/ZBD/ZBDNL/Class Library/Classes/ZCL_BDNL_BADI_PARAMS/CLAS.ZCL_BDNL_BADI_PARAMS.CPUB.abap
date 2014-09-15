@@ -7,6 +7,7 @@ class ZCL_BDNL_BADI_PARAMS definition
 *"* do not include other source files here!!!
 public section.
   type-pools ABAP .
+  type-pools ZBLNC .
   type-pools ZBNLT .
 
   types:
@@ -20,6 +21,8 @@ public section.
   types:
     ty_t__script type sorted table of ty_s__script with unique key order .
 
+  data GD_F__PARALLEL_TASK type RS_BOOL read-only .
+  data GD_V__NUM_TASKS type I read-only .
   data GD_V__APPSET_ID type UJ_APPSET_ID read-only .
   data GD_V__APPL_ID type UJ_APPL_ID read-only .
   data GD_T__PARAM type UJK_T_SCRIPT_LOGIC_HASHTABLE read-only .
