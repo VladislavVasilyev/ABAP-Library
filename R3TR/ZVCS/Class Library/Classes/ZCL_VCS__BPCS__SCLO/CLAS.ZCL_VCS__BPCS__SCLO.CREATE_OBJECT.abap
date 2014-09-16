@@ -4,7 +4,6 @@ method create_object.
   : ld_t__lgfsource  type zvcst_t__lgfsource
   , ld_t__lgfsource1 type zvcst_t__lgfsource
   , ld_v__first_rows type line of zvcst_t__lgfsource
-  , ld_v__docname    type uj_docname
   , gd_v__tmstp      type tzntstmpl
   , gd_v__time       type string
   , gd_v__date       type string
@@ -17,60 +16,62 @@ method create_object.
   : <ls_s__sclo>     type ty_s__sclo
   .
 
-  assign i_r__source to <ls_s__sclo>.
+  loop at gd_t__sclo assigning <ls_s__sclo>.
+    clear:
+    ld_t__lgfsource,
+    ld_t__lgfsource1.
 
-  get time stamp field gd_v__tmstp.
-  convert time stamp gd_v__tmstp time zone cs_time_zone  into: time gd_v__time, date gd_v__date.
 
-  concatenate
-    `//@ Upload from PC. User `
-    sy-uname   `, `
-    gd_v__date+0(4) `.`
-    gd_v__date+4(2) `.`
-    gd_v__date+6(2) ` `
-    gd_v__time+0(2) `:`
-    gd_v__time+2(2) `:`
-    gd_v__time+4(2) `.`
-    into ld_v__first_rows.
+    get time stamp field gd_v__tmstp.
+    convert time stamp gd_v__tmstp time zone cs_time_zone  into: time gd_v__time, date gd_v__date.
 
-  append lines of <ls_s__sclo>-source to ld_t__lgfsource.
+    concatenate
+      `//@ Upload from PC. User `
+      sy-uname   `, `
+      gd_v__date+0(4) `.`
+      gd_v__date+4(2) `.`
+      gd_v__date+6(2) ` `
+      gd_v__time+0(2) `:`
+      gd_v__time+2(2) `:`
+      gd_v__time+4(2) `.`
+      into ld_v__first_rows.
 
-  find first occurrence of `//@` in table <ls_s__sclo>-source match line ld_v__line match offset ld_v__offset.
-  if ld_v__line = 1 and ld_v__offset = 0.
-    modify ld_t__lgfsource index 1 from ld_v__first_rows .
-  else.
-    append ld_v__first_rows to ld_t__lgfsource1.
-    append lines of ld_t__lgfsource to ld_t__lgfsource1.
-    ld_t__lgfsource = ld_t__lgfsource1.
-  endif.
+    append lines of <ls_s__sclo>-source to ld_t__lgfsource.
 
-  ld_v__docname = i_s__tadir-obj_name.
+    find first occurrence of `//@` in table <ls_s__sclo>-source match line ld_v__line match offset ld_v__offset.
+    if ld_v__line = 1 and ld_v__offset = 0.
+      modify ld_t__lgfsource index 1 from ld_v__first_rows .
+    else.
+      append ld_v__first_rows to ld_t__lgfsource1.
+      append lines of ld_t__lgfsource to ld_t__lgfsource1.
+      ld_t__lgfsource = ld_t__lgfsource1.
+    endif.
 
-  if cd_v__appset_id is not initial.
-    ld_v__appset = cd_v__appset_id.
-  else.
-    ld_v__appset = i_s__tadir-appset.
-  endif.
+    if cd_v__appset_id is not initial.
+      ld_v__appset = cd_v__appset_id.
+    else.
+      ld_v__appset = <ls_s__sclo>-appset.
+    endif.
 
-  call function 'ZFM_PUT_BPC_LGF'
-    exporting
-      i_appset             = ld_v__appset
-      i_application        = i_s__tadir-application
-      i_filename           = ld_v__docname
+    call function 'ZFM_PUT_BPC_LGF'
+      exporting
+        i_appset             = ld_v__appset
+        i_application        = <ls_s__sclo>-application
+        i_filename           = <ls_s__sclo>-filename
 * IMPORTING
 *   E_DOC                =
-    tables
-      lgf                  = ld_t__lgfsource
+      tables
+        lgf                  = ld_t__lgfsource
 * EXCEPTIONS
 *   NOT_EXISTING         = 1
 *   LGF_IS_INITIAL       = 2
 *   OTHERS               = 3
-            .
-  if sy-subrc <> 0.
+              .
+    if sy-subrc <> 0.
 * MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
 *         WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
-  endif.
+    endif.
 
-
+  endloop.
 
 endmethod.

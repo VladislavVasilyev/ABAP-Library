@@ -9,8 +9,8 @@ private section.
   class-data CD_T__MESSAGE_CREATE type TY_T__CREATE .
 
   class-methods WRITE_MSG_READ .
-  class-methods WRITE_MSG_ERROR .
   class-methods WRITE_MSG_CREATE .
+  class-methods WRITE_MSG_ERROR .
   class-methods GET_PATHDEVC
     importing
       !DEVCLASS type DEVCLASS
@@ -40,4 +40,7 @@ private section.
     importing
       !I_V__FORM_NAME type FORM_NAME
       !I_F__UPLOAD type RS_BOOL default ABAP_FALSE .
+  class-methods READ_OBJECTS .
   class-methods READ .
+  class-methods OBJECTS_PATH .
+  class-methods DOWNLOAD_OBJECTS .

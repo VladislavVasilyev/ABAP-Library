@@ -14,6 +14,10 @@ method set_task_download_for_r3tr.
 
   ld_s__task_stack-pgmid = zvcsc_r3tr.
 
+  zcl_vcs_objects_stack=>cd_t__object = i_t__object.
+  cd_v__path = i_s__path.
+
+
   loop at i_t__object
     assigning <ld_s__object>.
 

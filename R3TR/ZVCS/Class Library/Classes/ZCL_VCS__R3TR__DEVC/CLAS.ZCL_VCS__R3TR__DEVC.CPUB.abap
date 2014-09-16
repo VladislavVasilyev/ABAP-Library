@@ -16,3 +16,9 @@ public section.
            , name  type devclass
            , tdevc type tdevc
            , end of ty_s__devc .
+
+  class-methods GET_PATHDEVCLAS
+    importing
+      !DEVCLASS type DEVCLASS
+    returning
+      value(E_PATH) type STRING .

@@ -53,7 +53,9 @@ public section.
       !I_S__PATH type ZVCST_S__PATH
       !I_F__LGF type RS_BOOL
       !I_F__PACK type RS_BOOL
-      !I_F__XLTP type RS_BOOL .
+      !I_F__XLTP type RS_BOOL
+      !I_F__DIMN type RS_BOOL optional
+      !I_T__DIMENSION type ZVCST_T__DIMENSION .
   class-methods SET_TASK_DOWNLOAD_FOR_R3TR
     importing
       !I_T__OBJECT type ZVCST_T__R3TR_OBJ

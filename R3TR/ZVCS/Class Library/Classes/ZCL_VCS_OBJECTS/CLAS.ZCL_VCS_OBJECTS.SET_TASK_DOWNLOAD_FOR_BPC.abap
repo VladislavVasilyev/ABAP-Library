@@ -16,6 +16,15 @@ method set_task_download_for_bpc.
   , ld_v__string            type string
   .
 
+
+  zcl_vcs_objects_stack=>cd_r__appl_id   = i_t__appl_id.
+  zcl_vcs_objects_stack=>cd_r__appset_id = i_t__appset_id.
+  zcl_vcs_objects_stack=>cd_r__dimension = i_t__dimension.
+  zcl_vcs_objects_stack=>cd_f__lgf  = i_f__lgf.
+  zcl_vcs_objects_stack=>cd_f__pack = i_f__pack.
+  zcl_vcs_objects_stack=>cd_f__xltp = i_f__xltp.
+  zcl_vcs_objects_stack=>cd_f__dimn = i_f__dimn.
+
   field-symbols
   : <ld_s__bpcdir>    type zvcst_s__tadir
   .
@@ -148,6 +157,11 @@ method set_task_download_for_bpc.
         endselect.
       endif.
 
+      if i_f__dimn   = abap_true.
+
+
+
+      endif.
 
     endloop.
 

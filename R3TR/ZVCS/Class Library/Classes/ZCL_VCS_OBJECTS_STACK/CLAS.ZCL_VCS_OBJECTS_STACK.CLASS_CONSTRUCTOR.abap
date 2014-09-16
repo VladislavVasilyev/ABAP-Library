@@ -16,7 +16,14 @@ method class_constructor.
   select  clsname
     from  vseoextend
     into  ld_v__clsname
-    where refclsname = `ZCL_VCS_OBJECTS_STACK`.
+    where refclsname = `ZCL_VCS_OBJECTS_STACK`
+      and ( clsname like `%DIMN%` or
+            clsname like `%XLTP%` or
+            clsname like `%SCLO%` or
+            clsname like `%PACK%` or
+            clsname like `%CLAS%`
+          )
+    .
 
       create object lr_o__vcs_object type (ld_v__clsname).
 

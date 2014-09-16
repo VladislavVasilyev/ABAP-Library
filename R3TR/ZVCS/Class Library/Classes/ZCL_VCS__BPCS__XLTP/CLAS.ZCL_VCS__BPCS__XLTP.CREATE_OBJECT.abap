@@ -14,35 +14,38 @@ method create_object.
   : <ls_s__xltp>     type ty_s__xltp
   .
 
-  assign i_r__source to <ls_s__xltp>.
+  loop at gd_t__xltp assigning <ls_s__xltp>.
 
-  move-corresponding <ls_s__xltp>          to ld_s__ujf_doc.
-  move-corresponding <ls_s__xltp>-doc_tree to ld_s__ujf_doctree.
-
-  ld_s__ujf_doctree-appset  = <ls_s__xltp>-appset.
-  ld_s__ujf_doctree-docname = <ls_s__xltp>-docname.
-  ld_s__ujf_doctree-docdesc = <ls_s__xltp>-docdesc.
-
-  read table <ls_s__xltp>-doc_contentt index 1 into ld_s__ujf_doc-doc_content.
-
-
-
-  if cd_v__appset_id is not initial.
-    replace all occurrences of <ls_s__xltp>-appset in
-    : ld_s__ujf_doc-appset  with cd_v__appset_id
-    , ld_s__ujf_doc-docname with cd_v__appset_id
-    , ld_s__ujf_doc-docdesc with cd_v__appset_id
+    clear
+    : ld_s__ujf_doc
+    , ld_s__ujf_doctree
     .
 
-    replace all occurrences of <ls_s__xltp>-appset in
-    : ld_s__ujf_doctree-appset    with cd_v__appset_id
-    , ld_s__ujf_doctree-docname   with cd_v__appset_id
-    , ld_s__ujf_doctree-docdesc   with cd_v__appset_id
-    , ld_s__ujf_doctree-parentdoc with cd_v__appset_id
-    .
-  endif.
+    move-corresponding <ls_s__xltp>          to ld_s__ujf_doc.
+    move-corresponding <ls_s__xltp>-doc_tree to ld_s__ujf_doctree.
 
-  modify ujf_doc     from ld_s__ujf_doc.
-  modify ujf_doctree from ld_s__ujf_doctree.
+    ld_s__ujf_doctree-appset  = <ls_s__xltp>-appset.
+    ld_s__ujf_doctree-docname = <ls_s__xltp>-docname.
+    ld_s__ujf_doctree-docdesc = <ls_s__xltp>-docdesc.
+
+    if cd_v__appset_id is not initial.
+      replace all occurrences of <ls_s__xltp>-appset in
+      : ld_s__ujf_doc-appset  with cd_v__appset_id
+      , ld_s__ujf_doc-docname with cd_v__appset_id
+      , ld_s__ujf_doc-docdesc with cd_v__appset_id
+      .
+
+      replace all occurrences of <ls_s__xltp>-appset in
+      : ld_s__ujf_doctree-appset    with cd_v__appset_id
+      , ld_s__ujf_doctree-docname   with cd_v__appset_id
+      , ld_s__ujf_doctree-docdesc   with cd_v__appset_id
+      , ld_s__ujf_doctree-parentdoc with cd_v__appset_id
+      .
+    endif.
+
+    modify ujf_doc     from ld_s__ujf_doc.
+    modify ujf_doctree from ld_s__ujf_doctree.
+
+  endloop.
 
 endmethod.

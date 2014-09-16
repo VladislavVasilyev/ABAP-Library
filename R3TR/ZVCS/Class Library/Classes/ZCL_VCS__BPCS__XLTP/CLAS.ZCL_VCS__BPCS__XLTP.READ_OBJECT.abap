@@ -29,7 +29,66 @@ method read_object.
     where appset  = i_s__tadir-appset
      and docname = ld_v__docname.
 
-  append ld_s__xltp-doc_content to ld_s__xltp-doc_contentt.
+*  append ld_s__xltp-doc_content to ld_s__xltp-doc_contentt.
+
+
+*  data str type string.
+*  data str1 type string.
+*  data ss type x length 255.
+*  data st like standard table of ss.
+*  data cnt type i.
+*
+*str1 = ld_s__xltp-doc_content+0.
+*
+*  do.
+*    if cnt > strlen( str1 ).
+*      exit.
+*    endif.
+*
+*    ss = ld_s__xltp-doc_content+0.
+*    append ss to st.
+*    add 256 to cnt.
+*
+*  enddo.
+*
+*  ss = ld_s__xltp-doc_content.
+*  append ss to st.
+*
+*  append ld_s__xltp-doc_content to st.
+*
+*  str = `c:\test\sdf.xlt`.
+*  call method cl_gui_frontend_services=>gui_download
+*    exporting
+**      bin_filesize = l_xml_size
+*      filename     = str
+*      filetype     = 'BIN'
+*    changing
+*      data_tab     = st "l_xml_table
+*    exceptions
+*      others       = 24.
+
+*      data    lt_data type standard table of x255.
+*
+*
+*  call function 'SCMS_XSTRING_TO_BINARY'
+*    exporting
+*      buffer        = ld_s__xltp-doc_content
+**    importing
+**      output_length = lv_file_length
+*    tables
+*      binary_tab    = lt_data.
+*
+*
+*  call method cl_gui_frontend_services=>gui_download
+*    exporting
+**      bin_filesize = l_xml_size
+*      filename     = `c:\test\1.xlt`
+*      filetype     = 'BIN'
+*    changing
+*      data_tab     =  lt_data "l_xml_table
+*    exceptions
+*      others       = 24.
+
 
   clear ld_s__xltp-doc_content.
 

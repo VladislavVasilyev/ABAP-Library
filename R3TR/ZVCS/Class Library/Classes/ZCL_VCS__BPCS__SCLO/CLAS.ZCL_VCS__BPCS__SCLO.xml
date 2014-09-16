@@ -36,7 +36,7 @@
 			<AUTHOR>VVASILYEV00</AUTHOR>
 			<CREATEDON>2014-07-18</CREATEDON>
 			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
-			<CHANGEDON>2014-07-18</CHANGEDON>
+			<CHANGEDON>2014-09-11</CHANGEDON>
 			<ATTDECLTYP>1</ATTDECLTYP>
 			<ATTEXPVIRT>0</ATTEXPVIRT>
 			<TYPTYPE>1</TYPTYPE>
@@ -45,8 +45,54 @@
 			<SRCCOLUMN1>0</SRCCOLUMN1>
 			<SRCROW2>0</SRCROW2>
 			<SRCCOLUMN2>0</SRCCOLUMN2>
-			<R3RELEASE>701</R3RELEASE>
 			<TYPESRC_LENG>0</TYPESRC_LENG>
+		</item>
+		<item>
+			<CLSNAME>ZCL_VCS__BPCS__SCLO</CLSNAME>
+			<CMPNAME>GD_T__SCLO</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<EXPOSURE>1</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>1</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-09-09</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-09-09</CHANGEDON>
+			<ATTDECLTYP>0</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>4</TYPTYPE>
+			<SRCROW1>6</SRCROW1>
+			<SRCCOLUMN1>4</SRCCOLUMN1>
+			<SRCROW2>6</SRCROW2>
+			<SRCCOLUMN2>88</SRCCOLUMN2>
+			<TYPESRC_LENG>87</TYPESRC_LENG>
+			<TYPESRC>gd_t__sclo              type standard table of ty_s__sclo with non-unique default key
+</TYPESRC>
+		</item>
+		<item>
+			<CLSNAME>ZCL_VCS__BPCS__SCLO</CLSNAME>
+			<CMPNAME>GD_T__SOURCE</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<EXPOSURE>1</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>2</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-09-09</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-09-09</CHANGEDON>
+			<ATTDECLTYP>0</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>4</TYPTYPE>
+			<SRCROW1>8</SRCROW1>
+			<SRCCOLUMN1>4</SRCCOLUMN1>
+			<SRCROW2>8</SRCROW2>
+			<SRCCOLUMN2>95</SRCCOLUMN2>
+			<R3RELEASE>701</R3RELEASE>
+			<TYPESRC_LENG>94</TYPESRC_LENG>
+			<TYPESRC>gd_t__source            type standard table of zvcst_s__download with non-unique default key
+</TYPESRC>
 		</item>
 	</ATTRIBUTES>
 	<TYPES>
@@ -62,47 +108,77 @@
 				<AUTHOR>VVASILYEV00</AUTHOR>
 				<CREATEDON>2014-03-31</CREATEDON>
 				<CHANGEDBY>VVASILYEV00</CHANGEDBY>
-				<CHANGEDON>2014-07-18</CHANGEDON>
+				<CHANGEDON>2014-09-11</CHANGEDON>
 				<TYPTYPE>4</TYPTYPE>
-				<SRCROW1>12</SRCROW1>
-				<SRCCOLUMN1>4</SRCCOLUMN1>
-				<SRCROW2>26</SRCROW2>
-				<SRCCOLUMN2>31</SRCCOLUMN2>
-				<TYPESRC_LENG>1158</TYPESRC_LENG>
+				<SRCROW1>17</SRCROW1>
+				<SRCCOLUMN1>6</SRCCOLUMN1>
+				<SRCROW2>31</SRCROW2>
+				<SRCCOLUMN2>33</SRCCOLUMN2>
+				<TYPESRC_LENG>1186</TYPESRC_LENG>
 				<TYPESRC>begin of ty_s__sclo
-             , appset          type uj_appset_id           &quot;SAP BusinessObjects - Ид. набора приложений
-             , application     type uj_appl_id             &quot;SAP BusinessObjects - Ид. приложения
-             , filename        type uj_docname
-             , docname         type uj_docname             &quot;BPC: имя папки/документа
-             , docdesc         type uj_docdesc             &quot;BPC: описание документа
-             , doctype         type uj_doctype             &quot;BPC: вид документа
-             , owner           type uj_owner               &quot;BPC: ответственный за документ
-             , create_date     type uj_create_date         &quot;BPC: создать дату
-             , create_time     type uj_create_time         &quot;BPC: создать время
-             , lstmod_date     type uj_lstmod_date         &quot;BPC: дата последнего изменения
-             , lstmod_time     type uj_lstmod_time         &quot;BPC: время последнего изменения
-             , lstmod_user     type uj_lstmod_user         &quot;BPC: автор последнего изменения
-             , source          type zvcst_t__lgfsource     &quot;BPC: текст
-             , end of ty_s__sclo
+               , appset          type uj_appset_id           &quot;SAP BusinessObjects - Ид. набора приложений
+               , application     type uj_appl_id             &quot;SAP BusinessObjects - Ид. приложения
+               , filename        type uj_docname
+               , docname         type uj_docname             &quot;BPC: имя папки/документа
+               , docdesc         type uj_docdesc             &quot;BPC: описание документа
+               , doctype         type uj_doctype             &quot;BPC: вид документа
+               , owner           type uj_owner               &quot;BPC: ответственный за документ
+               , create_date     type uj_create_date         &quot;BPC: создать дату
+               , create_time     type uj_create_time         &quot;BPC: создать время
+               , lstmod_date     type uj_lstmod_date         &quot;BPC: дата последнего изменения
+               , lstmod_time     type uj_lstmod_time         &quot;BPC: время последнего изменения
+               , lstmod_user     type uj_lstmod_user         &quot;BPC: автор последнего изменения
+               , source          type zvcst_t__lgfsource     &quot;BPC: текст
+               , end of ty_s__sclo
+</TYPESRC>
+			</item>
+			<item>
+				<CLSNAME>ZCL_VCS__BPCS__SCLO</CLSNAME>
+				<CMPNAME>TY_S__CHECKOBJ_SCLO</CMPNAME>
+				<VERSION>1</VERSION>
+				<LANGU>R</LANGU>
+				<EXPOSURE>2</EXPOSURE>
+				<STATE>1</STATE>
+				<EDITORDER>2</EDITORDER>
+				<AUTHOR>VVASILYEV00</AUTHOR>
+				<CREATEDON>2014-09-11</CREATEDON>
+				<CHANGEDON>0000-00-00</CHANGEDON>
+				<TYPTYPE>4</TYPTYPE>
+				<SRCROW1>33</SRCROW1>
+				<SRCCOLUMN1>11</SRCCOLUMN1>
+				<SRCROW2>37</SRCROW2>
+				<SRCCOLUMN2>38</SRCCOLUMN2>
+				<R3RELEASE>701</R3RELEASE>
+				<TYPESRC_LENG>171</TYPESRC_LENG>
+				<TYPESRC>begin of ty_s__checkobj_sclo.
+    include type zvcs_st__bpcssclo.
+    types: checkbox(1) type  c
+           , index(4) type c
+           , end of ty_s__checkobj_sclo
 </TYPESRC>
 			</item>
 		</TYPES>
 		<TYPE_SOURCE>
-			<item>    begin of ty_s__sclo</item>
-			<item>             , appset          type uj_appset_id           &quot;SAP BusinessObjects - Ид. набора приложений</item>
-			<item>             , application     type uj_appl_id             &quot;SAP BusinessObjects - Ид. приложения</item>
-			<item>             , filename        type uj_docname</item>
-			<item>             , docname         type uj_docname             &quot;BPC: имя папки/документа</item>
-			<item>             , docdesc         type uj_docdesc             &quot;BPC: описание документа</item>
-			<item>             , doctype         type uj_doctype             &quot;BPC: вид документа</item>
-			<item>             , owner           type uj_owner               &quot;BPC: ответственный за документ</item>
-			<item>             , create_date     type uj_create_date         &quot;BPC: создать дату</item>
-			<item>             , create_time     type uj_create_time         &quot;BPC: создать время</item>
-			<item>             , lstmod_date     type uj_lstmod_date         &quot;BPC: дата последнего изменения</item>
-			<item>             , lstmod_time     type uj_lstmod_time         &quot;BPC: время последнего изменения</item>
-			<item>             , lstmod_user     type uj_lstmod_user         &quot;BPC: автор последнего изменения</item>
-			<item>             , source          type zvcst_t__lgfsource     &quot;BPC: текст</item>
-			<item>             , end of ty_s__sclo</item>
+			<item>      begin of ty_s__sclo</item>
+			<item>               , appset          type uj_appset_id           &quot;SAP BusinessObjects - Ид. набора приложений</item>
+			<item>               , application     type uj_appl_id             &quot;SAP BusinessObjects - Ид. приложения</item>
+			<item>               , filename        type uj_docname</item>
+			<item>               , docname         type uj_docname             &quot;BPC: имя папки/документа</item>
+			<item>               , docdesc         type uj_docdesc             &quot;BPC: описание документа</item>
+			<item>               , doctype         type uj_doctype             &quot;BPC: вид документа</item>
+			<item>               , owner           type uj_owner               &quot;BPC: ответственный за документ</item>
+			<item>               , create_date     type uj_create_date         &quot;BPC: создать дату</item>
+			<item>               , create_time     type uj_create_time         &quot;BPC: создать время</item>
+			<item>               , lstmod_date     type uj_lstmod_date         &quot;BPC: дата последнего изменения</item>
+			<item>               , lstmod_time     type uj_lstmod_time         &quot;BPC: время последнего изменения</item>
+			<item>               , lstmod_user     type uj_lstmod_user         &quot;BPC: автор последнего изменения</item>
+			<item>               , source          type zvcst_t__lgfsource     &quot;BPC: текст</item>
+			<item>               , end of ty_s__sclo</item>
+			<item>    types: begin of ty_s__checkobj_sclo.</item>
+			<item>    include type zvcs_st__bpcssclo.</item>
+			<item>    types: checkbox(1) type  c</item>
+			<item>           , index(4) type c</item>
+			<item>           , end of ty_s__checkobj_sclo</item>
 		</TYPE_SOURCE>
 	</TYPES>
 	<INHERITANCE>
@@ -113,7 +189,7 @@
 		<AUTHOR>VVASILYEV00</AUTHOR>
 		<CREATEDON>2014-03-31</CREATEDON>
 		<CHANGEDBY>VVASILYEV00</CHANGEDBY>
-		<CHANGEDON>2014-03-31</CHANGEDON>
+		<CHANGEDON>2014-09-09</CHANGEDON>
 	</INHERITANCE>
 	<EXPLORE_INHERITANCE>
 		<item>
@@ -162,6 +238,12 @@
 			<CLSNAME>ZCL_VCS__BPCS__SCLO</CLSNAME>
 			<REFCLSNAME>ZCL_VCS_OBJECTS_STACK</REFCLSNAME>
 			<VERSION>1</VERSION>
+			<MTDNAME>DOWNLOAD</MTDNAME>
+		</item>
+		<item>
+			<CLSNAME>ZCL_VCS__BPCS__SCLO</CLSNAME>
+			<REFCLSNAME>ZCL_VCS_OBJECTS_STACK</REFCLSNAME>
+			<VERSION>1</VERSION>
 			<MTDNAME>GET_TYPE_OBJECT</MTDNAME>
 		</item>
 		<item>
@@ -169,6 +251,24 @@
 			<REFCLSNAME>ZCL_VCS_OBJECTS_STACK</REFCLSNAME>
 			<VERSION>1</VERSION>
 			<MTDNAME>READ_OBJECT</MTDNAME>
+		</item>
+		<item>
+			<CLSNAME>ZCL_VCS__BPCS__SCLO</CLSNAME>
+			<REFCLSNAME>ZCL_VCS_OBJECTS_STACK</REFCLSNAME>
+			<VERSION>1</VERSION>
+			<MTDNAME>READ_OBJECTS</MTDNAME>
+		</item>
+		<item>
+			<CLSNAME>ZCL_VCS__BPCS__SCLO</CLSNAME>
+			<REFCLSNAME>ZCL_VCS_OBJECTS_STACK</REFCLSNAME>
+			<VERSION>1</VERSION>
+			<MTDNAME>READ_OBJECTS_CHOOSE</MTDNAME>
+		</item>
+		<item>
+			<CLSNAME>ZCL_VCS__BPCS__SCLO</CLSNAME>
+			<REFCLSNAME>ZCL_VCS_OBJECTS_STACK</REFCLSNAME>
+			<VERSION>1</VERSION>
+			<MTDNAME>WRITE_OBJECT_CHOOSE</MTDNAME>
 		</item>
 	</REDEFINITIONS>
 	<METHODS_REDEF>
@@ -180,17 +280,16 @@
 				<LANGU>R</LANGU>
 				<EXPOSURE>1</EXPOSURE>
 				<STATE>1</STATE>
-				<EDITORDER>1</EDITORDER>
+				<EDITORDER>7</EDITORDER>
 				<DISPID>0</DISPID>
 				<AUTHOR>VVASILYEV00</AUTHOR>
 				<CREATEDON>2014-03-26</CREATEDON>
 				<CHANGEDBY>VVASILYEV00</CHANGEDBY>
-				<CHANGEDON>2014-04-01</CHANGEDON>
+				<CHANGEDON>2014-09-09</CHANGEDON>
 				<MTDTYPE>0</MTDTYPE>
 				<MTDDECLTYP>0</MTDDECLTYP>
 				<MTDABSTRCT>X</MTDABSTRCT>
 				<MTDNEWEXC>X</MTDNEWEXC>
-				<R3RELEASE>701</R3RELEASE>
 				<BCMTDCAT>00</BCMTDCAT>
 				<BCMTDSYN>0</BCMTDSYN>
 			</METHOD>
@@ -213,15 +312,15 @@
 				<LANGU>R</LANGU>
 				<EXPOSURE>1</EXPOSURE>
 				<STATE>1</STATE>
-				<EDITORDER>0</EDITORDER>
+				<EDITORDER>6</EDITORDER>
 				<DISPID>0</DISPID>
 				<AUTHOR>VVASILYEV00</AUTHOR>
 				<CREATEDON>2014-03-27</CREATEDON>
-				<CHANGEDON>0000-00-00</CHANGEDON>
+				<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+				<CHANGEDON>2014-09-09</CHANGEDON>
 				<MTDTYPE>0</MTDTYPE>
 				<MTDDECLTYP>0</MTDDECLTYP>
 				<MTDABSTRCT>X</MTDABSTRCT>
-				<R3RELEASE>701</R3RELEASE>
 				<BCMTDCAT>00</BCMTDCAT>
 				<BCMTDSYN>0</BCMTDSYN>
 			</METHOD>
@@ -244,15 +343,15 @@
 				<LANGU>R</LANGU>
 				<EXPOSURE>1</EXPOSURE>
 				<STATE>1</STATE>
-				<EDITORDER>2</EDITORDER>
+				<EDITORDER>9</EDITORDER>
 				<DISPID>0</DISPID>
 				<AUTHOR>VVASILYEV00</AUTHOR>
 				<CREATEDON>2014-03-26</CREATEDON>
-				<CHANGEDON>0000-00-00</CHANGEDON>
+				<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+				<CHANGEDON>2014-09-09</CHANGEDON>
 				<MTDTYPE>0</MTDTYPE>
 				<MTDDECLTYP>0</MTDDECLTYP>
 				<MTDABSTRCT>X</MTDABSTRCT>
-				<R3RELEASE>701</R3RELEASE>
 				<BCMTDCAT>00</BCMTDCAT>
 				<BCMTDSYN>0</BCMTDSYN>
 			</METHOD>
@@ -275,17 +374,16 @@
 				<LANGU>R</LANGU>
 				<EXPOSURE>1</EXPOSURE>
 				<STATE>1</STATE>
-				<EDITORDER>3</EDITORDER>
+				<EDITORDER>10</EDITORDER>
 				<DISPID>0</DISPID>
 				<AUTHOR>VVASILYEV00</AUTHOR>
 				<CREATEDON>2014-03-26</CREATEDON>
 				<CHANGEDBY>VVASILYEV00</CHANGEDBY>
-				<CHANGEDON>2014-03-28</CHANGEDON>
+				<CHANGEDON>2014-09-09</CHANGEDON>
 				<MTDTYPE>0</MTDTYPE>
 				<MTDDECLTYP>0</MTDDECLTYP>
 				<MTDABSTRCT>X</MTDABSTRCT>
 				<MTDNEWEXC>X</MTDNEWEXC>
-				<R3RELEASE>701</R3RELEASE>
 				<BCMTDCAT>00</BCMTDCAT>
 				<BCMTDSYN>0</BCMTDSYN>
 			</METHOD>
@@ -308,16 +406,15 @@
 				<LANGU>R</LANGU>
 				<EXPOSURE>1</EXPOSURE>
 				<STATE>1</STATE>
-				<EDITORDER>2</EDITORDER>
+				<EDITORDER>8</EDITORDER>
 				<DISPID>0</DISPID>
 				<AUTHOR>VVASILYEV00</AUTHOR>
 				<CREATEDON>2014-03-31</CREATEDON>
 				<CHANGEDBY>VVASILYEV00</CHANGEDBY>
-				<CHANGEDON>2014-03-31</CHANGEDON>
+				<CHANGEDON>2014-09-09</CHANGEDON>
 				<MTDTYPE>0</MTDTYPE>
 				<MTDDECLTYP>0</MTDDECLTYP>
 				<MTDABSTRCT>X</MTDABSTRCT>
-				<R3RELEASE>701</R3RELEASE>
 				<BCMTDCAT>00</BCMTDCAT>
 				<BCMTDSYN>0</BCMTDSYN>
 			</METHOD>
@@ -330,6 +427,131 @@
 			</INCLUDE>
 			<SOURCE>
 				<SOURCEID>CLAS.ZCL_VCS__BPCS__SCLO.CROSSSOURCES.abap</SOURCEID>
+			</SOURCE>
+		</item>
+		<item>
+			<METHOD>
+				<CLSNAME>ZCL_VCS_OBJECTS_STACK</CLSNAME>
+				<CMPNAME>READ_OBJECTS_CHOOSE</CMPNAME>
+				<VERSION>1</VERSION>
+				<LANGU>R</LANGU>
+				<DESCRIPT>Подготовить объекты для выбора</DESCRIPT>
+				<EXPOSURE>1</EXPOSURE>
+				<STATE>1</STATE>
+				<EDITORDER>1</EDITORDER>
+				<DISPID>0</DISPID>
+				<AUTHOR>VVASILYEV00</AUTHOR>
+				<CREATEDON>2014-09-08</CREATEDON>
+				<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+				<CHANGEDON>2014-09-09</CHANGEDON>
+				<MTDTYPE>0</MTDTYPE>
+				<MTDDECLTYP>0</MTDDECLTYP>
+				<MTDABSTRCT>X</MTDABSTRCT>
+				<BCMTDCAT>00</BCMTDCAT>
+				<BCMTDSYN>0</BCMTDSYN>
+			</METHOD>
+			<INCLUDE>
+				<CPDKEY>
+					<CLSNAME>ZCL_VCS__BPCS__SCLO</CLSNAME>
+					<CPDNAME>READ_OBJECTS_CHOOSE</CPDNAME>
+				</CPDKEY>
+				<INCNAME>ZCL_VCS__BPCS__SCLO===========CM006</INCNAME>
+			</INCLUDE>
+			<SOURCE>
+				<SOURCEID>CLAS.ZCL_VCS__BPCS__SCLO.READ_OBJECTS_CHOOSE.abap</SOURCEID>
+			</SOURCE>
+		</item>
+		<item>
+			<METHOD>
+				<CLSNAME>ZCL_VCS_OBJECTS_STACK</CLSNAME>
+				<CMPNAME>READ_OBJECTS</CMPNAME>
+				<VERSION>1</VERSION>
+				<LANGU>R</LANGU>
+				<EXPOSURE>1</EXPOSURE>
+				<STATE>1</STATE>
+				<EDITORDER>2</EDITORDER>
+				<DISPID>0</DISPID>
+				<AUTHOR>VVASILYEV00</AUTHOR>
+				<CREATEDON>2014-09-08</CREATEDON>
+				<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+				<CHANGEDON>2014-09-09</CHANGEDON>
+				<MTDTYPE>0</MTDTYPE>
+				<MTDDECLTYP>0</MTDDECLTYP>
+				<MTDABSTRCT>X</MTDABSTRCT>
+				<BCMTDCAT>00</BCMTDCAT>
+				<BCMTDSYN>0</BCMTDSYN>
+			</METHOD>
+			<INCLUDE>
+				<CPDKEY>
+					<CLSNAME>ZCL_VCS__BPCS__SCLO</CLSNAME>
+					<CPDNAME>READ_OBJECTS</CPDNAME>
+				</CPDKEY>
+				<INCNAME>ZCL_VCS__BPCS__SCLO===========CM007</INCNAME>
+			</INCLUDE>
+			<SOURCE>
+				<SOURCEID>CLAS.ZCL_VCS__BPCS__SCLO.READ_OBJECTS.abap</SOURCEID>
+			</SOURCE>
+		</item>
+		<item>
+			<METHOD>
+				<CLSNAME>ZCL_VCS_OBJECTS_STACK</CLSNAME>
+				<CMPNAME>DOWNLOAD</CMPNAME>
+				<VERSION>1</VERSION>
+				<LANGU>R</LANGU>
+				<EXPOSURE>1</EXPOSURE>
+				<STATE>1</STATE>
+				<EDITORDER>5</EDITORDER>
+				<DISPID>0</DISPID>
+				<AUTHOR>VVASILYEV00</AUTHOR>
+				<CREATEDON>2014-09-08</CREATEDON>
+				<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+				<CHANGEDON>2014-09-09</CHANGEDON>
+				<MTDTYPE>0</MTDTYPE>
+				<MTDDECLTYP>0</MTDDECLTYP>
+				<MTDABSTRCT>X</MTDABSTRCT>
+				<BCMTDCAT>00</BCMTDCAT>
+				<BCMTDSYN>0</BCMTDSYN>
+			</METHOD>
+			<INCLUDE>
+				<CPDKEY>
+					<CLSNAME>ZCL_VCS__BPCS__SCLO</CLSNAME>
+					<CPDNAME>DOWNLOAD</CPDNAME>
+				</CPDKEY>
+				<INCNAME>ZCL_VCS__BPCS__SCLO===========CM008</INCNAME>
+			</INCLUDE>
+			<SOURCE>
+				<SOURCEID>CLAS.ZCL_VCS__BPCS__SCLO.DOWNLOAD.abap</SOURCEID>
+			</SOURCE>
+		</item>
+		<item>
+			<METHOD>
+				<CLSNAME>ZCL_VCS_OBJECTS_STACK</CLSNAME>
+				<CMPNAME>WRITE_OBJECT_CHOOSE</CMPNAME>
+				<VERSION>1</VERSION>
+				<LANGU>R</LANGU>
+				<EXPOSURE>1</EXPOSURE>
+				<STATE>1</STATE>
+				<EDITORDER>0</EDITORDER>
+				<DISPID>0</DISPID>
+				<AUTHOR>VVASILYEV00</AUTHOR>
+				<CREATEDON>2014-09-09</CREATEDON>
+				<CHANGEDON>0000-00-00</CHANGEDON>
+				<MTDTYPE>0</MTDTYPE>
+				<MTDDECLTYP>0</MTDDECLTYP>
+				<MTDABSTRCT>X</MTDABSTRCT>
+				<R3RELEASE>701</R3RELEASE>
+				<BCMTDCAT>00</BCMTDCAT>
+				<BCMTDSYN>0</BCMTDSYN>
+			</METHOD>
+			<INCLUDE>
+				<CPDKEY>
+					<CLSNAME>ZCL_VCS__BPCS__SCLO</CLSNAME>
+					<CPDNAME>WRITE_OBJECT_CHOOSE</CPDNAME>
+				</CPDKEY>
+				<INCNAME>ZCL_VCS__BPCS__SCLO===========CM009</INCNAME>
+			</INCLUDE>
+			<SOURCE>
+				<SOURCEID>CLAS.ZCL_VCS__BPCS__SCLO.WRITE_OBJECT_CHOOSE.abap</SOURCEID>
 			</SOURCE>
 		</item>
 	</METHODS_REDEF>

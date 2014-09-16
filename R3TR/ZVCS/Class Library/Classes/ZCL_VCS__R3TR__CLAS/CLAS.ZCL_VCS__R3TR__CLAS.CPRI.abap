@@ -1,4 +1,4 @@
-*"* private components of class ZCL_VCS_R3TR__CLAS
+*"* private components of class ZCL_VCS__R3TR__CLAS
 *"* do not include other source files here!!!
 private section.
 

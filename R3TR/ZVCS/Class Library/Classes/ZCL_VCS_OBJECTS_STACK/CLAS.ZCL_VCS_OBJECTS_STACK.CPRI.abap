@@ -9,6 +9,9 @@ private section.
   class-data CD_T__OBJECTS_FOR_DOWNLOAD type ZVCST_T__DOWNLOAD .
   class-data CD_T__OBJECTS_FOR_UPLOAD type ZVCST_T__UPLOAD .
 
+  methods ADD_FOR_UPLOAD
+    importing
+      !FILE type ZCL_VCS_R3TR___UPLOAD=>TY_S__FILELIST .
   class-methods GET_OBJECT
     importing
       !TYPE type ZVCST_S__OBJECT

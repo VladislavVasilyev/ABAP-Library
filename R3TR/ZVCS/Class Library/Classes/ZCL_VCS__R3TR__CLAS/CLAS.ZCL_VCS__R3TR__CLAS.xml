@@ -22,6 +22,30 @@
 		<DURATION_TYPE>0</DURATION_TYPE>
 		<RISK_LEVEL>0</RISK_LEVEL>
 	</VSEOCLASS>
+	<ATTRIBUTES>
+		<item>
+			<CLSNAME>ZCL_VCS__R3TR__CLAS</CLSNAME>
+			<CMPNAME>GD_T__SOURCE</CMPNAME>
+			<VERSION>1</VERSION>
+			<LANGU>R</LANGU>
+			<EXPOSURE>2</EXPOSURE>
+			<STATE>1</STATE>
+			<EDITORDER>2</EDITORDER>
+			<AUTHOR>VVASILYEV00</AUTHOR>
+			<CREATEDON>2014-09-15</CREATEDON>
+			<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+			<CHANGEDON>2014-09-15</CHANGEDON>
+			<ATTDECLTYP>0</ATTDECLTYP>
+			<ATTEXPVIRT>0</ATTEXPVIRT>
+			<TYPTYPE>1</TYPTYPE>
+			<TYPE>ZVCST_T__DOWNLOAD</TYPE>
+			<SRCROW1>0</SRCROW1>
+			<SRCCOLUMN1>0</SRCCOLUMN1>
+			<SRCROW2>0</SRCROW2>
+			<SRCCOLUMN2>0</SRCCOLUMN2>
+			<TYPESRC_LENG>0</TYPESRC_LENG>
+		</item>
+	</ATTRIBUTES>
 	<METHODS>
 		<item>
 			<CMPKEY>
@@ -1000,13 +1024,12 @@
 				<AUTHOR>VVASILYEV00</AUTHOR>
 				<CREATEDON>2014-03-31</CREATEDON>
 				<CHANGEDBY>VVASILYEV00</CHANGEDBY>
-				<CHANGEDON>2014-03-31</CHANGEDON>
+				<CHANGEDON>2014-09-15</CHANGEDON>
 				<TYPTYPE>4</TYPTYPE>
-				<SRCROW1>21</SRCROW1>
-				<SRCCOLUMN1>4</SRCCOLUMN1>
-				<SRCROW2>21</SRCROW2>
-				<SRCCOLUMN2>72</SRCCOLUMN2>
-				<R3RELEASE>701</R3RELEASE>
+				<SRCROW1>29</SRCROW1>
+				<SRCCOLUMN1>6</SRCCOLUMN1>
+				<SRCROW2>29</SRCROW2>
+				<SRCCOLUMN2>74</SRCCOLUMN2>
 				<TYPESRC_LENG>71</TYPESRC_LENG>
 				<TYPESRC>ty_t__clsname type hashed table of seoclsname with unique default key
 </TYPESRC>
@@ -1021,14 +1044,14 @@
 				<EDITORDER>2</EDITORDER>
 				<AUTHOR>VVASILYEV00</AUTHOR>
 				<CREATEDON>2014-03-31</CREATEDON>
-				<CHANGEDON>0000-00-00</CHANGEDON>
+				<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+				<CHANGEDON>2014-09-15</CHANGEDON>
 				<TYPTYPE>1</TYPTYPE>
 				<TYPE>VSEOCLASS</TYPE>
 				<SRCROW1>0</SRCROW1>
 				<SRCCOLUMN1>0</SRCCOLUMN1>
 				<SRCROW2>0</SRCROW2>
 				<SRCCOLUMN2>0</SRCCOLUMN2>
-				<R3RELEASE>701</R3RELEASE>
 				<TYPESRC_LENG>0</TYPESRC_LENG>
 			</item>
 			<item>
@@ -1042,13 +1065,12 @@
 				<AUTHOR>VVASILYEV00</AUTHOR>
 				<CREATEDON>2014-03-31</CREATEDON>
 				<CHANGEDBY>VVASILYEV00</CHANGEDBY>
-				<CHANGEDON>2014-03-31</CHANGEDON>
+				<CHANGEDON>2014-09-15</CHANGEDON>
 				<TYPTYPE>4</TYPTYPE>
-				<SRCROW1>24</SRCROW1>
-				<SRCCOLUMN1>4</SRCCOLUMN1>
-				<SRCROW2>24</SRCROW2>
-				<SRCCOLUMN2>85</SRCCOLUMN2>
-				<R3RELEASE>701</R3RELEASE>
+				<SRCROW1>32</SRCROW1>
+				<SRCCOLUMN1>6</SRCCOLUMN1>
+				<SRCROW2>32</SRCROW2>
+				<SRCCOLUMN2>87</SRCCOLUMN2>
 				<TYPESRC_LENG>84</TYPESRC_LENG>
 				<TYPESRC>ty_t__vseoclass type standard table of ty_s__vseoclass with non-unique default key
 </TYPESRC>
@@ -1064,19 +1086,18 @@
 				<AUTHOR>VVASILYEV00</AUTHOR>
 				<CREATEDON>2014-03-31</CREATEDON>
 				<CHANGEDBY>VVASILYEV00</CHANGEDBY>
-				<CHANGEDON>2014-03-31</CHANGEDON>
+				<CHANGEDON>2014-09-15</CHANGEDON>
 				<TYPTYPE>4</TYPTYPE>
-				<SRCROW1>26</SRCROW1>
-				<SRCCOLUMN1>4</SRCCOLUMN1>
-				<SRCROW2>30</SRCROW2>
-				<SRCCOLUMN2>25</SRCCOLUMN2>
-				<R3RELEASE>701</R3RELEASE>
-				<TYPESRC_LENG>157</TYPESRC_LENG>
+				<SRCROW1>34</SRCROW1>
+				<SRCCOLUMN1>6</SRCCOLUMN1>
+				<SRCROW2>38</SRCROW2>
+				<SRCCOLUMN2>27</SRCCOLUMN2>
+				<TYPESRC_LENG>165</TYPESRC_LENG>
 				<TYPESRC>begin of ty_s__section
-    , limu type  trobjtype
-    , incname type program
-    , source type zvcst_t__char255 &quot;seop_source
-    , end of ty_s__section
+      , limu type  trobjtype
+      , incname type program
+      , source type zvcst_t__char255 &quot;seop_source
+      , end of ty_s__section
 </TYPESRC>
 			</item>
 			<item>
@@ -1090,13 +1111,12 @@
 				<AUTHOR>VVASILYEV00</AUTHOR>
 				<CREATEDON>2014-03-31</CREATEDON>
 				<CHANGEDBY>VVASILYEV00</CHANGEDBY>
-				<CHANGEDON>2014-03-31</CHANGEDON>
+				<CHANGEDON>2014-09-15</CHANGEDON>
 				<TYPTYPE>4</TYPTYPE>
-				<SRCROW1>32</SRCROW1>
-				<SRCCOLUMN1>4</SRCCOLUMN1>
-				<SRCROW2>32</SRCROW2>
-				<SRCCOLUMN2>81</SRCCOLUMN2>
-				<R3RELEASE>701</R3RELEASE>
+				<SRCROW1>40</SRCROW1>
+				<SRCCOLUMN1>6</SRCCOLUMN1>
+				<SRCROW2>40</SRCROW2>
+				<SRCCOLUMN2>83</SRCCOLUMN2>
 				<TYPESRC_LENG>80</TYPESRC_LENG>
 				<TYPESRC>ty_t__section type standard table of ty_s__section with non-unique default key
 </TYPESRC>
@@ -1112,18 +1132,17 @@
 				<AUTHOR>VVASILYEV00</AUTHOR>
 				<CREATEDON>2014-03-31</CREATEDON>
 				<CHANGEDBY>VVASILYEV00</CHANGEDBY>
-				<CHANGEDON>2014-03-31</CHANGEDON>
+				<CHANGEDON>2014-09-15</CHANGEDON>
 				<TYPTYPE>4</TYPTYPE>
-				<SRCROW1>34</SRCROW1>
-				<SRCCOLUMN1>4</SRCCOLUMN1>
-				<SRCROW2>37</SRCROW2>
-				<SRCCOLUMN2>23</SRCCOLUMN2>
-				<R3RELEASE>701</R3RELEASE>
-				<TYPESRC_LENG>133</TYPESRC_LENG>
+				<SRCROW1>42</SRCROW1>
+				<SRCCOLUMN1>6</SRCCOLUMN1>
+				<SRCROW2>45</SRCROW2>
+				<SRCCOLUMN2>25</SRCCOLUMN2>
+				<TYPESRC_LENG>139</TYPESRC_LENG>
 				<TYPESRC>begin of ty_s__types
-    , types type seoo_types_r
-    , type_source type zvcst_t__char255 &quot;seop_source
-    , end of ty_s__types
+      , types type seoo_types_r
+      , type_source type zvcst_t__char255 &quot;seop_source
+      , end of ty_s__types
 </TYPESRC>
 			</item>
 			<item>
@@ -1137,23 +1156,22 @@
 				<AUTHOR>VVASILYEV00</AUTHOR>
 				<CREATEDON>2014-03-31</CREATEDON>
 				<CHANGEDBY>VVASILYEV00</CHANGEDBY>
-				<CHANGEDON>2014-03-31</CHANGEDON>
+				<CHANGEDON>2014-09-15</CHANGEDON>
 				<TYPTYPE>4</TYPTYPE>
-				<SRCROW1>39</SRCROW1>
-				<SRCCOLUMN1>4</SRCCOLUMN1>
-				<SRCROW2>47</SRCROW2>
-				<SRCCOLUMN2>24</SRCCOLUMN2>
-				<R3RELEASE>701</R3RELEASE>
-				<TYPESRC_LENG>327</TYPESRC_LENG>
+				<SRCROW1>47</SRCROW1>
+				<SRCCOLUMN1>6</SRCCOLUMN1>
+				<SRCROW2>55</SRCROW2>
+				<SRCCOLUMN2>26</SRCCOLUMN2>
+				<TYPESRC_LENG>343</TYPESRC_LENG>
 				<TYPESRC>begin of ty_s__method
-    , cmpkey type seocmpkey
-    , method type line of seoo_methods_r
-    , method_details type seoo_method_details
-    , parameters type seos_parameters_r
-    , exceptions type seos_exceptions_r
-    , incname type program
-    , source type zvcst_t__char255 &quot;seop_source
-    , end of ty_s__method
+      , cmpkey type seocmpkey
+      , method type line of seoo_methods_r
+      , method_details type seoo_method_details
+      , parameters type seos_parameters_r
+      , exceptions type seos_exceptions_r
+      , incname type program
+      , source type zvcst_t__char255 &quot;seop_source
+      , end of ty_s__method
 </TYPESRC>
 			</item>
 			<item>
@@ -1167,13 +1185,12 @@
 				<AUTHOR>VVASILYEV00</AUTHOR>
 				<CREATEDON>2014-03-31</CREATEDON>
 				<CHANGEDBY>VVASILYEV00</CHANGEDBY>
-				<CHANGEDON>2014-03-31</CHANGEDON>
+				<CHANGEDON>2014-09-15</CHANGEDON>
 				<TYPTYPE>4</TYPTYPE>
-				<SRCROW1>49</SRCROW1>
-				<SRCCOLUMN1>4</SRCCOLUMN1>
-				<SRCROW2>49</SRCROW2>
-				<SRCCOLUMN2>79</SRCCOLUMN2>
-				<R3RELEASE>701</R3RELEASE>
+				<SRCROW1>57</SRCROW1>
+				<SRCCOLUMN1>6</SRCCOLUMN1>
+				<SRCROW2>57</SRCROW2>
+				<SRCCOLUMN2>81</SRCCOLUMN2>
 				<TYPESRC_LENG>78</TYPESRC_LENG>
 				<TYPESRC>ty_t__method type standard table of ty_s__method with non-unique default key
 </TYPESRC>
@@ -1189,18 +1206,17 @@
 				<AUTHOR>VVASILYEV00</AUTHOR>
 				<CREATEDON>2014-03-31</CREATEDON>
 				<CHANGEDBY>VVASILYEV00</CHANGEDBY>
-				<CHANGEDON>2014-03-31</CHANGEDON>
+				<CHANGEDON>2014-09-15</CHANGEDON>
 				<TYPTYPE>4</TYPTYPE>
-				<SRCROW1>51</SRCROW1>
-				<SRCCOLUMN1>4</SRCCOLUMN1>
-				<SRCROW2>54</SRCROW2>
-				<SRCCOLUMN2>31</SRCCOLUMN2>
-				<R3RELEASE>701</R3RELEASE>
-				<TYPESRC_LENG>156</TYPESRC_LENG>
+				<SRCROW1>59</SRCROW1>
+				<SRCCOLUMN1>6</SRCCOLUMN1>
+				<SRCROW2>62</SRCROW2>
+				<SRCCOLUMN2>33</SRCCOLUMN2>
+				<TYPESRC_LENG>162</TYPESRC_LENG>
 				<TYPESRC>begin of ty_s__implementings
-    , implementings type  seor_implementings_r
-    , impl_details type  seo_redefinitions
-    , end of ty_s__implementings
+      , implementings type  seor_implementings_r
+      , impl_details type  seo_redefinitions
+      , end of ty_s__implementings
 </TYPESRC>
 			</item>
 			<item>
@@ -1214,20 +1230,19 @@
 				<AUTHOR>VVASILYEV00</AUTHOR>
 				<CREATEDON>2014-03-31</CREATEDON>
 				<CHANGEDBY>VVASILYEV00</CHANGEDBY>
-				<CHANGEDON>2014-03-31</CHANGEDON>
+				<CHANGEDON>2014-09-15</CHANGEDON>
 				<TYPTYPE>4</TYPTYPE>
-				<SRCROW1>56</SRCROW1>
-				<SRCCOLUMN1>4</SRCCOLUMN1>
-				<SRCROW2>61</SRCROW2>
-				<SRCCOLUMN2>28</SRCCOLUMN2>
-				<R3RELEASE>701</R3RELEASE>
-				<TYPESRC_LENG>214</TYPESRC_LENG>
+				<SRCROW1>64</SRCROW1>
+				<SRCCOLUMN1>6</SRCCOLUMN1>
+				<SRCROW2>69</SRCROW2>
+				<SRCCOLUMN2>30</SRCCOLUMN2>
+				<TYPESRC_LENG>224</TYPESRC_LENG>
 				<TYPESRC>begin of ty_s__implmethod
-    , method type  vseomethod
-    , alias type line of seo_aliases
-    , include type line of seop_methods_w_include
-    , source type zvcst_t__char255
-    , end of ty_s__implmethod
+      , method type  vseomethod
+      , alias type line of seo_aliases
+      , include type line of seop_methods_w_include
+      , source type zvcst_t__char255
+      , end of ty_s__implmethod
 </TYPESRC>
 			</item>
 			<item>
@@ -1241,13 +1256,12 @@
 				<AUTHOR>VVASILYEV00</AUTHOR>
 				<CREATEDON>2014-03-31</CREATEDON>
 				<CHANGEDBY>VVASILYEV00</CHANGEDBY>
-				<CHANGEDON>2014-03-31</CHANGEDON>
+				<CHANGEDON>2014-09-15</CHANGEDON>
 				<TYPTYPE>4</TYPTYPE>
-				<SRCROW1>63</SRCROW1>
-				<SRCCOLUMN1>4</SRCCOLUMN1>
-				<SRCROW2>63</SRCROW2>
-				<SRCCOLUMN2>87</SRCCOLUMN2>
-				<R3RELEASE>701</R3RELEASE>
+				<SRCROW1>71</SRCROW1>
+				<SRCCOLUMN1>6</SRCCOLUMN1>
+				<SRCROW2>71</SRCROW2>
+				<SRCCOLUMN2>89</SRCCOLUMN2>
 				<TYPESRC_LENG>86</TYPESRC_LENG>
 				<TYPESRC>ty_t__implmethod type standard table of ty_s__implmethod with non-unique default key
 </TYPESRC>
@@ -1263,19 +1277,18 @@
 				<AUTHOR>VVASILYEV00</AUTHOR>
 				<CREATEDON>2014-03-31</CREATEDON>
 				<CHANGEDBY>VVASILYEV00</CHANGEDBY>
-				<CHANGEDON>2014-03-31</CHANGEDON>
+				<CHANGEDON>2014-09-15</CHANGEDON>
 				<TYPTYPE>4</TYPTYPE>
-				<SRCROW1>65</SRCROW1>
-				<SRCCOLUMN1>4</SRCCOLUMN1>
-				<SRCROW2>69</SRCROW2>
-				<SRCCOLUMN2>30</SRCCOLUMN2>
-				<R3RELEASE>701</R3RELEASE>
-				<TYPESRC_LENG>180</TYPESRC_LENG>
+				<SRCROW1>73</SRCROW1>
+				<SRCCOLUMN1>6</SRCCOLUMN1>
+				<SRCROW2>77</SRCROW2>
+				<SRCCOLUMN2>32</SRCCOLUMN2>
+				<TYPESRC_LENG>188</TYPESRC_LENG>
 				<TYPESRC>begin of ty_s__redefinition
-    , method type  vseomethod
-    , include type line of seop_methods_w_include
-    , source type zvcst_t__char255
-    , end of ty_s__redefinition
+      , method type  vseomethod
+      , include type line of seop_methods_w_include
+      , source type zvcst_t__char255
+      , end of ty_s__redefinition
 </TYPESRC>
 			</item>
 			<item>
@@ -1289,13 +1302,12 @@
 				<AUTHOR>VVASILYEV00</AUTHOR>
 				<CREATEDON>2014-03-31</CREATEDON>
 				<CHANGEDBY>VVASILYEV00</CHANGEDBY>
-				<CHANGEDON>2014-03-31</CHANGEDON>
+				<CHANGEDON>2014-09-15</CHANGEDON>
 				<TYPTYPE>4</TYPTYPE>
-				<SRCROW1>71</SRCROW1>
-				<SRCCOLUMN1>4</SRCCOLUMN1>
-				<SRCROW2>71</SRCROW2>
-				<SRCCOLUMN2>91</SRCCOLUMN2>
-				<R3RELEASE>701</R3RELEASE>
+				<SRCROW1>79</SRCROW1>
+				<SRCCOLUMN1>6</SRCCOLUMN1>
+				<SRCROW2>79</SRCROW2>
+				<SRCCOLUMN2>93</SRCCOLUMN2>
 				<TYPESRC_LENG>90</TYPESRC_LENG>
 				<TYPESRC>ty_t__redefinition type standard table of ty_s__redefinition with non-unique default key
 </TYPESRC>
@@ -1311,18 +1323,17 @@
 				<AUTHOR>VVASILYEV00</AUTHOR>
 				<CREATEDON>2014-03-31</CREATEDON>
 				<CHANGEDBY>VVASILYEV00</CHANGEDBY>
-				<CHANGEDON>2014-03-31</CHANGEDON>
+				<CHANGEDON>2014-09-15</CHANGEDON>
 				<TYPTYPE>4</TYPTYPE>
-				<SRCROW1>73</SRCROW1>
-				<SRCCOLUMN1>4</SRCCOLUMN1>
-				<SRCROW2>76</SRCROW2>
-				<SRCCOLUMN2>23</SRCCOLUMN2>
-				<R3RELEASE>701</R3RELEASE>
-				<TYPESRC_LENG>99</TYPESRC_LENG>
+				<SRCROW1>81</SRCROW1>
+				<SRCCOLUMN1>6</SRCCOLUMN1>
+				<SRCROW2>84</SRCROW2>
+				<SRCCOLUMN2>25</SRCCOLUMN2>
+				<TYPESRC_LENG>105</TYPESRC_LENG>
 				<TYPESRC>begin of ty_s__local
-    , name(3)
-    , source type zvcst_t__char255
-    , end of ty_s__local
+      , name(3)
+      , source type zvcst_t__char255
+      , end of ty_s__local
 </TYPESRC>
 			</item>
 			<item>
@@ -1336,13 +1347,12 @@
 				<AUTHOR>VVASILYEV00</AUTHOR>
 				<CREATEDON>2014-03-31</CREATEDON>
 				<CHANGEDBY>VVASILYEV00</CHANGEDBY>
-				<CHANGEDON>2014-03-31</CHANGEDON>
+				<CHANGEDON>2014-09-15</CHANGEDON>
 				<TYPTYPE>4</TYPTYPE>
-				<SRCROW1>78</SRCROW1>
-				<SRCCOLUMN1>4</SRCCOLUMN1>
-				<SRCROW2>78</SRCROW2>
-				<SRCCOLUMN2>77</SRCCOLUMN2>
-				<R3RELEASE>701</R3RELEASE>
+				<SRCROW1>86</SRCROW1>
+				<SRCCOLUMN1>6</SRCCOLUMN1>
+				<SRCROW2>86</SRCROW2>
+				<SRCCOLUMN2>79</SRCCOLUMN2>
 				<TYPESRC_LENG>76</TYPESRC_LENG>
 				<TYPESRC>ty_t__local type standard table of ty_s__local with non-unique default key
 </TYPESRC>
@@ -1358,34 +1368,33 @@
 				<AUTHOR>VVASILYEV00</AUTHOR>
 				<CREATEDON>2014-03-31</CREATEDON>
 				<CHANGEDBY>VVASILYEV00</CHANGEDBY>
-				<CHANGEDON>2014-03-31</CHANGEDON>
+				<CHANGEDON>2014-09-15</CHANGEDON>
 				<TYPTYPE>4</TYPTYPE>
-				<SRCROW1>80</SRCROW1>
-				<SRCCOLUMN1>4</SRCCOLUMN1>
-				<SRCROW2>99</SRCROW2>
-				<SRCCOLUMN2>27</SRCCOLUMN2>
-				<R3RELEASE>701</R3RELEASE>
-				<TYPESRC_LENG>923</TYPESRC_LENG>
+				<SRCROW1>88</SRCROW1>
+				<SRCCOLUMN1>6</SRCCOLUMN1>
+				<SRCROW2>107</SRCROW2>
+				<SRCCOLUMN2>29</SRCCOLUMN2>
+				<TYPESRC_LENG>961</TYPESRC_LENG>
 				<TYPESRC>begin of ty_s__ooclass
-    , vseoclass           type vseoclass
-    , friends             type seof_friendships_r
-    , attributes          type seoo_attributes_r
-    , methods             type ty_t__method
-    , events              type seoo_events_r
-    , types               type ty_s__types
-    , typepusages         type seot_typepusages_r
-    , aliases             type seo_aliases
-    , implementings       type ty_s__implementings
-    , methods_impl        type ty_t__implmethod
-    , inheritance         type seor_inheritance_r
-    , explore_inheritance type ty_t__vseoclass
-    , redefinitions       type seor_redefinitions_r
-    , methods_redef       type ty_t__redefinition
-    , classdeferreds      type seot_clsdeferrds_r
-    , interfacedeferreds  type seot_intdeferrds_r
-    , locals              type ty_t__local
-    , sections            type ty_t__section
-    , end   of ty_s__ooclass
+      , vseoclass           type vseoclass
+      , friends             type seof_friendships_r
+      , attributes          type seoo_attributes_r
+      , methods             type ty_t__method
+      , events              type seoo_events_r
+      , types               type ty_s__types
+      , typepusages         type seot_typepusages_r
+      , aliases             type seo_aliases
+      , implementings       type ty_s__implementings
+      , methods_impl        type ty_t__implmethod
+      , inheritance         type seor_inheritance_r
+      , explore_inheritance type ty_t__vseoclass
+      , redefinitions       type seor_redefinitions_r
+      , methods_redef       type ty_t__redefinition
+      , classdeferreds      type seot_clsdeferrds_r
+      , interfacedeferreds  type seot_intdeferrds_r
+      , locals              type ty_t__local
+      , sections            type ty_t__section
+      , end   of ty_s__ooclass
 </TYPESRC>
 			</item>
 			<item>
@@ -1398,84 +1407,84 @@
 				<EDITORDER>17</EDITORDER>
 				<AUTHOR>VVASILYEV00</AUTHOR>
 				<CREATEDON>2014-03-31</CREATEDON>
-				<CHANGEDON>0000-00-00</CHANGEDON>
+				<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+				<CHANGEDON>2014-09-15</CHANGEDON>
 				<TYPTYPE>4</TYPTYPE>
-				<SRCROW1>101</SRCROW1>
-				<SRCCOLUMN1>4</SRCCOLUMN1>
-				<SRCROW2>101</SRCROW2>
-				<SRCCOLUMN2>85</SRCCOLUMN2>
-				<R3RELEASE>701</R3RELEASE>
+				<SRCROW1>109</SRCROW1>
+				<SRCCOLUMN1>6</SRCCOLUMN1>
+				<SRCROW2>109</SRCROW2>
+				<SRCCOLUMN2>87</SRCCOLUMN2>
 				<TYPESRC_LENG>84</TYPESRC_LENG>
 				<TYPESRC>ty_t__ooclass type hashed table of ty_s__ooclass with unique key vseoclass-clsname
 </TYPESRC>
 			</item>
 		</TYPES>
 		<TYPE_SOURCE>
-			<item>    ty_t__clsname type hashed table of seoclsname with unique default key</item>
-			<item>    ty_t__vseoclass type standard table of ty_s__vseoclass with non-unique default key</item>
-			<item>    begin of ty_s__section</item>
-			<item>    , limu type  trobjtype</item>
-			<item>    , incname type program</item>
-			<item>    , source type zvcst_t__char255 &quot;seop_source</item>
-			<item>    , end of ty_s__section</item>
-			<item>    ty_t__section type standard table of ty_s__section with non-unique default key</item>
-			<item>    begin of ty_s__types</item>
-			<item>    , types type seoo_types_r</item>
-			<item>    , type_source type zvcst_t__char255 &quot;seop_source</item>
-			<item>    , end of ty_s__types</item>
-			<item>    begin of ty_s__method</item>
-			<item>    , cmpkey type seocmpkey</item>
-			<item>    , method type line of seoo_methods_r</item>
-			<item>    , method_details type seoo_method_details</item>
-			<item>    , parameters type seos_parameters_r</item>
-			<item>    , exceptions type seos_exceptions_r</item>
-			<item>    , incname type program</item>
-			<item>    , source type zvcst_t__char255 &quot;seop_source</item>
-			<item>    , end of ty_s__method</item>
-			<item>    ty_t__method type standard table of ty_s__method with non-unique default key</item>
-			<item>    begin of ty_s__implementings</item>
-			<item>    , implementings type  seor_implementings_r</item>
-			<item>    , impl_details type  seo_redefinitions</item>
-			<item>    , end of ty_s__implementings</item>
-			<item>    begin of ty_s__implmethod</item>
-			<item>    , method type  vseomethod</item>
-			<item>    , alias type line of seo_aliases</item>
-			<item>    , include type line of seop_methods_w_include</item>
-			<item>    , source type zvcst_t__char255</item>
-			<item>    , end of ty_s__implmethod</item>
-			<item>    ty_t__implmethod type standard table of ty_s__implmethod with non-unique default key</item>
-			<item>    begin of ty_s__redefinition</item>
-			<item>    , method type  vseomethod</item>
-			<item>    , include type line of seop_methods_w_include</item>
-			<item>    , source type zvcst_t__char255</item>
-			<item>    , end of ty_s__redefinition</item>
-			<item>    ty_t__redefinition type standard table of ty_s__redefinition with non-unique default key</item>
-			<item>    begin of ty_s__local</item>
-			<item>    , name(3)</item>
-			<item>    , source type zvcst_t__char255</item>
-			<item>    , end of ty_s__local</item>
-			<item>    ty_t__local type standard table of ty_s__local with non-unique default key</item>
-			<item>    begin of ty_s__ooclass</item>
-			<item>    , vseoclass           type vseoclass</item>
-			<item>    , friends             type seof_friendships_r</item>
-			<item>    , attributes          type seoo_attributes_r</item>
-			<item>    , methods             type ty_t__method</item>
-			<item>    , events              type seoo_events_r</item>
-			<item>    , types               type ty_s__types</item>
-			<item>    , typepusages         type seot_typepusages_r</item>
-			<item>    , aliases             type seo_aliases</item>
-			<item>    , implementings       type ty_s__implementings</item>
-			<item>    , methods_impl        type ty_t__implmethod</item>
-			<item>    , inheritance         type seor_inheritance_r</item>
-			<item>    , explore_inheritance type ty_t__vseoclass</item>
-			<item>    , redefinitions       type seor_redefinitions_r</item>
-			<item>    , methods_redef       type ty_t__redefinition</item>
-			<item>    , classdeferreds      type seot_clsdeferrds_r</item>
-			<item>    , interfacedeferreds  type seot_intdeferrds_r</item>
-			<item>    , locals              type ty_t__local</item>
-			<item>    , sections            type ty_t__section</item>
-			<item>    , end   of ty_s__ooclass</item>
-			<item>    ty_t__ooclass type hashed table of ty_s__ooclass with unique key vseoclass-clsname</item>
+			<item>      ty_t__clsname type hashed table of seoclsname with unique default key</item>
+			<item>      ty_t__vseoclass type standard table of ty_s__vseoclass with non-unique default key</item>
+			<item>      begin of ty_s__section</item>
+			<item>      , limu type  trobjtype</item>
+			<item>      , incname type program</item>
+			<item>      , source type zvcst_t__char255 &quot;seop_source</item>
+			<item>      , end of ty_s__section</item>
+			<item>      ty_t__section type standard table of ty_s__section with non-unique default key</item>
+			<item>      begin of ty_s__types</item>
+			<item>      , types type seoo_types_r</item>
+			<item>      , type_source type zvcst_t__char255 &quot;seop_source</item>
+			<item>      , end of ty_s__types</item>
+			<item>      begin of ty_s__method</item>
+			<item>      , cmpkey type seocmpkey</item>
+			<item>      , method type line of seoo_methods_r</item>
+			<item>      , method_details type seoo_method_details</item>
+			<item>      , parameters type seos_parameters_r</item>
+			<item>      , exceptions type seos_exceptions_r</item>
+			<item>      , incname type program</item>
+			<item>      , source type zvcst_t__char255 &quot;seop_source</item>
+			<item>      , end of ty_s__method</item>
+			<item>      ty_t__method type standard table of ty_s__method with non-unique default key</item>
+			<item>      begin of ty_s__implementings</item>
+			<item>      , implementings type  seor_implementings_r</item>
+			<item>      , impl_details type  seo_redefinitions</item>
+			<item>      , end of ty_s__implementings</item>
+			<item>      begin of ty_s__implmethod</item>
+			<item>      , method type  vseomethod</item>
+			<item>      , alias type line of seo_aliases</item>
+			<item>      , include type line of seop_methods_w_include</item>
+			<item>      , source type zvcst_t__char255</item>
+			<item>      , end of ty_s__implmethod</item>
+			<item>      ty_t__implmethod type standard table of ty_s__implmethod with non-unique default key</item>
+			<item>      begin of ty_s__redefinition</item>
+			<item>      , method type  vseomethod</item>
+			<item>      , include type line of seop_methods_w_include</item>
+			<item>      , source type zvcst_t__char255</item>
+			<item>      , end of ty_s__redefinition</item>
+			<item>      ty_t__redefinition type standard table of ty_s__redefinition with non-unique default key</item>
+			<item>      begin of ty_s__local</item>
+			<item>      , name(3)</item>
+			<item>      , source type zvcst_t__char255</item>
+			<item>      , end of ty_s__local</item>
+			<item>      ty_t__local type standard table of ty_s__local with non-unique default key</item>
+			<item>      begin of ty_s__ooclass</item>
+			<item>      , vseoclass           type vseoclass</item>
+			<item>      , friends             type seof_friendships_r</item>
+			<item>      , attributes          type seoo_attributes_r</item>
+			<item>      , methods             type ty_t__method</item>
+			<item>      , events              type seoo_events_r</item>
+			<item>      , types               type ty_s__types</item>
+			<item>      , typepusages         type seot_typepusages_r</item>
+			<item>      , aliases             type seo_aliases</item>
+			<item>      , implementings       type ty_s__implementings</item>
+			<item>      , methods_impl        type ty_t__implmethod</item>
+			<item>      , inheritance         type seor_inheritance_r</item>
+			<item>      , explore_inheritance type ty_t__vseoclass</item>
+			<item>      , redefinitions       type seor_redefinitions_r</item>
+			<item>      , methods_redef       type ty_t__redefinition</item>
+			<item>      , classdeferreds      type seot_clsdeferrds_r</item>
+			<item>      , interfacedeferreds  type seot_intdeferrds_r</item>
+			<item>      , locals              type ty_t__local</item>
+			<item>      , sections            type ty_t__section</item>
+			<item>      , end   of ty_s__ooclass</item>
+			<item>      ty_t__ooclass type hashed table of ty_s__ooclass with unique key vseoclass-clsname</item>
 		</TYPE_SOURCE>
 	</TYPES>
 	<TYPEPUSAGES>
@@ -1631,7 +1640,7 @@
 		<AUTHOR>VVASILYEV00</AUTHOR>
 		<CREATEDON>2014-03-31</CREATEDON>
 		<CHANGEDBY>VVASILYEV00</CHANGEDBY>
-		<CHANGEDON>2014-03-31</CHANGEDON>
+		<CHANGEDON>2014-09-15</CHANGEDON>
 	</INHERITANCE>
 	<EXPLORE_INHERITANCE>
 		<item>
@@ -1680,6 +1689,12 @@
 			<CLSNAME>ZCL_VCS__R3TR__CLAS</CLSNAME>
 			<REFCLSNAME>ZCL_VCS_OBJECTS_STACK</REFCLSNAME>
 			<VERSION>1</VERSION>
+			<MTDNAME>DOWNLOAD</MTDNAME>
+		</item>
+		<item>
+			<CLSNAME>ZCL_VCS__R3TR__CLAS</CLSNAME>
+			<REFCLSNAME>ZCL_VCS_OBJECTS_STACK</REFCLSNAME>
+			<VERSION>1</VERSION>
 			<MTDNAME>GET_TYPE_OBJECT</MTDNAME>
 		</item>
 		<item>
@@ -1687,6 +1702,24 @@
 			<REFCLSNAME>ZCL_VCS_OBJECTS_STACK</REFCLSNAME>
 			<VERSION>1</VERSION>
 			<MTDNAME>READ_OBJECT</MTDNAME>
+		</item>
+		<item>
+			<CLSNAME>ZCL_VCS__R3TR__CLAS</CLSNAME>
+			<REFCLSNAME>ZCL_VCS_OBJECTS_STACK</REFCLSNAME>
+			<VERSION>1</VERSION>
+			<MTDNAME>READ_OBJECTS</MTDNAME>
+		</item>
+		<item>
+			<CLSNAME>ZCL_VCS__R3TR__CLAS</CLSNAME>
+			<REFCLSNAME>ZCL_VCS_OBJECTS_STACK</REFCLSNAME>
+			<VERSION>1</VERSION>
+			<MTDNAME>READ_OBJECTS_CHOOSE</MTDNAME>
+		</item>
+		<item>
+			<CLSNAME>ZCL_VCS__R3TR__CLAS</CLSNAME>
+			<REFCLSNAME>ZCL_VCS_OBJECTS_STACK</REFCLSNAME>
+			<VERSION>1</VERSION>
+			<MTDNAME>WRITE_OBJECT_CHOOSE</MTDNAME>
 		</item>
 	</REDEFINITIONS>
 	<METHODS_REDEF>
@@ -1698,17 +1731,16 @@
 				<LANGU>R</LANGU>
 				<EXPOSURE>1</EXPOSURE>
 				<STATE>1</STATE>
-				<EDITORDER>1</EDITORDER>
+				<EDITORDER>7</EDITORDER>
 				<DISPID>0</DISPID>
 				<AUTHOR>VVASILYEV00</AUTHOR>
 				<CREATEDON>2014-03-26</CREATEDON>
 				<CHANGEDBY>VVASILYEV00</CHANGEDBY>
-				<CHANGEDON>2014-04-01</CHANGEDON>
+				<CHANGEDON>2014-09-09</CHANGEDON>
 				<MTDTYPE>0</MTDTYPE>
 				<MTDDECLTYP>0</MTDDECLTYP>
 				<MTDABSTRCT>X</MTDABSTRCT>
 				<MTDNEWEXC>X</MTDNEWEXC>
-				<R3RELEASE>701</R3RELEASE>
 				<BCMTDCAT>00</BCMTDCAT>
 				<BCMTDSYN>0</BCMTDSYN>
 			</METHOD>
@@ -1731,15 +1763,15 @@
 				<LANGU>R</LANGU>
 				<EXPOSURE>1</EXPOSURE>
 				<STATE>1</STATE>
-				<EDITORDER>0</EDITORDER>
+				<EDITORDER>6</EDITORDER>
 				<DISPID>0</DISPID>
 				<AUTHOR>VVASILYEV00</AUTHOR>
 				<CREATEDON>2014-03-27</CREATEDON>
-				<CHANGEDON>0000-00-00</CHANGEDON>
+				<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+				<CHANGEDON>2014-09-09</CHANGEDON>
 				<MTDTYPE>0</MTDTYPE>
 				<MTDDECLTYP>0</MTDDECLTYP>
 				<MTDABSTRCT>X</MTDABSTRCT>
-				<R3RELEASE>701</R3RELEASE>
 				<BCMTDCAT>00</BCMTDCAT>
 				<BCMTDSYN>0</BCMTDSYN>
 			</METHOD>
@@ -1762,15 +1794,15 @@
 				<LANGU>R</LANGU>
 				<EXPOSURE>1</EXPOSURE>
 				<STATE>1</STATE>
-				<EDITORDER>2</EDITORDER>
+				<EDITORDER>9</EDITORDER>
 				<DISPID>0</DISPID>
 				<AUTHOR>VVASILYEV00</AUTHOR>
 				<CREATEDON>2014-03-26</CREATEDON>
-				<CHANGEDON>0000-00-00</CHANGEDON>
+				<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+				<CHANGEDON>2014-09-09</CHANGEDON>
 				<MTDTYPE>0</MTDTYPE>
 				<MTDDECLTYP>0</MTDDECLTYP>
 				<MTDABSTRCT>X</MTDABSTRCT>
-				<R3RELEASE>701</R3RELEASE>
 				<BCMTDCAT>00</BCMTDCAT>
 				<BCMTDSYN>0</BCMTDSYN>
 			</METHOD>
@@ -1793,17 +1825,16 @@
 				<LANGU>R</LANGU>
 				<EXPOSURE>1</EXPOSURE>
 				<STATE>1</STATE>
-				<EDITORDER>3</EDITORDER>
+				<EDITORDER>10</EDITORDER>
 				<DISPID>0</DISPID>
 				<AUTHOR>VVASILYEV00</AUTHOR>
 				<CREATEDON>2014-03-26</CREATEDON>
 				<CHANGEDBY>VVASILYEV00</CHANGEDBY>
-				<CHANGEDON>2014-03-28</CHANGEDON>
+				<CHANGEDON>2014-09-09</CHANGEDON>
 				<MTDTYPE>0</MTDTYPE>
 				<MTDDECLTYP>0</MTDDECLTYP>
 				<MTDABSTRCT>X</MTDABSTRCT>
 				<MTDNEWEXC>X</MTDNEWEXC>
-				<R3RELEASE>701</R3RELEASE>
 				<BCMTDCAT>00</BCMTDCAT>
 				<BCMTDSYN>0</BCMTDSYN>
 			</METHOD>
@@ -1826,16 +1857,15 @@
 				<LANGU>R</LANGU>
 				<EXPOSURE>1</EXPOSURE>
 				<STATE>1</STATE>
-				<EDITORDER>2</EDITORDER>
+				<EDITORDER>8</EDITORDER>
 				<DISPID>0</DISPID>
 				<AUTHOR>VVASILYEV00</AUTHOR>
 				<CREATEDON>2014-03-31</CREATEDON>
 				<CHANGEDBY>VVASILYEV00</CHANGEDBY>
-				<CHANGEDON>2014-03-31</CHANGEDON>
+				<CHANGEDON>2014-09-09</CHANGEDON>
 				<MTDTYPE>0</MTDTYPE>
 				<MTDDECLTYP>0</MTDDECLTYP>
 				<MTDABSTRCT>X</MTDABSTRCT>
-				<R3RELEASE>701</R3RELEASE>
 				<BCMTDCAT>00</BCMTDCAT>
 				<BCMTDSYN>0</BCMTDSYN>
 			</METHOD>
@@ -1848,6 +1878,131 @@
 			</INCLUDE>
 			<SOURCE>
 				<SOURCEID>CLAS.ZCL_VCS__R3TR__CLAS.CROSSSOURCES.abap</SOURCEID>
+			</SOURCE>
+		</item>
+		<item>
+			<METHOD>
+				<CLSNAME>ZCL_VCS_OBJECTS_STACK</CLSNAME>
+				<CMPNAME>WRITE_OBJECT_CHOOSE</CMPNAME>
+				<VERSION>1</VERSION>
+				<LANGU>R</LANGU>
+				<EXPOSURE>1</EXPOSURE>
+				<STATE>1</STATE>
+				<EDITORDER>0</EDITORDER>
+				<DISPID>0</DISPID>
+				<AUTHOR>VVASILYEV00</AUTHOR>
+				<CREATEDON>2014-09-09</CREATEDON>
+				<CHANGEDON>0000-00-00</CHANGEDON>
+				<MTDTYPE>0</MTDTYPE>
+				<MTDDECLTYP>0</MTDDECLTYP>
+				<MTDABSTRCT>X</MTDABSTRCT>
+				<R3RELEASE>701</R3RELEASE>
+				<BCMTDCAT>00</BCMTDCAT>
+				<BCMTDSYN>0</BCMTDSYN>
+			</METHOD>
+			<INCLUDE>
+				<CPDKEY>
+					<CLSNAME>ZCL_VCS__R3TR__CLAS</CLSNAME>
+					<CPDNAME>WRITE_OBJECT_CHOOSE</CPDNAME>
+				</CPDKEY>
+				<INCNAME>ZCL_VCS__R3TR__CLAS===========CM00I</INCNAME>
+			</INCLUDE>
+			<SOURCE>
+				<SOURCEID>CLAS.ZCL_VCS__R3TR__CLAS.WRITE_OBJECT_CHOOSE.abap</SOURCEID>
+			</SOURCE>
+		</item>
+		<item>
+			<METHOD>
+				<CLSNAME>ZCL_VCS_OBJECTS_STACK</CLSNAME>
+				<CMPNAME>READ_OBJECTS_CHOOSE</CMPNAME>
+				<VERSION>1</VERSION>
+				<LANGU>R</LANGU>
+				<DESCRIPT>Подготовить объекты для выбора</DESCRIPT>
+				<EXPOSURE>1</EXPOSURE>
+				<STATE>1</STATE>
+				<EDITORDER>1</EDITORDER>
+				<DISPID>0</DISPID>
+				<AUTHOR>VVASILYEV00</AUTHOR>
+				<CREATEDON>2014-09-08</CREATEDON>
+				<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+				<CHANGEDON>2014-09-09</CHANGEDON>
+				<MTDTYPE>0</MTDTYPE>
+				<MTDDECLTYP>0</MTDDECLTYP>
+				<MTDABSTRCT>X</MTDABSTRCT>
+				<BCMTDCAT>00</BCMTDCAT>
+				<BCMTDSYN>0</BCMTDSYN>
+			</METHOD>
+			<INCLUDE>
+				<CPDKEY>
+					<CLSNAME>ZCL_VCS__R3TR__CLAS</CLSNAME>
+					<CPDNAME>READ_OBJECTS_CHOOSE</CPDNAME>
+				</CPDKEY>
+				<INCNAME>ZCL_VCS__R3TR__CLAS===========CM00J</INCNAME>
+			</INCLUDE>
+			<SOURCE>
+				<SOURCEID>CLAS.ZCL_VCS__R3TR__CLAS.READ_OBJECTS_CHOOSE.abap</SOURCEID>
+			</SOURCE>
+		</item>
+		<item>
+			<METHOD>
+				<CLSNAME>ZCL_VCS_OBJECTS_STACK</CLSNAME>
+				<CMPNAME>READ_OBJECTS</CMPNAME>
+				<VERSION>1</VERSION>
+				<LANGU>R</LANGU>
+				<EXPOSURE>1</EXPOSURE>
+				<STATE>1</STATE>
+				<EDITORDER>2</EDITORDER>
+				<DISPID>0</DISPID>
+				<AUTHOR>VVASILYEV00</AUTHOR>
+				<CREATEDON>2014-09-08</CREATEDON>
+				<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+				<CHANGEDON>2014-09-09</CHANGEDON>
+				<MTDTYPE>0</MTDTYPE>
+				<MTDDECLTYP>0</MTDDECLTYP>
+				<MTDABSTRCT>X</MTDABSTRCT>
+				<BCMTDCAT>00</BCMTDCAT>
+				<BCMTDSYN>0</BCMTDSYN>
+			</METHOD>
+			<INCLUDE>
+				<CPDKEY>
+					<CLSNAME>ZCL_VCS__R3TR__CLAS</CLSNAME>
+					<CPDNAME>READ_OBJECTS</CPDNAME>
+				</CPDKEY>
+				<INCNAME>ZCL_VCS__R3TR__CLAS===========CM00K</INCNAME>
+			</INCLUDE>
+			<SOURCE>
+				<SOURCEID>CLAS.ZCL_VCS__R3TR__CLAS.READ_OBJECTS.abap</SOURCEID>
+			</SOURCE>
+		</item>
+		<item>
+			<METHOD>
+				<CLSNAME>ZCL_VCS_OBJECTS_STACK</CLSNAME>
+				<CMPNAME>DOWNLOAD</CMPNAME>
+				<VERSION>1</VERSION>
+				<LANGU>R</LANGU>
+				<EXPOSURE>1</EXPOSURE>
+				<STATE>1</STATE>
+				<EDITORDER>5</EDITORDER>
+				<DISPID>0</DISPID>
+				<AUTHOR>VVASILYEV00</AUTHOR>
+				<CREATEDON>2014-09-08</CREATEDON>
+				<CHANGEDBY>VVASILYEV00</CHANGEDBY>
+				<CHANGEDON>2014-09-09</CHANGEDON>
+				<MTDTYPE>0</MTDTYPE>
+				<MTDDECLTYP>0</MTDDECLTYP>
+				<MTDABSTRCT>X</MTDABSTRCT>
+				<BCMTDCAT>00</BCMTDCAT>
+				<BCMTDSYN>0</BCMTDSYN>
+			</METHOD>
+			<INCLUDE>
+				<CPDKEY>
+					<CLSNAME>ZCL_VCS__R3TR__CLAS</CLSNAME>
+					<CPDNAME>DOWNLOAD</CPDNAME>
+				</CPDKEY>
+				<INCNAME>ZCL_VCS__R3TR__CLAS===========CM00L</INCNAME>
+			</INCLUDE>
+			<SOURCE>
+				<SOURCEID>CLAS.ZCL_VCS__R3TR__CLAS.DOWNLOAD.abap</SOURCEID>
 			</SOURCE>
 		</item>
 	</METHODS_REDEF>
