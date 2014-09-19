@@ -37,10 +37,9 @@ method run_logic.
           i_user        = d_user_id
           is_badi_param = ds_badi_param.
 
-      concatenate '\ROOT\WEBFOLDERS\'
+      concatenate '\ROOT\VCORE\'
                    me->gr_o__replace->d_appset      '\'
                    me->gr_o__replace->d_application '\'
-                   'PRIVATEPUBLICATIONS'            '\'
                    me->gr_o__replace->d_user        '\'
                    sy-datum(4)
                    sy-datum+4(2)
@@ -48,7 +47,7 @@ method run_logic.
                    sy-uzeit(2)
                    sy-uzeit+2(2)
                    sy-uzeit+4                       '\'
-                   'NEW_LOGIC.LOG'
+                   'VCORE.LOG'
              into l_path.
 
       ld_v__log_file = l_path.
