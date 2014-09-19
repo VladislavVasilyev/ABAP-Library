@@ -70,9 +70,11 @@ method run_logic.
           i_f__parallel_task = gd_f__parallel_task
           i_v__num_tasks     = gd_v__num_tasks.
 
+      print_log( ).
+
       lr_o__run_logic->run( ).
 
-      ef_warning  = print_log( i_t__containers = lr_o__run_logic->gd_t__containers i_v__path = l_path ).
+      ef_warning  = print_log_for_table( i_t__containers = lr_o__run_logic->gd_t__containers i_v__path = l_path ).
 
       call method cl_ujd_utility=>write_long_message
         exporting

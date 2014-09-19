@@ -1,5 +1,9 @@
 method math.
 
+  constants
+  : cs_func             type string value `^([A-Z0-9\_]+)\>\s\(`
+  .
+
   data
   : ld_s__variable      type zbnlt_s__math_var
   , ld_v__variable      type string
@@ -33,6 +37,17 @@ method math.
         elseif  gr_o__cursor->check_num( )  = abap_true .
           ld_v__token = gr_o__cursor->get_token( esc = abap_true ).
           concatenate e_v__exp ld_v__token  into e_v__exp separated by space.
+        elseif gr_o__cursor->check_tokens( q = 2 regex = cs_func ) = abap_true.
+          create data ld_s__variable-data type uj_keyfigure.
+          call method process_function
+            importing
+              e_v__funcname = ld_s__variable-func_name
+              e_t__param    = ld_s__variable-param.
+          add 1 to ld_v__varcnt.
+          concatenate `V` ld_v__varcnt                into ld_s__variable-varname .
+          ld_v__variable = ld_s__variable-varname.
+          concatenate e_v__exp ld_v__variable into e_v__exp separated by space.
+          append ld_s__variable to e_t__varible.
         else.
           clear ld_v__cntkyf.
           gr_o__cursor->get_token( esc = abap_true ).

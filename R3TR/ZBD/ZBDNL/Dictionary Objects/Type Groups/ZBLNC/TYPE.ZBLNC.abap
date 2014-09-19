@@ -46,6 +46,7 @@ constants: begin of zblnc_keyword
            , tilde              type string value `~`
            , open_parenthesis   type string value `(`
            , close_parenthesis  type string value `)`
+           , conc               type string value `&&`
            , begin              type string value `BEGIN`
            , end                type string value `END`
            , search             type string value `$SEARCH`
@@ -87,3 +88,6 @@ constants: begin of zblnc_keyword
            , comma              type string value `,`
            , tablefordown       type string value `$TABLE FOR DOWNLOAD`
            , end of zblnc_keyword.
+
+
+ constants zblnc_default_num_task type i value 4.

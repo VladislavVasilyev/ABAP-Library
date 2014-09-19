@@ -5,6 +5,7 @@ function zbd00_rfc_bpc_write .
 *"     VALUE(I_APPSET_ID) TYPE  UJ_APPSET_ID
 *"     VALUE(I_APPL_ID) TYPE  UJ_APPL_ID
 *"     VALUE(I_MODE) TYPE  ZRB_WRITE_BACK_MODE
+*"     VALUE(I_BPC_USER) TYPE  UJ0_S_USER OPTIONAL
 *"  EXPORTING
 *"     VALUE(ET_MESSAGE) TYPE  UJ0_T_MESSAGE
 *"     VALUE(ES_STATUS_RECORDS) TYPE  UJR_S_STATUS_RECORDS
@@ -29,13 +30,15 @@ function zbd00_rfc_bpc_write .
   , lr_x_write_back        type ref to cx_root
   .
 
-  ls_user-user_id = 'X5'.
+  ls_user = i_bpc_user.
   cl_uj_context=>set_cur_context(
-                  i_appset_id = i_appset_id
-                  i_appl_id   = i_appl_id
-                  is_user     = ls_user ).
-  lo_uj_context ?= cl_uj_context=>get_cur_context( ).
-  lo_uj_context->switch_to_srvadmin( ).
+              i_appset_id = i_appset_id
+              i_appl_id   = i_appl_id
+              is_user     = ls_user ).
+
+
+*  lo_uj_context ?= cl_uj_context=>get_cur_context( ).
+*  lo_uj_context->switch_to_srvadmin( ).
 *╚═══════════════════════════════════════════════════════════════════╝
 
 

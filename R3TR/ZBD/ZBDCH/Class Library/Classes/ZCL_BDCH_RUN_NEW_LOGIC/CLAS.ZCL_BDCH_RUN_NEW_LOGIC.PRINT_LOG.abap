@@ -1,208 +1,85 @@
 method print_log.
 
-  constants
-  : cs_read             type string value `READ: `
-  , cs_write            type string value `WRITE:`
-  , cs_tab              type string value `      `
-  , cs_space            type string value `  `
+  data " data declarations
+  : ls_mailsubject          type sodocchgi1
+  , lt_mailrecipients       type standard table of somlrec90
+  , ls_mailrecipients       type somlrec90
+  , lt_mailtxt              type standard table of soli
+  , ls_mailtxt              type soli
+  , time                    type string
+  , lo_logger               type ref to cl_ujd_logger
+  , lv_buf                  type string
+  , lv_hor_tab              type string
+  , ld_v__mail              type uje_user-email
+  , ld_t__mail              type table of string
+  , ld_v__start_date        type string
+  , ld_v__start_time        type string
+  , ld_v__delta_time        type string
+  , ld_v__str               type string
+  , ld_v__value             type c length 20
+  , ld_v__cnt               type i
+  , ld_v__txt               type string
+  , ld_v__theme             type string
   .
 
   data
-  : ld_t__log_read      type zbd0t_t__log_read
-  , ld_t__log_read_dim  type zbd0t_t__log_dimension
-  , ld_t__log_write     type zbd0t_t__log_write
-  , ld_v__start_date    type string
-  , ld_v__start_time    type string
-  , ld_v__delta_time    type string
-  , ld_v__message       type string
-  , ld_v__appset_id     type uj_appset_id
-  , ld_v__appl_id       type uj_appl_id
-  , ld_v__dimension     type uj_dim_name
-  , ld_v__infoprovide   type rsinfoprov
-  , ld_v__nr_pack       type string
-  , ld_v__nr_rows       type string
-  , ld_v__time          type string
-  , ld_v__str           type string
-  , ld_v__len           type i
-  , ld_f__wcmessage     type rs_bool
-  , ld_f__wemessage     type rs_bool
+  : ls_message              type ujd_s_value
+  , lt_value                type table of string
+  , lv_lenght               type i
+  , lv_offset               type i
   .
 
   field-symbols
-  : <ld_s__containers>    type zbnlt_s__containers
-  , <ld_s__log_read>      type zbd0t_s__log_read
-  , <ld_s__log_write>     type zbd0t_s__log_write
-  , <ld_s__message>       type uj0_s_message
-  , <ld_s__log_read_dim>  type zbd0t_s__log_dimension
+  : <ls_mailtxt>            type soli
+  , <ld_s__value>           type string
+  , <ld_s__message>         type uj0_s_message
+  , <ld_v__mail>            type string
   .
 
-  loop at         i_t__containers
-       assigning <ld_s__containers>.
+*--------------------------------------------------------------------*
+  split ds_badi_param-parameter at `;` into table lt_value.
 
-    clear
-    : ld_t__log_read
-    , ld_t__log_write
-    , ld_f__wcmessage
-    , ld_f__wemessage
-    .
-
-    ld_v__appset_id   = <ld_s__containers>-object->gr_o__model->gr_o__application->gd_v__appset_id.
-    ld_v__appl_id     = <ld_s__containers>-object->gr_o__model->gr_o__application->gd_v__appl_id.
-    ld_v__dimension   = <ld_s__containers>-object->gr_o__model->gr_o__application->gd_v__dimension.
-    ld_v__infoprovide = <ld_s__containers>-object->gr_o__model->gr_o__application->gd_v__infoprovide.
-
-    call method <ld_s__containers>-object->get_log
-      importing
-        e_t__read     = ld_t__log_read
-        e_t__write    = ld_t__log_write
-        e_t__read_dim = ld_t__log_read_dim.
-
-    check ld_t__log_read is not initial or ld_t__log_write is not initial.
-
-    cl_ujk_logger=>log( `======================================================` ).
-
-    case <ld_s__containers>-command.
-
-      when zblnc_keyword-select.
-        if  ld_v__appset_id is not initial.
-          if ld_v__appl_id is not initial.
-            concatenate `TABLE ` <ld_s__containers>-tablename ` FOR ` ld_v__appset_id `~` ld_v__appl_id   into ld_v__message.
-          elseif ld_v__dimension is not initial.
-            concatenate `TABLE ` <ld_s__containers>-tablename ` FOR ` ld_v__appset_id `~` ld_v__dimension into ld_v__message.
-          else.
-            concatenate `TABLE ` <ld_s__containers>-tablename ` FOR ` ld_v__appset_id into ld_v__message.
-          endif.
-        elseif ld_v__infoprovide is not initial.
-          concatenate `TABLE ` <ld_s__containers>-tablename ` FOR ` sy-sysid `~` ld_v__infoprovide into ld_v__message.
-        endif.
-      when zblnc_keyword-tablefordown or zblnc_keyword-ctable.
-        concatenate `TABLE ` <ld_s__containers>-tablename ` FOR ` ld_v__appset_id `~` ld_v__appl_id into ld_v__message.
-      when zblnc_keyword-clear.
-        concatenate `CLEAR ` ld_v__appset_id `~` ld_v__appl_id into ld_v__message.
-    endcase.
-
-    cl_ujk_logger=>log( ld_v__message ).
-
-    if ld_t__log_read_dim is not initial.
-      cl_ujk_logger=>log( `---` ).
-      cl_ujk_logger=>log( `READ DIMENSIONS:` ).
-      loop at ld_t__log_read_dim assigning <ld_s__log_read_dim>.
-        loop at <ld_s__log_read_dim>-log assigning <ld_s__log_read>.
-
-          concatenate <ld_s__log_read_dim>-dimension `                     ` into ld_v__str.
-
-          ld_v__str = ld_v__str(14).
-
-          " Количество записей
-          ld_v__nr_rows = get_nr_rows( i_s__read = <ld_s__log_read> ).
-
-          " Время
-          ld_v__time = get_time( i_v__start      = <ld_s__log_read>-time_start
-                                 i_v__end        = <ld_s__log_read>-time_end ).
-
-          concatenate ld_v__str ld_v__nr_rows ld_v__time into ld_v__message separated by cs_space.
-          cl_ujk_logger=>log( ld_v__message ).
-
-        endloop.
-      endloop.
-      cl_ujk_logger=>log( `---` ).
+  loop at lt_value into ls_mailtxt.
+    if sy-tabix = 1.
+      message s018(zmx_bdch_badi). " выбор
     endif.
-
-    loop at ld_t__log_read assigning <ld_s__log_read>.
-      if sy-tabix = 1.
-        ld_v__str = cs_read.
-      else.
-        ld_v__str = cs_tab.
-      endif.
-
-      " WARNING
-      case <ld_s__containers>-command.
-        when zblnc_keyword-select.
-          if ld_f__wemessage = abap_false.
-            if <ld_s__log_read>-num_rec is initial and lines( ld_t__log_read ) = 1 .
-              e_f__warning = abap_true.
-
-              concatenate `The table ` `"` <ld_s__containers>-tablename `"` ` does not contain any data.` into ld_v__message.
-              call method cl_ujd_utility=>write_long_message
-                exporting
-                  i_message  = ld_v__message
-                changing
-                  ct_message = gt_message.
-
-              ld_f__wemessage = abap_true.
-            endif.
-          endif.
-      endcase.
-
-      " Номер пакета
-      ld_v__nr_pack = get_nr_pack( <ld_s__log_read>-nr_pack ).
-
-      " Количество записей
-      ld_v__nr_rows = get_nr_rows( i_s__read = <ld_s__log_read> ).
-
-      " Время
-      ld_v__time = get_time( i_v__start      = <ld_s__log_read>-time_start
-                             i_v__end        = <ld_s__log_read>-time_end ).
-
-      concatenate ld_v__str ld_v__nr_pack  ld_v__nr_rows ld_v__time <ld_s__log_read>-rfc_task into ld_v__message separated by cs_space.
-      cl_ujk_logger=>log( ld_v__message ).
-    endloop.
-
-    loop at ld_t__log_write assigning <ld_s__log_write>.
-      if sy-tabix = 1.
-        ld_v__str = cs_write.
-      else.
-        ld_v__str = cs_tab.
-      endif.
-
-      " WARNING
-      case <ld_s__containers>-command.
-        when zblnc_keyword-tablefordown.
-          if ld_f__wcmessage = abap_false.
-            if <ld_s__log_write>-status_records-nr_fail is not initial.
-              e_f__warning = abap_true.
-
-              concatenate `In the process of writing data from table ` `"` <ld_s__containers>-tablename `",` ` error records entries.` into ld_v__message.
-              call method cl_ujd_utility=>write_long_message
-                exporting
-                  i_message  = ld_v__message
-                changing
-                  ct_message = gt_message.
-
-              ld_f__wcmessage = abap_true.
-
-            endif.
-          endif.
-      endcase.
-
-      " Номер пакета
-      ld_v__nr_pack = get_nr_pack( <ld_s__log_write>-nr_pack ).
-
-      " Количество записей
-      ld_v__nr_rows = get_nr_rows( i_s__write = <ld_s__log_write> i_v__size = 7 ).
-
-      " Время
-      ld_v__time = get_time( i_v__start      = <ld_s__log_write>-time_start
-                             i_v__end        = <ld_s__log_write>-time_end ).
-
-      concatenate ld_v__str ld_v__nr_pack ld_v__nr_rows ld_v__time <ld_s__log_write>-rfc_task  into ld_v__message separated by cs_space.
-
-      cl_ujk_logger=>log( ld_v__message ).
-
-      if <ld_s__log_write>-status_records-nr_fail is not initial.
-        ld_v__str = get_space_text( 6 ).
-        loop at <ld_s__log_write>-message assigning <ld_s__message>.
-          concatenate cs_tab ld_v__str <ld_s__message>-message into ld_v__message separated by cs_space.
-          cl_ujk_logger=>log( ld_v__message ).
-        endloop.
-      endif.
-
-    endloop.
-
+    mprint> ls_mailtxt.
   endloop.
 
-  cl_ujk_logger=>log( `======================================================` ).
+  if not gv_f__rspc eq abap_true.
 
-  cl_ujk_logger=>save_log( i_v__path ).
+    lo_logger = cl_ujd_package_context=>get_logger( ).
 
+    read table lo_logger->dt_log_content
+         with key fieldname = 'PROMPT'
+         into ls_message transporting value.
+
+  else.
+    ls_message-value = d_selection.
+  endif.
+
+  shift ls_message-value right deleting trailing '|'.
+
+  find first occurrence of regex '@@@EXPAND@@@'
+       in ls_message-value
+       match offset lv_offset
+       match length lv_lenght.
+
+  add lv_lenght to lv_offset.
+
+  split ls_message-value+lv_offset at '|DIMENSION:' into table lt_value.
+
+  replace all occurrences of '|' in table lt_value with `: `.
+
+  delete lt_value where table_line is initial.
+
+  loop at lt_value into ls_mailtxt.
+    if sy-tabix = 1.
+      message s014(zmx_bdch_badi). " выбор элементов
+    endif.
+
+    mprint> ls_mailtxt.
+  endloop.
+
+*--------------------------------------------------------------------*
 endmethod.

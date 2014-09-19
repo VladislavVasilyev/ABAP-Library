@@ -81,7 +81,7 @@ DEFINE MAC__STATUS_BAR.
     EXPORTING
       TEXT       = &1
       PERCENTAGE = &2.
-        WAIT UP TO 2 SECONDS.
+  WAIT UP TO 2 SECONDS.
 END-OF-DEFINITION.
 
 TYPE-POOLS: ABAP, ZBPCT, UJA00, UJ00.
@@ -232,6 +232,8 @@ START-OF-SELECTION.
 
             IF LD_V__MEMBER IS NOT INITIAL AND LD_V__MEMBER <> `<ALL>`.
               LD_S__RB_MP_PL-TG_VALUE = LD_V__MEMBER.
+            ELSEIF LD_V__MEMBER = `<ALL>`.
+              LD_S__RB_MP_PL-TG_VALUE = `<ALL>`.
             ENDIF.
 
             ADD 1 TO LD_S__RB_MP_PL-NUMBER_KEY.
@@ -263,11 +265,21 @@ START-OF-SELECTION.
               IF LD_V__MEMBER IS NOT INITIAL.
                 <LD_S__SC_RBMPPL>-SC_VALUE = LD_V__MEMBER.
               ELSE.
-                CLEAR
-                : <LD_S__SC_RBMPPL>-SC_DIMN
-                , <LD_S__SC_RBMPPL>-SC_VALUE
-                .
+                IF <LD_S__SC_RBMPPL>-TG_VALUE = `<ALL>`.
+                  CLEAR
+                  : <LD_S__SC_RBMPPL>-TG_VALUE
+                  , <LD_S__SC_RBMPPL>-SC_VALUE.
+                ELSE.
+                  CLEAR
+                  : <LD_S__SC_RBMPPL>-SC_DIMN
+                  , <LD_S__SC_RBMPPL>-SC_VALUE
+                  .
+                ENDIF.
               ENDIF.
+              IF <LD_S__SC_RBMPPL>-TG_VALUE = `<ALL>`.
+                CLEAR <LD_S__SC_RBMPPL>-TG_VALUE.
+              ENDIF.
+
             ELSEIF LD_V__MEMBER IS NOT INITIAL.
               LD_S__RB_MP_PL-SC_VALUE = LD_V__MEMBER.
               ADD 1 TO LD_S__RB_MP_PL-NUMBER_KEY.

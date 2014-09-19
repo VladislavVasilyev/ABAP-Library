@@ -25,6 +25,7 @@ method create_assign_rule.
   , ld_v__message_char        type string
   , ld_v__message_kf          type string
   , ld_v__cnt                 type i
+  , ld_s__link                type zbnlt_s__cust_link
   .
 
   field-symbols
@@ -227,13 +228,14 @@ method create_assign_rule.
       clear ld_s__operand.
 
       ld_s__operand-var   = <ld_s__mathvar>-varname.
-      lr_s__sc_containers = create_container( i_v__tablename = <ld_s__mathvar>-tablename i_s__for = i_s__for ).
-      assign lr_s__sc_containers->* to <ld_s__sc_containers>.
-
       if <ld_s__mathvar>-tablename is not initial and <ld_s__mathvar>-dimension is initial.
+        lr_s__sc_containers = create_container( i_v__tablename = <ld_s__mathvar>-tablename i_s__for = i_s__for ).
+        assign lr_s__sc_containers->* to <ld_s__sc_containers>.
         ld_s__operand-object = <ld_s__sc_containers>-object.
 
       elseif <ld_s__mathvar>-tablename is not initial and <ld_s__mathvar>-dimension is not initial.
+        lr_s__sc_containers = create_container( i_v__tablename = <ld_s__mathvar>-tablename i_s__for = i_s__for ).
+        assign lr_s__sc_containers->* to <ld_s__sc_containers>.
         ld_s__operand-object = <ld_s__sc_containers>-object.
         ld_s__operand-kyf-dimension = <ld_s__mathvar>-dimension.
         ld_s__operand-kyf-attribute = <ld_s__mathvar>-attribute.
@@ -251,6 +253,24 @@ method create_assign_rule.
 *
 *        append ld_s__function to ld_s__assign-function.
 *        clear ld_t__function.
+
+      elseif <ld_s__mathvar>-data is bound.
+        ld_s__operand-data = <ld_s__mathvar>-data.
+        ld_s__link-data = ld_s__operand-data.
+        ld_s__link-func_name = <ld_s__mathvar>-func_name.
+        ld_s__link-param = <ld_s__mathvar>-param.
+
+        call method assign_function
+          exporting
+            i_s__function = ld_s__link
+            i_v__turn     = i_s__for-turn
+            i_s__for      = i_s__for
+          importing
+            e_t__function = ld_t__function.
+
+        append lines of ld_t__function to ld_s__assign-function.
+        clear ld_t__function.
+
       endif.
 
       insert ld_s__operand into table ld_s__math-operand.

@@ -99,6 +99,9 @@ types: begin of zbnlt_s__math_var
        , tablename type zbnlt_v__tablename
        , dimension type uj_dim_name
        , attribute type uj_attr_name
+       , data      type ref to uj_keyfigure
+       , func_name type string
+       , param     type zbnlt_t__func_param
        , end of zbnlt_s__math_var
        .
 

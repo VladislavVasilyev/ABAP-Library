@@ -12,6 +12,7 @@ method create_token.
    , ld_s__variable  type zbnlt_s__variable
    , ld_v__value     type string
    , ld_v__i         type i
+   , ld_f__conc      type rs_bool
    .
 
   field-symbols
@@ -30,6 +31,7 @@ method create_token.
                              & `(<=|<>|>=)|`
                              & `'([A-ZА-Я0-9\.\_\+\*\s\$\,]+)'|`
                              & `''|`
+                             & `&&|`
                              & `\$FILTER-POOLS\>|`
                              & `(\-\d+|\<\d+)(\>|\.\d+\>)|`    " вещественные числа
                              & `(\/\/\*|\*\\\\|\/\/)`          " коментарии
@@ -66,6 +68,9 @@ method create_token.
       if sy-subrc = 0.
         ld_s__tokenlist-value = ld_s__variable-val.
       endif.
+    elseif ld_s__tokenlist-token = zblnc_keyword-conc.
+      ld_f__conc = abap_true.
+      continue.
     else.
       find first occurrence of regex `^(\-\d+|\<\d+)($|\.\d+$)` in ld_s__tokenlist-token.
       if sy-subrc = 0.
@@ -79,7 +84,17 @@ method create_token.
       ld_s__tokenlist-f_num = abap_true.
     endif.
 
-    insert ld_s__tokenlist into table gd_t__tokenlist.
+    if ld_f__conc = abap_true.
+      ld_f__conc = abap_false.
+      concatenate <ld_s__tokenlist>-value ld_s__tokenlist-value into <ld_s__tokenlist>-value.
+      <ld_s__tokenlist>-token = `&&`.
+      ld_s__tokenlist-f_variable = abap_true.
+      ld_s__tokenlist-f_letter   = abap_false.
+      ld_s__tokenlist-f_num      = abap_false.
+      continue.
+    endif.
+
+    insert ld_s__tokenlist into table gd_t__tokenlist assigning <ld_s__tokenlist>.
   endloop.
 
   " удаление коментариев //

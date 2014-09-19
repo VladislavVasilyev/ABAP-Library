@@ -68,24 +68,11 @@ method process_rspc.
 
   get time stamp field gd_v__time_end.
 
-  case d_sendmail.
-    when 1.
-      if ef_success = abap_false or lf_warning = abap_true.
-        send_email( if_succes = ef_success if_warning = lf_warning if_log = dv_f__logmail ).
-      endif.
-    when 2.
-      send_email( if_succes = ef_success if_warning = lf_warning if_log = dv_f__logmail ).
-    when  others.
-  endcase.
-
-  if gv_f__rspc = abap_true.
-    call method send_email
-      exporting
-        if_succes  = ef_success
-        if_warning = lf_warning
-        if_log     = `1`
-        if_job     = abap_true.
-  endif.
+  call method send_email
+    exporting
+      if_succes  = ef_success
+      if_warning = lf_warning
+      if_log     = dv_f__logmail.
 
   et_message = gt_message.
 

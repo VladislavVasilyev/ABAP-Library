@@ -41,13 +41,12 @@ private section.
       !I_V__SIZE type I default 7
     returning
       value(E_V__TEXT) type STRING .
-  type-pools ABAP .
   methods SEND_EMAIL
     importing
       !IF_SUCCES type UJ_FLG
       !IF_WARNING type UJ_FLG
-      !IF_LOG type RS_BOOL
-      !IF_JOB type RS_BOOL default ABAP_FALSE .
+      !IF_LOG type RS_BOOL .
+  methods PRINT_LOG .
   methods GET_SPACE_TEXT
     importing
       !I_V__SIZE type I
@@ -68,7 +67,7 @@ private section.
     returning
       value(E_V__TEXT) type STRING .
   type-pools ZBNLT .
-  methods PRINT_LOG
+  methods PRINT_LOG_FOR_TABLE
     importing
       !I_T__CONTAINERS type ZBNLT_T__CONTAINERS
       !I_V__PATH type UJ_DOCNAME

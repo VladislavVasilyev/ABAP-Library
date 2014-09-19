@@ -23,10 +23,10 @@ method send_email.
   .
 
   data
-  : ls_message type ujd_s_value
-  , lt_value   type table of string
-  , lv_lenght  type i
-  , lv_offset  type i
+  : ls_message         type ujd_s_value
+  , lt_value           type table of string
+  , lv_lenght          type i
+  , lv_offset          type i
   .
 
   field-symbols
@@ -89,6 +89,7 @@ method send_email.
     concatenate ld_v__txt ` -> ` ld_v__theme into ld_v__theme.
     message e022(zmx_bdch_badi) into ls_mailtxt with lv_buf.
     append ls_mailtxt to lt_mailtxt.
+
   endif.
 
   lv_buf = hor_tab( in = d_user_id n = 1 ).
@@ -110,11 +111,14 @@ method send_email.
   message e009(zmx_bdch_badi) into ls_mailtxt with lv_buf.
   append ls_mailtxt to lt_mailtxt.
 
+
   time = ld_v__delta_time.
   replace first occurrence of regex `\s+\<` in time with ``.
+  message s010(zmx_bdch_badi) with time.
   lv_buf =  hor_tab( in = time n = 1 ).
   message e010(zmx_bdch_badi) into ls_mailtxt with lv_buf.
   append ls_mailtxt to lt_mailtxt.
+
 *--------------------------------------------------------------------*
 
   if if_succes = abap_false.
@@ -130,20 +134,22 @@ method send_email.
     endif.
   endif.
 
+  message s011(zmx_bdch_badi) with ls_mailtxt.
+
   ls_mailtxt =  hor_tab( in = ls_mailtxt n = 2 ).
 
   message e011(zmx_bdch_badi) into ls_mailtxt with ls_mailtxt.
-
 *  concatenate lv_hor_tab ls_mailtxt into ls_mailtxt.
-
   append ls_mailtxt to lt_mailtxt.
 
 *--------------------------------------------------------------------*
   message e013(zmx_bdch_badi) into ls_mailtxt. " разделитель
   append ls_mailtxt to lt_mailtxt.
 
+
   message e018(zmx_bdch_badi) into ls_mailtxt. " выбор
   append ls_mailtxt to lt_mailtxt.
+
 
   split ds_badi_param-parameter at `;` into table lt_value.
 
@@ -153,6 +159,7 @@ method send_email.
 
   message e014(zmx_bdch_badi) into ls_mailtxt. " выбор элементов
   append ls_mailtxt to lt_mailtxt.
+
 
   if not gv_f__rspc eq abap_true.
 
@@ -234,8 +241,11 @@ method send_email.
     ls_mailsubject-obj_descr = ld_v__theme.
   endif.
 
+  message s035(zbdnl).
+
 * Send Mail
-  if not if_job = abap_true.
+  if ( d_sendmail = 1 and ( if_succes = abap_false or if_warning = abap_true ) ) or
+       d_sendmail = 2.
     call function 'SO_NEW_DOCUMENT_SEND_API1'
       exporting
         document_data              = ls_mailsubject
@@ -257,16 +267,6 @@ method send_email.
 *   Push mail out from SAP outbox
       submit rsconn01 with mode = 'INT' and return.
     endif.
-
-  else.
-    loop at lt_mailtxt into ls_mailtxt.
-      if sy-tabix = 1.
-        message s013(zmx_bdch_badi). " разделитель
-      endif.
-      replace all occurrences of  cl_abap_char_utilities=>horizontal_tab in ls_mailtxt with space.
-      message ls_mailtxt type 'S'.
-    endloop.
-    message s013(zmx_bdch_badi).
   endif.
 
 

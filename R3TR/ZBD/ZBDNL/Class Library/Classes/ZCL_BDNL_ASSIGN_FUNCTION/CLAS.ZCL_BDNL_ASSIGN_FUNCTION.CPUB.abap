@@ -21,6 +21,16 @@ public section.
       !I02 type ANY
     exporting
       !E type ANY .
+  class-methods GET_EXCEL_DATE
+    importing
+      !I01 type ANY
+    exporting
+      !E type ANY .
+  class-methods GET_VAR
+    importing
+      !I01 type ANY
+    exporting
+      !E type ANY .
   class-methods GET_CH
     importing
       !I01 type ref to ZCL_BD00_APPL_TABLE

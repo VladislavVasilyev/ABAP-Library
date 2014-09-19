@@ -338,6 +338,11 @@
 					<PARAMETER>I_MODE</PARAMETER>
 					<TYP>ZRB_WRITE_BACK_MODE</TYP>
 				</item>
+				<item>
+					<PARAMETER>I_BPC_USER</PARAMETER>
+					<OPTIONAL>X</OPTIONAL>
+					<TYP>UJ0_S_USER</TYP>
+				</item>
 			</T_IMPORT>
 			<T_EXPORT>
 				<item>
@@ -511,27 +516,22 @@
 			<T_IMPORT>
 				<item>
 					<PARAMETER>I_V__APPSET_ID</PARAMETER>
-					<DEFAULT>&apos;BUDGET_2014&apos;</DEFAULT>
 					<TYP>UJ_APPSET_ID</TYP>
 				</item>
 				<item>
 					<PARAMETER>I_V__SC_APPL_ID</PARAMETER>
-					<DEFAULT>&apos;GROSSMARGIN&apos;</DEFAULT>
 					<TYP>UJ_APPL_ID</TYP>
 				</item>
 				<item>
 					<PARAMETER>I_V__TG_APPL_ID</PARAMETER>
-					<DEFAULT>&apos;MASTER&apos;</DEFAULT>
 					<TYP>UJ_APPL_ID</TYP>
 				</item>
 				<item>
 					<PARAMETER>I_V__SCENARIO</PARAMETER>
-					<DEFAULT>&apos;PLAN&apos;</DEFAULT>
 					<TYP>UJ_VALUE</TYP>
 				</item>
 				<item>
 					<PARAMETER>I_V__FORMAT</PARAMETER>
-					<DEFAULT>&apos;ТС Пятерочка&apos;</DEFAULT>
 					<TYP>UJ_VALUE</TYP>
 				</item>
 				<item>
@@ -545,10 +545,23 @@
 				</item>
 				<item>
 					<PARAMETER>I_V__ID_RULE</PARAMETER>
-					<DEFAULT>3</DEFAULT>
 					<TYP>I</TYP>
 				</item>
 			</T_IMPORT>
+			<T_EXPORT>
+				<item>
+					<PARAMETER>NUM_READ</PARAMETER>
+					<TYP>I</TYP>
+				</item>
+				<item>
+					<PARAMETER>NUM_WRITE</PARAMETER>
+					<TYP>UJR_S_STATUS_RECORDS</TYP>
+				</item>
+				<item>
+					<PARAMETER>E_MESSAGE</PARAMETER>
+					<TYP>UJ0_T_MESSAGE</TYP>
+				</item>
+			</T_EXPORT>
 			<T_EXCEPT>
 				<item>
 					<EXCEPTION>ERR_TARGET_CREATE</EXCEPTION>
@@ -574,6 +587,6 @@
 		<DEVCLASS>ZBD00</DEVCLASS>
 		<CPROJECT> S</CPROJECT>
 		<MASTERLANG>R</MASTERLANG>
-		<PATHDEVC>ZBD00</PATHDEVC>
+		<PATHDEVC>ZBD\ZBD00</PATHDEVC>
 	</HEADER>
 </R3TRFUGR>
