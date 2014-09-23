@@ -10,7 +10,11 @@ method constructor.
   , n              type string
   , len            type i
   , off            type i
+  , lv_max_tasks   type i
+  , lv_free_tasks  type i
   .
+
+  cd_f__init = abap_false.
 
   dt_f_parallel = parallel_task.
   ls_rfc_process-st = cs-rfc_free.
@@ -41,5 +45,8 @@ method constructor.
   enddo.
 
   nr_free_tasks = nr_max_tasks.
+  nr_res_free_task = nr_task.
+
+  check_wait_free_tasks( ).
 
 endmethod.

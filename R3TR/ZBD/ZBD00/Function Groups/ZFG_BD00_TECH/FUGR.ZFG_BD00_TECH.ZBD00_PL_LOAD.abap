@@ -136,7 +136,8 @@ FUNCTION zbd00_pl_load.
 
     CREATE OBJECT lr_o__rfc_task
       EXPORTING
-        num = 4.
+        num           = 4
+        parallel_task = abap_true.
   ENDIF.
   IF `TARGET`     = `TARGET`    .
     SELECT  tg_dimn tg_value sc_dimn sc_value
@@ -384,7 +385,7 @@ FUNCTION zbd00_pl_load.
   SORT e_message.
   DELETE ADJACENT DUPLICATES FROM e_message.
 
-    zcl_bd00_appl_table=>free_all_object( ).
+  zcl_bd00_appl_table=>free_all_object( ).
 
 *    e_t__read     = ld_t__log_read
 *    e_t__read_dim = ld_t__log_read_dim
