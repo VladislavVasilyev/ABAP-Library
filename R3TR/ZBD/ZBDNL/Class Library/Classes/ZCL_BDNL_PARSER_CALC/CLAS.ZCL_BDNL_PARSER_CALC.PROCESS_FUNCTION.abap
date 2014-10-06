@@ -5,6 +5,7 @@ method process_function.
   , lr_o__classdescr type ref to cl_abap_classdescr
   , ld_s__method     type abap_methdescr
   , ld_s__funcparam  type zbnlt_s__func_param
+  , ld_v__numparam   type i
   .
 
   e_v__funcname   = gr_o__cursor->get_token( esc = abap_true ).
@@ -23,6 +24,10 @@ method process_function.
 
       clear ld_s__funcparam.
       ld_s__funcparam-const = gr_o__cursor->get_token( esc = abap_true ).
+      add 1 to ld_v__numparam.
+      if ld_s__funcparam-const = zblnc_keyword-comma. " то параметр опциональный
+        continue.
+      endif.
 
       " ожидается или запятая или скобка
       if gr_o__cursor->get_token(  ) = zblnc_keyword-tilde.
@@ -39,6 +44,7 @@ method process_function.
         endif.
       endif.
 
+      ld_s__funcparam-index = ld_v__numparam.
       append ld_s__funcparam to e_t__param.
 
       if gr_o__cursor->get_token(  ) = zblnc_keyword-close_parenthesis.

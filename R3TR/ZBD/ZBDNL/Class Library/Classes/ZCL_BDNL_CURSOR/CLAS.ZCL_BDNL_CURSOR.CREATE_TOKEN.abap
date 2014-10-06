@@ -13,6 +13,11 @@ method create_token.
    , ld_v__value     type string
    , ld_v__i         type i
    , ld_f__conc      type rs_bool
+   , ld_i__nsymbol   type i
+   , ld_f__lsymbol   type rs_bool
+   , ld_f__rsymbol   type rs_bool
+*   , ld_v__offset    type i
+   , ld_v__length    type i
    .
 
   field-symbols
@@ -26,12 +31,13 @@ method create_token.
                              & `\$([A-Z0-9\_]+)\$|`
                              & `\%([A-Z0-9\_]+)\%|`
                              & `\<([A-Z0-9\_]+)\>|`
-                             & `\/([A-Z0-9]+)\/([A-Z0-9\_]+)|`
+                             & `\/(CPMB)\/([A-Z0-9\_]+)|`
                              & `([\~\(\)\.\*\\\-\+<>=\,\/])|`
                              & `(<=|<>|>=)|`
                              & `'([A-ZА-Я0-9\.\_\+\*\s\$\,]+)'|`
                              & `''|`
                              & `&&|`
+                             & `(<\-|\->)|`
                              & `\$FILTER-POOLS\>|`
                              & `(\-\d+|\<\d+)(\>|\.\d+\>)|`    " вещественные числа
                              & `(\/\/\*|\*\\\\|\/\/)`          " коментарии
@@ -71,6 +77,16 @@ method create_token.
     elseif ld_s__tokenlist-token = zblnc_keyword-conc.
       ld_f__conc = abap_true.
       continue.
+    elseif ld_s__tokenlist-token = zblnc_keyword-left_symbol.
+      add 1 to ld_i__nsymbol.
+      ld_f__lsymbol = abap_true.
+      continue.
+    elseif ld_s__tokenlist-token = zblnc_keyword-right_symbol.
+      add 1 to ld_i__nsymbol.
+      ld_f__rsymbol = abap_true.
+      continue.
+
+
     else.
       find first occurrence of regex `^(\-\d+|\<\d+)($|\.\d+$)` in ld_s__tokenlist-token.
       if sy-subrc = 0.
@@ -87,10 +103,45 @@ method create_token.
     if ld_f__conc = abap_true.
       ld_f__conc = abap_false.
       concatenate <ld_s__tokenlist>-value ld_s__tokenlist-value into <ld_s__tokenlist>-value.
-      <ld_s__tokenlist>-token = `&&`.
-      ld_s__tokenlist-f_variable = abap_true.
-      ld_s__tokenlist-f_letter   = abap_false.
-      ld_s__tokenlist-f_num      = abap_false.
+      <ld_s__tokenlist>-token      = zblnc_keyword-conc.
+      <ld_s__tokenlist>-f_variable = abap_true.
+      <ld_s__tokenlist>-f_letter   = abap_false.
+      <ld_s__tokenlist>-f_num      = abap_false.
+      continue.
+    endif.
+
+    if ld_i__nsymbol > 0.
+      case ld_i__nsymbol.
+        when 1.
+          ld_v__offset = ld_s__tokenlist-value.
+        when 2.
+          if not ld_s__tokenlist-token = zblnc_keyword-open_parenthesis.
+            " error.
+          endif.
+        when 3.
+          ld_v__length = ld_s__tokenlist-value.
+        when 4.
+          if not ld_s__tokenlist-token = zblnc_keyword-close_parenthesis.
+            " error.
+          endif.
+
+          if ld_f__lsymbol = abap_true.
+            <ld_s__tokenlist>-token      = zblnc_keyword-left_symbol.
+          elseif ld_f__rsymbol = abap_true.
+            <ld_s__tokenlist>-token      = zblnc_keyword-right_symbol.
+            ld_v__offset = strlen( <ld_s__tokenlist>-value ) - ( ld_v__offset + ld_v__length ).
+          endif.
+
+          <ld_s__tokenlist>-value      = <ld_s__tokenlist>-value+ld_v__offset(ld_v__length).
+          <ld_s__tokenlist>-f_variable = abap_true.
+          <ld_s__tokenlist>-f_letter   = abap_false.
+          <ld_s__tokenlist>-f_num      = abap_false.
+          clear: ld_i__nsymbol, ld_f__lsymbol.
+          continue.
+
+      endcase.
+
+      add 1 to ld_i__nsymbol.
       continue.
     endif.
 

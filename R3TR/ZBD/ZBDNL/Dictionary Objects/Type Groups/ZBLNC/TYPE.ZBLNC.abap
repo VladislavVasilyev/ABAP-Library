@@ -47,6 +47,8 @@ constants: begin of zblnc_keyword
            , open_parenthesis   type string value `(`
            , close_parenthesis  type string value `)`
            , conc               type string value `&&`
+           , left_symbol        type string value `->`
+           , right_symbol       type string value `<-`
            , begin              type string value `BEGIN`
            , end                type string value `END`
            , search             type string value `$SEARCH`

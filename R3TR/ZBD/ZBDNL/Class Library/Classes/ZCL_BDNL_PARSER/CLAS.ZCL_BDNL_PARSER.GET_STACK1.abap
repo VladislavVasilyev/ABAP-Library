@@ -252,6 +252,8 @@ method get_stack1.
 
         ld_s__stack = lr_o__parser->get_stack1( ).
 
+        zcl_bdnl_parser=>cr_o__cursor = gr_o__cursor.
+
         loop at ld_s__stack-range assigning <ld_s__range>.
 
           read table stack-range

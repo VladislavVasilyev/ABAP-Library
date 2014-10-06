@@ -49,8 +49,7 @@ method if_uj_custom_logic~execute.
           et_message = lr_o__badi->et_message.
 
 **********************************************************************
-
-        catch cx_sy_dyn_call_illegal_method. " метод не найден
+         catch cx_sy_dyn_call_illegal_method. " метод не найден
           mac__raise_logistics ex_cal_method ds_method-name '' '' ''.
 
         catch zcx_bdch_badi into lr_x__bdch_badi. " особая ситуация в методе

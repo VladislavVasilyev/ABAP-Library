@@ -7,10 +7,11 @@ class ZCL_BDNL_ASSIGN_FUNCTION definition
 *"* do not include other source files here!!!
 public section.
 
-  class-methods MAP_EXT2_LICENSE
+  class-methods RIGHTSYM
     importing
       !I01 type ANY
-      !I02 type ANY
+      !I02 type ANY optional
+      !I03 type ANY optional
     exporting
       !E type ANY
     raising
@@ -26,11 +27,28 @@ public section.
       !I01 type ANY
     exporting
       !E type ANY .
+  class-methods MAP_EXT2_LICENSE
+    importing
+      !I01 type ANY
+      !I02 type ANY
+    exporting
+      !E type ANY
+    raising
+      ZCX_BDNL_SKIP_ASSIGN .
   class-methods GET_VAR
     importing
       !I01 type ANY
     exporting
       !E type ANY .
+  class-methods LEFTSYM
+    importing
+      !I01 type ANY
+      !I02 type ANY optional
+      !I03 type ANY optional
+    exporting
+      !E type ANY
+    raising
+      ZCX_BDNL_SKIP_ASSIGN .
   class-methods GET_CH
     importing
       !I01 type ref to ZCL_BD00_APPL_TABLE

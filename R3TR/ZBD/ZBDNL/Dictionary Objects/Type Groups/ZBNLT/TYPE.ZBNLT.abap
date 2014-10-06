@@ -66,6 +66,7 @@ types: begin of zbnlt_s__stack_container
 types: zbnlt_t__stack_container type standard table of zbnlt_s__stack_container with non-unique default key.
 
 types: begin of zbnlt_s__func_param
+       , index type i
        , const  type string
        , tablename type string
        , field  type zbd0t_ty_s_dim

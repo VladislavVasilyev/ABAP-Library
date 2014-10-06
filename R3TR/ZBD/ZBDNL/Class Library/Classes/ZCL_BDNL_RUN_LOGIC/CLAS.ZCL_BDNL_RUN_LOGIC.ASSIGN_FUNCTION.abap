@@ -35,7 +35,11 @@ method assign_function.
     case lt_s__methparam-parm_kind.
       when cl_abap_classdescr=>importing.
         add 1 to ld_v__cntparam.
-        read table i_s__function-param index ld_v__cntparam into ld_s__funcparam.
+        read table i_s__function-param with key index = ld_v__cntparam into ld_s__funcparam.
+
+        if sy-subrc ne 0." Включить проверку опциональности
+          continue.
+        endif.
 
         if ld_s__funcparam-const is not initial.
           create data ld_s__bindparam-value type uj_value.

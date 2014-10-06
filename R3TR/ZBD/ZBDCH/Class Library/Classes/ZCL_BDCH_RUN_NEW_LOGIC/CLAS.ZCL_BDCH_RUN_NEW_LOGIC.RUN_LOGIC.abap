@@ -37,9 +37,10 @@ method run_logic.
           i_user        = d_user_id
           is_badi_param = ds_badi_param.
 
-      concatenate '\ROOT\VCORE\'
+      concatenate '\ROOT\WEBFOLDERS\'
                    me->gr_o__replace->d_appset      '\'
                    me->gr_o__replace->d_application '\'
+                   'PRIVATEPUBLICATIONS'            '\'
                    me->gr_o__replace->d_user        '\'
                    sy-datum(4)
                    sy-datum+4(2)
