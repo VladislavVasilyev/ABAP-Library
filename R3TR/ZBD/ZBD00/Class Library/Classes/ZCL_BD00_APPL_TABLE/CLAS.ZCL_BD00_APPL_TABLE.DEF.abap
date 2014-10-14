@@ -115,10 +115,18 @@ class lcl_log definition.
     data gd_t__read_dim       type zbd0t_t__log_dimension.
     data gd_t__write          type zbd0t_t__log_write.
     data gd_t__open_write     type zbd0t_t__log_write.
+    data gd_t__num_rows       type zbd0t_t__log_actual.
+
 
     methods
     : set_read  importing read  type zbd0t_s__log_read
     , set_read_dim  importing read  type zbd0t_s__log_read
     , set_write importing write type zbd0t_s__log_write
+    , set_actual importing actual_rows type i returning value(e) type i
     .
+
+  private section.
+   data gd_v__nr_actual type i.
+
+
 endclass.                    "lcl_log DEFINITION

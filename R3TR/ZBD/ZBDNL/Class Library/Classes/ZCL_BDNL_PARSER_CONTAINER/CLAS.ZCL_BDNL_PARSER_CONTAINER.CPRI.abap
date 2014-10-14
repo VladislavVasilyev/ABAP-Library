@@ -2,14 +2,16 @@
 *"* do not include other source files here!!!
 private section.
 
+  class-data CD_V__CNT_CLEAR type I .
   type-pools ZBNLT .
   data GD_T__CONTAINERS type ZBNLT_T__STACK_CONTAINER .
   data GD_T__RANGE type ZBNLT_T__STACK_RANGE .
   data GD_T__STACK type ZBNLT_T__STACK_CONTAINER .
+  data GD_T__STACK1 type ZBNLT_T__CONTAINER .
   data GD_V__TURN type I .
   data GR_O__CURSOR type ref to ZCL_BDNL_CURSOR .
 
-  methods CHECK_TABLE
+  methods _CHECK_TABLE
     importing
       !TABLENAME type ZBNLT_V__TABLENAME
     raising
@@ -92,18 +94,24 @@ private section.
   methods SELECT_STATEMENTS
     exporting
       !E_S__STACK type ZBNLT_S__STACK_CONTAINER
+      !E_O__CONTAINER type ref to ZCL_BDNL_CONTAINER
+      !E_V__TABLENAME type ZBNLT_V__TABLENAME
     raising
       ZCX_BDNL_EXCEPTION
       ZCX_BD00_CREATE_OBJ .
   methods CLEAR_STATEMENTS
     exporting
       !E_S__STACK type ZBNLT_S__STACK_CONTAINER
+      !E_O__CONTAINER type ref to ZCL_BDNL_CONTAINER
+      !E_V__TABLENAME type ZBNLT_V__TABLENAME
     raising
       ZCX_BDNL_EXCEPTION
       ZCX_BD00_CREATE_OBJ .
   methods TABLE_STATEMENTS
     exporting
       !E_S__STACK type ZBNLT_S__STACK_CONTAINER
+      !E_O__CONTAINER type ref to ZCL_BDNL_CONTAINER
+      !E_V__TABLENAME type ZBNLT_V__TABLENAME
     raising
       ZCX_BDNL_EXCEPTION
       ZCX_BD00_CREATE_OBJ .

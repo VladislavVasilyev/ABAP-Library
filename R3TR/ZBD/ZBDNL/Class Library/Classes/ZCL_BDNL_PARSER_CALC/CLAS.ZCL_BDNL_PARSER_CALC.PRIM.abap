@@ -1,7 +1,7 @@
 method prim.
 
   constants
-  : cs_dimension            type string value `^([A-Z0-9\_]+)\>`
+  : cs_dimension            type string value `^(([A-Z0-9\_]+)\>|\/(CPMB)\/([A-Z0-9\_]+)\>)`
   , cs_dimwattr             type string value `^\~\<([A-Z0-9\_]+)\>`
   , cs_func                 type string value `^([A-Z0-9\_]+)\>\s\(`
   .
@@ -136,11 +136,11 @@ method prim.
       case abap_true.
         when ld_f__dimension.
           if gr_o__cursor->check_tokens( q = 2 regex = cs_func ) = abap_true. " Если функция
-            create data ld_s__custlink-data type uj_value.
             call method process_function
               importing
                 e_v__funcname = ld_s__custlink-func_name
-                e_t__param    = ld_s__custlink-param.
+                e_t__param    = ld_s__custlink-param
+                e_r__data     = ld_s__custlink-data.
           else.
             if gr_o__cursor->check_letter( )   = abap_true or
                gr_o__cursor->check_variable( ) = abap_true.

@@ -7,6 +7,7 @@ method clear_statements.
   data
   : ld_v__index         type i
   , ld_v__token         type string
+  , ld_v__str           type string
   .
 
   clear e_s__stack.
@@ -36,5 +37,14 @@ method clear_statements.
   endif.
 
   gr_o__cursor->get_token( esc = abap_true ).
+
+  add 1 to cd_v__cnt_clear.
+
+  ld_v__str = cd_v__cnt_clear.
+  condense ld_v__str no-gaps.
+
+  concatenate `CLEAR: -` ld_v__str `-` into: e_s__stack-tablename, e_v__tablename.
+
+  e_o__container = zcl_bdnl_container=>get_table( e_s__stack ).
 
 endmethod.

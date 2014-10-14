@@ -2,7 +2,7 @@ method cmd_from.
 
   constants
   : cs__regex     type string value `^([A-Z0-9\_]+)\>\~(\<([A-Z0-9\_]+)\>|\$GENERATE\>)`
-  , cs__regex1    type string value `^\$BP\>\~\<([A-Z0-9\_]+)\>`
+  , cs__regex1    type string value `^\$BP\>\~(\<([A-Z0-9\_]+)\>|\/(CPMB)\/([A-Z0-9\_]+)\>)`
   , cs__regex2    type string value `^([A-Z0-9\_]+)\>`
   .
 

@@ -13,8 +13,8 @@ method table_statements.
 
   clear e_s__stack.
 
-  e_s__stack-tablename  = gr_o__cursor->get_token( esc = abap_true chn = abap_true ).
-  check_table( e_s__stack-tablename ).
+  e_s__stack-tablename = e_v__tablename = gr_o__cursor->get_token( esc = abap_true chn = abap_true ).
+  zcl_bdnl_container=>check_table( e_s__stack-tablename ).
 
 *  read table gd_t__stack
 *       with key tablename = e_s__stack-tablename
@@ -93,5 +93,6 @@ method table_statements.
                     index  = gr_o__cursor->gd_v__index .
   endif.
 
+  e_o__container = zcl_bdnl_container=>get_table( e_s__stack ).
 
 endmethod.

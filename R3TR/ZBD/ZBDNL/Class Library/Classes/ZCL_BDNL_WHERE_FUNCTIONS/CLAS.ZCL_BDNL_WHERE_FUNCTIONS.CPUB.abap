@@ -17,6 +17,7 @@ public section.
     importing
       !I01 type ANY
       !I02 type ANY optional
+      !I03 type ANY optional
     exporting
       !E type ZBNLT_T__PARAM .
   class-methods GET_ATTR

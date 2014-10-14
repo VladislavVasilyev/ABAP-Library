@@ -14,8 +14,9 @@ public section.
 
   type-pools ZBNLT .
   methods GET_STACK
-    returning
+    exporting
       value(STACK) type ZBNLT_T__STACK_CONTAINER
+      !STACK1 type ZBNLT_T__CONTAINER
     raising
       ZCX_BDNL_EXCEPTION
       ZCX_BD00_CREATE_OBJ .

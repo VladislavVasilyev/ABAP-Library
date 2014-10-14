@@ -1214,4 +1214,16 @@ class lcl_log implementation.
 
   endmethod.                    "set_WRITE
 
+  method set_actual.
+    data log type zbd0t_s__log_actual.
+
+    add 1 to gd_v__nr_actual.
+
+    log-num_rec  = actual_rows.
+    log-nr_pack = e = gd_v__nr_actual.
+
+    append log to gd_t__num_rows .
+
+  endmethod.                    "set_actual
+
 endclass.                    "lcl_log IMPLEMENTATION

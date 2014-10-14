@@ -1,7 +1,9 @@
 class ZCL_BDNL_PARSER definition
   public
   final
-  create public .
+  create public
+
+  global friends ZCL_BDNL_CONTAINER .
 
 *"* public components of class ZCL_BDNL_PARSER
 *"* do not include other source files here!!!

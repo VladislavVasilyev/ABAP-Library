@@ -98,7 +98,8 @@ public section.
     exporting
       !E_T__READ type ZBD0T_T__LOG_READ
       !E_T__WRITE type ZBD0T_T__LOG_WRITE
-      !E_T__READ_DIM type ZBD0T_T__LOG_DIMENSION .
+      !E_T__READ_DIM type ZBD0T_T__LOG_DIMENSION
+      !E_T__ACTUAL_ROWS type ZBD0T_T__LOG_ACTUAL .
   class-methods GET_RULE_CLASS
     importing
       !ID type ZBD0T_ID_RULES

@@ -2,6 +2,7 @@ method get_stack1.
 
   data
   : lr_o__containers      type ref to zcl_bdnl_parser_container
+  , lr_o__container       type ref to zcl_bdnl_container
   , lr_o__parser          type ref to zcl_bdnl_parser
   , lr_o__for             type ref to zcl_bdnl_parser_for
   , ld_s__script          type ty_s__filterpools
@@ -17,6 +18,7 @@ method get_stack1.
   field-symbols
   : <ld_s__range>         type zbnlt_s__stack_range
   , <ld_s__containers>    type zbnlt_s__stack_container
+  , <ld_s__containers1>   type zbnlt_s__container
   , <ld_f__includeif>     type rs_bool
   .
 
@@ -122,13 +124,27 @@ method get_stack1.
             i_t__range      = stack-range
             i_t__containers = stack-containers.
 
-        ld_s__stack-containers = lr_o__containers->get_stack( ).
+        call method lr_o__containers->get_stack
+          importing
+            stack  = ld_s__stack-containers
+            stack1 = ld_s__stack-containers1.
 
+*---> старый стек
         loop at ld_s__stack-containers assigning <ld_s__containers>.
           <ld_s__containers>-turn = stack-turn.
 
           if ld_f__includeif = abap_false.
             append <ld_s__containers> to stack-containers.
+          endif.
+        endloop.
+*---< старый стек
+
+        " перевод на новый стек
+        loop at ld_s__stack-containers1 assigning <ld_s__containers1>.
+          lr_o__container ?= <ld_s__containers1>-container.
+          lr_o__container->set_turn( stack-turn ).
+          if ld_f__includeif = abap_false.
+            append <ld_s__containers1> to stack-containers1.
           endif.
         endloop.
 

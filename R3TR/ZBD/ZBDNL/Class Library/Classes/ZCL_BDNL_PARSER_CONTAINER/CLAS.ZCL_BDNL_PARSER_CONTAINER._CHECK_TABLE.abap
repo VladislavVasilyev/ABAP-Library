@@ -1,4 +1,4 @@
-method check_table.
+method _CHECK_TABLE.
 
   read table gd_t__containers
      with key tablename = tablename

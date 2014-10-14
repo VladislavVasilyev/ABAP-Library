@@ -36,7 +36,7 @@ method select_param_into.
   endif.
 
   e_v__tablename  = gr_o__cursor->get_token( esc = abap_true  chn = abap_true ).
-  check_table( e_v__tablename ).
+  zcl_bdnl_container=>check_table( e_v__tablename ).
 
 **  read table gd_t__stack
 **       with key tablename = e_v__tablename

@@ -57,6 +57,24 @@ private section.
     importing
       !I type I
       !F_FOUND type RS_BOOL .
+  methods ASSIGN_FUNCTION_____________ST
+    importing
+      !I_S__FUNCTION type ZBNLT_S__CUST_LINK
+      !I_V__TURN type I
+      !I_S__FOR type ZBNLT_S__FOR
+    exporting
+      !E_T__FUNCTION type ZBNLT_T__FUNCTION
+    raising
+      ZCX_BD00_CREATE_OBJ .
+  methods ASSIGN_FUNCTION_____________NV
+    importing
+      !I_S__FUNCTION type ZBNLT_S__CUST_LINK
+      !I_V__TURN type I
+      !I_S__FOR type ZBNLT_S__FOR
+    exporting
+      !E_T__FUNCTION type ZBNLT_T__FUNCTION
+    raising
+      ZCX_BD00_CREATE_OBJ .
   methods ASSIGN_FUNCTION
     importing
       !I_S__FUNCTION type ZBNLT_S__CUST_LINK
@@ -75,7 +93,41 @@ private section.
       !E_T__ASSIGN_NOT_FOUND type ZBNLT_T__ASSIGN
     raising
       ZCX_BD00_CREATE_OBJ .
+  methods CREATE_ASSIGN_RULE__________NV
+    importing
+      !I_S__FOR type ZBNLT_S__FOR
+      !I_V__TURN type I
+    exporting
+      !E_T__ASSIGN type ZBNLT_T__ASSIGN
+      !E_T__ASSIGN_NOT_FOUND type ZBNLT_T__ASSIGN
+    raising
+      ZCX_BD00_CREATE_OBJ .
+  methods CREATE_ASSIGN_RULE__________ST
+    importing
+      !I_S__FOR type ZBNLT_S__FOR
+      !I_V__TURN type I
+    exporting
+      !E_T__ASSIGN type ZBNLT_T__ASSIGN
+      !E_T__ASSIGN_NOT_FOUND type ZBNLT_T__ASSIGN
+    raising
+      ZCX_BD00_CREATE_OBJ .
   methods CREATE_SEARCH_RULE
+    importing
+      !I_S__FOR type ZBNLT_S__FOR
+      !I_V__TURN type I
+    returning
+      value(E_T__SEARCH) type ZBNLT_T__SEARCH
+    raising
+      ZCX_BD00_CREATE_OBJ .
+  methods CREATE_SEARCH_RULE__________NV
+    importing
+      !I_S__FOR type ZBNLT_S__FOR
+      !I_V__TURN type I
+    returning
+      value(E_T__SEARCH) type ZBNLT_T__SEARCH
+    raising
+      ZCX_BD00_CREATE_OBJ .
+  methods CREATE_SEARCH_RULE__________ST
     importing
       !I_S__FOR type ZBNLT_S__FOR
       !I_V__TURN type I
@@ -91,7 +143,40 @@ private section.
       !I_S__FOR type ZBNLT_S__FOR
     raising
       ZCX_BD00_CREATE_OBJ .
+  methods WORK_CIRCLE_________________NV
+    importing
+      !I_S__FOR type ZBNLT_S__FOR
+    raising
+      ZCX_BD00_CREATE_OBJ .
+  methods WORK_CIRCLE_________________ST
+    importing
+      !I_S__FOR type ZBNLT_S__FOR
+    raising
+      ZCX_BD00_CREATE_OBJ .
+  methods CLEAR_CONTAINERS____________ST
+    raising
+      ZCX_BD00_CREATE_OBJ .
+  methods CLEAR_CONTAINERS____________NV
+    raising
+      ZCX_BD00_CREATE_OBJ .
   methods CLEAR_CONTAINERS
+    raising
+      ZCX_BD00_CREATE_OBJ .
+  methods CREATE_CONTAINER____________ST
+    importing
+      !I_S__FOR type ZBNLT_S__FOR optional
+      !I_V__TABLENAME type ZBNLT_V__TABLENAME
+    returning
+      value(E_S__TABLE) type ref to ZBNLT_S__CONTAINERS
+    raising
+      ZCX_BD00_CREATE_OBJ .
+  methods CREATE_CONTAINER____________NV
+    importing
+      !I_S__FOR type ZBNLT_S__FOR optional
+      !I_V__TABLENAME type ZBNLT_V__TABLENAME
+      !I_V__PACKAGESIZE type I optional
+    returning
+      value(E_S__TABLE) type ref to ZBNLT_S__CONTAINERS
     raising
       ZCX_BD00_CREATE_OBJ .
   methods CREATE_CONTAINER

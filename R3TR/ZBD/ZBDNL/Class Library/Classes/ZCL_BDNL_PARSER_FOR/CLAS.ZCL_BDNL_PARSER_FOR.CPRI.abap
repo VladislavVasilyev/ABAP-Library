@@ -3,6 +3,7 @@
 private section.
 
   data GR_O__CURSOR type ref to ZCL_BDNL_CURSOR .
+  type-pools ZBNLT .
   data GD_T__RULES type ZBNLT_T__FOR_RULES .
   data GD_T__STACK type ZBNLT_T__STACK_SEARCH .
   data GD_T__CONTAINERS type ZBNLT_T__STACK_CONTAINER .
@@ -32,6 +33,7 @@ private section.
     exporting
       !E_V__FUNCNAME type STRING
       !E_T__PARAM type ZBNLT_T__FUNC_PARAM
+      !E_R__DATA type ref to DATA
     raising
       ZCX_BDNL_EXCEPTION .
   methods READ_STATEMENTS

@@ -85,6 +85,13 @@ types: begin of zbd0t_s__log_read
 
 types zbd0t_t__log_read type standard table of zbd0t_s__log_read with non-unique default key.
 
+types: begin of zbd0t_s__log_actual
+       , nr_pack  type i
+       , num_rec  type i
+       , end of zbd0t_s__log_actual.
+
+types: zbd0t_t__log_actual type standard table of zbd0t_s__log_actual with non-unique default key.
+
 types: begin of zbd0t_s__log_write
        , mode               type c length 1
        , nr_pack            type i

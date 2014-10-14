@@ -1,5 +1,9 @@
 method check_prim.
 
+  constants
+  : cs_func                 type string value `^([A-Z0-9\_]+)\>\s\(`
+  .
+
   data
   : ld_s__check         type zbnlt_s__stack_check
   , ld_v__token         type string
@@ -8,7 +12,8 @@ method check_prim.
   , lr_o__appl          type ref to zcl_bd00_application
   , ld_v__cntkyf        type i
   , ld_s__variable      type zbnlt_s__math_var
-
+  , ld_s__custlink      type zbnlt_s__cust_link
+  , ld_t__custlink      type zbnlt_t__cust_link
   .
 
   field-symbols
@@ -35,11 +40,11 @@ method check_prim.
       return = check_expr( abap_true ).
 
       if return-token ne `)`.
-          raise exception type zcx_bdnl_syntax_error
-                exporting textid   = zcx_bdnl_syntax_error=>zcx_inc_le_parent
-                          token    = `)`
-                          token1   = `(`
-                          index     = gr_o__cursor->gd_v__index.
+        raise exception type zcx_bdnl_syntax_error
+              exporting textid   = zcx_bdnl_syntax_error=>zcx_inc_le_parent
+                        token    = `)`
+                        token1   = `(`
+                        index     = gr_o__cursor->gd_v__index.
       else.
         return = check_term( abap_true ).
       endif.
@@ -63,6 +68,12 @@ method check_prim.
         ld_s__check-left-const = gr_o__cursor->get_token( esc = abap_true ).
       elseif gr_o__cursor->check_num( )  = abap_true .
         ld_s__check-left-const = gr_o__cursor->get_token( esc = abap_true ).
+      elseif gr_o__cursor->check_tokens( q = 2 regex = cs_func ) = abap_true.
+        call method process_function
+          importing
+            e_v__funcname = ld_s__check-left-func_name
+            e_t__param    = ld_s__check-left-param
+            e_r__data     = ld_s__check-left-data.
       else.
         gr_o__cursor->get_token( esc = abap_true ).
         ld_s__check-left-tablename = ld_v__token.
