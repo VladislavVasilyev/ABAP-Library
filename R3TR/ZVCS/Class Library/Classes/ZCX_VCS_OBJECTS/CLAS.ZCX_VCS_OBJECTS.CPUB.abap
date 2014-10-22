@@ -9,7 +9,7 @@ public section.
 
   data PGMID type PGMID .
   data OBJECT type TROBJTYPE .
-  data OBJ_NAME type STRING .
+  data OBJ_NAME type SOBJ_NAME .
 
   methods CONSTRUCTOR
     importing
@@ -17,4 +17,4 @@ public section.
       !PREVIOUS like PREVIOUS optional
       !PGMID type PGMID optional
       !OBJECT type TROBJTYPE optional
-      !OBJ_NAME type STRING optional .
+      !OBJ_NAME type SOBJ_NAME optional .

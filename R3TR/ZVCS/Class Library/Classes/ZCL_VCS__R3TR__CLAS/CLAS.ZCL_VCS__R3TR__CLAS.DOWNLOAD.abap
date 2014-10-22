@@ -17,6 +17,4 @@ method download.
         i_s__source = <ld_s__source>.
   endloop.
 
-
-
 endmethod.

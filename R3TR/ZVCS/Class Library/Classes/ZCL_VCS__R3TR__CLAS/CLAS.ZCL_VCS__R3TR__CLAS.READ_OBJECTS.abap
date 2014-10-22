@@ -9,7 +9,7 @@ method read_objects.
   .
 
   field-symbols
-  : <ld_s__tadir>   type tadir
+  : <ld_s__tadir>   type zvcst_s__tadir
   , <ld_s__xmlsource>       type any
   .
 

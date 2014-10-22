@@ -8,6 +8,7 @@ method create_object.
   , gd_v__date            type string
   , ld_v__line            type i
   , ld_v__offset          type i
+  , ld_s__doc_content     type ty_s__content
   .
 
   field-symbols
@@ -42,6 +43,26 @@ method create_object.
       , ld_s__ujf_doctree-parentdoc with cd_v__appset_id
       .
     endif.
+
+    call method cl_gui_frontend_services=>gui_upload
+      exporting
+        filename   = <ls_s__xltp>-content
+        filetype   = 'BIN'
+      importing
+        filelength = ld_s__doc_content-file_length
+      changing
+        data_tab   = ld_s__doc_content-content
+      exceptions
+        others     = 24.
+
+    call function 'SCMS_BINARY_TO_XSTRING'
+      exporting
+        input_length = ld_s__doc_content-file_length
+      importing
+        buffer       = ld_s__ujf_doc-doc_content
+      tables
+        binary_tab   = ld_s__doc_content-content.
+
 
     modify ujf_doc     from ld_s__ujf_doc.
     modify ujf_doctree from ld_s__ujf_doctree.

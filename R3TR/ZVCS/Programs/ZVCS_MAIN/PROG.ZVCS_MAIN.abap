@@ -370,7 +370,7 @@ FORM DOWNLOAD.
   LD_S__PATH-F_ELE = F_ELE.
 
   ZCL_VCS_OBJECTS=>SET_TASK_DOWNLOAD_FOR_R3TR( I_T__OBJECT = LD_T__OBJECT I_S__PATH = LD_S__PATH ).
-  ZCL_VCS_OBJECTS=>SET_TASK_DOWNLOAD_FOR_BPC( I_T__APPSET_ID = APPS[] I_T__APPL_ID = APPL[] I_S__PATH = LD_S__PATH I_F__LGF = SCLO I_F__PACK = PACK I_F__XLTP = XLTP ).
+*  zcl_vcs_objects=>set_task_download_for_bpc( i_t__appset_id = apps[] i_t__appl_id = appl[] i_s__path = ld_s__path i_f__lgf = sclo i_f__pack = pack i_f__xltp = xltp ).
 
   ZCL_VCS_PROCESS=>MASTER_DOWNLOAD( `CHOOSE_DOWNLOAD` ).
 

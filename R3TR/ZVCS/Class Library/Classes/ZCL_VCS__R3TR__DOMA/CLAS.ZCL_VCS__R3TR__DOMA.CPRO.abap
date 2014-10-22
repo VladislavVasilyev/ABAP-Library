@@ -2,6 +2,8 @@
 *"* do not include other source files here!!!
 protected section.
 
+  data gd_t__doma type standard table of ty_s__doma with non-unique default key.
+
   methods CREATE_OBJECT
     redefinition .
   methods CREATE_PATH

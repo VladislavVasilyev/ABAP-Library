@@ -40,7 +40,7 @@ method read_objects.
     <ld_s__xml1> = <ld_s__xml>.
 
     ld_s__source-content = ld_s__doc_content.
-    append ld_s__source      to gd_t__source.
+    append ld_s__source      to gd_t__source_excl.
 
   endloop.
 

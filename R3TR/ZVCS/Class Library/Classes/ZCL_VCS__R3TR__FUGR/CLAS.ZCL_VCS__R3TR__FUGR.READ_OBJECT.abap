@@ -43,7 +43,7 @@ method READ_OBJECT.
       append  ld_s__txtsource to e_t__txtsource.
 
       ld_s__txtsource-pathnode = `/INCLUDES/item/SOURCE`.
-      ld_s__txtsource-pathname = `/INCLDES/item/INCLUDE`.
+      ld_s__txtsource-pathname = `/INCLUDES/item/INCLUDE`.
       append  ld_s__txtsource to e_t__txtsource.
 
 **********************************************************************

@@ -1,11 +1,11 @@
-method CREATE_OBJECT.
+method create_object.
 
   data
   : lr_x__call_module_error type ref to zcx_vcs__call_module_error
   , ld_v__name              type string
   , ld_s__shlp              type ty_s__shlp
   .
-
+  return.
   ld_s__shlp = i_r__source.
 
 *--------------------------------------------------------------------*
@@ -14,10 +14,10 @@ method CREATE_OBJECT.
   select count( * ) from dd30l
          where shlpname eq ld_s__shlp-name.
   if sy-subrc eq 0.
-    raise exception type zcx_vcs_objects_create__r3tr
-          exporting textid = zcx_vcs_objects_create__r3tr=>cx_already_exists
-                    obj_name = i_s__tadir-obj_name
-                    object = i_s__tadir-object.
+*    raise exception type zcx_vcs_objects_create__r3tr
+*          exporting textid = zcx_vcs_objects_create__r3tr=>cx_already_exists
+*                    obj_name = i_s__tadir-obj_name
+*                    object = i_s__tadir-object.
   endif.
 *--------------------------------------------------------------------*
 
@@ -70,10 +70,10 @@ method CREATE_OBJECT.
 *      NEW_EXTEND                     =
 
     catch zcx_vcs__call_module_error into lr_x__call_module_error.
-      raise exception type zcx_vcs_objects_create__r3tr
-            exporting obj_name = i_s__tadir-obj_name
-                      object = i_s__tadir-object
-                      previous = lr_x__call_module_error.
+*      raise exception type zcx_vcs_objects_create__r3tr
+*            exporting obj_name = i_s__tadir-obj_name
+*                      object = i_s__tadir-object
+*                      previous = lr_x__call_module_error.
   endtry.
 
 endmethod.

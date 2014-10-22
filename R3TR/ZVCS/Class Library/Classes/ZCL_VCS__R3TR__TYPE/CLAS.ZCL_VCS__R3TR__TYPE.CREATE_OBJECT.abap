@@ -10,7 +10,7 @@ method create_object.
   : <ld_s__type>      type ty_s__type
   , <ld_s__tadir>     type zvcst_s__tadir
   .
-
+return.
   assign i_r__source->* to <ld_s__type>.
 
   if not <ld_s__type>-texts is initial.
@@ -50,11 +50,11 @@ method create_object.
           suppress_dialog = 'X'.
 
     catch zcx_vcs__call_module_error into lr_x__call_module_error.
-      raise exception type zcx_vcs_objects_create__r3tr
-        exporting
-          previous = lr_x__call_module_error
-          object = i_s__tadir-object
-          obj_name = i_s__tadir-obj_name.
+*      raise exception type zcx_vcs_objects_create__r3tr
+*        exporting
+*          previous = lr_x__call_module_error
+*          object = i_s__tadir-object
+*          obj_name = i_s__tadir-obj_name.
   endtry.
 
 endmethod.

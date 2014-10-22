@@ -4,7 +4,7 @@ method read_objects_choose.
   : ld_tr__clas        type range of tadir-obj_name
   , ld_tr__devc        type range of tadir-devclass
   , ld_sr__devc        like line of ld_tr__devc
-  , ld_s__tadir        type tadir
+  , ld_s__tadir        type zvcst_s__tadir
   , ld_t__tadir        type ty_t__tadir
   , ld_v__devclass     type tdevc-devclass
   , ld_s__choose       type ty_s__checkobj_r3tr
@@ -39,6 +39,8 @@ method read_objects_choose.
     endcase.
 
   endloop.
+
+  check ld_tr__clas is not initial or ld_tr__devc is not initial.
 
   select *
     from  tadir

@@ -5,8 +5,6 @@ protected section.
   data:
     gd_t__dimension       type standard table of uja_dimension .
   data:
-    gd_t__source          type standard table of zvcst_s__download .
-  data:
     gd_t__xml             type standard table of ty_s__dimn with non-unique default key .
   data:
     gd_t__content         type standard table of ty_s__content .

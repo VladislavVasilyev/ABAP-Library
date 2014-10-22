@@ -14,7 +14,7 @@ method create_path.
   , <ld_s__source>  type ty_s__source
   .
 
-  loop at gd_t__source assigning <ld_s__source>.
+  loop at gd_t__source_excl assigning <ld_s__source>.
 
 
     assign <ld_s__source>-source-header to <ld_s__bpcdir>.

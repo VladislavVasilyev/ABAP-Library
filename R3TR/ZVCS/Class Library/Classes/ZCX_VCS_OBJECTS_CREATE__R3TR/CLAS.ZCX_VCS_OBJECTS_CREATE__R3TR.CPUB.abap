@@ -35,4 +35,4 @@ public section.
       !PREVIOUS like PREVIOUS optional
       !PGMID type PGMID optional
       !OBJECT type TROBJTYPE optional
-      !OBJ_NAME type STRING optional .
+      !OBJ_NAME type SOBJ_NAME optional .

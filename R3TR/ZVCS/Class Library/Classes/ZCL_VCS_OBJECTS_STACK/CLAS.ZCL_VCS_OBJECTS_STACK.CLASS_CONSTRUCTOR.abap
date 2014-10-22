@@ -8,7 +8,7 @@ method class_constructor.
   , ld_v__tyobject        type string
   , ld_v__tysource        type string
   , ld_v__pgmid           type pgmid
-  , ld_s__stack          type zvcst_s__objects_stack
+  , ld_s__stack           type zvcst_s__objects_stack
   .
 
 
@@ -17,42 +17,52 @@ method class_constructor.
     from  vseoextend
     into  ld_v__clsname
     where refclsname = `ZCL_VCS_OBJECTS_STACK`
-      and ( clsname like `%DIMN%` or
-            clsname like `%XLTP%` or
-            clsname like `%SCLO%` or
-            clsname like `%PACK%` or
-            clsname like `%CLAS%`
-          )
-    .
+*      and ( clsname like `%DIMN%` or
+*            clsname like `%XLTP%` or
+*            clsname like `%SCLO%` or
+*            clsname like `%PACK%` or
+*            clsname like `%CLAS%` or
+*            clsname like `%DOMA%` or
+*            clsname like `%DTEL%` or
+*            clsname like `%FUGR%` or
+*            clsname like `%INTF%` or
+*            clsname like `%MSAG%` or
+*            clsname like `%PROG%` or
+*            clsname like `%SHLP%` or
+*            clsname like `%TABL%`
+*
+*
+*          )
+          .
 
-      create object lr_o__vcs_object type (ld_v__clsname).
+    create object lr_o__vcs_object type (ld_v__clsname).
 
-      check sy-subrc = 0.
+    check sy-subrc = 0.
 
-      " set objects
-      call method lr_o__vcs_object->get_type_object
-        importing
-          type     = ld_s__stack-type
-          tysource = ld_v__tysource.
+    " set objects
+    call method lr_o__vcs_object->get_type_object
+      importing
+        type     = ld_s__stack-type
+        tysource = ld_v__tysource.
 
 *----------------------------------------------------------------------*
 *       CLASS ?=  CL_ABAP_CLASSD
 *----------------------------------------------------------------------*
 *
 *----------------------------------------------------------------------*
-      lr_o__descclass ?= cl_abap_classdescr=>describe_by_object_ref( lr_o__vcs_object ).
+    lr_o__descclass ?= cl_abap_classdescr=>describe_by_object_ref( lr_o__vcs_object ).
 
-      call method lr_o__descclass->get_type(
-            exporting p_name = ld_v__tysource
-            receiving p_descr_ref = lr_o__desctype
-            exceptions others = 1 ).
+    call method lr_o__descclass->get_type(
+          exporting p_name = ld_v__tysource
+          receiving p_descr_ref = lr_o__desctype
+          exceptions others = 1 ).
 
-      ld_s__stack-object ?= lr_o__vcs_object.
+    ld_s__stack-object ?= lr_o__vcs_object.
 
-      lr_o__vcs_object->gd_v__tyobject        = ld_v__tyobject.
-      lr_o__vcs_object->gr_o__sourcehandle   ?= lr_o__desctype.
+    lr_o__vcs_object->gd_v__tyobject        = ld_v__tyobject.
+    lr_o__vcs_object->gr_o__sourcehandle   ?= lr_o__desctype.
 
-      insert ld_s__stack into table cd_t__stack.
+    insert ld_s__stack into table cd_t__stack.
 
   endselect.
 

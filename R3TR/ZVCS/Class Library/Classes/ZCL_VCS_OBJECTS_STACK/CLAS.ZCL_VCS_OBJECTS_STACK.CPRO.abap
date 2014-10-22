@@ -2,65 +2,69 @@
 *"* do not include other source files here!!!
 protected section.
 
-  class ZCL_VCS_R3TR___UPLOAD definition load .
-  data GD_T__UPLOAD_FILE type ZCL_VCS_R3TR___UPLOAD=>TY_T__FILELIST .
+  class zcl_vcs_r3tr___upload definition load .
+  data gd_t__upload_file type zcl_vcs_r3tr___upload=>ty_t__filelist .
 
-  methods WRITE_OBJECT_CHOOSE
+  data gd_t__tadir type standard table of zvcst_s__tadir with non-unique default key.
+  data gd_t__source type zvcst_t__download.
+  data gd_t__upload type ty_t__upload.
+
+  methods write_object_choose
   abstract
     importing
-      !I_V__FORM_NAME type FORM_NAME .
-  methods READ_OBJECTS_CHOOSE
+      !i_v__form_name type form_name .
+  methods read_objects_choose
   abstract
     importing
-      !I_V__FORM_NAME type FORM_NAME .
-  methods READ_OBJECTS
+      !i_v__form_name type form_name .
+  methods read_objects
   abstract .
-  methods GET_TYPE
+  methods get_type
   final
     returning
-      value(TYPE) type STRING .
-  methods GET_HANDLE
+      value(type) type string .
+  methods get_handle
   final
     returning
-      value(HANDLE) type ref to CL_ABAP_DATADESCR .
-  methods DOWNLOAD
+      value(handle) type ref to cl_abap_datadescr .
+  methods download
   abstract
     importing
-      !I_V__PATH type STRING .
-  methods CREATE_PATH
+      !i_v__path type string .
+  methods create_path
   abstract
     importing
-      !I_S__PATH type ZVCST_S__PATH
-      !I_S__DIR type ANY
+      !i_s__path type zvcst_s__path
+      !i_s__dir type any
     exporting
-      !E_V__PATH type STRING
-      !E_V__XMLNAME type STRING
-      !E_V__MASTERNAME type STRING
-      !E_V__EXTSRCNAME type STRING .
-  methods CREATE_OBJECT
+      !e_v__path type string
+      !e_v__xmlname type string
+      !e_v__mastername type string
+      !e_v__extsrcname type string .
+  methods create_object
   abstract
     importing
-      !I_R__SOURCE type ANY optional
-      !I_S__TADIR type ZVCST_S__TADIR optional
+      !i_r__source type any optional
+      !i_s__tadir type zvcst_s__tadir optional
     raising
-      ZCX_VCS_OBJECTS_CREATE .
-  methods CROSSSOURCES
+      zcx_vcs_objects_create .
+  methods crosssources
   abstract
     importing
-      !I_S__TADIR type ZVCST_S__TADIR
+      !i_s__tadir type zvcst_s__tadir
     exporting
-      !E_T__TADIR type ZVCST_T__TADIR .
-  methods GET_TYPE_OBJECT
+      !e_t__tadir type zvcst_t__tadir .
+  methods get_type_object
   abstract
     exporting
-      !TYPE type ZVCST_S__OBJECT
-      !TYSOURCE type STRING .
-  methods READ_OBJECT
+      !type type zvcst_s__object
+      !tysource type string .
+  methods read_object
   abstract
     importing
-      !I_S__TADIR type ZVCST_S__TADIR
+      !i_s__tadir type zvcst_s__tadir
     exporting
-      !E_T__TXTSOURCE type ZVCST_T__SOURCE_PATH
-      !E_S__SOURCE type ANY
+      !e_t__txtsource type zvcst_t__source_path
+      !e_s__source type any
     raising
-      ZCX_VCS_OBJECTS_READ .
+      zcx_vcs_objects_read .

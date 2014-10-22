@@ -71,9 +71,11 @@ constants  zvcsc_bpc(4) type c value `BPCS`.
 constants: begin of zvcsc_bpc_type
            , apps type trobjtype value `APPS`
            , appl type trobjtype value `APPL`
+           , dimn type trobjtype value `DIMN`
            , sclo type trobjtype value `SCLO`
            , pack type trobjtype value `PACK`
            , xltp type trobjtype value `XLTP`
+           , excl type trobjtype value `EXCL`
            , end of zvcsc_bpc_type.
 
 constants: begin of zvcsc_bpc_path

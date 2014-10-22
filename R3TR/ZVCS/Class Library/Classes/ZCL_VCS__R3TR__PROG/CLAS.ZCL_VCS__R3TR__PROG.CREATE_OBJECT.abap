@@ -9,7 +9,7 @@ method create_object.
   field-symbols
   : <ld_s__dynpro>    type ty_s__dynpro
   .
-
+  return.
   ld_s__prog = i_r__source.
 
   try.
@@ -33,11 +33,11 @@ method create_object.
       endloop.
 
     catch zcx_vcs__call_module_error into lr_x__call_module_error.
-      raise exception type zcx_vcs_objects_create__r3tr
-        exporting
-          previous = lr_x__call_module_error
-          object   = i_s__tadir-object
-          obj_name = i_s__tadir-obj_name.
+*      raise exception type zcx_vcs_objects_create__r3tr
+*        exporting
+*          previous = lr_x__call_module_error
+*          object   = i_s__tadir-object
+*          obj_name = i_s__tadir-obj_name.
   endtry.
 
 endmethod.

@@ -22,9 +22,6 @@ class zcl_vcs__r3tr__clas definition
     interfaces zif_vcs_r3tr_objservice
         all methods final .
 
-    data gd_t__tadir type standard table of tadir with non-unique default key.
-    data gd_t__source type zvcst_t__download.
-
     types:
       ty_t__clsname type hashed table of seoclsname with unique default key .
     types ty_s__vseoclass type vseoclass .

@@ -36,7 +36,8 @@ method read_objects_choose.
     where ujf_doc~appset       in cd_r__appset_id
       and ujf_doc~docname      like `%EEXCEL%`
       and ( ujf_doc~doctype    like `XL_`
-       or   ujf_doc~doctype    like `XL__` ).
+       or   ujf_doc~doctype    like `XL__`
+       or   ujf_doc~doctype    like `XML` ).
 
   loop at ld_t__docs
        assigning <ld_s__docs>.

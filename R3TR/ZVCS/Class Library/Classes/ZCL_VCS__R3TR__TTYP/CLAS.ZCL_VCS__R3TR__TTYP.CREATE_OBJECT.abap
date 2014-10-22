@@ -8,7 +8,7 @@ method CREATE_OBJECT.
   field-symbols
   : <ld_s__ttyp>            type ty_s__ttyp
   .
-
+return.
   assign i_r__source->* to <ld_s__ttyp>.
 
 *--------------------------------------------------------------------*
@@ -19,10 +19,10 @@ method CREATE_OBJECT.
 
   if sy-subrc = 0. " check
     ld_v__name = <ld_s__ttyp>-name.
-    raise exception type zcx_vcs_objects_create__r3tr
-          exporting textid = zcx_vcs_objects_create__r3tr=>cx_already_exists
-                    obj_name = i_s__tadir-obj_name
-                    object = i_s__tadir-object.
+*    raise exception type zcx_vcs_objects_create__r3tr
+*          exporting textid = zcx_vcs_objects_create__r3tr=>cx_already_exists
+*                    obj_name = i_s__tadir-obj_name
+*                    object = i_s__tadir-object.
   endif.
 *--------------------------------------------------------------------*
 
@@ -73,10 +73,10 @@ method CREATE_OBJECT.
 *      NEW_EXTEND                     =
 
     catch zcx_vcs__call_module_error into lr_x__call_module_error.
-      raise exception type zcx_vcs_objects_create__r3tr
-            exporting obj_name = i_s__tadir-obj_name
-                      object = i_s__tadir-object
-                      previous = lr_x__call_module_error.
+*      raise exception type zcx_vcs_objects_create__r3tr
+*            exporting obj_name = i_s__tadir-obj_name
+*                      object = i_s__tadir-object
+*                      previous = lr_x__call_module_error.
   endtry.
 
 endmethod.

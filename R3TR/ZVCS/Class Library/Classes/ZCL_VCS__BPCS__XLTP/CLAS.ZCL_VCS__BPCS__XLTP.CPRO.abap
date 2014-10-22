@@ -4,24 +4,24 @@ protected section.
 
   data:
     gd_t__xltp type standard table of ty_s__xltp with non-unique default key .
-  data:
-    gd_t__source  type standard table of ty_s__source .
 
-  methods CREATE_OBJECT
+  data gd_t__source_excl type standard table of ty_s__source with non-unique default key.
+
+  methods create_object
     redefinition .
-  methods CREATE_PATH
+  methods create_path
     redefinition .
-  methods CROSSSOURCES
+  methods crosssources
     redefinition .
-  methods DOWNLOAD
+  methods download
     redefinition .
-  methods GET_TYPE_OBJECT
+  methods get_type_object
     redefinition .
-  methods READ_OBJECT
+  methods read_object
     redefinition .
-  methods READ_OBJECTS
+  methods read_objects
     redefinition .
-  methods READ_OBJECTS_CHOOSE
+  methods read_objects_choose
     redefinition .
-  methods WRITE_OBJECT_CHOOSE
+  methods write_object_choose
     redefinition .

@@ -28,11 +28,18 @@ class zcl_vcs_objects_stack definition
 
     types: begin of ty_s__tadir.
     include type tadir.
+    types tabclass type tabclass.
     types:  index type i,
     end of ty_s__tadir.
 
     types ty_t__tadir type standard table of ty_s__tadir with non-unique default key.
 
+    types: begin of ty_s__upload
+           , source type ref to data
+           , tadir type ty_s__tadir
+           , end of ty_s__upload.
+
+    types ty_t__upload  type standard table of ty_s__upload with non-unique default key.
 
     types: begin of ty_s__checkobj_r3tr.
     include type seoscokey.

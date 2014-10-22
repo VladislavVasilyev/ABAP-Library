@@ -12,7 +12,7 @@ method download.
   , <ld_s__source>  type ty_s__source
   .
 
-  loop at gd_t__source assigning <ld_s__source>.
+  loop at gd_t__source_excl assigning <ld_s__source>.
 
     call method zcl_vcs___xml_txt=>download
       exporting

@@ -119,8 +119,8 @@
 		<CREAT_USER>VVASILYEV00</CREAT_USER>
 		<CREAT_DATE>2014-04-03</CREAT_DATE>
 		<MOD_USER>VVASILYEV00</MOD_USER>
-		<MOD_DATE>2014-07-18</MOD_DATE>
-		<VERSION>000095</VERSION>
+		<MOD_DATE>2014-09-09</MOD_DATE>
+		<VERSION>000098</VERSION>
 		<MANDANT>100</MANDANT>
 		<MASTERLANG>R</MASTERLANG>
 		<FIXP_ARITH>X</FIXP_ARITH>
@@ -136,7 +136,7 @@
 				<PROGRAM>ZPR_PROCESS_LGF</PROGRAM>
 				<SCREEN>1000</SCREEN>
 				<LANGUAGE>R</LANGUAGE>
-				<DESCRIPT>SEL_SCREEN 1000 INFO:170000410000000000000000000003791213639</DESCRIPT>
+				<DESCRIPT>SEL_SCREEN 1000 INFO:170000430000000000000000000004100328621</DESCRIPT>
 				<TYPE>S</TYPE>
 				<NEXTSCREEN>1000</NEXTSCREEN>
 				<LINES>200</LINES>
@@ -606,7 +606,7 @@
 					<COLUMN>001</COLUMN>
 					<LENGTH>118</LENGTH>
 					<VISLENGTH>118</VISLENGTH>
-					<HEIGHT>010</HEIGHT>
+					<HEIGHT>012</HEIGHT>
 					<GROUP3>BLK</GROUP3>
 					<FORMAT>CHAR</FORMAT>
 					<UP_LOWER>X</UP_LOWER>
@@ -793,16 +793,104 @@
 				<item>
 					<CONT_TYPE>SCREEN</CONT_TYPE>
 					<CONT_NAME>SCREEN</CONT_NAME>
+					<TYPE>TEMPLATE</TYPE>
+					<NAME>%_B01_DIMN_%_APP_%-TEXT</NAME>
+					<TEXT>____________________________</TEXT>
+					<LINE>021</LINE>
+					<COLUMN>003</COLUMN>
+					<LENGTH>028</LENGTH>
+					<VISLENGTH>028</VISLENGTH>
+					<HEIGHT>001</HEIGHT>
+					<GROUP1>B00</GROUP1>
+					<GROUP3>TXT</GROUP3>
+					<GROUP4>020</GROUP4>
+					<CXT_MENON>%_SSCR_%_S_B01_DIMN</CXT_MENON>
+					<FORMAT>CHAR</FORMAT>
+					<UP_LOWER>X</UP_LOWER>
+					<OUTPUT_FLD>X</OUTPUT_FLD>
+					<OUTPUTONLY>X</OUTPUTONLY>
+					<REQU_ENTRY>N</REQU_ENTRY>
+					<LABELLEFT>X</LABELLEFT>
+				</item>
+				<item>
+					<CONT_TYPE>SCREEN</CONT_TYPE>
+					<CONT_NAME>SCREEN</CONT_NAME>
+					<TYPE>TEMPLATE</TYPE>
+					<NAME>%_B01_DIMN_%_APP_%-OPTI_PUSH</NAME>
+					<TEXT>________________________________________</TEXT>
+					<ROLLING>X</ROLLING>
+					<LINE>021</LINE>
+					<COLUMN>032</COLUMN>
+					<LENGTH>040</LENGTH>
+					<VISLENGTH>002</VISLENGTH>
+					<HEIGHT>001</HEIGHT>
+					<GROUP1>B00</GROUP1>
+					<GROUP3>OPU</GROUP3>
+					<GROUP4>020</GROUP4>
+					<CXT_MENON>%_SSCR_%_S_B01_DIMN</CXT_MENON>
+					<FORMAT>CHAR</FORMAT>
+					<OUTPUT_FLD>X</OUTPUT_FLD>
+					<REQU_ENTRY>N</REQU_ENTRY>
+					<_--32_DIMENS>X</_--32_DIMENS>
+				</item>
+				<item>
+					<CONT_TYPE>SCREEN</CONT_TYPE>
+					<CONT_NAME>SCREEN</CONT_NAME>
+					<TYPE>TEMPLATE</TYPE>
+					<NAME>B01_DIMN-LOW</NAME>
+					<TEXT>____________________</TEXT>
+					<ROLLING>X</ROLLING>
+					<LINE>021</LINE>
+					<COLUMN>035</COLUMN>
+					<LENGTH>020</LENGTH>
+					<VISLENGTH>018</VISLENGTH>
+					<HEIGHT>001</HEIGHT>
+					<GROUP1>B00</GROUP1>
+					<GROUP3>LOW</GROUP3>
+					<GROUP4>020</GROUP4>
+					<CXT_MENON>%_SSCR_%_S_B01_DIMN</CXT_MENON>
+					<FORMAT>CHAR</FORMAT>
+					<UP_LOWER>X</UP_LOWER>
+					<INPUT_FLD>X</INPUT_FLD>
+					<OUTPUT_FLD>X</OUTPUT_FLD>
+					<POSS_ENTRY>1</POSS_ENTRY>
+					<PROPERTIES>&amp;lt;TextField&amp;gt;&amp;lt;Name&amp;gt;%_B01_DIMN_%_APP_%-TEXT&amp;lt;/Name&amp;gt;&amp;lt;/TextField&amp;gt;</PROPERTIES>
+				</item>
+				<item>
+					<CONT_TYPE>SCREEN</CONT_TYPE>
+					<CONT_NAME>SCREEN</CONT_NAME>
+					<TYPE>PUSH_TMPL</TYPE>
+					<NAME>%_B01_DIMN_%_APP_%-VALU_PUSH</NAME>
+					<TEXT>________________________________________</TEXT>
+					<LINE>021</LINE>
+					<COLUMN>054</COLUMN>
+					<LENGTH>040</LENGTH>
+					<VISLENGTH>003</VISLENGTH>
+					<HEIGHT>001</HEIGHT>
+					<GROUP1>B00</GROUP1>
+					<GROUP3>VPU</GROUP3>
+					<GROUP4>020</GROUP4>
+					<PUSH_FCODE>%020</PUSH_FCODE>
+					<CXT_MENON>%_SSCR_%_S_B01_DIMN</CXT_MENON>
+					<FORMAT>CHAR</FORMAT>
+					<UP_LOWER>X</UP_LOWER>
+					<OUTPUT_FLD>X</OUTPUT_FLD>
+					<OUTPUTONLY>X</OUTPUTONLY>
+					<REQU_ENTRY>N</REQU_ENTRY>
+				</item>
+				<item>
+					<CONT_TYPE>SCREEN</CONT_TYPE>
+					<CONT_NAME>SCREEN</CONT_NAME>
 					<TYPE>CHECK</TYPE>
 					<NAME>SCLO</NAME>
-					<LINE>022</LINE>
+					<LINE>023</LINE>
 					<COLUMN>003</COLUMN>
 					<LENGTH>001</LENGTH>
 					<VISLENGTH>001</VISLENGTH>
 					<HEIGHT>001</HEIGHT>
 					<GROUP1>B00</GROUP1>
 					<GROUP3>PAR</GROUP3>
-					<GROUP4>021</GROUP4>
+					<GROUP4>022</GROUP4>
 					<FORMAT>CHAR</FORMAT>
 					<INPUT_FLD>X</INPUT_FLD>
 					<OUTPUT_FLD>X</OUTPUT_FLD>
@@ -813,14 +901,14 @@
 					<TYPE>TEMPLATE</TYPE>
 					<NAME>%_SCLO_%_APP_%-TEXT</NAME>
 					<TEXT>______________________________</TEXT>
-					<LINE>022</LINE>
+					<LINE>023</LINE>
 					<COLUMN>005</COLUMN>
 					<LENGTH>030</LENGTH>
 					<VISLENGTH>030</VISLENGTH>
 					<HEIGHT>001</HEIGHT>
 					<GROUP1>B00</GROUP1>
 					<GROUP3>TXT</GROUP3>
-					<GROUP4>021</GROUP4>
+					<GROUP4>022</GROUP4>
 					<FORMAT>CHAR</FORMAT>
 					<UP_LOWER>X</UP_LOWER>
 					<OUTPUT_FLD>X</OUTPUT_FLD>
@@ -833,14 +921,14 @@
 					<CONT_NAME>SCREEN</CONT_NAME>
 					<TYPE>CHECK</TYPE>
 					<NAME>PACK</NAME>
-					<LINE>023</LINE>
+					<LINE>024</LINE>
 					<COLUMN>003</COLUMN>
 					<LENGTH>001</LENGTH>
 					<VISLENGTH>001</VISLENGTH>
 					<HEIGHT>001</HEIGHT>
 					<GROUP1>B00</GROUP1>
 					<GROUP3>PAR</GROUP3>
-					<GROUP4>022</GROUP4>
+					<GROUP4>023</GROUP4>
 					<FORMAT>CHAR</FORMAT>
 					<INPUT_FLD>X</INPUT_FLD>
 					<OUTPUT_FLD>X</OUTPUT_FLD>
@@ -851,14 +939,14 @@
 					<TYPE>TEMPLATE</TYPE>
 					<NAME>%_PACK_%_APP_%-TEXT</NAME>
 					<TEXT>______________________________</TEXT>
-					<LINE>023</LINE>
+					<LINE>024</LINE>
 					<COLUMN>005</COLUMN>
 					<LENGTH>030</LENGTH>
 					<VISLENGTH>030</VISLENGTH>
 					<HEIGHT>001</HEIGHT>
 					<GROUP1>B00</GROUP1>
 					<GROUP3>TXT</GROUP3>
-					<GROUP4>022</GROUP4>
+					<GROUP4>023</GROUP4>
 					<FORMAT>CHAR</FORMAT>
 					<UP_LOWER>X</UP_LOWER>
 					<OUTPUT_FLD>X</OUTPUT_FLD>
@@ -871,14 +959,14 @@
 					<CONT_NAME>SCREEN</CONT_NAME>
 					<TYPE>CHECK</TYPE>
 					<NAME>XLTP</NAME>
-					<LINE>024</LINE>
+					<LINE>025</LINE>
 					<COLUMN>003</COLUMN>
 					<LENGTH>001</LENGTH>
 					<VISLENGTH>001</VISLENGTH>
 					<HEIGHT>001</HEIGHT>
 					<GROUP1>B00</GROUP1>
 					<GROUP3>PAR</GROUP3>
-					<GROUP4>023</GROUP4>
+					<GROUP4>024</GROUP4>
 					<FORMAT>CHAR</FORMAT>
 					<INPUT_FLD>X</INPUT_FLD>
 					<OUTPUT_FLD>X</OUTPUT_FLD>
@@ -889,14 +977,52 @@
 					<TYPE>TEMPLATE</TYPE>
 					<NAME>%_XLTP_%_APP_%-TEXT</NAME>
 					<TEXT>______________________________</TEXT>
-					<LINE>024</LINE>
+					<LINE>025</LINE>
 					<COLUMN>005</COLUMN>
 					<LENGTH>030</LENGTH>
 					<VISLENGTH>030</VISLENGTH>
 					<HEIGHT>001</HEIGHT>
 					<GROUP1>B00</GROUP1>
 					<GROUP3>TXT</GROUP3>
-					<GROUP4>023</GROUP4>
+					<GROUP4>024</GROUP4>
+					<FORMAT>CHAR</FORMAT>
+					<UP_LOWER>X</UP_LOWER>
+					<OUTPUT_FLD>X</OUTPUT_FLD>
+					<OUTPUTONLY>X</OUTPUTONLY>
+					<REQU_ENTRY>N</REQU_ENTRY>
+					<LABELRIGHT>X</LABELRIGHT>
+				</item>
+				<item>
+					<CONT_TYPE>SCREEN</CONT_TYPE>
+					<CONT_NAME>SCREEN</CONT_NAME>
+					<TYPE>CHECK</TYPE>
+					<NAME>DIMN</NAME>
+					<LINE>026</LINE>
+					<COLUMN>003</COLUMN>
+					<LENGTH>001</LENGTH>
+					<VISLENGTH>001</VISLENGTH>
+					<HEIGHT>001</HEIGHT>
+					<GROUP1>B00</GROUP1>
+					<GROUP3>PAR</GROUP3>
+					<GROUP4>025</GROUP4>
+					<FORMAT>CHAR</FORMAT>
+					<INPUT_FLD>X</INPUT_FLD>
+					<OUTPUT_FLD>X</OUTPUT_FLD>
+				</item>
+				<item>
+					<CONT_TYPE>SCREEN</CONT_TYPE>
+					<CONT_NAME>SCREEN</CONT_NAME>
+					<TYPE>TEMPLATE</TYPE>
+					<NAME>%_DIMN_%_APP_%-TEXT</NAME>
+					<TEXT>______________________________</TEXT>
+					<LINE>026</LINE>
+					<COLUMN>005</COLUMN>
+					<LENGTH>030</LENGTH>
+					<VISLENGTH>030</VISLENGTH>
+					<HEIGHT>001</HEIGHT>
+					<GROUP1>B00</GROUP1>
+					<GROUP3>TXT</GROUP3>
+					<GROUP4>025</GROUP4>
 					<FORMAT>CHAR</FORMAT>
 					<UP_LOWER>X</UP_LOWER>
 					<OUTPUT_FLD>X</OUTPUT_FLD>
@@ -910,14 +1036,14 @@
 					<TYPE>TEMPLATE</TYPE>
 					<NAME>CPATH</NAME>
 					<TEXT>_______________</TEXT>
-					<LINE>026</LINE>
+					<LINE>028</LINE>
 					<COLUMN>003</COLUMN>
 					<LENGTH>015</LENGTH>
 					<VISLENGTH>015</VISLENGTH>
 					<HEIGHT>001</HEIGHT>
 					<GROUP1>B00</GROUP1>
 					<GROUP3>COF</GROUP3>
-					<GROUP4>027</GROUP4>
+					<GROUP4>029</GROUP4>
 					<FORMAT>CHAR</FORMAT>
 					<UP_LOWER>X</UP_LOWER>
 					<OUTPUT_FLD>X</OUTPUT_FLD>
@@ -933,14 +1059,14 @@
 					<NAME>DPATH</NAME>
 					<TEXT>________________________________________________________________________________________________________________________________</TEXT>
 					<ROLLING>X</ROLLING>
-					<LINE>026</LINE>
+					<LINE>028</LINE>
 					<COLUMN>019</COLUMN>
 					<LENGTH>128</LENGTH>
 					<VISLENGTH>045</VISLENGTH>
 					<HEIGHT>001</HEIGHT>
 					<GROUP1>B00</GROUP1>
 					<GROUP3>PAR</GROUP3>
-					<GROUP4>027</GROUP4>
+					<GROUP4>029</GROUP4>
 					<FORMAT>CHAR</FORMAT>
 					<UP_LOWER>X</UP_LOWER>
 					<INPUT_FLD>X</INPUT_FLD>
@@ -953,7 +1079,7 @@
 					<TYPE>TEMPLATE</TYPE>
 					<NAME>T_BDIR</NAME>
 					<TEXT>___</TEXT>
-					<LINE>026</LINE>
+					<LINE>028</LINE>
 					<COLUMN>065</COLUMN>
 					<LENGTH>003</LENGTH>
 					<VISLENGTH>003</VISLENGTH>
@@ -972,14 +1098,14 @@
 					<CONT_NAME>SCREEN</CONT_NAME>
 					<TYPE>CHECK</TYPE>
 					<NAME>F_SYS</NAME>
-					<LINE>026</LINE>
+					<LINE>028</LINE>
 					<COLUMN>069</COLUMN>
 					<LENGTH>001</LENGTH>
 					<VISLENGTH>001</VISLENGTH>
 					<HEIGHT>001</HEIGHT>
 					<GROUP1>B00</GROUP1>
 					<GROUP3>PAR</GROUP3>
-					<GROUP4>029</GROUP4>
+					<GROUP4>031</GROUP4>
 					<FORMAT>CHAR</FORMAT>
 					<INPUT_FLD>X</INPUT_FLD>
 					<OUTPUT_FLD>X</OUTPUT_FLD>
@@ -990,14 +1116,14 @@
 					<TYPE>TEMPLATE</TYPE>
 					<NAME>T_F_SYS</NAME>
 					<TEXT>_____</TEXT>
-					<LINE>026</LINE>
+					<LINE>028</LINE>
 					<COLUMN>071</COLUMN>
 					<LENGTH>005</LENGTH>
 					<VISLENGTH>005</VISLENGTH>
 					<HEIGHT>001</HEIGHT>
 					<GROUP1>B00</GROUP1>
 					<GROUP3>COF</GROUP3>
-					<GROUP4>029</GROUP4>
+					<GROUP4>031</GROUP4>
 					<FORMAT>CHAR</FORMAT>
 					<UP_LOWER>X</UP_LOWER>
 					<OUTPUT_FLD>X</OUTPUT_FLD>
@@ -1011,14 +1137,14 @@
 					<CONT_NAME>SCREEN</CONT_NAME>
 					<TYPE>CHECK</TYPE>
 					<NAME>F_PAC</NAME>
-					<LINE>026</LINE>
+					<LINE>028</LINE>
 					<COLUMN>077</COLUMN>
 					<LENGTH>001</LENGTH>
 					<VISLENGTH>001</VISLENGTH>
 					<HEIGHT>001</HEIGHT>
 					<GROUP1>B00</GROUP1>
 					<GROUP3>PAR</GROUP3>
-					<GROUP4>031</GROUP4>
+					<GROUP4>033</GROUP4>
 					<FORMAT>CHAR</FORMAT>
 					<INPUT_FLD>X</INPUT_FLD>
 					<OUTPUT_FLD>X</OUTPUT_FLD>
@@ -1029,14 +1155,14 @@
 					<TYPE>TEMPLATE</TYPE>
 					<NAME>T_F_PAC</NAME>
 					<TEXT>__________</TEXT>
-					<LINE>026</LINE>
+					<LINE>028</LINE>
 					<COLUMN>079</COLUMN>
 					<LENGTH>010</LENGTH>
 					<VISLENGTH>010</VISLENGTH>
 					<HEIGHT>001</HEIGHT>
 					<GROUP1>B00</GROUP1>
 					<GROUP3>COF</GROUP3>
-					<GROUP4>031</GROUP4>
+					<GROUP4>033</GROUP4>
 					<FORMAT>CHAR</FORMAT>
 					<UP_LOWER>X</UP_LOWER>
 					<OUTPUT_FLD>X</OUTPUT_FLD>
@@ -1050,14 +1176,14 @@
 					<CONT_NAME>SCREEN</CONT_NAME>
 					<TYPE>CHECK</TYPE>
 					<NAME>F_DIR</NAME>
-					<LINE>026</LINE>
+					<LINE>028</LINE>
 					<COLUMN>090</COLUMN>
 					<LENGTH>001</LENGTH>
 					<VISLENGTH>001</VISLENGTH>
 					<HEIGHT>001</HEIGHT>
 					<GROUP1>B00</GROUP1>
 					<GROUP3>PAR</GROUP3>
-					<GROUP4>033</GROUP4>
+					<GROUP4>035</GROUP4>
 					<FORMAT>CHAR</FORMAT>
 					<INPUT_FLD>X</INPUT_FLD>
 					<OUTPUT_FLD>X</OUTPUT_FLD>
@@ -1068,14 +1194,14 @@
 					<TYPE>TEMPLATE</TYPE>
 					<NAME>T_F_DIR</NAME>
 					<TEXT>_____</TEXT>
-					<LINE>026</LINE>
+					<LINE>028</LINE>
 					<COLUMN>092</COLUMN>
 					<LENGTH>005</LENGTH>
 					<VISLENGTH>005</VISLENGTH>
 					<HEIGHT>001</HEIGHT>
 					<GROUP1>B00</GROUP1>
 					<GROUP3>COF</GROUP3>
-					<GROUP4>033</GROUP4>
+					<GROUP4>035</GROUP4>
 					<FORMAT>CHAR</FORMAT>
 					<UP_LOWER>X</UP_LOWER>
 					<OUTPUT_FLD>X</OUTPUT_FLD>
@@ -1090,7 +1216,7 @@
 					<TYPE>FRAME_TMPL</TYPE>
 					<NAME>T_B02</NAME>
 					<TEXT>_____________________________________________________________________________________________________________________</TEXT>
-					<LINE>028</LINE>
+					<LINE>030</LINE>
 					<COLUMN>001</COLUMN>
 					<LENGTH>118</LENGTH>
 					<VISLENGTH>118</VISLENGTH>
@@ -1108,14 +1234,14 @@
 					<TYPE>TEMPLATE</TYPE>
 					<NAME>%_UPATH_%_APP_%-TEXT</NAME>
 					<TEXT>______________________________</TEXT>
-					<LINE>029</LINE>
+					<LINE>031</LINE>
 					<COLUMN>003</COLUMN>
 					<LENGTH>030</LENGTH>
 					<VISLENGTH>030</VISLENGTH>
 					<HEIGHT>001</HEIGHT>
 					<GROUP1>C00</GROUP1>
 					<GROUP3>TXT</GROUP3>
-					<GROUP4>038</GROUP4>
+					<GROUP4>040</GROUP4>
 					<FORMAT>CHAR</FORMAT>
 					<UP_LOWER>X</UP_LOWER>
 					<OUTPUT_FLD>X</OUTPUT_FLD>
@@ -1130,14 +1256,14 @@
 					<NAME>UPATH</NAME>
 					<TEXT>________________________________________________________________________________________________________________________________</TEXT>
 					<ROLLING>X</ROLLING>
-					<LINE>029</LINE>
+					<LINE>031</LINE>
 					<COLUMN>035</COLUMN>
 					<LENGTH>128</LENGTH>
 					<VISLENGTH>045</VISLENGTH>
 					<HEIGHT>001</HEIGHT>
 					<GROUP1>C00</GROUP1>
 					<GROUP3>PAR</GROUP3>
-					<GROUP4>038</GROUP4>
+					<GROUP4>040</GROUP4>
 					<FORMAT>CHAR</FORMAT>
 					<UP_LOWER>X</UP_LOWER>
 					<INPUT_FLD>X</INPUT_FLD>
@@ -1150,14 +1276,14 @@
 					<TYPE>TEMPLATE</TYPE>
 					<NAME>%_B02_APPS_%_APP_%-TEXT</NAME>
 					<TEXT>______________________________</TEXT>
-					<LINE>030</LINE>
+					<LINE>032</LINE>
 					<COLUMN>003</COLUMN>
 					<LENGTH>030</LENGTH>
 					<VISLENGTH>030</VISLENGTH>
 					<HEIGHT>001</HEIGHT>
 					<GROUP1>C00</GROUP1>
 					<GROUP3>TXT</GROUP3>
-					<GROUP4>039</GROUP4>
+					<GROUP4>041</GROUP4>
 					<FORMAT>CHAR</FORMAT>
 					<UP_LOWER>X</UP_LOWER>
 					<OUTPUT_FLD>X</OUTPUT_FLD>
@@ -1171,14 +1297,14 @@
 					<TYPE>TEMPLATE</TYPE>
 					<NAME>B02_APPS</NAME>
 					<TEXT>____________________</TEXT>
-					<LINE>030</LINE>
+					<LINE>032</LINE>
 					<COLUMN>035</COLUMN>
 					<LENGTH>020</LENGTH>
 					<VISLENGTH>020</VISLENGTH>
 					<HEIGHT>001</HEIGHT>
 					<GROUP1>C00</GROUP1>
 					<GROUP3>PAR</GROUP3>
-					<GROUP4>039</GROUP4>
+					<GROUP4>041</GROUP4>
 					<FORMAT>CHAR</FORMAT>
 					<UP_LOWER>X</UP_LOWER>
 					<INPUT_FLD>X</INPUT_FLD>
@@ -1190,7 +1316,7 @@
 					<TYPE>TEXT</TYPE>
 					<NAME>%_17SNS0000010633_%_%_%_%_%_%_</NAME>
 					<TEXT>-</TEXT>
-					<LINE>032</LINE>
+					<LINE>034</LINE>
 					<COLUMN>001</COLUMN>
 					<LENGTH>001</LENGTH>
 					<VISLENGTH>001</VISLENGTH>
@@ -1300,6 +1426,11 @@
 				</item>
 				<item>
 					<LINE>MODULE %_B01_APPL.</LINE>
+				</item>
+				<item>
+				</item>
+				<item>
+					<LINE>MODULE %_B01_DIMN.</LINE>
 				</item>
 				<item>
 				</item>
@@ -1472,6 +1603,20 @@
 				<item>
 				</item>
 				<item>
+					<LINE>CHAIN.</LINE>
+				</item>
+				<item>
+					<LINE>  FIELD  B01_DIMN-LOW.</LINE>
+				</item>
+				<item>
+					<LINE>  MODULE %_B01_DIMN.</LINE>
+				</item>
+				<item>
+					<LINE>ENDCHAIN.</LINE>
+				</item>
+				<item>
+				</item>
+				<item>
 					<LINE>FIELD !SCLO MODULE %_SCLO .</LINE>
 				</item>
 				<item>
@@ -1483,6 +1628,11 @@
 				</item>
 				<item>
 					<LINE>FIELD !XLTP MODULE %_XLTP .</LINE>
+				</item>
+				<item>
+				</item>
+				<item>
+					<LINE>FIELD !DIMN MODULE %_DIMN .</LINE>
 				</item>
 				<item>
 				</item>
@@ -1518,6 +1668,9 @@
 					<LINE>  FIELD  B01_APPL-LOW.</LINE>
 				</item>
 				<item>
+					<LINE>  FIELD  B01_DIMN-LOW.</LINE>
+				</item>
+				<item>
 					<LINE>  FIELD SCLO .</LINE>
 				</item>
 				<item>
@@ -1525,6 +1678,9 @@
 				</item>
 				<item>
 					<LINE>  FIELD XLTP .</LINE>
+				</item>
+				<item>
+					<LINE>  FIELD DIMN .</LINE>
 				</item>
 				<item>
 					<LINE>  FIELD DPATH .</LINE>
@@ -1568,7 +1724,7 @@
 					<LINE>  FIELD B02_APPS .</LINE>
 				</item>
 				<item>
-					<LINE>    MODULE %_BLOCK_1000037.</LINE>
+					<LINE>    MODULE %_BLOCK_1000039.</LINE>
 				</item>
 				<item>
 					<LINE>ENDCHAIN.</LINE>
@@ -1615,6 +1771,9 @@
 					<LINE>  FIELD  B01_APPL-LOW.</LINE>
 				</item>
 				<item>
+					<LINE>  FIELD  B01_DIMN-LOW.</LINE>
+				</item>
+				<item>
 					<LINE>  FIELD SCLO .</LINE>
 				</item>
 				<item>
@@ -1622,6 +1781,9 @@
 				</item>
 				<item>
 					<LINE>  FIELD XLTP .</LINE>
+				</item>
+				<item>
+					<LINE>  FIELD DIMN .</LINE>
 				</item>
 				<item>
 					<LINE>  FIELD DPATH .</LINE>

@@ -4,8 +4,6 @@ protected section.
 
   data:
     gd_t__pack type standard table of ty_s__pack with non-unique default key .
-  data:
-    gd_t__source            type standard table of zvcst_s__download with non-unique default key .
 
   methods CREATE_OBJECT
     redefinition .

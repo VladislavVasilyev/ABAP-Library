@@ -6,6 +6,7 @@ types zvcst_s__source     type string.
 types zvcst_t__source     type standard table of zvcst_s__source with non-unique default key.
 types zvcst_r__xmlsource  type ref to data.
 
+
 types: begin of zvcst_s__object
        , pgmid  type pgmid              " Идентификатор программы в запросах и задачах
        , object type trobjtype          " Тип объекта
@@ -33,8 +34,8 @@ types: begin of zvcst_s__tadir
        , translttxt	type translttxt	    " Перевод технических текстов на язык разработки
        , tabclass type tabclass         " Тип таблицы
        , pathdevc type string
-       , appset type uj_appset_id
-       , application type uj_appl_id
+       , appset type uj_appset_id       " Ид. набора приложений BPC
+       , application type uj_appl_id    " Ид. прилодения BPC
        , id type i                      " Идентификатор
        , end of zvcst_s__tadir
        .
@@ -157,9 +158,29 @@ types: begin of zvcst_s__r3tr_objupload
 *--------------------------------------------------------------------*
 types: zvcst_t__appset       type range of uj_appset_id.
 types: zvcst_t__application  type range of uj_appl_id.
+types: zvcst_t__dimension    type range of uj_dim_name.
 
 types zvcst_s__lgfsource type uj_string.
 types zvcst_t__lgfsource type standard table of zvcst_s__lgfsource
                               with non-unique default key.
 
 *--------------------------------------------------------------------*
+*XML
+*--------------------------------------------------------------------*
+types: begin of zvcst_s__sequence
+       , sequence type i
+       , field    type string
+       , end of zvcst_s__sequence.
+
+types zvcst_t__sequence type standard table of zvcst_s__sequence with non-unique default key.
+
+types: begin of zvcst_s__xmlworksheet
+       , name                 type string
+       , table                type ref to data
+       , sequence             type zvcst_t__sequence
+       , f__filter            type rs_bool
+       , f__validtextlength   type rs_bool
+       , f__splitvertical     type rs_bool
+       , end of zvcst_s__xmlworksheet.
+
+types: zvcst_t__xmlworksheet type standard table of zvcst_s__xmlworksheet with non-unique default key.

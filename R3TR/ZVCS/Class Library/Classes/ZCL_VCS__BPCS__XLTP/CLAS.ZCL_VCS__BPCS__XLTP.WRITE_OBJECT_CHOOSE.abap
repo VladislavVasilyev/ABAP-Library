@@ -57,6 +57,8 @@ method WRITE_OBJECT_CHOOSE.
 
 *    concatenate <ld_s__upload_file>-path ld_s__xltp_index-content into ld_s__xltp_index-content.
 
+
+    concatenate <ld_s__upload_file>-path ld_s__xltp_index-content into ld_s__xltp_index-content.
     append ld_s__xltp_index to ld_t__xltp .
 
   endloop.
