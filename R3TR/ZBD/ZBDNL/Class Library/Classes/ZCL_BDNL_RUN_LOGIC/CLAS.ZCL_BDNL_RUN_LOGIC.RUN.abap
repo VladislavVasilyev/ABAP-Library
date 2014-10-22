@@ -1,4 +1,4 @@
-method run.
+method RUN.
 
   data
   : ld_s__stack     type zbnlt_s__stack
@@ -21,6 +21,12 @@ method run.
 
     clear gd_v__turn.
 
+    call method zcl_bdnl_container=>set_current_script
+      exporting
+        appset_id = ld_s__script-appset_id
+        appl_id   = ld_s__script-appl_id
+        script    = ld_s__script-script.
+
     create object gr_o__parser
       exporting
         i_v__appset      = ld_s__script-appset_id
@@ -33,14 +39,18 @@ method run.
     add 1 to gd_v__script.
 
     while gd_v__turn < gd_s__stack-turn.
-
+      zcl_bdnl_container=>set_current_for( 0 ).
       add 1 to gd_v__turn.
+
+      zcl_bdnl_container=>set_current_turn( gd_v__turn ).
 
       clear_containers( ).
 
       loop at gd_s__stack-for
         assigning <ld_s__for>
         where     turn = gd_v__turn.
+
+        zcl_bdnl_container=>set_current_for( sy-tabix ).
 
         if <ld_s__for>-packagesize = -1.
           message s038(zbdnl) with <ld_s__for>-tablename `FULL`.

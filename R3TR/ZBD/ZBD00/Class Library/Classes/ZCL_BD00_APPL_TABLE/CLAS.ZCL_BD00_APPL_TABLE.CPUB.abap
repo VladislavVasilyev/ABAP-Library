@@ -17,6 +17,9 @@ public section.
   events EV_READ_DATA_AFTER_RFC_CALL .
   events EV_AUTO_WRITE_BACK .
 
+  methods SET_ACTUAL_ROWS
+    returning
+      value(E) type I .
   methods DELETE_LINE .
   methods RESET_INDEX .
   type-pools ABAP .
@@ -28,15 +31,15 @@ public section.
     importing
       !MODE type ZBD00_MODE_ADD_LINE default ZBD0C_MODE_ADD_LINE-COLLECT
       !IO_LINE type ref to ZCL_BD00_APPL_CTRL optional .
+  methods NEXT_LINE_1
+    importing
+      !CLASS type ref to ZIF_BD00_INT_TABLE optional
+    returning
+      value(E_ST) type ZBD0C_TY_READ_ST .
   type-pools ZBD0T .
   methods NEXT_LINE
     importing
       !ID type ZBD0T_ID_RULES optional
-    returning
-      value(E_ST) type ZBD0C_TY_READ_ST .
-  methods NEXT_LINE_1
-    importing
-      !CLASS type ref to ZIF_BD00_INT_TABLE optional
     returning
       value(E_ST) type ZBD0C_TY_READ_ST .
   methods NEXT_PACK
@@ -57,6 +60,7 @@ public section.
       !IF_SUPPRESS_ZERO type RS_BOOL default ABAP_TRUE
       !I_PACKAGESIZE type I optional
       !IF_INVERT type RS_BOOL default ABAP_FALSE
+      !I_DESTINATION type STRING optional
     raising
       ZCX_BD00_CREATE_OBJ .
   class-methods GET_INFOCUBE
@@ -99,5 +103,6 @@ public section.
       !IT_LINK type ZBD0T_TY_T_LINK_KEY optional
       !IT_RANGE type ZBD0T_TY_T_RANGE_KF optional
       !IT_CUST_LINK type ZBD0T_TY_T_CUSTOM_LINK optional
+      !IT_CUST_LINK1 type ZBD0T_TY_T_CUSTOM_LINK1 optional
     returning
       value(E_ID) type ZBD0T_ID_RULES .

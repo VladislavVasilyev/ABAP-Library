@@ -56,5 +56,6 @@ private section.
     exporting
       !E_V__FUNCNAME type STRING
       !E_T__PARAM type ZBNLT_T__FUNC_PARAM
+      !E_R__DATA type ref to DATA
     raising
       ZCX_BDNL_EXCEPTION .

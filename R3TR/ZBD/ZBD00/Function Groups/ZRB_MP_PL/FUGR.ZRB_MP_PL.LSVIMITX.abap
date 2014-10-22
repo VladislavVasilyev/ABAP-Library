@@ -1,0 +1,4 @@
+***INCLUDE LSVIMITX .
+MODULE SET_TXT_UPDATE_FLAG.                                "#EC *
+  PERFORM SET_TXT_UPDATE_FLAG.
+ENDMODULE.

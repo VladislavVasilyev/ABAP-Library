@@ -24,6 +24,23 @@ class lcl_process_data implementation.
     gt_range          = it_range.
     gd_f__invert      = if_invert.
 
+
+    case iv_destination.
+
+      when `BP2`.
+        if sy-sysid = `BP1` or sy-sysid = `BP0`.
+          gd_v__destination = `BP2CLNT500_FOR_EXP`.
+        endif.
+      when `BP1`.
+        if sy-sysid = `BP0`.
+          gd_v__destination = `BP1CLNT400_FOR_EXP`.
+        endif.
+      when `BP0`. clear gd_v__destination.
+      when others.
+        clear gd_v__destination.
+    endcase.
+
+
     loop at go_appl_table->gr_o__model->gd_t__bpc_alias
          assigning <ld_s__alias>.
 
@@ -77,6 +94,8 @@ class lcl_process_data implementation.
     , ld_f__skip_delete_zero      type rs_bool
     , ld_s__log_read              type zbd0t_s__log_read
     , ld_f__second_read           type rs_bool
+    , ld_f__outuc                 type rs_bool
+    , l_rfcdata_uc                type xstring
     .
 
     field-symbols
@@ -156,24 +175,30 @@ class lcl_process_data implementation.
     : <lt_data>
     , <ld_t__table>.
 
-    while gf_end_of_data <> abap_true and lines( <lt_data> ) = 0.
+    if gd_v__destination is initial.
+      ld_f__outuc = abap_false.
+    else.
+      ld_f__outuc = abap_true.
+    endif.
 
-      call function 'RSDRI_INFOPROV_READ'
-        exporting
-          i_infoprov             = go_appl->gd_v__infoprovide
-          i_th_sfc               = l_th_sfc
-          i_th_sfk               = l_th_sfk
-          i_t_range              = gt_range_tech_name
+    while gf_end_of_data <> abap_true and lines( <lt_data> ) = 0.
+      if ld_f__outuc = abap_false.
+        call function 'RSDRI_INFOPROV_READ'
+          exporting
+            i_infoprov             = go_appl->gd_v__infoprovide
+            i_th_sfc               = l_th_sfc
+            i_th_sfk               = l_th_sfk
+            i_t_range              = gt_range_tech_name
 *        i_th_tablesel          =
 *        i_t_rtime              =
-          i_reference_date       = sy-datum
-          i_rollup_only          = rs_c_false
+            i_reference_date       = sy-datum
+            i_rollup_only          = rs_c_false
 *        i_t_requid             =
 *        i_save_in_table        = ' '
 *        i_tablename            =
 *        i_save_in_file         = ' '
 *        i_filename             =
-          i_packagesize          = l_packagesize
+            i_packagesize          = l_packagesize
 *        i_maxrows              = 0
 *        i_authority_check      = rsdrc_c_authchk-read
 *        i_currency_conversion  = 'X'
@@ -183,34 +208,93 @@ class lcl_process_data implementation.
 *        i_caller               = rsdrs_c_caller-rsdri
 *        i_debug                = rs_c_false
 *         i_clear                = rs_c_true"rs_c_false
-        importing
-          e_t_data               = <lt_data>
-          e_end_of_data          = gf_end_of_data
-          e_aggregate            = l_aggregate
-          e_split_occurred       = l_split_occurred
-          e_t_msg                = gt_message
-          e_stepuid              = l_stepuid
-        changing
-          c_first_call           = gf_first_call
-        exceptions
-          illegal_input          = 1
-          illegal_input_sfc      = 2
-          illegal_input_sfk      = 3
-          illegal_input_range    = 4
-          illegal_input_tablesel = 5
-          no_authorization       = 6
-          illegal_download       = 7
-          illegal_tablename      = 8
-          trans_no_write_mode    = 9
-          inherited_error        = 10
-          x_message              = 11
-          others                 = 12.
+          importing
+            e_t_data               = <lt_data>
+            e_end_of_data          = gf_end_of_data
+            e_aggregate            = l_aggregate
+            e_split_occurred       = l_split_occurred
+            e_t_msg                = gt_message
+            e_stepuid              = l_stepuid
+          changing
+            c_first_call           = gf_first_call
+          exceptions
+            illegal_input          = 1
+            illegal_input_sfc      = 2
+            illegal_input_sfk      = 3
+            illegal_input_range    = 4
+            illegal_input_tablesel = 5
+            no_authorization       = 6
+            illegal_download       = 7
+            illegal_tablename      = 8
+            trans_no_write_mode    = 9
+            inherited_error        = 10
+            x_message              = 11
+            others                 = 12.
 
-      if sy-subrc <> 0.
+        if sy-subrc <> 0.
 *         MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
 *                    WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
-        ld_s__log_read-status = sy-subrc.
-        return.
+          ld_s__log_read-status = sy-subrc.
+          return.
+        endif.
+
+      elseif ld_f__outuc = abap_true.
+        call function 'ZBD00_RFC_INFOPROV_READ' destination gd_v__destination
+          exporting
+            i_infoprov             = go_appl->gd_v__infoprovide
+            i_th_sfc               = l_th_sfc
+            i_th_sfk               = l_th_sfk
+            i_t_range              = gt_range_tech_name
+*        i_th_tablesel          =
+*        i_t_rtime              =
+            i_reference_date       = sy-datum
+            i_rollup_only          = rs_c_false
+*        i_t_requid             =
+*        i_save_in_table        = ' '
+*        i_tablename            =
+*        i_save_in_file         = ' '
+*        i_filename             =
+            i_packagesize          = l_packagesize
+*        i_maxrows              = 0
+*        i_authority_check      = rsdrc_c_authchk-read
+*        i_currency_conversion  = 'X'
+*        i_use_db_aggregation   = rs_c_true
+*        i_use_aggregates       = rs_c_true
+*        i_read_ods_delta       = rs_c_false
+*        i_caller               = rsdrs_c_caller-rsdri
+*        i_debug                = rs_c_false
+*         i_clear                = rs_c_true"rs_c_false
+i_comp_uc = go_appl_table->gr_o__model->gd_v__comp_uc
+          importing
+            e_rfcdata_uc          = l_rfcdata_uc
+*            e_t_data               = <lt_data>
+            e_end_of_data          = gf_end_of_data
+            e_aggregate            = l_aggregate
+            e_split_occurred       = l_split_occurred
+            e_t_msg                = gt_message
+            e_stepuid              = l_stepuid
+          changing
+            c_first_call           = gf_first_call
+          exceptions
+            illegal_input          = 1
+            illegal_input_sfc      = 2
+            illegal_input_sfk      = 3
+            illegal_input_range    = 4
+            illegal_input_tablesel = 5
+            no_authorization       = 6
+            illegal_download       = 7
+            illegal_tablename      = 8
+            trans_no_write_mode    = 9
+            inherited_error        = 10
+            x_message              = 11
+            others                 = 12.
+
+        call function 'RSDRI_DATA_UNWRAP'
+          exporting
+            i_rfcdata_uc = l_rfcdata_uc
+          changing
+            c_t_data     = <lt_data>.
+
       endif.
 
       ld_v__lines = lines( <lt_data> ).
@@ -432,38 +516,81 @@ class lcl_process_data implementation.
 
     data
     : task type zbd0t_ty_name_rfc_task
+    , ld_f__outuc type rs_bool
     .
+
+    if gd_v__destination is initial.
+      ld_f__outuc = abap_false.
+    else.
+      ld_f__outuc = abap_true.
+    endif.
 
     task = zcl_bd00_rfc_task=>get_task_run( i_appset_id = go_appl->gd_v__appset_id
                                             i_appl_id   = go_appl->gd_v__appl_id
                                             mode        = zcl_bd00_rfc_task=>cs-rfc_read ).
 
-    call function 'ZBD00_RFC_BPC_READ'
-      starting new task task
-      destination in group 'parallel_generators'
-      calling read_data_arfc_receive on end of task
-      exporting
-        i_appset_id           = go_appl->gd_v__appset_id
-        i_appl_id             = go_appl->gd_v__appl_id
-        i_reference_date      = sy-datum
-        i_save_in_table       = rs_c_false
-        i_save_in_file        = rs_c_false
-        i_authority_check     = rsdrc_c_authchk-read
-        i_rollup_only         = rs_c_false
-        i_suppress_zero       = gf_suppress_zero
-        i_type_table          = go_appl_table->gr_o__model->gd_v__type_pk
-      tables
-        i_t_dim_list          = go_appl_table->gr_o__model->gd_t__dim_list
-        i_t_range             = gt_range_tech_name
-        i_t_alias             = gt_alias
-      exceptions
-        communication_failure = 1
-        system_failure        = 2
-        resource_failure      = 3.
+    while zcl_bd00_rfc_task=>while_task( ) = abap_true.
+      if   ld_f__outuc = abap_false.
+        call function 'ZBD00_RFC_BPC_READ'
+          starting new task task
+          destination in group 'parallel_generators'
+          calling read_data_arfc_receive on end of task
+          exporting
+            i_appset_id           = go_appl->gd_v__appset_id
+            i_appl_id             = go_appl->gd_v__appl_id
+            i_reference_date      = sy-datum
+            i_save_in_table       = rs_c_false
+            i_save_in_file        = rs_c_false
+            i_authority_check     = rsdrc_c_authchk-read
+            i_rollup_only         = rs_c_false
+            i_suppress_zero       = gf_suppress_zero
+            i_type_table          = go_appl_table->gr_o__model->gd_v__type_pk
+          tables
+            i_t_dim_list          = go_appl_table->gr_o__model->gd_t__dim_list
+            i_t_range             = gt_range_tech_name
+            i_t_alias             = gt_alias
+          exceptions
+            communication_failure = 1
+            system_failure        = 2
+            resource_failure      = 3.
 
-    if sy-subrc <> 0.
-      raise exception type zcx_bd00_read_data.
-    endif.
+        if sy-subrc = 0.
+          exit.
+*      raise exception type zcx_bd00_read_data.
+        endif.
+      elseif ld_f__outuc = abap_true.
+        call function 'ZBD00_RFC_BPC_READ'
+          starting new task task
+          destination gd_v__destination
+          calling read_data_arfc_receive on end of task
+          exporting
+            i_appset_id           = go_appl->gd_v__appset_id
+            i_appl_id             = go_appl->gd_v__appl_id
+            i_reference_date      = sy-datum
+            i_save_in_table       = rs_c_false
+            i_save_in_file        = rs_c_false
+            i_authority_check     = rsdrc_c_authchk-read
+            i_rollup_only         = rs_c_false
+            i_suppress_zero       = gf_suppress_zero
+            i_type_table          = go_appl_table->gr_o__model->gd_v__type_pk
+            i_outuc               = abap_true
+          tables
+            i_t_dim_list          = go_appl_table->gr_o__model->gd_t__dim_list
+            i_t_range             = gt_range_tech_name
+            i_t_alias             = gt_alias
+          exceptions
+            communication_failure = 1
+            system_failure        = 2
+            resource_failure      = 3.
+
+        if sy-subrc = 0.
+          exit.
+*      raise exception type zcx_bd00_read_data.
+        endif.
+
+      endif.
+
+    endwhile.
 
     gf_arfc_read = abap_true.
 
@@ -487,6 +614,7 @@ class lcl_process_data implementation.
     field-symbols
     : <lt_data>             type any table
     .
+
 
     ld_s__log_read-nr_pack = -1.
 
@@ -524,11 +652,20 @@ class lcl_process_data implementation.
       ld_s__log_read-status = sy-subrc.
     endif.
 
-    call function 'ZBD00_DATA_UNWRAP'
-      exporting
-        i_t_rfcdata = g_t_rfcdata
-      changing
-        c_t_data    = <lt_data>.
+    if g_t_rfcdata is not initial.
+      call function 'ZBD00_DATA_UNWRAP'
+        exporting
+          i_t_rfcdata = g_t_rfcdata
+        changing
+          c_t_data    = <lt_data>.
+    elseif l_rfcdata_uc is not initial.
+      call function 'ZBD00_DATA_UNWRAP'
+        exporting
+          i_rfcdata_uc = l_rfcdata_uc
+        changing
+          c_t_data     = <lt_data>.
+
+    endif.
 
     gf_arfc_read = abap_false.
 
@@ -595,6 +732,7 @@ class lcl_process_data implementation.
         et_message             = ld_s__log_write-message
         es_status_records      = ld_s__log_write-status_records
         e_time_end             = ld_s__log_write-time_end
+        e_cnt_raise_write      = ld_s__log_write-cnt_raise_write
        exceptions
          error_write_back    = 1
          error_static_check  = 2
@@ -1046,11 +1184,10 @@ class lcl_process_data implementation.
     .
 
     field-symbols
-    : <lt_data>     type any table
-    , <ls_data>     type any
+    : <lt_data>          type any table
+    , <ls_data>          type any
+    , <ld_s__log_write>  type zbd0t_s__log_write
     .
-
-    get time stamp field ld_s__log_write-time_start.
 
     assign gr_table->* to <lt_data>.
     ld_v__packsize = go_appl_table->gr_o__model->gr_o__application->gd_v__package_size.
@@ -1077,35 +1214,41 @@ class lcl_process_data implementation.
         check ld_v__cnt_buf = ld_v__packsize or
               ld_v__cnt     = lines( <lt_data> ).
 
-        get time stamp field ld_s__log_write-time_start.
-
-        task = zcl_bd00_rfc_task=>get_task_run( i_appset_id = go_appl->gd_v__appset_id
-                                                i_appl_id   = go_appl->gd_v__appl_id
-                                                mode        = zcl_bd00_rfc_task=>cs-rfc_write ).
-
-        ld_s__log_write-rfc_task = task.
         add 1 to gv_nr_pack_write.
         ld_s__log_write-nr_pack = gv_nr_pack_write.
-        append ld_s__log_write to go_log->gd_t__open_write.
+        append ld_s__log_write to go_log->gd_t__open_write assigning <ld_s__log_write>.
 
-        call function 'ZBD00_RFC_BPC_WRITE'
-          starting new task task
-          destination in group 'parallel_generators'
-          calling write_data_arfc_receive on end of task
+        <ld_s__log_write>-rfc_task = zcl_bd00_rfc_task=>get_task_run( i_appset_id = go_appl->gd_v__appset_id
+                                                                      i_appl_id   = go_appl->gd_v__appl_id
+                                                                      mode        = zcl_bd00_rfc_task=>cs-rfc_write ).
+
+        while zcl_bd00_rfc_task=>while_task( ) = abap_true.
+
+          get time stamp field <ld_s__log_write>-time_start.
+
+          call function 'ZBD00_RFC_BPC_WRITE'
+            starting new task <ld_s__log_write>-rfc_task
+            destination in group 'parallel_generators'
+            calling write_data_arfc_receive on end of task
             exporting
               i_appset_id           = go_appl->gd_v__appset_id
               i_appl_id             = go_appl->gd_v__appl_id
               i_mode                = i_mode
               i_bpc_user            = zcl_bd00_context=>gd_s__user_id
-*        c_log_ses             = i_log_ses
-*        c_nr_pack             = i_nr_pack
             tables
               i_t_rfcdata           = lt_rfcdata
               i_t_field             = lt_field
             exceptions
               communication_failure = 1
               system_failure        = 2
-              resource_failure      = 3.
+              resource_failure      = 3
+              others                = 4.
+
+          if sy-subrc = 0.
+            exit.
+          endif.
+
+        endwhile.
 
         clear
         : ld_v__cnt_buf
@@ -1126,40 +1269,42 @@ class lcl_process_data implementation.
         importing
           e_t_outdata      = lt_rfcdata.
 
-
-      task = zcl_bd00_rfc_task=>get_task_run( i_appset_id = go_appl->gd_v__appset_id
-                                              i_appl_id   = go_appl->gd_v__appl_id
-                                              mode        = zcl_bd00_rfc_task=>cs-rfc_write ).
-
-      ld_s__log_write-rfc_task = task.
       add 1 to gv_nr_pack_write.
       ld_s__log_write-nr_pack = gv_nr_pack_write.
-      append ld_s__log_write to go_log->gd_t__open_write.
+      append ld_s__log_write to go_log->gd_t__open_write assigning <ld_s__log_write>.
 
+      <ld_s__log_write>-rfc_task = zcl_bd00_rfc_task=>get_task_run( i_appset_id = go_appl->gd_v__appset_id
+                                                                    i_appl_id   = go_appl->gd_v__appl_id
+                                                                    mode        = zcl_bd00_rfc_task=>cs-rfc_write ).
 
-      call function 'ZBD00_RFC_BPC_WRITE'
-        starting new task task
-        destination in group 'parallel_generators'
-        calling write_data_arfc_receive on end of task
+      while zcl_bd00_rfc_task=>while_task( ) = abap_true.
+
+        get time stamp field <ld_s__log_write>-time_start.
+
+        call function 'ZBD00_RFC_BPC_WRITE'
+          starting new task <ld_s__log_write>-rfc_task
+          destination in group 'parallel_generators'
+          calling write_data_arfc_receive on end of task
           exporting
             i_appset_id           = go_appl->gd_v__appset_id
             i_appl_id             = go_appl->gd_v__appl_id
             i_mode                = i_mode
             i_bpc_user            = zcl_bd00_context=>gd_s__user_id
-*        c_log_ses             = i_log_ses
-*        c_nr_pack             = i_nr_pack
           tables
             i_t_rfcdata           = lt_rfcdata
             i_t_field             = lt_field
           exceptions
             communication_failure = 1
             system_failure        = 2
-            resource_failure      = 3.
+            resource_failure      = 3
+            others                = 4.
 
+        if sy-subrc = 0.
+          exit.
+        endif.
 
-      if sy-subrc = 0.
-        exit.
-      endif.
+      endwhile.
+
     endif.
 
   endmethod.                    "write_data_arfc
@@ -1201,5 +1346,17 @@ class lcl_log implementation.
     append write to gd_t__write.
 
   endmethod.                    "set_WRITE
+
+  method set_actual.
+    data log type zbd0t_s__log_actual.
+
+    add 1 to gd_v__nr_actual.
+
+    log-num_rec  = actual_rows.
+    log-nr_pack = e = gd_v__nr_actual.
+
+    append log to gd_t__num_rows .
+
+  endmethod.                    "set_actual
 
 endclass.                    "lcl_log IMPLEMENTATION

@@ -205,22 +205,22 @@
 		<item>
 			<SPRSL>E</SPRSL>
 			<MSGNR>020</MSGNR>
-			<TEXT>Chain ID: &amp;1 (&amp;2)</TEXT>
+			<TEXT>CHAIN: &amp;1 (&amp;2)</TEXT>
 		</item>
 		<item>
 			<SPRSL>R</SPRSL>
 			<MSGNR>020</MSGNR>
-			<TEXT>Цепочка: &amp;1 (&amp;2)</TEXT>
+			<TEXT>CHAIN: &amp;1 (&amp;2)</TEXT>
 		</item>
 		<item>
 			<SPRSL>E</SPRSL>
 			<MSGNR>021</MSGNR>
-			<TEXT>Variant: &amp;1 (&amp;2)</TEXT>
+			<TEXT>VARIANT: &amp;1 (&amp;2)</TEXT>
 		</item>
 		<item>
 			<SPRSL>R</SPRSL>
 			<MSGNR>021</MSGNR>
-			<TEXT>Вариант процесса: &amp;1 (&amp;2)</TEXT>
+			<TEXT>VARIANT: &amp;1 (&amp;2)</TEXT>
 		</item>
 		<item>
 			<SPRSL>E</SPRSL>
@@ -242,6 +242,6 @@
 		<DEVCLASS>ZBDCH</DEVCLASS>
 		<CPROJECT> S</CPROJECT>
 		<MASTERLANG>E</MASTERLANG>
-		<PATHDEVC>ZBDCH</PATHDEVC>
+		<PATHDEVC>ZBD\ZBDCH</PATHDEVC>
 	</HEADER>
 </R3TRMSAG>

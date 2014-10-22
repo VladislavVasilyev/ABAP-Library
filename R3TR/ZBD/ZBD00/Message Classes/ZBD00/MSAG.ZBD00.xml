@@ -42,6 +42,16 @@
 			<MSGNR>007</MSGNR>
 			<TEXT>Измерения &amp;1 не существует в наборе приложений &amp;2</TEXT>
 		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>008</MSGNR>
+			<TEXT>Был превышен лимит на количество попыток запуска RFC.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>008</MSGNR>
+			<TEXT>Был превышен лимит на количество попыток запуска RFC.</TEXT>
+		</item>
 	</T100>
 	<HEADER>
 		<PGMID>R3TR</PGMID>
@@ -52,6 +62,6 @@
 		<DEVCLASS>ZBD00</DEVCLASS>
 		<CPROJECT> S</CPROJECT>
 		<MASTERLANG>R</MASTERLANG>
-		<PATHDEVC>ZBD00</PATHDEVC>
+		<PATHDEVC>ZBD\ZBD00</PATHDEVC>
 	</HEADER>
 </R3TRMSAG>

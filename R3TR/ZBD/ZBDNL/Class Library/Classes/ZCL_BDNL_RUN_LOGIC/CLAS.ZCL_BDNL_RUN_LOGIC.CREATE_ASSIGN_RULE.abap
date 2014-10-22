@@ -9,9 +9,9 @@ method create_assign_rule.
   , ld_s__function            type zbnlt_s__function
   , ld_s__math                type zbd0t_ty_s_rule_math
   , ld_s__operand             type zbd0t_ty_s_math_operand
-  , lr_s__tg_containers       type ref to zbnlt_s__containers
-  , lr_s__sc_containers       type ref to zbnlt_s__containers
-  , lr_s__containers          type ref to zbnlt_s__containers
+*  , lr_s__tg_containers       type ref to zbnlt_s__containers
+*  , lr_s__sc_containers       type ref to zbnlt_s__containers
+*  , lr_s__containers          type ref to zbnlt_s__containers
   , ld_v__mode_add            type zbd00_mode_add_line
   , ld_s__f_get_ch            type zbnlt_s__function
   , ld_s__check_exp           type zbnlt_s__check_exp
@@ -25,6 +25,10 @@ method create_assign_rule.
   , ld_v__message_char        type string
   , ld_v__message_kf          type string
   , ld_v__cnt                 type i
+  , ld_s__link                type zbnlt_s__cust_link
+  , lr_o__container           type ref to zcl_bdnl_container
+  , lr_o__target              type ref to zcl_bdnl_container
+  , lr_o__source              type ref to zcl_bdnl_container
   .
 
   field-symbols
@@ -34,9 +38,9 @@ method create_assign_rule.
   , <ld_t__check>             type zbnlt_t__stack_check
   , <ld_s__check>             type zbnlt_s__stack_check
   , <ld_s__mathvar>           type zbnlt_s__math_var
-  , <ld_s__tg_containers>     type zbnlt_s__containers
-  , <ld_s__sc_containers>     type zbnlt_s__containers
-  , <ld_s__containers>        type zbnlt_s__containers
+*  , <ld_s__tg_containers>     type zbnlt_s__containers
+*  , <ld_s__sc_containers>     type zbnlt_s__containers
+*  , <ld_s__containers>        type zbnlt_s__containers
   , <ld_v__data>              type uj_value
   .
 
@@ -45,10 +49,10 @@ method create_assign_rule.
        assigning <ld_s__rules>.
 
   check sy-subrc = 0.
-*  break-point.
+
   loop at <ld_s__rules>-assign assigning <ld_s__assign>.
     " обработка чеков
-*    break-point.
+
     clear: ld_s__assign, ld_t__rules_field, ld_v__turn.
 
     do.
@@ -64,16 +68,16 @@ method create_assign_rule.
           ld_s__log_exp-log_exp = <ld_s__check>-log_exp.
 
           if  <ld_s__check>-left-tablename is not initial.
-            lr_s__containers = create_container( i_v__tablename = <ld_s__check>-left-tablename i_s__for = i_s__for ).
-            assign lr_s__containers->* to <ld_s__containers>.
 
-            ld_v__dtelnm = <ld_s__containers>-object->gr_o__model->get_dtelnm( dimension = <ld_s__check>-left-dimension attribute = <ld_s__check>-left-attribute ).
+            lr_o__container ?= zcl_bdnl_container=>create_container( <ld_s__check>-left-tablename ).
+
+            ld_v__dtelnm = lr_o__container->gr_o__container->gr_o__model->get_dtelnm( dimension = <ld_s__check>-left-dimension attribute = <ld_s__check>-left-attribute ).
 
             create data ld_s__log_exp-left type (ld_v__dtelnm).
 
             call method me->get_ch
               exporting
-                i_o__obj      = <ld_s__containers>-object
+                i_o__obj      = lr_o__container->gr_o__container
                 i_v__dim      = <ld_s__check>-left-dimension
                 i_v__attr     = <ld_s__check>-left-attribute
                 i_r__data     = ld_s__log_exp-left
@@ -86,20 +90,38 @@ method create_assign_rule.
             create data ld_s__log_exp-left type uj_value.
             assign ld_s__log_exp-left->* to <ld_v__data>.
             <ld_v__data> = <ld_s__check>-left-const.
+          elseif <ld_s__check>-left-data is bound.
+            ld_s__link-data = <ld_s__check>-left-data.
+            ld_s__link-func_name = <ld_s__check>-left-func_name.
+            ld_s__link-param = <ld_s__check>-left-param.
+
+            call method assign_function
+              exporting
+                i_s__function = ld_s__link
+                i_v__turn     = i_s__for-turn
+                i_s__for      = i_s__for
+              importing
+                e_t__function = ld_t__function.
+
+            ld_s__log_exp-left = ld_s__link-data.
+
+            append lines of ld_t__function to ld_s__assign-function.
+            clear ld_t__function.
+
           endif.
 
           if  <ld_s__check>-right-tablename is not initial.
-            lr_s__containers = create_container( i_v__tablename = <ld_s__check>-right-tablename i_s__for = i_s__for ).
-            assign lr_s__containers->* to <ld_s__containers>.
 
-            ld_v__dtelnm = <ld_s__containers>-object->gr_o__model->get_dtelnm( dimension = <ld_s__check>-right-dimension attribute = <ld_s__check>-right-attribute ).
+            lr_o__container ?= zcl_bdnl_container=>create_container( <ld_s__check>-right-tablename ).
+
+            ld_v__dtelnm = lr_o__container->gr_o__container->gr_o__model->get_dtelnm( dimension = <ld_s__check>-right-dimension attribute = <ld_s__check>-right-attribute ).
 
 
             create data ld_s__log_exp-right type (ld_v__dtelnm).
 
             call method me->get_ch
               exporting
-                i_o__obj      = <ld_s__containers>-object
+                i_o__obj      = lr_o__container->gr_o__container
                 i_v__dim      = <ld_s__check>-right-dimension
                 i_v__attr     = <ld_s__check>-right-attribute
                 i_r__data     = ld_s__log_exp-right
@@ -112,6 +134,23 @@ method create_assign_rule.
             create data ld_s__log_exp-right type uj_value.
             assign ld_s__log_exp-right->* to <ld_v__data>.
             <ld_v__data> = <ld_s__check>-right-const.
+          elseif <ld_s__check>-right-data is bound.
+            ld_s__link-data = <ld_s__check>-right-data.
+            ld_s__link-func_name = <ld_s__check>-right-func_name.
+            ld_s__link-param = <ld_s__check>-right-param.
+
+            call method assign_function
+              exporting
+                i_s__function = ld_s__link
+                i_v__turn     = i_s__for-turn
+                i_s__for      = i_s__for
+              importing
+                e_t__function = ld_t__function.
+
+            ld_s__log_exp-right = ld_s__link-data.
+
+            append lines of ld_t__function to ld_s__assign-function.
+            clear ld_t__function.
           endif.
 
           create data ld_s__log_exp-result type c length 1.
@@ -170,24 +209,23 @@ method create_assign_rule.
     enddo.
 *--------------------------------------------------------------------*
 
-    lr_s__tg_containers = create_container( i_v__tablename = <ld_s__assign>-tablename i_s__for = i_s__for ).
-    assign lr_s__tg_containers->* to <ld_s__tg_containers>.
+    lr_o__target ?= zcl_bdnl_container=>create_container( <ld_s__assign>-tablename ).
 
     add 1 to ld_v__number_rules.
-    message s051(zbdnl) with ld_v__number_rules <ld_s__assign>-tablename <ld_s__tg_containers>-type_table.
+    message s051(zbdnl) with ld_v__number_rules <ld_s__assign>-tablename lr_o__target->gd_v__type_table.
 
     loop at <ld_s__assign>-link assigning <ld_s__link>.
 
       clear: ld_s__rules_field.
 
       if <ld_s__link>-tablename is not initial.
-        lr_s__sc_containers = create_container( i_v__tablename = <ld_s__link>-tablename i_s__for = i_s__for ).
-        assign lr_s__sc_containers->* to <ld_s__sc_containers>.
+
+        lr_o__source ?= zcl_bdnl_container=>create_container( <ld_s__link>-tablename ).
 
         ld_s__rules_field-tg           = <ld_s__link>-tg.
         ld_s__rules_field-sc-dimension = <ld_s__link>-sc-dimension.
         ld_s__rules_field-sc-attribute = <ld_s__link>-sc-attribute.
-        ld_s__rules_field-sc-object    = <ld_s__sc_containers>-object.
+        ld_s__rules_field-sc-object    = lr_o__source->gr_o__container.
 
         insert ld_s__rules_field into table ld_t__rules_field.
       elseif <ld_s__link>-const is not initial.
@@ -210,6 +248,10 @@ method create_assign_rule.
         clear ld_t__function.
 
         insert ld_s__rules_field into table ld_t__rules_field.
+      elseif <ld_s__link>-clear = abap_true.
+        ld_s__rules_field-tg           = <ld_s__link>-tg.
+        ld_s__rules_field-sc-clear     = abap_true.
+        insert ld_s__rules_field into table ld_t__rules_field.
       endif.
     endloop.
 
@@ -227,14 +269,17 @@ method create_assign_rule.
       clear ld_s__operand.
 
       ld_s__operand-var   = <ld_s__mathvar>-varname.
-      lr_s__sc_containers = create_container( i_v__tablename = <ld_s__mathvar>-tablename i_s__for = i_s__for ).
-      assign lr_s__sc_containers->* to <ld_s__sc_containers>.
-
       if <ld_s__mathvar>-tablename is not initial and <ld_s__mathvar>-dimension is initial.
-        ld_s__operand-object = <ld_s__sc_containers>-object.
+
+        lr_o__source ?= zcl_bdnl_container=>create_container( <ld_s__mathvar>-tablename ).
+
+        ld_s__operand-object = lr_o__source->gr_o__container.
 
       elseif <ld_s__mathvar>-tablename is not initial and <ld_s__mathvar>-dimension is not initial.
-        ld_s__operand-object = <ld_s__sc_containers>-object.
+
+        lr_o__source ?= zcl_bdnl_container=>create_container( <ld_s__mathvar>-tablename ).
+
+        ld_s__operand-object = lr_o__source->gr_o__container.
         ld_s__operand-kyf-dimension = <ld_s__mathvar>-dimension.
         ld_s__operand-kyf-attribute = <ld_s__mathvar>-attribute.
 
@@ -251,6 +296,24 @@ method create_assign_rule.
 *
 *        append ld_s__function to ld_s__assign-function.
 *        clear ld_t__function.
+
+      elseif <ld_s__mathvar>-data is bound.
+        ld_s__operand-data = <ld_s__mathvar>-data.
+        ld_s__link-data = ld_s__operand-data.
+        ld_s__link-func_name = <ld_s__mathvar>-func_name.
+        ld_s__link-param = <ld_s__mathvar>-param.
+
+        call method assign_function
+          exporting
+            i_s__function = ld_s__link
+            i_v__turn     = i_s__for-turn
+            i_s__for      = i_s__for
+          importing
+            e_t__function = ld_t__function.
+
+        append lines of ld_t__function to ld_s__assign-function.
+        clear ld_t__function.
+
       endif.
 
       insert ld_s__operand into table ld_s__math-operand.
@@ -258,7 +321,7 @@ method create_assign_rule.
     endloop.
 
     ld_s__assign-tablename = <ld_s__assign>-tablename.
-    ld_s__assign-command   = <ld_s__tg_containers>-command.
+    ld_s__assign-command   = lr_o__target->gd_v__command.
 
     if i_s__for-tablename = ld_s__assign-tablename.
       ld_v__mode_add  = zbd0c_mode_add_line-change.
@@ -266,9 +329,9 @@ method create_assign_rule.
       ld_v__mode_add  = zbd0c_mode_add_line-collect.
     endif.
 
-    ld_s__assign-id = <ld_s__tg_containers>-object->set_rule_assign( it_field   = ld_t__rules_field
-                                                                     i_mode_add = ld_v__mode_add "zbd0c_mode_add_line-collect
-                                                                     is_math    = ld_s__math ).
+    ld_s__assign-id = lr_o__target->gr_o__container->set_rule_assign( it_field   = ld_t__rules_field
+                                                                      i_mode_add = ld_v__mode_add "zbd0c_mode_add_line-collect
+                                                                      is_math    = ld_s__math ).
 
     ld_s__assign-class = zcl_bd00_appl_ctrl=>get_rule_class( ld_s__assign-id ).
 
@@ -301,7 +364,7 @@ method create_assign_rule.
 *--------------------------------------------------------------------*
 
 
-    ld_s__assign-object = <ld_s__tg_containers>-object.
+    ld_s__assign-object = lr_o__target->gr_o__container.
     if <ld_s__assign>-f_found = abap_true.
       append ld_s__assign to e_t__assign.
     else.

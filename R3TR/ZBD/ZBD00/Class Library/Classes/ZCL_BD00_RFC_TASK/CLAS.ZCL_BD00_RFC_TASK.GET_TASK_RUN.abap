@@ -2,7 +2,10 @@ method get_task_run.
 
   data
   : ls_appl_write like line of dt_appl_write
+  , max_pbt_wps   type i
+  , free_pbt_wps  type i
   .
+
   field-symbols
   : <ls_rfc_process> like line of dt_rfc_process
   , <ls_appl_write>  like line of dt_appl_write
@@ -17,7 +20,7 @@ method get_task_run.
        with key  st   = cs-rfc_free
        assigning <ls_rfc_process>.
 
-    <ls_rfc_process>-st   = cs-rfc_run.
+  <ls_rfc_process>-st   = cs-rfc_run.
 *--------------------------------------------------------------------*
 
 *--------------------------------------------------------------------*
@@ -67,6 +70,10 @@ method get_task_run.
   endif.
 *--------------------------------------------------------------------*
 
+  check_wait_free_tasks( ).
+
   task = <ls_rfc_process>-task.
+
+  get time stamp field cd_v__while_start.
 
 endmethod.

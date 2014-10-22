@@ -17,6 +17,3 @@ private section.
   methods GET_CONST
     returning
       value(E_CONST) type TY_T_CONST .
-  methods GET_REF_TABLE
-    returning
-      value(E_REF) type ref to DATA .

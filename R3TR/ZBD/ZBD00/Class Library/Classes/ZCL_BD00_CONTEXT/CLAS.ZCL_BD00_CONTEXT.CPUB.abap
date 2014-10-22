@@ -11,6 +11,7 @@ public section.
   class-data GV_APPSET_ID type UJ_APPSET_ID read-only .
   class-data GD_S__USER_ID type UJ0_S_USER read-only .
 
+  class-methods SYNCHR_CONTEXT .
   class-methods SET_CONTEXT
     importing
       !I_APPSET_ID type UJ_APPSET_ID optional

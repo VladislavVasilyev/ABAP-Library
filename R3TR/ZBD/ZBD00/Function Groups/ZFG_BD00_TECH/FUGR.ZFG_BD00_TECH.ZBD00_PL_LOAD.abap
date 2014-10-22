@@ -2,14 +2,21 @@ function zbd00_pl_load.
 *"----------------------------------------------------------------------
 *"*"Локальный интерфейс:
 *"  IMPORTING
-*"     VALUE(I_V__APPSET_ID) TYPE  UJ_APPSET_ID DEFAULT 'BUDGET_2014'
-*"     VALUE(I_V__SC_APPL_ID) TYPE  UJ_APPL_ID DEFAULT 'GROSSMARGIN'
-*"     VALUE(I_V__TG_APPL_ID) TYPE  UJ_APPL_ID DEFAULT 'MASTER'
-*"     VALUE(I_V__SCENARIO) TYPE  UJ_VALUE DEFAULT 'PLAN'
-*"     VALUE(I_V__FORMAT) TYPE  UJ_VALUE DEFAULT 'ТС Пятерочка'
+*"     VALUE(I_V__APPSET_ID) TYPE  UJ_APPSET_ID
+*"     VALUE(I_V__SC_APPL_ID) TYPE  UJ_APPL_ID
+*"     VALUE(I_V__TG_APPL_ID) TYPE  UJ_APPL_ID
+*"     VALUE(I_V__SCENARIO) TYPE  UJ_VALUE
+*"     VALUE(I_V__FORMAT) TYPE  UJ_VALUE
 *"     VALUE(I_T__BPCTIME) TYPE  ZBD00_T_BPCTIME
 *"     VALUE(I_V__PACKAGESIZE) TYPE  I OPTIONAL
-*"     VALUE(I_V__ID_RULE) TYPE  I DEFAULT 3
+*"     VALUE(I_V__ID_RULE) TYPE  I
+*"     VALUE(I_BPC_USER) TYPE  UJ0_S_USER OPTIONAL
+*"  EXPORTING
+*"     VALUE(NUM_READ) TYPE  I
+*"     VALUE(NUM_WRITE) TYPE  UJR_S_STATUS_RECORDS
+*"     VALUE(E_MESSAGE) TYPE  UJ0_T_MESSAGE
+*"  CHANGING
+*"     VALUE(TASK_ID) TYPE  I OPTIONAL
 *"  EXCEPTIONS
 *"      ERR_TARGET_CREATE
 *"      ERR_APPSET_ID
@@ -22,6 +29,10 @@ function zbd00_pl_load.
     ld_s__range-sign      = `I`.
     ld_s__range-option    = &3.
     ld_s__range-low       = &4.
+    if &3 = 'NE'.
+    ld_s__range-sign      = `E` .
+    ld_s__range-option    = 'EQ' .
+    endif.
     append ld_s__range to ld_t__range.
   end-of-definition.
   define mac__add_to_clear_range.
@@ -31,6 +42,10 @@ function zbd00_pl_load.
     ld_s__range-sign      = `I`.
     ld_s__range-option    = &3.
     ld_s__range-low       = &4.
+    if &3 = 'NE'.
+    ld_s__range-sign      = `E` .
+    ld_s__range-option    = 'EQ' .
+    endif.
     append ld_s__range to ld_t__clear_range.
   end-of-definition.
   define mac__add_to_const.
@@ -55,8 +70,7 @@ function zbd00_pl_load.
     insert ld_s__dim_list into table ld_t__dim_list.
   end-of-definition.
 *--------------------------------------------------------------------*
-
-
+*  zcl_debug=>stop_program( ) .
 *--------------------------------------------------------------------*
   if `DATA`       = `DATA`      .
     type-pools zbnlt.
@@ -110,6 +124,9 @@ function zbd00_pl_load.
     , ld_t__clear_range     type uj0_t_sel
     , ld_t__range           type uj0_t_sel
     , ld_t__param           type zbnlt_t__param
+    , ld_t__log_read        type zbd0t_t__log_read
+    , ld_t__log_read_dim    type zbd0t_t__log_dimension
+    , ld_t__log_write       type zbd0t_t__log_write
     .
 
     field-symbols
@@ -119,17 +136,27 @@ function zbd00_pl_load.
     .
   endif.
   if `CONTEXT`    = `CONTEXT`   .
-    create object lr_o__security.
-    ld_s__user-user_id = lr_o__security->d_server_admin_id.
+
+    call method zcl_bd00_context=>set_context
+      exporting
+        i_appset_id = i_v__appset_id
+        i_appl_id   = i_v__tg_appl_id
+        i_s__user   = i_bpc_user.
+
+*    create object lr_o__security.
+*    ld_s__user-user_id = lr_o__security->d_server_admin_id.
+* ---> Добавил Козин А., X5, 30.09.2014
     try.
-        cl_uj_context=>set_cur_context( i_appset_id = i_v__appset_id is_user = ld_s__user ).
+        cl_uj_context=>set_cur_context( i_appset_id = i_v__appset_id is_user = I_BPC_USER ).
       catch cx_uj_obj_not_found.
         raise err_appset_id.
     endtry.
+* <---
 
     create object lr_o__rfc_task
       exporting
-        num = 4.
+        num           = 4
+        parallel_task = abap_true.
   endif.
   if `TARGET`     = `TARGET`    .
     select  tg_dimn tg_value sc_dimn sc_value
@@ -196,7 +223,7 @@ function zbd00_pl_load.
 
     mac__add_to_range
     : `SCENARIO` ``           `EQ` i_v__scenario
-    , `ENTITY`   `FORMAT_D`   `EQ` i_v__format.
+    , `ENTITY`   `FORMAT_N`   `EQ` i_v__format.
 
     loop at i_t__bpctime into ld_v__bpctime.
       mac__add_to_range
@@ -261,7 +288,7 @@ function zbd00_pl_load.
 
           endif.
         endselect.
-      else.
+      elseif ld_s__mp_pl-sc_value is not initial.
         split ld_s__mp_pl-sc_dimn at `.` into ld_v__dimension ld_v__attribute.
 
         mac__add_to_range
@@ -271,30 +298,28 @@ function zbd00_pl_load.
     endselect.
     mac__add_to_clear_range
     : `SCENARIO` ``           `EQ` i_v__scenario
-    , `ENTITY`   `FORMAT_D`   `EQ` i_v__format.
+    , `ENTITY`   `FORMAT_N`   `EQ` i_v__format.
 
     loop at i_t__bpctime into ld_v__bpctime.
       mac__add_to_clear_range `TIME` `` `EQ`  ld_v__bpctime.
     endloop.
 
   endif.
-  if `CLEAR`      = `CLEAR`     .
+  if `CLEAR`      = `NOCLEAR`   .
     try.
         create object lr_o__target
           exporting
             i_appset_id = i_v__appset_id
             i_appl_id   = i_v__tg_appl_id
             it_range    = ld_t__clear_range
-            i_type_pk   = zbd0c_ty_tab-std_non_unique_dk.
+            i_type_pk   = zbd0c_ty_tab-std_non_unique_dk
+            if_invert   = abap_true.
       catch zcx_bd00_create_obj.
         raise err_target_create.
     endtry.
 
     while lr_o__target->next_pack( zbd0c_read_mode-pack ) eq zbd0c_read_pack .
-      while lr_o__target->next_line( ) eq zbd0c_found.
-        lr_o__target->math( signeddata = -1 operation = `MUL` ).
-      endwhile.
-      lr_o__target->write_back( ).
+      lr_o__target->write_back( abap_true ).
     endwhile.
     zcl_bd00_appl_table=>free_all_object( ).
   endif.
@@ -314,11 +339,12 @@ function zbd00_pl_load.
     try.
         create object lr_o__source
           exporting
-            i_appset_id = i_v__appset_id
-            i_appl_id   = i_v__sc_appl_id
-            it_range    = ld_t__range
-            it_dim_list = ld_t__dim_list
-            i_type_pk   = zbd0c_ty_tab-std_non_unique_dk.
+            i_appset_id   = i_v__appset_id
+            i_appl_id     = i_v__sc_appl_id
+            it_range      = ld_t__range
+            it_dim_list   = ld_t__dim_list
+            i_packagesize = i_v__packagesize
+            i_type_pk     = zbd0c_ty_tab-std_non_unique_dk.
       catch zcx_bd00_create_obj.
         raise err_source_create.
     endtry.
@@ -343,7 +369,43 @@ function zbd00_pl_load.
       endwhile.
     endwhile.
     lr_o__target->write_back( ).
-    zcl_bd00_appl_table=>free_all_object( ).
   endif.
+
+  zcl_bd00_rfc_task=>wait_end_all_task( ).
+
+  call method lr_o__source->get_log
+    importing
+      e_t__read = ld_t__log_read.
+
+  call method lr_o__target->get_log
+    importing
+      e_t__write = ld_t__log_write.
+
+
+
+  field-symbols
+  : <ld_s__log_read>  like line of ld_t__log_read
+  , <ld_s__log_write> like line of ld_t__log_write
+  .
+
+  loop at ld_t__log_read assigning <ld_s__log_read>.
+    add <ld_s__log_read>-sup_rec to num_read.
+  endloop.
+
+  loop at ld_t__log_write assigning <ld_s__log_write>.
+    add <ld_s__log_write>-status_records-nr_submit to num_write-nr_submit.
+    add <ld_s__log_write>-status_records-nr_fail to num_write-nr_fail.
+    add <ld_s__log_write>-status_records-nr_success to num_write-nr_success.
+
+    append lines of <ld_s__log_write>-message to e_message.
+  endloop.
+
+  sort e_message.
+  delete adjacent duplicates from e_message.
+
+  zcl_bd00_appl_table=>free_all_object( ).
+
+*    e_t__read     = ld_t__log_read
+*    e_t__read_dim = ld_t__log_read_dim
 *--------------------------------------------------------------------*
 endfunction.

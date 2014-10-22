@@ -7,6 +7,25 @@ class ZCL_BDNL_ASSIGN_FUNCTION definition
 *"* do not include other source files here!!!
 public section.
 
+  class-methods RIGHTSYM
+    importing
+      !I01 type ANY
+      !I02 type ANY optional
+      !I03 type ANY optional
+    exporting
+      !E type ANY
+    raising
+      ZCX_BDNL_SKIP_ASSIGN .
+  class-methods PREV_MONTH
+    importing
+      !I01 type ANY
+    exporting
+      !E type ANY .
+  class-methods NUM
+    importing
+      !I01 type ANY
+    exporting
+      !E type UJ_KEYFIGURE .
   class-methods MAP_EXT2_LICENSE
     importing
       !I01 type ANY
@@ -15,10 +34,32 @@ public section.
       !E type ANY
     raising
       ZCX_BDNL_SKIP_ASSIGN .
+  class-methods LEFTSYM
+    importing
+      !I01 type ANY
+      !I02 type ANY optional
+      !I03 type ANY optional
+    exporting
+      !E type ANY
+    raising
+      ZCX_BDNL_SKIP_ASSIGN .
   class-methods CONCATENATE
     importing
       !I01 type ANY
       !I02 type ANY
+      !I03 type ANY optional
+      !I04 type ANY optional
+      !I05 type ANY optional
+    exporting
+      !E type ANY .
+  class-methods GET_VAR
+    importing
+      !I01 type ANY
+    exporting
+      !E type ANY .
+  class-methods GET_EXCEL_DATE
+    importing
+      !I01 type ANY
     exporting
       !E type ANY .
   class-methods GET_CH
@@ -42,6 +83,17 @@ public section.
     importing
       !I01 type ANY
       !I02 type ANY
+    exporting
+      !E type ANY
+    raising
+      ZCX_BDNL_SKIP_ASSIGN .
+  class-methods IF
+    importing
+      !I01 type ANY
+      !I02 type ANY
+      !I03 type ANY
+      !I04 type ANY
+      !I05 type ANY
     exporting
       !E type ANY
     raising

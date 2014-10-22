@@ -71,6 +71,10 @@ method create_code_unique_key.
         concatenate <ls_cust_link>-tg ` = ` <ls_definition>-name  into ls_str.
         translate ls_str to lower case.
       endif.
+    elseif <ls_cust_link>-clear = abap_true.
+      ls_str = <ls_cust_link>-tg.
+      translate ls_str to lower case.
+      concatenate ls_str ` = space`  into ls_str.
     else.
       ls_str = <ls_cust_link>-tg.
       translate ls_str to lower case.

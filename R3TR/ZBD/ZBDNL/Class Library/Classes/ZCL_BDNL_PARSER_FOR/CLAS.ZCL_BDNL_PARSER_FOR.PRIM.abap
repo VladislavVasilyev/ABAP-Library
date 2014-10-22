@@ -13,12 +13,28 @@ method prim.
   , ld_v__tablename     type zbnlt_v__tablename
   , ld_f__commit        type abap_bool
   , ld_f__clear         type abap_bool
+  , ld_f__print         type abap_bool
   .
 
   field-symbols
   : <ld_s__rules>       type zbnlt_s__for_rules
   , <ld_s__containers>  type zbnlt_s__stack_container
   .
+
+  if gd_f__with_key = abap_true.
+    call method read_with_key
+      exporting
+        i_v__tablename = gd_v__for_table
+      importing
+        e_t__custlink  = gd_t__where.
+
+    if gr_o__cursor->get_token( esc = abap_true ) ne zblnc_keyword-dot.
+      raise exception type zcx_bdnl_syntax_error
+            exporting textid = zcx_bdnl_syntax_error=>zcx_expected
+                      token  = zblnc_keyword-dot
+                      index  = gr_o__cursor->gd_v__index .
+    endif.
+  endif.
 
   append initial line to gd_t__rules assigning <ld_s__rules>.
 
@@ -94,63 +110,72 @@ method prim.
                           index     = gr_o__cursor->gd_v__cindex .
         endif.
 
-
-        clear
-        : ld_f__commit
-        , ld_f__clear
-        .
-
-        case gr_o__cursor->get_token( ).
-
-            "$COMMIT
-          when zblnc_keyword-commit.
-            gr_o__cursor->get_token( esc = abap_true ).
-            ld_f__commit = abap_true.
-
-            " $CLEAR
-          when zblnc_keyword-clear.
-            gr_o__cursor->get_token( esc = abap_true ).
-            ld_f__clear = abap_true.
-        endcase.
-
         while gr_o__cursor->gd_f__end ne abap_true.
 
-          ld_v__tablename = gr_o__cursor->get_token( ).
+          clear
+          : ld_f__commit
+          , ld_f__clear
+          , ld_f__print
+          .
 
-          if ld_v__tablename = zblnc_keyword-dot.
-            gr_o__cursor->get_token( esc = abap_true ).
-            exit.
-          endif.
-
-          read table gd_t__containers
-               with key tablename = ld_v__tablename
-               assigning <ld_s__containers>.
-
-          if sy-subrc ne 0 .
-            raise exception type zcx_bdnl_syntax_error
-                    exporting textid = zcx_bdnl_syntax_error=>zcx_table_not_defined
-                              token  = ld_v__tablename
-                              index  = gr_o__cursor->gd_v__index .
-          endif.
-
-          if ld_f__commit = abap_true.
-            if <ld_s__containers>-f_write = abap_false.
-              raise exception type zcx_bdnl_syntax_error
-                       exporting textid = zcx_bdnl_syntax_error=>zcx_no_can_save
-                                 tablename  = ld_v__tablename
-                                 index  = gr_o__cursor->gd_v__index .
-            endif.
-          endif.
-
-          gr_o__cursor->get_token( esc = abap_true ).
-
-          case abap_true.
-            when ld_f__commit.
-              insert ld_v__tablename into table gd_t__commit .
-            when ld_f__clear.
-              insert ld_v__tablename into table gd_t__clear .
+          case gr_o__cursor->get_token( ).
+              "$COMMIT
+            when zblnc_keyword-commit.
+              gr_o__cursor->get_token( esc = abap_true ).
+              ld_f__commit = abap_true.
+              " $CLEAR
+            when zblnc_keyword-clear.
+              gr_o__cursor->get_token( esc = abap_true ).
+              ld_f__clear = abap_true.
+              " $PRINT
+            when zblnc_keyword-print.
+              gr_o__cursor->get_token( esc = abap_true ).
+              ld_f__print = abap_true.
+            when zblnc_keyword-endfor.
+              exit.
           endcase.
 
+          while gr_o__cursor->gd_f__end ne abap_true.
+
+            ld_v__tablename = gr_o__cursor->get_token( ).
+
+            if ld_v__tablename = zblnc_keyword-dot.
+              gr_o__cursor->get_token( esc = abap_true ).
+              exit.
+            endif.
+
+            read table gd_t__containers
+                 with key tablename = ld_v__tablename
+                 assigning <ld_s__containers>.
+
+            if sy-subrc ne 0 .
+              raise exception type zcx_bdnl_syntax_error
+                      exporting textid = zcx_bdnl_syntax_error=>zcx_table_not_defined
+                                token  = ld_v__tablename
+                                index  = gr_o__cursor->gd_v__index .
+            endif.
+
+            if ld_f__commit = abap_true.
+              if <ld_s__containers>-f_write = abap_false.
+                raise exception type zcx_bdnl_syntax_error
+                         exporting textid = zcx_bdnl_syntax_error=>zcx_no_can_save
+                                   tablename  = ld_v__tablename
+                                   index  = gr_o__cursor->gd_v__index .
+              endif.
+            endif.
+
+            gr_o__cursor->get_token( esc = abap_true ).
+
+            case abap_true.
+              when ld_f__commit.
+                insert ld_v__tablename into table gd_t__commit .
+              when ld_f__clear.
+                insert ld_v__tablename into table gd_t__clear .
+              when ld_f__print.
+                insert ld_v__tablename into table gd_t__print .
+            endcase.
+
+          endwhile.
         endwhile.
 
 *--------------------------------------------------------------------*

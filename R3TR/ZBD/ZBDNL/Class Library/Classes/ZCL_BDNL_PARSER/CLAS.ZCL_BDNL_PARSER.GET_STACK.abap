@@ -15,8 +15,13 @@ method get_stack.
   try.
 *--------------------------------------------------------------------*
       stack = get_stack1( ).
+
+      clear gd_t__filterpools.
+
+      zcl_bd00_context=>synchr_context( ).
 *--------------------------------------------------------------------*
     catch zcx_bdnl_syntax_error into lr_x__syntax.
+      zcl_bd00_context=>synchr_context( ).
 
       concatenate `Syntax error in script: ` cr_o__cursor->gd_v__script_path `.` into ld_s__error.
       append ld_s__error to ld_t__error.

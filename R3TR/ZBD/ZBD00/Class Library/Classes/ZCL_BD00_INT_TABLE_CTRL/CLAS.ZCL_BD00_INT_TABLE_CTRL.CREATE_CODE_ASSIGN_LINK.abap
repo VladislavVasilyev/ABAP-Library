@@ -160,10 +160,16 @@ method create_code_assign_link.
       else.
         ld_v__name_sc_ch = <ls_cust_link>-const.
       endif.
+    elseif <ls_cust_link>-clear = abap_true.
+      ld_v__name_sc_ch = `space`.
     endif.
 
     if <ls_cust_link>-tg is not initial.
-      concatenate ld_v__name_tg_ch ` = ` ld_v__name_sc_ch `.` into ls_str.
+      if <ls_cust_link>-clear = abap_true.
+        concatenate `clear ` ld_v__name_tg_ch `.` into ls_str.
+      else.
+        concatenate ld_v__name_tg_ch ` = ` ld_v__name_sc_ch `.` into ls_str.
+      endif.
       if <ls_cust_link>-tg = it_rule_link-main->gr_o__model->gd_v__signeddata.
         append ls_str to ld_t__assign_list assigning <ld_s__assign_list>.
         if <ls_cust_link>-const is not initial.

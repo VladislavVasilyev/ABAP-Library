@@ -2,6 +2,13 @@
 *"* do not include other source files here!!!
 private section.
 
+  class-methods __GET_TIME_MONTH
+    importing
+      !MONTH type I
+    returning
+      value(E) type STRING
+    raising
+      ZCX_BDNL_SKIP_ASSIGN .
   class-methods __GET_TIME
     importing
       !TIME type STRING

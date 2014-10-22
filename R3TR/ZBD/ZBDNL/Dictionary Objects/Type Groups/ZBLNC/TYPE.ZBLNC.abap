@@ -6,11 +6,13 @@ constants: begin of zblnc_keyword
            , const              type string value `$CONST`
            , for                type string value `$FOR`
            , s_for              type string value `FOR`
+           , cspace             type string value `$SPACE`
            , containers         type string value `$CONTAINERS`
            , select             type string value `$SELECT`
            , filter             type string value `$FILTER`
            , fields             type string value `$FIELDS`
            , clear              type string value `$CLEAR`
+           , print              type string value `$PRINT`
            , ctable             type string value `$TABLE`
            , into               type string value `$INTO`
            , s_into             type string value `INTO`
@@ -46,6 +48,9 @@ constants: begin of zblnc_keyword
            , tilde              type string value `~`
            , open_parenthesis   type string value `(`
            , close_parenthesis  type string value `)`
+           , conc               type string value `&&`
+           , left_symbol        type string value `->`
+           , right_symbol       type string value `<-`
            , begin              type string value `BEGIN`
            , end                type string value `END`
            , search             type string value `$SEARCH`
@@ -85,5 +90,9 @@ constants: begin of zblnc_keyword
            , initial            type string value `INITIAL`
            , not                type string value `NOT`
            , comma              type string value `,`
+           , destination        type string value `DESTINATION`
            , tablefordown       type string value `$TABLE FOR DOWNLOAD`
            , end of zblnc_keyword.
+
+
+ constants zblnc_default_num_task type i value 4.

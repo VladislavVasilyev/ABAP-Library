@@ -31,11 +31,11 @@ function zbd00_data_unwrap .
       changing <l_t_data>.
   endif.
 
-*  IF NOT i_rfcdata_uc IS INITIAL.
-*    PERFORM data_unwrap_uc
-*      USING    i_rfcdata_uc
-*      CHANGING <l_t_data>.
-*  ENDIF.
+  IF NOT i_rfcdata_uc IS INITIAL.
+    PERFORM data_unwrap_uc
+      USING    i_rfcdata_uc
+      CHANGING <l_t_data>.
+  ENDIF.
 *
 *  IF NOT i_t_rfcdata250 IS INITIAL.
 *    PERFORM data_unwrap_std_250

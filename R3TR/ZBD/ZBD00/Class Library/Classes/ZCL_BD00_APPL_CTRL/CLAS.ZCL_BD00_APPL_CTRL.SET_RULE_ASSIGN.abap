@@ -93,6 +93,8 @@ method set_rule_assign.
         ld_s__cust_link-data    = <ld_s__i_cust_link>-sc-data.
       elseif <ld_s__i_cust_link>-sc-const is not initial.
         ld_s__cust_link-const   = <ld_s__i_cust_link>-sc-const.
+      elseif <ld_s__i_cust_link>-sc-clear = abap_true.
+        ld_s__cust_link-clear = abap_true.
       endif.
       insert ld_s__cust_link into table ld_t__cust_link.
       check sy-subrc <> 0.

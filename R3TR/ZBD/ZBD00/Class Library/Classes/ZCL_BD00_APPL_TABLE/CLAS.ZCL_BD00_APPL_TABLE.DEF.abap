@@ -31,6 +31,7 @@ class lcl_process_data definition friends zcl_bd00_appl_table.
         importing io_appl_table     type ref to zcl_bd00_appl_table
                   it_range          type uj0_t_sel optional
                   iv_packagesize    type i optional
+                  iv_destination    type string optional
                   if_suppress_zero  type rs_bool default abap_false
                   if_invert         type rs_bool default abap_false
     , read_data_arfc_receive
@@ -61,6 +62,7 @@ class lcl_process_data definition friends zcl_bd00_appl_table.
     , gd_v__rule_assign   type zbd0t_id_rules
     , gd_f__gen_init      type rs_bool
     , gd_f__invert        type rs_bool
+    , gd_v__destination   type rfcdest
     .
 
     methods
@@ -115,10 +117,18 @@ class lcl_log definition.
     data gd_t__read_dim       type zbd0t_t__log_dimension.
     data gd_t__write          type zbd0t_t__log_write.
     data gd_t__open_write     type zbd0t_t__log_write.
+    data gd_t__num_rows       type zbd0t_t__log_actual.
+
 
     methods
     : set_read  importing read  type zbd0t_s__log_read
     , set_read_dim  importing read  type zbd0t_s__log_read
     , set_write importing write type zbd0t_s__log_write
+    , set_actual importing actual_rows type i returning value(e) type i
     .
+
+  private section.
+    data gd_v__nr_actual type i.
+
+
 endclass.                    "lcl_log DEFINITION

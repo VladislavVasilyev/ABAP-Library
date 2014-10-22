@@ -9,11 +9,35 @@ method get_parameter.
   , ld_t__script          type table of string
   , ld_t__path            type table of string
   , ld_v__cnt             type i value 0
-  , ld_s__script          type zcl_bdnl_badi_params=>ty_s__script.
+  , ld_s__script          type zcl_bdnl_badi_params=>ty_s__script
+  , ld_v__string          type string
+  , ld_v__st              type string
+  , ld_v__txt             type string
+  .
 
   field-symbols
   : <ld_v__script>        type string
   , <ld_v__path>          type string.
+
+  if `VS`           = `VS`.
+    l_para = `VS`.
+    try .
+        call method do_config->if_ujd_config~get_parameter
+          exporting
+            i_parameter       = l_para
+          importing
+            e_parameter_value = l_value.
+      catch cx_ujd_datamgr_error.
+        l_value = `OLD`.
+    endtry.
+
+    case l_value.
+      when `STABLE`.
+        cd_v__version = `STABLE`.
+      when others.
+        cd_v__version = l_value.
+    endcase.
+  endif.
 
   if `DEBUG`           = `DEBUG`.
     l_para = `DEBUG`.
@@ -75,6 +99,8 @@ method get_parameter.
         gd_f__parallel_task = abap_false.
         gd_v__num_tasks     = zblnc_default_num_task.
     endtry.
+
+    l_value2 = gd_v__num_tasks.
   endif.
   if `TIME_ID`         = `TIME_ID`.
     l_para = `TIME_ID`.
@@ -87,7 +113,7 @@ method get_parameter.
       catch cx_ujd_datamgr_error.
         l_value = ''.
     endtry.
-    gd_v__time_id = l_value.
+    gd_v__time_id = get_value_rspc( l_value ).
   endif.
   if `SAPPSET`         = `SAPPSET`.
     if gv_f__rspc = abap_true.
@@ -101,7 +127,7 @@ method get_parameter.
         i_parameter       = l_para
       importing
         e_parameter_value = l_value.
-    d_appset_id = l_value.
+    d_appset_id = get_value_rspc( l_value ).
   endif.
   if `SAPP`            = `SAPP`.
     if gv_f__rspc = abap_true.
@@ -115,7 +141,7 @@ method get_parameter.
         i_parameter       = l_para
       importing
         e_parameter_value = l_value.
-    d_appl_id = l_value.
+    d_appl_id = get_value_rspc( l_value ).
   endif.
   if `LOGICFILENAME`   = `LOGICFILENAME`.
     l_para = ujd0_cs_task_parameter-logicname.
@@ -189,7 +215,7 @@ method get_parameter.
         i_parameter       = l_para
       importing
         e_parameter_value = l_value.
-    d_user_id = l_value.
+    d_user_id = get_value_rspc( l_value ).
   endif.
   if `SELECTION`       = `SELECTION`.
     if not  gv_f__rspc eq abap_true.
@@ -288,5 +314,57 @@ method get_parameter.
     condense l_value no-gaps.
     split l_value at `|` into d_sendmail dv_f__logmail.
   endif.
+
+  " Принт парам
+  message s035(zbdnl).
+  mprint> `Variant Parameters:`.
+  mprint> `---`.
+
+  pprint> `APPSET_ID`      d_appset_id.
+  pprint> `APPLICATION_ID` d_appl_id.
+  pprint> `USER_ID`        d_user_id.
+  pprint> `LOGIC NAME`     d_logic_file_path.
+
+  " Печать запускающего процесса
+  if not gv_f__rspc eq abap_true.
+    if d_package_id  is not initial.
+      pprint> `PACKAGE_ID` d_package_id.
+    endif.
+  else.
+    select single txtlg " цепочка
+           into ld_v__txt
+           from rspcchaint
+           where chain_id = gd_v__chain_id
+             and objvers = `A`.
+
+    message s020(zmx_bdch_badi) with gd_v__chain_id ld_v__txt.
+
+    select single txtlg " вариант
+            into ld_v__txt
+            from rspcvariantt
+            where variante = gd_v__rspc_var
+              and objvers = `A`
+              and type  = gd_v__rspc_type.
+
+    message s021(zmx_bdch_badi) with gd_v__rspc_var ld_v__txt.
+  endif.
+
+  if gd_v__time_id is not initial.
+    pprint> `TIME_ID` gd_v__time_id.
+  endif.
+
+  st> gd_f__parallel_task   ld_v__st.
+  pprint> `Parallel task`   ld_v__st.
+
+  l_value =   gd_v__num_tasks.
+  pprint> `Number of parallel tasks`   l_value.
+
+  st> gd_f__debug           ld_v__st.
+  pprint> `DEBUG`           ld_v__st.
+
+  st> gd_f__norun           ld_v__st.
+  pprint> `NORUN`           ld_v__st.
+
+  message s035(zbdnl).
 
 endmethod.

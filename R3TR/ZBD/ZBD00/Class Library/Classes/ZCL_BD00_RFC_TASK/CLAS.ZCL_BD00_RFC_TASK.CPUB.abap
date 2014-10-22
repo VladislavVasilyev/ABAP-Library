@@ -36,6 +36,12 @@ public section.
          , rfc_write     type ty_type_task value 'W'
         ,end   of cs .
 
+  class-methods CHECK_WAIT_FREE_TASKS .
+  class-methods WHILE_TASK
+    returning
+      value(EXIT) type RS_BOOL
+    raising
+      ZCX_BD00_RFC_TASK .
   class-methods WAIT_END_READ_TASK .
   class-methods SET_TASK_FREE
     importing

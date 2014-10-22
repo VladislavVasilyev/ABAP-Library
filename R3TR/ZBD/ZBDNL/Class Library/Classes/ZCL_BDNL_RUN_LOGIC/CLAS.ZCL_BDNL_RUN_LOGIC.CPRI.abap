@@ -79,8 +79,20 @@ private section.
     importing
       !I_S__FOR type ZBNLT_S__FOR
       !I_V__TURN type I
-    returning
-      value(E_T__SEARCH) type ZBNLT_T__SEARCH
+    exporting
+      !E_T__SEARCH type ZBNLT_T__SEARCH
+      !E_S__SEARCH_FOR type ZBNLT_S__SEARCH
+    raising
+      ZCX_BD00_CREATE_OBJ .
+  type-pools ZBD0T .
+  methods CREATE_RULE_LINK_FIELDS
+    importing
+      !I_T__LINK type ZBNLT_T__CUST_LINK
+      !I_V__TURN type I
+      !I_S__FOR type ZBNLT_S__FOR
+    exporting
+      value(E_T__RULE_LINK) type ZBD0T_TY_T_CUSTOM_LINK1
+      !E_T__FUNCTION type ZBNLT_T__FUNCTION
     raising
       ZCX_BD00_CREATE_OBJ .
   methods SEARCH
@@ -98,6 +110,7 @@ private section.
     importing
       !I_S__FOR type ZBNLT_S__FOR optional
       !I_V__TABLENAME type ZBNLT_V__TABLENAME
+      !I_V__PACKAGESIZE type I optional
     returning
       value(E_S__TABLE) type ref to ZBNLT_S__CONTAINERS
     raising

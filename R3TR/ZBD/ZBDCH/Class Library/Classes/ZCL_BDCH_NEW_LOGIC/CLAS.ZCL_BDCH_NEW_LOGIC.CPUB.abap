@@ -7,6 +7,7 @@ class ZCL_BDCH_NEW_LOGIC definition
 *"* public components of class ZCL_BDCH_NEW_LOGIC
 *"* do not include other source files here!!!
 public section.
+  type-pools ZBNLT .
 
   interfaces IF_RSPC_EXECUTE .
   interfaces IF_RSPC_GET_VARIANT .

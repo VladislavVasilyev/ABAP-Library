@@ -6,6 +6,7 @@ private section.
   data DO_SELECT_READER type ref to IF_UJD_GET_TRANSFORM .
   data D_PACKAGE_ID type UJ_PACKAGE_ID .
   data D_SENDMAIL type STRING .
+  data GD_F__NORUN type RS_BOOL .
   data GD_F__PARALLEL_TASK type RS_BOOL .
   data GD_V__CHAIN_ID type RSPC_CHAIN .
   data GD_V__NUM_TASKS type I .
@@ -14,7 +15,6 @@ private section.
   data GD_V__TIME_ID type STRING .
   data GR_O__REPLACE type ref to CL_UJK_DO_REPLACE .
   data GT_MESSAGE type UJ0_T_MESSAGE .
-  data GD_F__NORUN type RS_BOOL .
 
   methods GET_VALUE_RSPC
     importing
@@ -41,13 +41,12 @@ private section.
       !I_V__SIZE type I default 7
     returning
       value(E_V__TEXT) type STRING .
-  type-pools ABAP .
   methods SEND_EMAIL
     importing
       !IF_SUCCES type UJ_FLG
       !IF_WARNING type UJ_FLG
-      !IF_LOG type RS_BOOL
-      !IF_JOB type RS_BOOL default ABAP_FALSE .
+      !IF_LOG type RS_BOOL .
+  methods PRINT_LOG .
   methods GET_SPACE_TEXT
     importing
       !I_V__SIZE type I
@@ -67,8 +66,7 @@ private section.
       !I_V__END type TZNTSTMPL
     returning
       value(E_V__TEXT) type STRING .
-  type-pools ZBNLT .
-  methods PRINT_LOG
+  methods PRINT_LOG_FOR_TABLE
     importing
       !I_T__CONTAINERS type ZBNLT_T__CONTAINERS
       !I_V__PATH type UJ_DOCNAME

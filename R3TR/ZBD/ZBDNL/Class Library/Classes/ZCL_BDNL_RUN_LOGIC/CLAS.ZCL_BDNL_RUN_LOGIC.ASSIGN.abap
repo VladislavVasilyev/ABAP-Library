@@ -46,6 +46,7 @@ method assign.
 
         <ld_s__assign>-object->rule_assign_1( <ld_s__assign>-class ).
       catch zcx_bdnl_skip_assign.
+        zcl_bdnl_container=>add_skip( ).
     endtry.
 
     assign( i = ld_v__i f_found = f_found ).

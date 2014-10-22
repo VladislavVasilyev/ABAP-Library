@@ -5,10 +5,12 @@ function zbd00_rfc_bpc_write .
 *"     VALUE(I_APPSET_ID) TYPE  UJ_APPSET_ID
 *"     VALUE(I_APPL_ID) TYPE  UJ_APPL_ID
 *"     VALUE(I_MODE) TYPE  ZRB_WRITE_BACK_MODE
+*"     VALUE(I_BPC_USER) TYPE  UJ0_S_USER OPTIONAL
 *"  EXPORTING
 *"     VALUE(ET_MESSAGE) TYPE  UJ0_T_MESSAGE
 *"     VALUE(ES_STATUS_RECORDS) TYPE  UJR_S_STATUS_RECORDS
 *"     VALUE(E_TIME_END) TYPE  TZNTSTMPL
+*"     VALUE(E_CNT_RAISE_WRITE) TYPE  I
 *"  TABLES
 *"      I_T_RFCDATA TYPE  RSDRI_T_RFCDATA OPTIONAL
 *"      I_T_FIELD TYPE  RSDP0_T_FIELD OPTIONAL
@@ -29,13 +31,15 @@ function zbd00_rfc_bpc_write .
   , lr_x_write_back        type ref to cx_root
   .
 
-  ls_user-user_id = 'X5'.
+  ls_user = i_bpc_user.
   cl_uj_context=>set_cur_context(
-                  i_appset_id = i_appset_id
-                  i_appl_id   = i_appl_id
-                  is_user     = ls_user ).
-  lo_uj_context ?= cl_uj_context=>get_cur_context( ).
-  lo_uj_context->switch_to_srvadmin( ).
+              i_appset_id = i_appset_id
+              i_appl_id   = i_appl_id
+              is_user     = ls_user ).
+
+
+*  lo_uj_context ?= cl_uj_context=>get_cur_context( ).
+*  lo_uj_context->switch_to_srvadmin( ).
 *╚═══════════════════════════════════════════════════════════════════╝
 
 
@@ -124,10 +128,10 @@ function zbd00_rfc_bpc_write .
   data " Параметры для записи WRITE-BACK
   : lo_wb_main_int          type ref to cl_ujr_write_back
   , lo_ref                  type ref to cx_root
-  , ld_v__success           type i
+  , ld_v__cnt_raise_write  type i
   .
 
-  while 1 = 1. "ld_v__success < 20.
+  while 1 = 1. "ld_v__cnt_raise_write < 20.
     try.
         create object lo_wb_main_int.
         call method lo_wb_main_int->write_back_int
@@ -155,7 +159,7 @@ function zbd00_rfc_bpc_write .
           lr_x_write_back = lr_x_write_back->previous.
         endwhile.
 
-        add 1 to ld_v__success.
+        add 1 to ld_v__cnt_raise_write.
         continue.
 
         raise error_write_back.
@@ -170,7 +174,8 @@ function zbd00_rfc_bpc_write .
   endwhile.
 
 *╚═══════════════════════════════════════════════════════════════════╝
-
+  e_cnt_raise_write = ld_v__cnt_raise_write.
+  sort et_message ascending.
   delete adjacent duplicates from et_message.
 
   get time stamp field e_time_end.

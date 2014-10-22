@@ -30,13 +30,19 @@ private section.
     exporting
       !ET_DEFINITION type TY_T_STRING
       !ET_IMPLEMENTATIOM type TY_T_STRING .
-  class-methods CREATE_CODE_NON_UNIQUE_KEY
+  class-methods CREATE_CODE_LINE_SEARCH
+    importing
+      !IS_RULE_LINK type ZCL_BD00_APPL_CTRL=>TY_S_CUST_LINK
+      !IT_OBJECT_REESTR type TY_T_OBJECT_REESTR
+    returning
+      value(EV_CODE) type STRING .
+  class-methods CREATE_CODE_ASSIGN_LINK
     importing
       !IT_RULE_LINK type ZCL_BD00_APPL_CTRL=>TY_S_RULES_REESTR
       !IT_OBJECT_REESTR type TY_T_OBJECT_REESTR
     returning
       value(ET_CODE) type TY_T_STRING .
-  class-methods CREATE_CODE_ASSIGN_LINK
+  class-methods CREATE_CODE_NON_UNIQUE_KEY
     importing
       !IT_RULE_LINK type ZCL_BD00_APPL_CTRL=>TY_S_RULES_REESTR
       !IT_OBJECT_REESTR type TY_T_OBJECT_REESTR

@@ -17,9 +17,31 @@ public section.
     importing
       !I01 type ANY
       !I02 type ANY optional
+      !I03 type ANY optional
     exporting
       !E type ZBNLT_T__PARAM .
   class-methods GET_ATTR
+    importing
+      !I01 type ANY
+      !I02 type ANY
+      !I03 type ANY optional
+    exporting
+      !E type ZBNLT_T__PARAM .
+  class-methods GET_ENT_AS_EG
+    importing
+      !I01 type ANY
+      !I02 type ANY
+      !I03 type ANY optional
+    exporting
+      !E type ZBNLT_T__PARAM .
+  class-methods GET_MONTH
+    importing
+      !I01 type ANY
+      !I02 type ANY
+      !I03 type ANY optional
+    exporting
+      !E type ZBNLT_T__PARAM .
+  class-methods GET_YEARS
     importing
       !I01 type ANY
       !I02 type ANY

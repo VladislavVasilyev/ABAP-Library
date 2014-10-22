@@ -2,7 +2,7 @@ method cmd_from.
 
   constants
   : cs__regex     type string value `^([A-Z0-9\_]+)\>\~(\<([A-Z0-9\_]+)\>|\$GENERATE\>)`
-  , cs__regex1    type string value `^\$BP\>\~\<([A-Z0-9\_]+)\>`
+  , cs__regex1    type string value `^\$BP\>\~(\<([A-Z0-9\_]+)\>|\/(CPMB)\/([A-Z0-9\_]+)\>)`
   , cs__regex2    type string value `^([A-Z0-9\_]+)\>`
   .
 
@@ -104,6 +104,11 @@ method cmd_from.
       exporting textid   = zcx_bdnl_syntax_error=>zcx_expected
                 expected = `APPSET~APPLICATION or $BP~INFOCUBE`
                 index     = gr_o__cursor->gd_v__index.
+  endif.
+
+  if gr_o__cursor->get_token( ) = zblnc_keyword-destination.
+    gr_o__cursor->get_token( esc = abap_true ).
+    e_dist = gr_o__cursor->get_token( esc = abap_true ).
   endif.
 
 endmethod.

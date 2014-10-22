@@ -1,14 +1,14 @@
-method change_year.
+method CHANGE_YEAR.
 
   data
   : var   type c length 8
-  , month  type c length 4
+  , year  type c length 4
   .
 
   var = i01.
-  month = i02.
+  year = i02.
 
-  var+4(3) = month.
+  var+0(4) = year.
 
   e = var.
 
