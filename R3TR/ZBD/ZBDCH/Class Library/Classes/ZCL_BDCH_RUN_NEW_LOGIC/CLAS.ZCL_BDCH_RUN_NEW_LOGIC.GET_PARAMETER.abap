@@ -19,6 +19,26 @@ method get_parameter.
   : <ld_v__script>        type string
   , <ld_v__path>          type string.
 
+  if `VS`           = `VS`.
+    l_para = `VS`.
+    try .
+        call method do_config->if_ujd_config~get_parameter
+          exporting
+            i_parameter       = l_para
+          importing
+            e_parameter_value = l_value.
+      catch cx_ujd_datamgr_error.
+        l_value = `OLD`.
+    endtry.
+
+    case l_value.
+      when `STABLE`.
+        cd_v__version = `STABLE`.
+      when others.
+        cd_v__version = l_value.
+    endcase.
+  endif.
+
   if `DEBUG`           = `DEBUG`.
     l_para = `DEBUG`.
     try .

@@ -28,6 +28,20 @@ method create_line.
   gd_s__handle-st-tech_name = cl_abap_structdescr=>create( p_components = lt_tech_comp
                                                            p_strict     = abap_false ).
 
+  call function 'ZBD00_DATA_WRAP'
+    exporting
+      i_t_data         = gd_s__handle-st-tech_name->components
+      i_unicode_result = rs_c_true
+    importing
+      e_outdata_uc     = gd_v__comp_uc.
+
+  if sy-subrc <> 0.
+* MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
+*         WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
+  endif.
+
+
+
   field-symbols <ld_s__components> type abap_compdescr.
   data ld_v_comp type abap_keydescr.
   loop at gd_s__handle-st-tech_name->components
@@ -40,7 +54,6 @@ method create_line.
   check gd_f__write_on = abap_true.
   gd_s__handle-st-appl_name = cl_abap_structdescr=>create( p_components = lt_appl_comp
                                                            p_strict     = abap_false ).
-
 
 
 endmethod.

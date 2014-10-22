@@ -186,7 +186,7 @@ endform.                    " data_wrap_std
 *      <--P_E_OUTDATA_UC  text
 *----------------------------------------------------------------------*
 form data_wrap_uc
-  using    i_t_data      type standard table
+  using    i_t_data      type any table
            i_compress    type rs_bool
   changing e_outdata_uc  type xstring.
 
@@ -308,7 +308,7 @@ form data_unwrap_std
         when cl_abap_tabledescr=>tablekind_hashed.
           insert <l_s_data> into table <l_th_data>.
         when cl_abap_tabledescr=>tablekind_sorted.
-           append <l_s_data> to <l_to_data>.
+          append <l_s_data> to <l_to_data>.
       endcase.
     endif.
   endloop.
@@ -324,9 +324,32 @@ endform.                    " data_unwrap_std
 *----------------------------------------------------------------------*
 form data_unwrap_uc
   using    i_rfcdata_uc    type xstring
-  changing c_t_data        type standard table.
+  changing c_t_data        type any table.
 
-  field-symbols: <l_t_data>  type standard table.
+  field-symbols
+  : <l_t_data>     type standard table
+  , <l_s_data>     type any
+  , <l_ts_data>    type standard table
+  , <l_to_data>    type sorted table
+  , <l_th_data>    type hashed table.
+
+  data
+  : lr_t_descr_data   type ref to cl_abap_tabledescr
+  , lr_t__data        type ref to data
+  , lr_s__data        type ref to data
+  .
+
+  lr_t_descr_data ?= cl_abap_tabledescr=>describe_by_data( c_t_data ).
+
+  case lr_t_descr_data->table_kind.
+    when cl_abap_tabledescr=>tablekind_std.
+      assign c_t_data to <l_ts_data>.
+    when cl_abap_tabledescr=>tablekind_hashed.
+      assign c_t_data to <l_th_data>.
+    when cl_abap_tabledescr=>tablekind_sorted.
+      assign c_t_data to <l_to_data>.
+  endcase.
+
 
 * non-initial C_T_DATA ----------------------------------------------
   if not c_t_data is initial.
@@ -343,19 +366,42 @@ form data_unwrap_uc
     endif.
 
 *   append lines
-    append lines of <l_t_data> to c_t_data.
+    case lr_t_descr_data->table_kind.
+      when cl_abap_tabledescr=>tablekind_std.
+        append lines of <l_t_data>  to <l_ts_data>.
+      when cl_abap_tabledescr=>tablekind_hashed.
+        insert lines of <l_t_data> into table <l_th_data>.
+      when cl_abap_tabledescr=>tablekind_sorted.
+        append lines of <l_t_data> to <l_to_data>.
+    endcase.
     clear <l_t_data>.
 
 * initial C_T_DATA --------------------------------------------------
   else.
 
+    create data lr_s__data like line of c_t_data.
+    assign lr_s__data->* to <l_s_data>.
+    create data lr_t__data like standard table of <l_s_data> with non-unique default key.
+    assign lr_t__data->* to <l_t_data>.
+
+
 *   re-convert
-    import rsdri = c_t_data
+    import rsdri =  <l_t_data> "c_t_data
       from data buffer i_rfcdata_uc.
 
     if sy-subrc <> 0.
       raise conversion_error.
     endif.
+
+    case lr_t_descr_data->table_kind.
+      when cl_abap_tabledescr=>tablekind_std.
+        append lines of <l_t_data>  to <l_ts_data>.
+      when cl_abap_tabledescr=>tablekind_hashed.
+        insert lines of <l_t_data> into table <l_th_data>.
+      when cl_abap_tabledescr=>tablekind_sorted.
+        append lines of <l_t_data> to <l_to_data>.
+    endcase.
+    clear <l_t_data>.
 
   endif.
 

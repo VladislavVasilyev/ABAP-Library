@@ -32,7 +32,7 @@ method create_dyn_read.
     et_implementatiom = ld_t__constructor_impl ).
 
 * метод реализующий поиск строки
-  if ld_t__rule_link-f_unique_key = abap_true.
+  if ld_t__rule_link-f_unique_key = abap_true and lines( ld_t__rule_link-rule_link_or ) = 0.
     ld_t__method = create_code_unique_key( it_rule_link     = ld_t__rule_link
                                            it_object_reestr = et_object_reestr ).
   else.

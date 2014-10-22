@@ -12,6 +12,7 @@ method set_rule_search.
   , ld_s__cust_link              type ty_s_cust_link
   , ld_s__class_reg              type ty_s_class_reg
   , ld_t__cust_link              type ty_t_cust_link
+  , ld_t__cust_link_or           type ty_t_cust_link_or
   , ld_t__tg_table_key           type abap_keydescr_tab
   , ld_t__sc_table_key           type abap_keydescr_tab
   , ld_v__tg_table_kind          type abap_tablekind
@@ -103,11 +104,39 @@ method set_rule_search.
       ld_s__cust_link-data    = <ld_s__i_cust_link>-sc-data.
       ld_s__cust_link-object ?= <ld_s__i_cust_link>-sc-object.
       ld_s__cust_link-const   = <ld_s__i_cust_link>-sc-const.
+      ld_s__cust_link-clear   = <ld_s__i_cust_link>-sc-clear.
 
       modify table ld_t__cust_link from ld_s__cust_link.
 
       check sy-subrc ne 0.
       insert ld_s__cust_link into table ld_t__cust_link.
+
+    endloop.
+  elseif it_cust_link1 is not initial.
+    loop at it_cust_link1
+         assigning <ld_s__i_cust_link>.
+
+      ld_s__cust_link-tg = gr_o__model->get_tech_alias(
+                              dimension = <ld_s__i_cust_link>-tg-dimension
+                              attribute = <ld_s__i_cust_link>-tg-attribute ).
+
+      lr_o__link_object ?= <ld_s__i_cust_link>-sc-object.
+
+      if lr_o__link_object is bound.
+        ld_s__cust_link-sc = lr_o__link_object->gr_o__model->get_tech_alias(
+                                dimension = <ld_s__i_cust_link>-sc-dimension
+                                attribute = <ld_s__i_cust_link>-sc-attribute ).
+      endif.
+
+      ld_s__cust_link-data    = <ld_s__i_cust_link>-sc-data.
+      ld_s__cust_link-object ?= <ld_s__i_cust_link>-sc-object.
+      ld_s__cust_link-const   = <ld_s__i_cust_link>-sc-const.
+      ld_s__cust_link-clear   = <ld_s__i_cust_link>-sc-clear.
+
+      insert ld_s__cust_link into table ld_t__cust_link.
+
+      check sy-subrc ne 0.
+      append ld_s__cust_link to  ld_t__cust_link_or.
 
     endloop.
   endif.
@@ -147,6 +176,7 @@ method set_rule_search.
   endif.
 
   ld_s__link_reestr-rule_link = ld_t__cust_link.
+  ld_s__link_reestr-rule_link_or = ld_t__cust_link_or.
   insert ld_s__link_reestr into table gd_t__reestr_link.
 
   ld_s__class_reg-id         = e_id.

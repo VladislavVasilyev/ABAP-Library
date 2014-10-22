@@ -6,6 +6,7 @@ method create_code_non_unique_key.
   , lt_range                  type zbd0t_ty_t_range_kf
   , lt_reestr_link            type zcl_bd00_appl_ctrl=>ty_s_rules_reestr
   , ls_str                    type string
+  , ls_str_or                 type string
   , lt_tg_table_key           type abap_keydescr_tab
   , lt_sc_table_key           type abap_keydescr_tab
   , cnt                       type i value 0
@@ -15,6 +16,7 @@ method create_code_non_unique_key.
   , lt_assign_symbols         type ty_t_string
   , lt_key                    type ty_t_string
   , ls_code_loop              type string
+  , ld_v__first_or            type i
   .
 
   field-symbols
@@ -24,6 +26,7 @@ method create_code_non_unique_key.
   , <ls_sc_table_key>         type abap_keydescr
   , <ls_definition>           type ty_s_definition
   , <ls_cust_link>            type zcl_bd00_appl_ctrl=>ty_s_cust_link
+  , <ls_cust_link_or>         type zcl_bd00_appl_ctrl=>ty_s_cust_link
   .
 
   create_local_td(
@@ -42,40 +45,68 @@ method create_code_non_unique_key.
 
     add 1 to cnt.
 
-    move <ls_cust_link>-object ?to lr_o_appl_ctrl.
+    ls_str = create_code_line_search( is_rule_link = <ls_cust_link> it_object_reestr = it_object_reestr  ).
 
-    if <ls_cust_link>-object   is bound.
-      read table it_object_reestr
-           with key object = lr_o_appl_ctrl
-           assigning <ls_object_reestr>.
+     clear ld_v__first_or.
 
-      if sy-subrc = 0.
-        read table <ls_object_reestr>-definition
-             with key id = id_code-field_st
-             assigning <ls_definition>.
+    loop at it_rule_link-rule_link_or assigning <ls_cust_link_or>
+      where tg = <ls_cust_link>-tg.
 
-        concatenate <ls_cust_link>-tg ` = ` <ls_definition>-name `-` <ls_cust_link>-sc  into ls_str.
-        translate ls_str to lower case.
+      add 1 to ld_v__first_or.
+
+      if ld_v__first_or = 1.
+        concatenate `( ` ls_str  into ls_str.
+        append ls_str to lt_key.
       endif.
 
-    elseif <ls_cust_link>-data is bound.
-      read table it_object_reestr
-           with key data = <ls_cust_link>-data
-           assigning <ls_object_reestr>.
+      ls_str_or = create_code_line_search( is_rule_link = <ls_cust_link_or> it_object_reestr = it_object_reestr  ).
 
-      if sy-subrc = 0.
-        read table <ls_object_reestr>-definition
-             with key id = id_code-field_st
-             assigning <ls_definition>.
+      concatenate ` or ` ls_str_or into ls_str_or.
+      append ls_str_or to lt_key.
+    endloop.
 
-        concatenate <ls_cust_link>-tg ` = ` <ls_definition>-name  into ls_str.
-        translate ls_str to lower case.
-      endif.
-    else.
-      ls_str = <ls_cust_link>-tg.
-      translate ls_str to lower case.
-      concatenate ls_str ` = ` ```` <ls_cust_link>-const ````  into ls_str.
+    if ld_v__first_or > 0.
+      ls_str = `) `.
     endif.
+
+*    move <ls_cust_link>-object ?to lr_o_appl_ctrl.
+*
+*    if <ls_cust_link>-object   is bound.
+*      read table it_object_reestr
+*           with key object = lr_o_appl_ctrl
+*           assigning <ls_object_reestr>.
+*
+*      if sy-subrc = 0.
+*        read table <ls_object_reestr>-definition
+*             with key id = id_code-field_st
+*             assigning <ls_definition>.
+*
+*        concatenate <ls_cust_link>-tg ` = ` <ls_definition>-name `-` <ls_cust_link>-sc  into ls_str.
+*        translate ls_str to lower case.
+*      endif.
+*
+*    elseif <ls_cust_link>-data is bound.
+*      read table it_object_reestr
+*           with key data = <ls_cust_link>-data
+*           assigning <ls_object_reestr>.
+*
+*      if sy-subrc = 0.
+*        read table <ls_object_reestr>-definition
+*             with key id = id_code-field_st
+*             assigning <ls_definition>.
+*
+*        concatenate <ls_cust_link>-tg ` = ` <ls_definition>-name  into ls_str.
+*        translate ls_str to lower case.
+*      endif.
+*    elseif <ls_cust_link>-clear = abap_true.
+*      ls_str = <ls_cust_link>-tg.
+*      translate ls_str to lower case.
+*      concatenate ls_str ` is initial`  into ls_str.
+*    else.
+*      ls_str = <ls_cust_link>-tg.
+*      translate ls_str to lower case.
+*      concatenate ls_str ` = ` ```` <ls_cust_link>-const ````  into ls_str.
+*    endif.
 
     if cnt < lines( it_rule_link-rule_link ).
       lv_end_line = ` and`.

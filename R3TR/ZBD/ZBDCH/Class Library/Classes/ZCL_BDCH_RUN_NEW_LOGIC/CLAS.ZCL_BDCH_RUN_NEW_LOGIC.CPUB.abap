@@ -9,10 +9,12 @@ public section.
   type-pools UJK0 .
   type-pools UJR0 .
   type-pools ZBLNC .
+  type-pools ZBNLT .
 
   interfaces IF_UJD_TASK .
 
   data DV_F__LOGMAIL type RS_BOOL .
+  class-data CD_V__VERSION type STRING read-only value 'STABLE'. "#EC NOTEXT .
   data GD_F__DEBUG type RS_BOOL .
   data GD_V__TIME_END type TZNTSTMPL .
   data GD_V__TIME_START type TZNTSTMPL .

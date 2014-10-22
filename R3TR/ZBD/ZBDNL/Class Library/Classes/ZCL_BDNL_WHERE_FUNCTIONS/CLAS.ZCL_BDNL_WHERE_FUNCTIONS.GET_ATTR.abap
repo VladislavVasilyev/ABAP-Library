@@ -9,6 +9,7 @@ method get_attr.
   , lo_security       type ref to cl_uje_check_security
   , lv_user           type uj0_s_user
   , ld_t__param       type zbnlt_t__param
+  , ld_t__param1       type zbnlt_t__param
   , ld_v__dimension   type uj_dim_name
   , lr_o__mbr_data    type ref to cl_uja_dim
   , ld_t__attr_list	  type uja_t_attr_name
@@ -49,7 +50,8 @@ method get_attr.
 
   loop at ld_t__member into ld_v__member.
     ld_v__member = cl_ujk_util=>bas( i_dim_name = ld_v__dimension i_member = ld_v__member ).
-    split ld_v__member at ',' into table ld_t__param.
+    split ld_v__member at ',' into table ld_t__param1.
+    append lines of ld_t__param1 to ld_t__param.
   endloop.
 
   ld_s__sel-attribute = uja00_cs_attr-id.

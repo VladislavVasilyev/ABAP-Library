@@ -1,26 +1,28 @@
-method assign_function.
+method ASSIGN_FUNCTION.
 
   data
-  : lr_o__classdescr    type ref to cl_abap_classdescr
-  , ld_s__method        type abap_methdescr
-  , lt_s__methparam     type abap_parmdescr
-  , ld_t__funcparam     type standard table of string
-  , ld_s__funcparam     type zbnlt_s__func_param
-  , ld_s__bindparam     type abap_parmbind
-  , ld_t__bindparam     type abap_parmbind_tab
-  , ld_v__cntparam      type i value 0
-  , ld_s__function      type zbnlt_s__function
-  , ld_s__f_get_ch      type zbnlt_s__function
-  , ld_s__bindforget    type abap_parmbind
-  , lr_s__containers    type ref to zbnlt_s__containers
-  , ld_v__dtelnm        type rollname
+  : lr_o__classdescr        type ref to cl_abap_classdescr
+  , ld_s__method            type abap_methdescr
+  , lt_s__methparam         type abap_parmdescr
+  , ld_t__funcparam         type standard table of string
+  , ld_s__funcparam         type zbnlt_s__func_param
+  , ld_s__bindparam         type abap_parmbind
+  , ld_t__bindparam         type abap_parmbind_tab
+  , ld_v__cntparam          type i value 0
+  , ld_s__function          type zbnlt_s__function
+  , ld_s__f_get_ch          type zbnlt_s__function
+  , ld_s__bindforget        type abap_parmbind
+  , lr_s__containers        type ref to zbnlt_s__containers
+  , ld_v__dtelnm            type rollname
+  , lr_o__container         type ref to zcl_bdnl_container
   .
 
   field-symbols
-  : <data>              type any
-  , <ld_s__bindparam>   type abap_parmbind
-  , <ld_s__containers>  type zbnlt_s__containers
+  : <data>                  type any
+  , <ld_s__bindparam>       type abap_parmbind
   .
+
+  free e_t__function.
 
   lr_o__classdescr ?= cl_abap_classdescr=>describe_by_name( `ZCL_BDNL_ASSIGN_FUNCTION`  ).
 
@@ -47,15 +49,17 @@ method assign_function.
           <data> = ld_s__funcparam-const.
         elseif ld_s__funcparam-tablename is not initial.
 
-          lr_s__containers = create_container( i_v__tablename = ld_s__funcparam-tablename i_s__for = i_s__for ).
-          assign lr_s__containers->* to <ld_s__containers>.
-          ld_v__dtelnm = <ld_s__containers>-object->gr_o__model->get_dtelnm( dimension = ld_s__funcparam-field-dimension attribute = ld_s__funcparam-field-attribute ).
+          lr_o__container ?= zcl_bdnl_container=>create_container( ld_s__funcparam-tablename ).
+
+*          lr_s__containers = create_container( i_v__tablename = ld_s__funcparam-tablename i_s__for = i_s__for ).
+*          assign lr_s__containers->* to <ld_s__containers>.
+          ld_v__dtelnm = lr_o__container->gr_o__container->gr_o__model->get_dtelnm( dimension = ld_s__funcparam-field-dimension attribute = ld_s__funcparam-field-attribute ).
 
           create data ld_s__bindparam-value type (ld_v__dtelnm).
 
           call method me->get_ch
             exporting
-              i_o__obj      = <ld_s__containers>-object
+              i_o__obj      = lr_o__container->gr_o__container
               i_v__dim      = ld_s__funcparam-field-dimension
               i_v__attr     = ld_s__funcparam-field-attribute
               i_r__data     = ld_s__bindparam-value

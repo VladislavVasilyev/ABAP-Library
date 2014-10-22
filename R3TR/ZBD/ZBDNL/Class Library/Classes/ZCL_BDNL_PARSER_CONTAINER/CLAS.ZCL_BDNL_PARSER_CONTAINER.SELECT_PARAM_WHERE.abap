@@ -1,7 +1,7 @@
 method select_param_where.
 
   constants
-  : cs_dimension        type string value `^([A-Z0-9\_]+)\>`
+  : cs_dimension        type string value `^(([A-Z0-9\_]+)\>|\/(CPMB)\/([A-Z0-9\_]+)\>)`
   , cs_dimwattr         type string value `^\~\<([A-Z0-9\_]+)\>`
   , cs_cond             type string value `^(EQ|NE|LT|GT|LE|GE|CO|CN|CA|NA|CS|NS|CP|NP|BETWEEN|BT|=|<>|>=|<=|>|<)`
   , cs_beetwen          type string value `^([A-Z0-9\_]+)\>\sAND\s([A-Z0-9\_]+)\>`
@@ -19,8 +19,8 @@ method select_param_where.
   , ld_v__params        type line of zbnlt_t__param
   , lr_o__appl          type ref to zcl_bd00_application
   , ld_v__infocube      type rsinfoprov
-  , lo_security       type ref to cl_uje_check_security
-  , lv_user           type uj0_s_user
+  , lo_security         type ref to cl_uje_check_security
+  , lv_user             type uj0_s_user
   .
 
   zcl_bdnl_where_functions=>appset_id = i_appset_id.

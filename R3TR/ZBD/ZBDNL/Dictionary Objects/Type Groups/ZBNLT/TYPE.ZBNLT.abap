@@ -40,7 +40,6 @@ types: begin of zbnlt_s__stack_range
 types zbnlt_t__stack_range type standard table of zbnlt_s__stack_range with non-unique default key.
 
 types: begin of zbnlt_s__stack_container
-
        , tablename          type zbnlt_v__tablename " имя внутренней таблицы
        , dim_list	          type zbd00_t_ch_key
        , kyf_list           type zbd0t_ty_t_kf
@@ -61,9 +60,18 @@ types: begin of zbnlt_s__stack_container
        , appl_obj           type ref to zcl_bd00_application
        , notsupresszero     type rs_bool
        , f_write            type rs_bool
+       , destination        type string
        , end of zbnlt_s__stack_container.
 
 types: zbnlt_t__stack_container type standard table of zbnlt_s__stack_container with non-unique default key.
+
+types: begin of zbnlt_s__container
+       , tablename          type zbnlt_v__tablename
+       , container          type ref to object
+       , end of zbnlt_s__container.
+
+types: zbnlt_t__container type standard table of zbnlt_s__container with non-unique default key.
+
 
 types: begin of zbnlt_s__func_param
        , index type i
@@ -79,6 +87,7 @@ types: begin of zbnlt_s__cust_link
        , sc type zbd0t_ty_s_dim
        , tablename type zbnlt_v__tablename
        , const type string
+       , clear type rs_bool
        , data type ref to data
        , func_name type string
        , param type zbnlt_t__func_param
@@ -108,19 +117,21 @@ types: begin of zbnlt_s__math_var
 
 types: zbnlt_t__math_var type standard table of zbnlt_s__math_var with non-unique default key.
 
+types: begin of zbnlt_s__var_op
+       , tablename            type zbnlt_v__tablename.
+include              type zbd0t_ty_s_dim.
+types
+: const              type string
+, data               type ref to data
+, func_name          type string
+, param              type zbnlt_t__func_param
+, end of zbnlt_s__var_op.
+
 types: begin of zbnlt_s__stack_check
-       , turn      type i
-       , begin of left
-       , tablename type zbnlt_v__tablename.
-         include type zbd0t_ty_s_dim.
-         types:  const      type string
-       , end of left
+       , turn       type i
+       , left       type zbnlt_s__var_op
        , log_exp type c length 2
-       , begin of right
-       , tablename type zbnlt_v__tablename.
-         include type zbd0t_ty_s_dim.
-         types:  const      type string
-       , end of right
+       , right      type zbnlt_s__var_op
        , token     type string
        , end of zbnlt_s__stack_check
        .
@@ -145,6 +156,7 @@ types zbnlt_t__lgfsource type standard table of zbnlt_s__lgfsource
 
 types: begin of zbnlt_s__containers
        , tablename    type zbnlt_v__tablename " имя внутренней таблицы
+       , container    type ref to object
        , type_table   type string
        , command      type string             " команда выбора контейнера
        , object       type ref to zcl_bd00_appl_table
@@ -224,6 +236,7 @@ types: begin of zbnlt_s__assign_function
        .
 
 types zbnlt_t__clear  type hashed table of zbnlt_v__tablename with unique default key.
+types zbnlt_t__print  type hashed table of zbnlt_v__tablename with unique default key.
 types zbnlt_t__commit type hashed table of zbnlt_v__tablename with unique default key.
 
 types: begin of zbnlt_s__for_rules
@@ -236,10 +249,12 @@ types: zbnlt_t__for_rules type standard table of zbnlt_s__for_rules with non-uni
 types: begin of  zbnlt_s__for
        , turn           type i
        , tablename      type zbnlt_v__tablename
+       , where          type zbnlt_t__cust_link
        , packagesize    type i
        , rules          type zbnlt_t__for_rules
        , clear          type zbnlt_t__clear
        , commit         type zbnlt_t__commit
+       , print          type zbnlt_t__print
        , end of zbnlt_s__for.
 
 types: zbnlt_t__for type standard table of zbnlt_s__for with non-unique default key.
@@ -248,6 +263,7 @@ types: begin of zbnlt_s__stack
        , turn           type i
        , range          type zbnlt_t__stack_range
        , containers     type zbnlt_t__stack_container
+       , containers1    type zbnlt_t__container
        , for            type zbnlt_t__for
        , end of zbnlt_s__stack.
 

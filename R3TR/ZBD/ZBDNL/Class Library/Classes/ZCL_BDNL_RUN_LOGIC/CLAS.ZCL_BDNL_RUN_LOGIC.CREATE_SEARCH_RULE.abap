@@ -1,12 +1,13 @@
-method create_search_rule.
+method CREATE_SEARCH_RULE.
 
   data
   : ld_t__rules_field           type zbd0t_ty_t_rule_field
+  , ld_t__rules_field1          type zbd0t_ty_t_custom_link1
   , ld_s__rules_field           type zbd0t_ty_s_rule_field
+  , lr_o__target                type ref to zcl_bdnl_container
+  , lr_o__source                type ref to zcl_bdnl_container
   , ld_s__search                type zbnlt_s__search
   , ld_s__reestr_link           type zcl_bd00_appl_ctrl=>ty_s_rules_reestr
-  , lr_s__tg_containers         type ref to zbnlt_s__containers
-  , lr_s__sc_containers         type ref to zbnlt_s__containers
   , ld_t__function              type zbnlt_t__function
   , ld_s__function              type zbnlt_s__function
   , ld_s__dimension             type zbd0t_ty_s_dim
@@ -14,17 +15,20 @@ method create_search_rule.
   , ld_v__cnt                   type i
   , ld_f__notfullkey            type rs_bool
   , ld_v__number_rules          type i
+  , ld_t__search                type zbnlt_t__stack_search
+  , ld_s__stack_search          type zbnlt_s__stack_search
+  , ld_f__where                 type rs_bool
   .
 
   field-symbols
   : <ld_s__search>              type zbnlt_s__stack_search
   , <ld_s__rules>               type zbnlt_s__for_rules
   , <ld_s__link>                type zbnlt_s__cust_link
-  , <ld_s__tg_containers>       type zbnlt_s__containers
-  , <ld_s__sc_containers>       type zbnlt_s__containers
   , <ld_s__rule_link>           type zcl_bd00_appl_ctrl=>ty_s_cust_link
   , <ld_v__key>                 type abap_keydescr
   .
+
+  break-point.
 
   read table i_s__for-rules
        index i_v__turn
@@ -32,17 +36,28 @@ method create_search_rule.
 
   check sy-subrc = 0.
 
-  loop at <ld_s__rules>-search assigning <ld_s__search>.
+  if i_s__for-where is not initial.
+    ld_s__stack_search-tablename = i_s__for-tablename.
+    ld_s__stack_search-link = i_s__for-where.
+    append ld_s__stack_search to ld_t__search.
+    ld_f__where = abap_true.
+  endif.
+
+  append lines of <ld_s__rules>-search to ld_t__search.
+
+*  loop at <ld_s__rules>-search assigning <ld_s__search>.
+  loop at ld_t__search assigning <ld_s__search>.
     add 1 to ld_v__number_rules.
 
-   clear
-   : ld_t__rules_field
-   , ld_s__rules_field.
+    clear
+    : ld_t__rules_field
+    , ld_t__rules_field1
+    , ld_s__rules_field.
 
-    lr_s__tg_containers = create_container( i_v__tablename = <ld_s__search>-tablename i_s__for = i_s__for ).
-    assign lr_s__tg_containers->* to <ld_s__tg_containers>.
 
-    message s033(zbdnl) with ld_v__number_rules <ld_s__search>-tablename <ld_s__tg_containers>-type_table.
+    lr_o__target ?= zcl_bdnl_container=>create_container( <ld_s__search>-tablename ).
+
+    message s033(zbdnl) with ld_v__number_rules lr_o__target->gd_v__tablename lr_o__target->gd_v__type_table.
 
     if <ld_s__search>-link is not initial.
 
@@ -53,19 +68,20 @@ method create_search_rule.
 
         if <ld_s__link>-tablename is not initial.
 
-          lr_s__sc_containers = create_container( i_v__tablename = <ld_s__link>-tablename i_s__for = i_s__for ).
-          assign lr_s__sc_containers->* to <ld_s__sc_containers>.
+          lr_o__source ?= zcl_bdnl_container=>create_container( <ld_s__link>-tablename ).
 
           ld_s__rules_field-tg           = <ld_s__link>-tg.
           ld_s__rules_field-sc-dimension = <ld_s__link>-sc-dimension.
           ld_s__rules_field-sc-attribute = <ld_s__link>-sc-attribute.
-          ld_s__rules_field-sc-object    = <ld_s__sc_containers>-object.
+          ld_s__rules_field-sc-object    = lr_o__source->gr_o__container.
 
           insert ld_s__rules_field into table ld_t__rules_field.
+          append ld_s__rules_field to ld_t__rules_field1.
         elseif <ld_s__link>-const is not initial.
           ld_s__rules_field-tg           = <ld_s__link>-tg.
           ld_s__rules_field-sc-const     = <ld_s__link>-const.
           insert ld_s__rules_field into table ld_t__rules_field.
+          append ld_s__rules_field to ld_t__rules_field1.
         elseif <ld_s__link>-data is bound.
           ld_s__rules_field-tg           = <ld_s__link>-tg.
           ld_s__rules_field-sc-data      = <ld_s__link>-data.
@@ -79,15 +95,22 @@ method create_search_rule.
               e_t__function = ld_t__function.
 
           append lines of ld_t__function to ld_s__search-function.
+          append ld_s__rules_field to ld_t__rules_field1.
           clear ld_t__function.
 
           insert ld_s__rules_field into table ld_t__rules_field.
+        elseif <ld_s__link>-clear = abap_true.
+          ld_s__rules_field-tg           = <ld_s__link>-tg.
+          ld_s__rules_field-sc-clear     = abap_true.
+          insert ld_s__rules_field into table ld_t__rules_field.
+          append ld_s__rules_field to ld_t__rules_field1.
         endif.
       endloop.
 
       ld_s__search-tablename = <ld_s__search>-tablename.
-      ld_s__search-id        = <ld_s__tg_containers>-object->set_rule_search( it_cust_link = ld_t__rules_field ).
-      ld_s__search-object    = <ld_s__tg_containers>-object.
+*      ld_s__search-id        = lr_o__target->gr_o__container->set_rule_search( it_cust_link = ld_t__rules_field ).
+      ld_s__search-id = lr_o__target->gr_o__container->set_rule_search( it_cust_link1 = ld_t__rules_field1 ).
+      ld_s__search-object    = lr_o__target->gr_o__container.
 
       read table zcl_bd00_appl_ctrl=>gd_t__reestr_link
            with table key id = ld_s__search-id
@@ -97,12 +120,11 @@ method create_search_rule.
 
     elseif <ld_s__search>-default is not initial.
 
-      lr_s__sc_containers = create_container( i_v__tablename = <ld_s__search>-default i_s__for = i_s__for ).
-      assign lr_s__sc_containers->* to <ld_s__sc_containers>.
+      lr_o__source ?= zcl_bdnl_container=>create_container( <ld_s__search>-default ).
 
       ld_s__search-tablename = <ld_s__search>-tablename.
-      ld_s__search-object    = <ld_s__tg_containers>-object.
-      ld_s__search-id = <ld_s__tg_containers>-object->set_rule_search( io_default = <ld_s__sc_containers>-object ).
+      ld_s__search-object    = lr_o__target->gr_o__container.
+      ld_s__search-id        = lr_o__target->gr_o__container->set_rule_search( io_default = lr_o__source->gr_o__container ).
 
       read table zcl_bd00_appl_ctrl=>gd_t__reestr_link
            with table key id = ld_s__search-id
@@ -123,7 +145,7 @@ method create_search_rule.
 
     loop at ld_s__reestr_link-rule_link assigning <ld_s__rule_link>.
       add 1 to ld_v__cnt.
-      ld_s__dimension = <ld_s__tg_containers>-object->gr_o__model->get_dim_name( <ld_s__rule_link>-tg ).
+      ld_s__dimension = lr_o__target->gr_o__container->gr_o__model->get_dim_name( <ld_s__rule_link>-tg ).
       if ld_v__cnt = 1.
         if ld_s__dimension-attribute is initial.
           ld_v__message = ld_s__dimension-dimension.
@@ -142,12 +164,12 @@ method create_search_rule.
     if ld_s__search-f_uk = abap_true.
       message s041(zbdnl) with ld_v__message. "Unique key. Optimal reading.
     else.
-      if <ld_s__tg_containers>-type_table = zblnc_keyword-standard or
-         <ld_s__tg_containers>-type_table = zblnc_keyword-hashed.
+      if lr_o__target->gd_v__type_table = zblnc_keyword-standard or
+         lr_o__target->gd_v__type_table = zblnc_keyword-hashed.
         message s042(zbdnl) with ld_v__message. "Not Unique key. Not optimal reading.
-      elseif <ld_s__tg_containers>-type_table = zblnc_keyword-sorted.
+      elseif lr_o__target->gd_v__type_table = zblnc_keyword-sorted.
         ld_f__notfullkey = abap_false.
-        loop at <ld_s__tg_containers>-object->gr_o__model->gd_t__key assigning <ld_v__key>.
+        loop at lr_o__target->gr_o__container->gr_o__model->gd_t__key assigning <ld_v__key>.
           read table ld_s__reestr_link-rule_link
                with key tg = <ld_v__key>
                transporting no fields.
@@ -156,14 +178,14 @@ method create_search_rule.
           endif.
         endloop.
 
-        case <ld_s__tg_containers>-object->gr_o__model->gd_v__type_pk.
+        case lr_o__target->gr_o__container->gr_o__model->gd_v__type_pk.
           when zbd0c_ty_tab-srd_unique_dk.
-           message s043(zbdnl) with ld_v__message. "Not Full Unique key. Not optimal reading.
+            message s043(zbdnl) with ld_v__message.   "Not Full Unique key. Not optimal reading.
           when zbd0c_ty_tab-srd_non_unique.
             if ld_f__notfullkey = abap_true.
               message s044(zbdnl) with ld_v__message. "Not Full not Unique key. Not optimal reading.
             else.
-              message s045(zbdnl) with ld_v__message."Full not Unique key. Optimal reading.
+              message s045(zbdnl) with ld_v__message. "Full not Unique key. Optimal reading.
             endif.
         endcase.
       endif.
@@ -171,8 +193,14 @@ method create_search_rule.
 *--------------------------------------------------------------------*
 
     ld_s__search-class = zcl_bd00_appl_ctrl=>get_rule_class( ld_s__search-id ).
-    append ld_s__search to e_t__search.
 
+    if ld_f__where = abap_true.
+      E_S__SEARCH_FOR = ld_s__search.
+*      append ld_s__search to e_t__search_for.
+      ld_f__where = abap_false.
+    else.
+      append ld_s__search to e_t__search.
+    endif.
   endloop.
 
 endmethod.

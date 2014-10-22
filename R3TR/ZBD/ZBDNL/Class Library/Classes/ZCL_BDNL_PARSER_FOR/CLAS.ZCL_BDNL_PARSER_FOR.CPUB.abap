@@ -11,7 +11,9 @@ public section.
   constants END_TOKEN type I value -1. "#EC NOTEXT
   type-pools ZBNLT .
   data GD_T__CLEAR type ZBNLT_T__CLEAR .
+  data GD_T__PRINT type ZBNLT_T__PRINT .
   data GD_T__COMMIT type ZBNLT_T__COMMIT .
+  data GD_T__WHERE  type zbnlt_t__cust_link .
 
   methods GET_STACK
     returning
@@ -23,4 +25,5 @@ public section.
     importing
       !I_R__CURSOR type ref to ZCL_BDNL_CURSOR
       !I_T__CONTAINER type ZBNLT_T__STACK_CONTAINER
-      !I_V__FOR_TABLE type ZBNLT_V__TABLENAME .
+      !I_V__FOR_TABLE type ZBNLT_V__TABLENAME
+      !I_F__WITH_KEY type RS_BOOL .

@@ -1,4 +1,4 @@
-method clear_containers.
+method CLEAR_CONTAINERS.
 
   data
   : ld_v__rule_id           type zbd0t_id_rules
@@ -13,39 +13,36 @@ method clear_containers.
   , ld_v__packend           type tzntstmpl
   , ld_v__duration          type string
   , ld_v__nr_pack           type string
-
+  , ld_t__clear             type zcl_bdnl_container=>ty_t__reestr
+  , lr_o__container         type ref to zcl_bdnl_container
   .
 
   field-symbols
-  : <ld_s__stack>           type zbnlt_s__stack_container
-  , <ld_s__containers>      type zbnlt_s__containers
+  : <ld_s__stack>           type zcl_bdnl_container=>ty_s__reestr
+*  , <ld_s__containers>      type zbnlt_s__containers
   .
 
-  loop     at gd_s__stack-containers
-    assigning <ld_s__stack>
-        where turn = gd_v__turn
-          and command = zblnc_keyword-clear.
+  ld_t__clear = zcl_bdnl_container=>get_container_clear( ).
 
-    add 1 to gd_v__cnt_clear.
-    concatenate zblnc_keyword-clear `-` gd_v__cnt_clear into  <ld_s__stack>-tablename .
+  loop     at ld_t__clear
+    assigning <ld_s__stack>.
 
-    lr_s__containers = create_container( i_v__tablename = <ld_s__stack>-tablename ).
-    assign lr_s__containers->* to <ld_s__containers>.
+    lr_o__container ?= zcl_bdnl_container=>create_container( <ld_s__stack>-tablename ).
 
     clear ld_v__cnt.
     message s047(zbdnl) with
-      <ld_s__containers>-object->gr_o__model->gr_o__application->gd_v__appset_id
-      <ld_s__containers>-object->gr_o__model->gr_o__application->gd_v__appl_id.
+      lr_o__container->gr_o__container->gr_o__model->gr_o__application->gd_v__appset_id
+      lr_o__container->gr_o__container->gr_o__model->gr_o__application->gd_v__appl_id.
 
-    while <ld_s__containers>-object->next_pack( zbd0c_read_mode-pack ) eq zbd0c_read_pack .
+    while lr_o__container->gr_o__container->next_pack( zbd0c_read_mode-pack ) eq zbd0c_read_pack .
       " LOG PROCESS
       add 1 to ld_v__cnt.
       get time stamp field ld_v__packstart.
-      ld_v__packsize = <ld_s__containers>-object->get_packsize( ).
+      ld_v__packsize = lr_o__container->gr_o__container->get_packsize( ).
       ld_v__packsize_str = get_nr_pack( i_v__nr_pack = ld_v__packsize i_v__size = 8 ).
 
-      <ld_s__containers>-object->write_back( ).
-      <ld_s__containers>-object->clear( ).
+      lr_o__container->gr_o__container->write_back( ).
+      lr_o__container->gr_o__container->clear( ).
 
       " Log
       get time stamp field ld_v__packend.
@@ -61,6 +58,8 @@ method clear_containers.
       message s030(zbdnl) with ld_v__nr_pack ld_v__packsize_str ld_v__duration.
 
     endwhile.
+
+    zcl_bd00_rfc_task=>wait_end_all_task( ). " ожидание завершения всех RFC
     message s049(zbdnl).
   endloop.
 

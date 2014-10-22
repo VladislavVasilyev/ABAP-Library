@@ -23,10 +23,12 @@ include        type zbd0t_ty_s_dim.
 types object   type ref to object.
 types data     type ref to data.
 types const    type uj_value.
+types clear    type rs_bool.
 types end of sc.
 types end   of zbd0t_ty_s_custom_link.
 
-types zbd0t_ty_t_custom_link type hashed table of zbd0t_ty_s_custom_link with unique key tg.
+types zbd0t_ty_t_custom_link  type hashed table of   zbd0t_ty_s_custom_link with unique key tg.
+types zbd0t_ty_t_custom_link1 type standard table of zbd0t_ty_s_custom_link with non-unique default key.
 
 types begin of zbd0t_ty_s_constant.
 include     type zbd0t_ty_s_dim.
@@ -35,15 +37,18 @@ types end   of zbd0t_ty_s_constant.
 
 types zbd0t_ty_t_constant type hashed table of zbd0t_ty_s_constant with unique key dimension attribute.
 
-types begin    of zbd0t_ty_s_rule_field.
-types tg       type zbd0t_ty_s_dim.
-types begin of sc.
-include        type zbd0t_ty_s_dim.
-types object   type ref to object.
-types data     type ref to data.
-types const    type uj_value.
-types end of sc.
-types end      of zbd0t_ty_s_rule_field.
+types zbd0t_ty_s_rule_field type zbd0t_ty_s_custom_link.
+
+*types begin    of zbd0t_ty_s_rule_field.
+*types tg       type zbd0t_ty_s_dim.
+*types begin of sc.
+*include        type zbd0t_ty_s_dim.
+*types object   type ref to object.
+*types data     type ref to data.
+*types const    type uj_value.
+*types clear    type rs_bool.
+*types end of sc.
+*types end      of zbd0t_ty_s_rule_field.
 
 types zbd0t_ty_t_rule_field type hashed table of zbd0t_ty_s_rule_field with unique key tg.
 
@@ -85,11 +90,19 @@ types: begin of zbd0t_s__log_read
 
 types zbd0t_t__log_read type standard table of zbd0t_s__log_read with non-unique default key.
 
+types: begin of zbd0t_s__log_actual
+       , nr_pack  type i
+       , num_rec  type i
+       , end of zbd0t_s__log_actual.
+
+types: zbd0t_t__log_actual type standard table of zbd0t_s__log_actual with non-unique default key.
+
 types: begin of zbd0t_s__log_write
        , mode               type c length 1
        , nr_pack            type i
        , status_records     type ujr_s_status_records
-       , message            type  uj0_t_message
+       , cnt_raise_write    type i
+       , message            type uj0_t_message
        , time_start         type tzntstmpl
        , time_end           type tzntstmpl
        , rfc_task           type string

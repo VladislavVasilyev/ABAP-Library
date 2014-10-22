@@ -34,9 +34,12 @@ public section.
     types kyf    type uj_dim_name.
     types data   type ref to data.
     types const  type string.
+    types clear  type rs_bool.
     types end of ty_s_cust_link .
   types:
     ty_t_cust_link type hashed table of ty_s_cust_link with unique key tg op .
+  types:
+    ty_t_cust_link_or type standard table of ty_s_cust_link with non-unique default key.
   types:
     begin of ty_s_rule_math
       , object type ref to zcl_bd00_appl_ctrl
@@ -54,6 +57,7 @@ public section.
       , mode_add      type zbd00_mode_add_line
       , f_unique_key  type rs_bool
       , rule_link     type ty_t_cust_link
+      , rule_link_or  type ty_t_cust_link_or
       , range         type zbd0t_ty_t_range_kf
       , end of ty_s_rules_reestr .
   types:
@@ -98,7 +102,8 @@ public section.
     exporting
       !E_T__READ type ZBD0T_T__LOG_READ
       !E_T__WRITE type ZBD0T_T__LOG_WRITE
-      !E_T__READ_DIM type ZBD0T_T__LOG_DIMENSION .
+      !E_T__READ_DIM type ZBD0T_T__LOG_DIMENSION
+      !E_T__ACTUAL_ROWS type ZBD0T_T__LOG_ACTUAL .
   class-methods GET_RULE_CLASS
     importing
       !ID type ZBD0T_ID_RULES
@@ -106,6 +111,9 @@ public section.
       value(CLASS) type ref to ZIF_BD00_INT_TABLE .
   methods FREE_OBJECT .
   class-methods FREE_ALL_OBJECT .
+  methods GET_REF_TABLE
+    returning
+      value(E_REF) type ref to DATA .
   methods CLEAR .
   methods RULE_ASSIGN_1
     importing

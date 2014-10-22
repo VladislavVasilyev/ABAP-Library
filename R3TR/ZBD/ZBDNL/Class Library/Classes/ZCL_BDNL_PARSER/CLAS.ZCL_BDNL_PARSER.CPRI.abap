@@ -25,6 +25,7 @@ private section.
     exporting
       !E_V__TABLENAME type ZBNLT_V__TABLENAME
       !E_V__PACKAGESIZE type I
+      !E_F__WITH_KEY type RS_BOOL
     raising
       ZCX_BDNL_EXCEPTION .
   methods GET_STACK1

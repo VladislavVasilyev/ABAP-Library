@@ -16,17 +16,16 @@ public section.
       !E type ANY
     raising
       ZCX_BDNL_SKIP_ASSIGN .
-  class-methods CONCATENATE
-    importing
-      !I01 type ANY
-      !I02 type ANY
-    exporting
-      !E type ANY .
-  class-methods GET_EXCEL_DATE
+  class-methods PREV_MONTH
     importing
       !I01 type ANY
     exporting
       !E type ANY .
+  class-methods NUM
+    importing
+      !I01 type ANY
+    exporting
+      !E type UJ_KEYFIGURE .
   class-methods MAP_EXT2_LICENSE
     importing
       !I01 type ANY
@@ -35,11 +34,6 @@ public section.
       !E type ANY
     raising
       ZCX_BDNL_SKIP_ASSIGN .
-  class-methods GET_VAR
-    importing
-      !I01 type ANY
-    exporting
-      !E type ANY .
   class-methods LEFTSYM
     importing
       !I01 type ANY
@@ -49,6 +43,25 @@ public section.
       !E type ANY
     raising
       ZCX_BDNL_SKIP_ASSIGN .
+  class-methods CONCATENATE
+    importing
+      !I01 type ANY
+      !I02 type ANY
+      !I03 type ANY optional
+      !I04 type ANY optional
+      !I05 type ANY optional
+    exporting
+      !E type ANY .
+  class-methods GET_VAR
+    importing
+      !I01 type ANY
+    exporting
+      !E type ANY .
+  class-methods GET_EXCEL_DATE
+    importing
+      !I01 type ANY
+    exporting
+      !E type ANY .
   class-methods GET_CH
     importing
       !I01 type ref to ZCL_BD00_APPL_TABLE
@@ -70,6 +83,17 @@ public section.
     importing
       !I01 type ANY
       !I02 type ANY
+    exporting
+      !E type ANY
+    raising
+      ZCX_BDNL_SKIP_ASSIGN .
+  class-methods IF
+    importing
+      !I01 type ANY
+      !I02 type ANY
+      !I03 type ANY
+      !I04 type ANY
+      !I05 type ANY
     exporting
       !E type ANY
     raising

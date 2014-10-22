@@ -1,35 +1,55 @@
 method work_circle.
 
   data
-  : lr_t__assign         type hashed table of  ref to zcl_bd00_appl_table with unique default key
-  , ld_v__tablename      type zbnlt_v__tablename
-  , lr_s__master         type ref to zbnlt_s__containers
-  , ld_v__turn           type i
-  , ld_v__qlines         type i
-  , ld_s__rules          type ty_s__rules
-  , ld_t__rules          type ty_t__rules
-  , ld_v__cnt            type i
-  , ld_v__packsize       type i
-  , ld_v__packsize_str   type string
-  , ld_v__packstart      type tzntstmpl
-  , ld_v__packend        type tzntstmpl
-  , ld_v__duration       type string
-  , ld_v__nr_pack        type string
+  : lr_t__assign                  type hashed table of  ref to zcl_bd00_appl_table with unique default key
+  , ld_v__tablename               type zbnlt_v__tablename
+  , lr_s__master                  type ref to zbnlt_s__containers
+  , ld_v__turn                    type i
+  , ld_v__qlines                  type i
+  , ld_s__rules                   type ty_s__rules
+  , ld_t__rules                   type ty_t__rules
+  , ld_v__cnt                     type i
+  , ld_v__packsize                type i
+  , ld_v__packsize_str            type string
+  , ld_v__packstart               type tzntstmpl
+  , ld_v__packend                 type tzntstmpl
+  , ld_v__duration                type string
+  , ld_v__nr_pack                 type string
+*  , lr_o__container               type ref to zcl_bdnl_container
+  , lr_o__main                    type ref to zcl_bdnl_container
+  , lr_o__container               type ref to zcl_bdnl_container
+  , ld_s__for                     type zbnlt_s__for
+  , ld_s__for_rules               type zbnlt_s__for_rules
+  , ld_s__for_search              type zbnlt_s__search
   .
 
 
   field-symbols
-  : <ld_s__search>       type zbnlt_s__search
-  , <ld_s__tablefordown> type zbnlt_s__assign
-  , <ld_s__assign_obj>   like line of lr_t__assign
-  , <ld_s__containers>   type zbnlt_s__containers
-  , <ld_s__master>       type zbnlt_s__containers
+  : <ld_s__search>                type zbnlt_s__search
+  , <ld_s__tablefordown>          type zbnlt_s__assign
+  , <ld_s__assign_obj>            like line of lr_t__assign
+  , <ld_s__containers>            type zbnlt_s__containers
+*  , <ld_s__master>                type zbnlt_s__containers
   .
 
   clear
-  : gd_t__for_containers
+  : gd_t__for_containers1
   , gd_s__rules
   .
+
+  zcl_bdnl_container=>clear_for_reestr( ).
+
+*--------------------------------------------------------------------*
+* Create master table
+*--------------------------------------------------------------------*
+  lr_o__main  ?= zcl_bdnl_container=>create_container(
+                            tablename    = i_s__for-tablename
+                            package_size = i_s__for-packagesize
+                            f_master     = abap_true ).
+*--------------------------------------------------------------------*
+
+
+
 
 *--------------------------------------------------------------------*
 * Rules
@@ -44,7 +64,14 @@ method work_circle.
     clear ld_s__rules.
     add 1 to ld_v__turn.
 
-    ld_s__rules-search = create_search_rule( i_s__for = i_s__for i_v__turn = ld_v__turn ).
+    call method create_search_rule
+      exporting
+        i_s__for    = i_s__for
+        i_v__turn   = ld_v__turn
+      importing
+        e_t__search = ld_s__rules-search
+        e_s__search_for = ld_s__for_search.
+
     ld_s__rules-n_search = lines( ld_s__rules-search ).
 
     call method create_assign_rule
@@ -65,29 +92,20 @@ method work_circle.
     message s050(zbdnl).
   endif.
 
-*--------------------------------------------------------------------*
-  read table gd_t__for_containers
-       with key tablename = i_s__for-tablename
-       assigning <ld_s__master>.
 
-  if sy-subrc ne 0.
-    lr_s__master = create_container( i_v__tablename = i_s__for-tablename i_s__for = i_s__for ).
-    assign lr_s__master->* to <ld_s__master>.
-  endif.
+  if lr_o__main->gd_f__init ne abap_true.
+    message s046(zbdnl) with lr_o__main->gd_v__tablename.
 
-  if <ld_s__master>-init ne abap_true.
-    message s046(zbdnl) with <ld_s__master>-tablename.
-
-    while <ld_s__master>-object->next_pack( <ld_s__master>-read_mode ) eq zbd0c_read_pack.
+    while lr_o__main->next_pack( ) eq zbd0c_read_pack.
 
       add 1 to ld_v__cnt.
       get time stamp field ld_v__packstart.
-      ld_v__packsize = <ld_s__master>-object->get_packsize( ).
+      ld_v__packsize = lr_o__main->gr_o__container->get_packsize( ).
 
 *--------------------------------------------------------------------*
 * MAIN
 *--------------------------------------------------------------------*
-      while <ld_s__master>-object->next_line( ) eq zbd0c_found.
+      while lr_o__main->next_line( ld_s__for_search-id ) eq zbd0c_found.
         loop at ld_t__rules into gd_s__rules.
           search( 1 ).
         endloop.
@@ -111,23 +129,20 @@ method work_circle.
       message s029(zbdnl) with ld_v__nr_pack ld_v__packsize_str ld_v__duration.
 *--------------------------------------------------------------------*
 
-      check <ld_s__master>-read_mode = zbd0c_read_mode-full.
+      check lr_o__main->gd_v__read_mode = zbd0c_read_mode-full.
       exit.
     endwhile.
 
     message s050(zbdnl).
-    <ld_s__master>-init = abap_true.
-
-
   else.
-    message s046(zbdnl) with <ld_s__master>-tablename.
+    message s046(zbdnl) with lr_o__main->gd_v__tablename.
     get time stamp field ld_v__packstart.
-    ld_v__packsize = <ld_s__master>-object->get_packsize( ).
+    ld_v__packsize = lr_o__main->gr_o__container->get_packsize( ).
 
 *--------------------------------------------------------------------*
 * MAIN
 *--------------------------------------------------------------------*
-    while <ld_s__master>-object->next_line( ) eq zbd0c_found.
+    while lr_o__main->next_line( ld_s__for_search-id ) eq zbd0c_found.
       loop at ld_t__rules into gd_s__rules.
         search( 1 ).
       endloop.
@@ -135,6 +150,11 @@ method work_circle.
 
     endwhile.
 *--------------------------------------------------------------------*
+
+*--------------------------------------------------------------------*
+* Актуализировать записи
+*--------------------------------------------------------------------*
+    zcl_bdnl_container=>actual_ctables( ).
 
 
 *--------------------------------------------------------------------*
@@ -171,10 +191,13 @@ method work_circle.
 
   loop at lr_t__assign assigning <ld_s__assign_obj>.
     <ld_s__assign_obj>->write_back( abap_true ).
-    read table gd_t__containers
-       with key object = <ld_s__assign_obj>
-       assigning <ld_s__containers>.
-    <ld_s__containers>-clear = abap_true.
+
+    lr_o__container ?= zcl_bdnl_container=>get_container_object( <ld_s__assign_obj> ).
+
+    if lr_o__container is bound .
+      lr_o__container->set_clear( ).
+    endif.
+
   endloop.
 *--------------------------------------------------------------------*
 
@@ -183,19 +206,32 @@ method work_circle.
 * $EXITFOR
 *--------------------------------------------------------------------*
 
+
+*--------------------------------------------------------------------*
+* $PRINT
+*--------------------------------------------------------------------*
+  loop at i_s__for-print into ld_v__tablename.
+    lr_o__container ?= zcl_bdnl_container=>get_container( ld_v__tablename ).
+
+    if lr_o__container is bound.
+      lr_o__container->print( ).
+    endif.
+
+  endloop.
+
+
 *--------------------------------------------------------------------*
 * $COMMIT
 *--------------------------------------------------------------------*
   message s054(zbdnl).
   loop at i_s__for-commit into ld_v__tablename.
-    read table gd_t__containers
-       with key tablename = ld_v__tablename
-       assigning <ld_s__containers>.
 
-    if sy-subrc = 0.
-      ld_v__packsize = <ld_s__containers>-object->get_packsize( ).
+    lr_o__container ?= zcl_bdnl_container=>get_container( ld_v__tablename ).
+
+    if lr_o__container is bound.
+      ld_v__packsize = lr_o__container->gr_o__container->get_packsize( ).
       ld_v__packsize_str = get_nr_pack( i_v__nr_pack = ld_v__packsize i_v__size = 8 ).
-      <ld_s__containers>-object->write_back( ).
+      lr_o__container->gr_o__container->write_back( ).
       message s055(zbdnl) with <ld_s__containers>-tablename ld_v__packsize_str.
     endif.
 
@@ -206,12 +242,12 @@ method work_circle.
 * $CLEAR
 *--------------------------------------------------------------------*
   loop at i_s__for-clear into ld_v__tablename.
-    read table gd_t__containers
-       with key tablename = ld_v__tablename
-       assigning <ld_s__containers>.
-    if sy-subrc = 0.
-      <ld_s__containers>-object->clear( ).
-      <ld_s__containers>-clear = abap_true.
+
+    lr_o__container ?= zcl_bdnl_container=>get_container( ld_v__tablename ).
+
+    if lr_o__container is bound.
+      lr_o__container->gr_o__container->clear( ).
+      lr_o__container->set_clear( ).
     endif.
   endloop.
 *--------------------------------------------------------------------*

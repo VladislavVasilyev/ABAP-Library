@@ -5,7 +5,7 @@ method constructor.
   , ld_s__link_reestr         like line of gd_t__reestr_link
   , lr_o__ujq_query_util      type ref to cl_ujq_query_util
   , lt_range_valid            type uj0_t_sel
-  , lt_message                type uj0_t_message          "#EC NEEDED
+  , lt_message                type uj0_t_message            "#EC NEEDED
   .
 
   call method super->constructor.
@@ -68,7 +68,8 @@ method constructor.
       it_range         = it_range
       iv_packagesize   = i_packagesize
       if_suppress_zero = if_suppress_zero
-      if_invert        = if_invert.
+      if_invert        = if_invert
+      iv_destination   = i_destination.
 
 *  append gr_o__process_data->go_log to cd_t__log_object.
 

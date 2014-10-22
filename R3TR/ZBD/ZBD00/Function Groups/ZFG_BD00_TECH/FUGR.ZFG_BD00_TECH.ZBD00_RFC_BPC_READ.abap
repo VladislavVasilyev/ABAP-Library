@@ -22,6 +22,7 @@ function zbd00_rfc_bpc_read .
 *"     VALUE(I_TABLENAME) TYPE  RSDRI_TABLENAME OPTIONAL
 *"     VALUE(I_SUPPRESS_ZERO) TYPE  RS_BOOL OPTIONAL
 *"     VALUE(I_TYPE_TABLE) TYPE  ZBD00_TYPE_APPL_TABLE OPTIONAL
+*"     VALUE(I_OUTUC) TYPE  RS_BOOL DEFAULT RS_C_FALSE
 *"  EXPORTING
 *"     VALUE(E_END_OF_DATA) TYPE  RS_BOOL
 *"     VALUE(E_AGGREGATE) TYPE  RSINFOCUBE
@@ -395,23 +396,44 @@ function zbd00_rfc_bpc_read .
 
       e_sup_rec = lines( <lt_data_hashed> ).
 
-      call function 'ZBD00_DATA_WRAP'
-        exporting
-          i_t_data         = <lt_data_hashed>
-          i_unicode_result = rs_c_false
-        importing
-          e_t_outdata      = e_t_rfcdata[].
+
+      if i_outuc = rs_c_true.
+        call function 'ZBD00_DATA_WRAP'
+          exporting
+            i_t_data         = <lt_data_hashed>
+            i_unicode_result = rs_c_true
+          importing
+            e_outdata_uc     = e_rfcdata_uc.
+      else.
+        call function 'ZBD00_DATA_WRAP'
+          exporting
+            i_t_data         = <lt_data_hashed>
+            i_unicode_result = rs_c_false
+          importing
+            e_t_outdata      = e_t_rfcdata[].
+      endif.
+
 
     when cl_abap_tabledescr=>tablekind_sorted.
 
       e_sup_rec = lines( <lt_data_sorted> ).
 
-      call function 'ZBD00_DATA_WRAP'
-        exporting
-          i_t_data         = <lt_data_sorted>
-          i_unicode_result = rs_c_false
-        importing
-          e_t_outdata      = e_t_rfcdata[].
+      if i_outuc = rs_c_true.
+        call function 'ZBD00_DATA_WRAP'
+          exporting
+            i_t_data         = <lt_data_sorted>
+            i_unicode_result = rs_c_true
+          importing
+            e_outdata_uc     = e_rfcdata_uc.
+      else.
+        call function 'ZBD00_DATA_WRAP'
+          exporting
+            i_t_data         = <lt_data_sorted>
+            i_unicode_result = rs_c_false
+          importing
+            e_t_outdata      = e_t_rfcdata[].
+      endif.
+
   endcase.
 
   get time stamp field e_time_end.

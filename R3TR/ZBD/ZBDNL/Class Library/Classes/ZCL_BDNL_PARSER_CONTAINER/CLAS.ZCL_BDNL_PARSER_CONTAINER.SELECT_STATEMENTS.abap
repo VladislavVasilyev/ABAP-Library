@@ -25,7 +25,8 @@ method select_statements.
       e_appset_id = e_s__stack-appset_id
       e_appl_id   = e_s__stack-appl_id
       e_dim_name  = e_s__stack-dim_name
-      e_appl_obj  = e_s__stack-appl_obj.
+      e_appl_obj  = e_s__stack-appl_obj
+      e_dist      = e_s__stack-destination.
 
   gr_o__cursor->set_token_pos( ld_v__index ).
 
@@ -37,6 +38,7 @@ method select_statements.
       e_v__type_table = e_s__stack-type_table
       e_v__tablename  = e_s__stack-tablename.
 
+  e_v__tablename = e_s__stack-tablename.
   gr_o__cursor->set_token_pos( ld_v__index ).
 
 *--------------------------------------------------------------------*
@@ -92,5 +94,7 @@ method select_statements.
                     expected  = zblnc_keyword-dot
                     index     = gr_o__cursor->gd_v__cindex .
   endif.
+
+  e_o__container = ZCL_BDNL_CONTAINER=>get_table( e_s__stack ).
 
 endmethod.
