@@ -1,31 +1,40 @@
 *"* use this source file for any macro definitions you need
 *"* in the implementation part of the class
-DEFINE print>.
+define print>.
 
-    cl_ujk_logger=>log( &1 ).
-    message &1 type 'S'.
+  cl_ujk_logger=>log( &1 ).
+  message &1 type 'S'.
 
-END-OF-DEFINITION.
+end-of-definition.
 
-DEFINE mprint>.
+define mprint>.
 
-    message &1 type 'S'.
+  message &1 type 'S'.
 
-END-OF-DEFINITION.
+end-of-definition.
 
-DEFINE pprint>.
+define pprint>.
 
-    concatenate &1 ` = ` &2 into ld_v__string.
-    message ld_v__string type 'S'.
+  concatenate &1 ` = ` &2 into ld_v__string.
+  message ld_v__string type 'S'.
 
-END-OF-DEFINITION.
+end-of-definition.
 
 
-DEFINE st>.
+define st>.
   case &1.
     when abap_true.
       &2 = `ON`.
     when others.
       &2 = `OFF`.
   endcase.
-END-OF-DEFINITION.
+end-of-definition.
+
+define print_LOG>.
+
+  call method cl_ujd_utility=>write_long_message
+    exporting
+      i_message  = &2
+    changing
+      ct_message = &1.
+end-of-definition.

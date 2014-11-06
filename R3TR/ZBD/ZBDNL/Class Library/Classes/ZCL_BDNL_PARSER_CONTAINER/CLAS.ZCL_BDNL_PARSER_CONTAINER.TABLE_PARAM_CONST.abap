@@ -4,15 +4,15 @@ method table_param_const.
   : cs_dimension     type string value `^([A-Z0-9\_]+)\>`
   , cs_dimwattr      type string value `^\~\<([A-Z0-9\_]+)\>`
   , cs_cond          type string value `^(EQ|=)`
-  , cs_beetwen       type string value `^([A-Z0-9\_]+)\>\sAND\s([A-Z0-9\_]+)\>`
+*  , cs_beetwen       type string value `^([A-Z0-9\_]+)\>\sAND\s([A-Z0-9\_]+)\>`
   , cs_func          type string value `^([A-Z0-9\_]+)\>\s\(`
   .
 
   data
   : ld_s__const         type zbd0t_ty_s_constant
   , ld_v__token         type string
-  , ld_v__express       type string value ``
-  , ld_v__filter_name   type string
+*  , ld_v__express       type string value ``
+*  , ld_v__filter_name   type string
   , ld_t__params        type zbnlt_t__param
   , ld_v__params        type line of zbnlt_t__param
   .

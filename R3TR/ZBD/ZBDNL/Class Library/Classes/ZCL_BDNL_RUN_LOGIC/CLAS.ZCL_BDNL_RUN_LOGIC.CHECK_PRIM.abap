@@ -3,7 +3,7 @@ method check_prim.
   field-symbols
   : <ld_s__check> type zbnlt_s__check_exp
   , <ld_v__data>  type c
-  , <ld_t__check> type zbnlt_s__check .
+  , <ld_t__check> type zbnlt_s__check
   .
 
   check get = abap_true.
@@ -22,13 +22,13 @@ method check_prim.
       return = <ld_v__data>.
     else.
       case <ld_s__check>-operator.
-        when `NOT`.
+        when zblnc_keyword-not.
           if check_prim( get ) = abap_true.
             return = abap_false.
           else.
             return = abap_true.
           endif.
-        when `(`.
+        when zblnc_keyword-open_parenthesis.
           return = check_expr( abap_true ).
         when others.
           return = <ld_s__check>-operator.

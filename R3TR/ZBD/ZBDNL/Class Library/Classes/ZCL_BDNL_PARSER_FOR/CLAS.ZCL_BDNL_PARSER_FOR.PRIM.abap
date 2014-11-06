@@ -1,24 +1,26 @@
 method prim.
 
-  constants
-  : cs_read             type string value `\$READ`
-  , cs_calc_begin       type string value `\$CALC`.
+*  constants
+*  : cs_read                   type string value `\$READ`
+*  : cs_calc_begin             type string value `\$CALC`.
 
   data
-  : lr_o__assign        type ref to zcl_bdnl_parser_calc
-  , ld_s__assign        type zbnlt_s__stack_assign
-  , ld_s__search        type zbnlt_s__stack_search
-  , ld_f__search_close  type rs_bool " флаг закрытия блока поиска
-  , ld_v__token         type string
-  , ld_v__tablename     type zbnlt_v__tablename
-  , ld_f__commit        type abap_bool
-  , ld_f__clear         type abap_bool
-  , ld_f__print         type abap_bool
+  : lr_o__assign              type ref to zcl_bdnl_parser_calc
+  , ld_s__containers          type zbnlt_s__stack_container
+  , ld_s__assign              type zbnlt_s__stack_assign
+  , ld_s__search              type zbnlt_s__stack_search
+*  , ld_f__search_close        type rs_bool " флаг закрытия блока поиска
+  , ld_v__tablename           type zbnlt_v__tablename
+  , ld_f__commit              type abap_bool
+  , ld_f__clear               type abap_bool
+  , ld_f__print               type abap_bool
+  , ld_v__checkturn           type i
+  , ld_t__check               type zbnlt_t__stack_check
+  , ld_t__allcheck            type zbnlt_t__stack_check
   .
 
   field-symbols
-  : <ld_s__rules>       type zbnlt_s__for_rules
-  , <ld_s__containers>  type zbnlt_s__stack_container
+  : <ld_s__rules>             type zbnlt_s__for_rules
   .
 
   if gd_f__with_key = abap_true.
@@ -50,19 +52,34 @@ method prim.
           importing
             e_s__stack = ld_s__search.
 
-        append ld_s__search to <ld_s__rules>-search.
+        if ld_t__allcheck is not initial.
+          ld_s__search-check = ld_t__allcheck.
+          clear
+          : ld_t__allcheck
+          , ld_v__checkturn.
+        endif.
 
+        append ld_s__search to <ld_s__rules>-search.
+        clear ld_s__search.
+
+*--------------------------------------------------------------------*
+* $CHECK COND.
+*--------------------------------------------------------------------*
+      when zblnc_keyword-check.
+        add 1 to ld_v__checkturn.
+
+        ld_t__check = zcl_bdnl_parser_service=>get_check( i_r__cursor = gr_o__cursor i_v__turn = ld_v__checkturn ).
+        append lines of ld_t__check to ld_t__allcheck.
+        clear ld_t__check.
 *--------------------------------------------------------------------*
 * $CALC TABLENAME FOR FOUND.
 * $CALC TABLENAME FOR NOT FOUND.
 *--------------------------------------------------------------------*
       when zblnc_keyword-calc.
 
-        ld_f__search_close = abap_true.
+*        ld_f__search_close = abap_true.
 
         call method parser__calc
-          exporting
-            i_t__container = gd_t__containers
           importing
             e_v__tablename = ld_s__assign-tablename
             e_f__found     = ld_s__assign-f_found.
@@ -71,7 +88,6 @@ method prim.
           exporting
             i_v__tablename = ld_s__assign-tablename
             i_r__cursor    = gr_o__cursor
-            i_t__container = gd_t__containers
             i_v__for_table = gd_v__for_table.
 
         call method lr_o__assign->get_stack
@@ -86,9 +102,30 @@ method prim.
         free lr_o__assign.
 
 *--------------------------------------------------------------------*
+* $CONTINUE
+*--------------------------------------------------------------------*
+      when zblnc_keyword-continue.
+        <ld_s__rules>-f_continue = abap_true.
+
+        if gr_o__cursor->get_token( esc = abap_true ) ne zblnc_keyword-dot.
+          raise exception type zcx_bdnl_syntax_error
+                exporting textid    = zcx_bdnl_syntax_error=>zcx_expected
+                          expected  = zblnc_keyword-dot
+                          index     = gr_o__cursor->gd_v__cindex .
+        endif.
+
+*--------------------------------------------------------------------*
 * $NEXTFOR
 *--------------------------------------------------------------------*
       when zblnc_keyword-nextfor.
+
+        if ld_t__allcheck is not initial.
+          ld_s__search-check = ld_t__allcheck.
+          append ld_s__search to <ld_s__rules>-search.
+          clear
+          : ld_t__allcheck
+          , ld_v__checkturn.
+        endif.
 
         if gr_o__cursor->get_token( esc = abap_true ) ne zblnc_keyword-dot.
           raise exception type zcx_bdnl_syntax_error
@@ -103,6 +140,15 @@ method prim.
 * $EXITFOR
 *--------------------------------------------------------------------*
       when zblnc_keyword-exitfor.
+
+        if ld_t__allcheck is not initial.
+          ld_s__search-check = ld_t__allcheck.
+          append ld_s__search to <ld_s__rules>-search.
+          clear
+          : ld_t__allcheck
+          , ld_v__checkturn.
+        endif.
+
         if gr_o__cursor->get_token( esc = abap_true ) ne zblnc_keyword-dot.
           raise exception type zcx_bdnl_syntax_error
                 exporting textid    = zcx_bdnl_syntax_error=>zcx_expected
@@ -144,19 +190,10 @@ method prim.
               exit.
             endif.
 
-            read table gd_t__containers
-                 with key tablename = ld_v__tablename
-                 assigning <ld_s__containers>.
-
-            if sy-subrc ne 0 .
-              raise exception type zcx_bdnl_syntax_error
-                      exporting textid = zcx_bdnl_syntax_error=>zcx_table_not_defined
-                                token  = ld_v__tablename
-                                index  = gr_o__cursor->gd_v__index .
-            endif.
+            ld_s__containers = zcl_bdnl_container=>check_table( ld_v__tablename ).
 
             if ld_f__commit = abap_true.
-              if <ld_s__containers>-f_write = abap_false.
+              if ld_s__containers-f_write = abap_false.
                 raise exception type zcx_bdnl_syntax_error
                          exporting textid = zcx_bdnl_syntax_error=>zcx_no_can_save
                                    tablename  = ld_v__tablename
@@ -182,6 +219,14 @@ method prim.
 * ENDFOR
 *--------------------------------------------------------------------*
       when zblnc_keyword-endfor.
+
+        if ld_t__allcheck is not initial.
+          ld_s__search-check = ld_t__allcheck.
+          append ld_s__search to <ld_s__rules>-search.
+          clear
+          : ld_t__allcheck
+          , ld_v__checkturn.
+        endif.
 
         if gr_o__cursor->get_token( esc = abap_true ) ne zblnc_keyword-dot.
           raise exception type zcx_bdnl_syntax_error

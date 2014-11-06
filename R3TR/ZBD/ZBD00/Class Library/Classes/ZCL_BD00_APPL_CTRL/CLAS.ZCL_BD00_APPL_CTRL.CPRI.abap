@@ -3,11 +3,13 @@
 private section.
 
   data GD_S__LAST_RULE type TY_S_CLASS_REG .
-  data GD_F__DELETE type RS_BOOL .
+  data GD_F__DELETE type RS_BOOL . "#EC NEEDED
 
   methods AUTO_WRITE_BACK
     importing
-      !LINES type I .
+      !LINES type I
+    raising
+      ZCX_BD00_RFC_TASK .
   class ZCL_BD00_APPL_CTRL definition load .
   class-methods GET_KEY_LINK
     importing

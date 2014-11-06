@@ -15,6 +15,7 @@ me->ATTRIBUTE = ATTRIBUTE .
 me->TABLENAME = TABLENAME .
 me->CURSOR = CURSOR .
 me->TOKEN1 = TOKEN1 .
+me->MESSAGE = MESSAGE .
 clear me->textid.
 if textid is initial.
   IF_T100_MESSAGE~T100KEY = ZCX_BDNL_SYNTAX_ERROR .

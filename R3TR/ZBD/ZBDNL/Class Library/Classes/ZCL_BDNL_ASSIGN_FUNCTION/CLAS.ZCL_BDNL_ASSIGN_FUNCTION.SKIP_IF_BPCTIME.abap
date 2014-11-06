@@ -6,7 +6,7 @@ method skip_if_bpctime.
   , left_val_p    type i
   , rigth_val_p   type i
   , op            type string
-  , val           type string
+*  , val           type string
   .
 
 *  zcl_debug=>stop_program( ).

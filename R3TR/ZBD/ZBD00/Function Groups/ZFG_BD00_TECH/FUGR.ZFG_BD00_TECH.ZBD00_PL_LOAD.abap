@@ -6,7 +6,7 @@ function zbd00_pl_load.
 *"     VALUE(I_V__SC_APPL_ID) TYPE  UJ_APPL_ID
 *"     VALUE(I_V__TG_APPL_ID) TYPE  UJ_APPL_ID
 *"     VALUE(I_V__SCENARIO) TYPE  UJ_VALUE
-*"     VALUE(I_V__FORMAT) TYPE  UJ_VALUE
+*"     VALUE(I_V__FORMAT) TYPE  UJ_VALUE OPTIONAL
 *"     VALUE(I_T__BPCTIME) TYPE  ZBD00_T_BPCTIME
 *"     VALUE(I_V__PACKAGESIZE) TYPE  I OPTIONAL
 *"     VALUE(I_V__ID_RULE) TYPE  I
@@ -15,6 +15,8 @@ function zbd00_pl_load.
 *"     VALUE(NUM_READ) TYPE  I
 *"     VALUE(NUM_WRITE) TYPE  UJR_S_STATUS_RECORDS
 *"     VALUE(E_MESSAGE) TYPE  UJ0_T_MESSAGE
+*"  TABLES
+*"      I_T__ENTITY_RANGE TYPE  UJ0_T_SEL OPTIONAL
 *"  CHANGING
 *"     VALUE(TASK_ID) TYPE  I OPTIONAL
 *"  EXCEPTIONS
@@ -30,8 +32,8 @@ function zbd00_pl_load.
     ld_s__range-option    = &3.
     ld_s__range-low       = &4.
     if &3 = 'NE'.
-    ld_s__range-sign      = `E` .
-    ld_s__range-option    = 'EQ' .
+      ld_s__range-sign      = `E` .
+      ld_s__range-option    = 'EQ' .
     endif.
     append ld_s__range to ld_t__range.
   end-of-definition.
@@ -43,8 +45,8 @@ function zbd00_pl_load.
     ld_s__range-option    = &3.
     ld_s__range-low       = &4.
     if &3 = 'NE'.
-    ld_s__range-sign      = `E` .
-    ld_s__range-option    = 'EQ' .
+      ld_s__range-sign      = `E` .
+      ld_s__range-option    = 'EQ' .
     endif.
     append ld_s__range to ld_t__clear_range.
   end-of-definition.
@@ -147,7 +149,7 @@ function zbd00_pl_load.
 *    ld_s__user-user_id = lr_o__security->d_server_admin_id.
 * ---> Добавил Козин А., X5, 30.09.2014
     try.
-        cl_uj_context=>set_cur_context( i_appset_id = i_v__appset_id is_user = I_BPC_USER ).
+        cl_uj_context=>set_cur_context( i_appset_id = i_v__appset_id is_user = i_bpc_user ).
       catch cx_uj_obj_not_found.
         raise err_appset_id.
     endtry.
@@ -222,8 +224,19 @@ function zbd00_pl_load.
     endloop.
 
     mac__add_to_range
-    : `SCENARIO` ``           `EQ` i_v__scenario
-    , `ENTITY`   `FORMAT_N`   `EQ` i_v__format.
+    : `SCENARIO` ``           `EQ` i_v__scenario.
+
+    if i_v__format is supplied.
+      mac__add_to_range
+      : `ENTITY`   `FORMAT_N`   `EQ` i_v__format.
+    endif.
+
+    if lines( i_t__entity_range ) > 0 .
+      clear ld_s__range.
+      loop at i_t__entity_range into ld_s__range .
+        collect ld_s__range into ld_t__range .
+      endloop.
+    endif.
 
     loop at i_t__bpctime into ld_v__bpctime.
       mac__add_to_range
@@ -297,8 +310,19 @@ function zbd00_pl_load.
       endif.
     endselect.
     mac__add_to_clear_range
-    : `SCENARIO` ``           `EQ` i_v__scenario
-    , `ENTITY`   `FORMAT_N`   `EQ` i_v__format.
+    : `SCENARIO` ``           `EQ` i_v__scenario.
+
+    if i_v__format is supplied.
+      mac__add_to_range
+      : `ENTITY`   `FORMAT_N`   `EQ` i_v__format.
+    endif.
+
+    if lines( i_t__entity_range ) > 0 .
+      clear ld_s__range.
+      loop at i_t__entity_range into ld_s__range .
+        collect ld_s__range into ld_t__clear_range .
+      endloop.
+    endif.
 
     loop at i_t__bpctime into ld_v__bpctime.
       mac__add_to_clear_range `TIME` `` `EQ`  ld_v__bpctime.

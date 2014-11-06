@@ -39,7 +39,7 @@ public section.
   types:
     ty_t_cust_link type hashed table of ty_s_cust_link with unique key tg op .
   types:
-    ty_t_cust_link_or type standard table of ty_s_cust_link with non-unique default key.
+    ty_t_cust_link_or type standard table of ty_s_cust_link with non-unique default key .
   types:
     begin of ty_s_rule_math
       , object type ref to zcl_bd00_appl_ctrl
@@ -111,16 +111,28 @@ public section.
       value(CLASS) type ref to ZIF_BD00_INT_TABLE .
   methods FREE_OBJECT .
   class-methods FREE_ALL_OBJECT .
+  methods GET_REF_RANGE_TABLE
+    returning
+      value(E_REF) type ref to DATA .
+  methods GET_REF_LINE
+    returning
+      value(E_REF) type ref to DATA .
   methods GET_REF_TABLE
     returning
       value(E_REF) type ref to DATA .
   methods CLEAR .
   methods RULE_ASSIGN_1
     importing
-      !CLASS type ref to ZIF_BD00_INT_TABLE .
+      !CLASS type ref to ZIF_BD00_INT_TABLE
+    raising
+      CX_DYNAMIC_CHECK
+      CX_STATIC_CHECK .
   methods RULE_ASSIGN
     importing
-      !ID type ZBD0T_ID_RULES .
+      !ID type ZBD0T_ID_RULES
+    raising
+      CX_DYNAMIC_CHECK
+      CX_STATIC_CHECK .
   methods MATH
     importing
       !OPERAND type ref to ZCL_BD00_APPL_CTRL optional
@@ -134,7 +146,9 @@ public section.
       !I_MODE_ADD type ZBD00_MODE_ADD_LINE optional
       !IT_LINK type ZBD0T_TY_T_LINK_KEY optional
     returning
-      value(E_ID) type ZBD0T_ID_RULES .
+      value(E_ID) type ZBD0T_ID_RULES
+    raising
+      ZCX_BD00_CREATE_RULE .
   methods SET_CH
     importing
       !DIMENSION type UJ_DIM_NAME

@@ -1,7 +1,7 @@
 method SET_CURSOR.
 
   data
-  : ld_v__tabix type i.
+  : ld_v__tabix type i
   .
 
   field-symbols

@@ -1,8 +1,8 @@
 method if_rspc_execute~execute.
 
   data
-  : lf_success      type uj_flg
-  , l_uid           type sysuuid_25
+*  : lf_success      type uj_flg
+  : l_uid           type sysuuid_25
   , lo_config       type ref to cl_ujd_config
   , lo_factory      type ref to cl_ujd_task_factory
   , lo_actor        type ref to zcl_bdch_new_logic
@@ -79,6 +79,8 @@ method if_rspc_execute~execute.
       ls_message-message = `JobName: `.
       lo_logger->add_message( exporting is_message = ls_message ).
       ls_message-message =  jobname.
+      lo_logger->add_message( exporting is_message = ls_message ).
+      ls_message-message =  `------------------------------------------------------------`.
       lo_logger->add_message( exporting is_message = ls_message ).
       call method cl_ujd_custom_type=>reset_log.
 *--------------------------------------------------------------------*

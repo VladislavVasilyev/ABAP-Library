@@ -23,21 +23,24 @@ public section.
             , n_assign type i
             , assign_not_found type zbnlt_t__assign
             , n_assign_not_found type i
+            , f_continue type rs_bool
             , end of ty_s__rules .
   types:
     ty_t__rules type standard table of ty_s__rules with non-unique default key .
 
   data GD_S__RULES type TY_S__RULES .
   data GD_S__STACK type ZBNLT_S__STACK .
-  data GD_T__CONTAINERS type ZBNLT_T__CONTAINERS .
   data GD_T__FOR_CONTAINERS type ZBNLT_T__CONTAINERS .
-  data GD_T__FOR_CONTAINERS1 type TY_T__CURRENT_FOR .
+ " data GD_T__FOR_CONTAINERS1 type TY_T__CURRENT_FOR .
   data GR_O__PARAMS type ref to ZCL_BDNL_BADI_PARAMS .
+  class-data CD_T__SEARCHMESSAGE type standard table of string read-only.
+
 
   methods RUN
     raising
       ZCX_BDNL_EXCEPTION
-      ZCX_BD00_CREATE_OBJ .
+      CX_STATIC_CHECK
+      CX_DYNAMIC_CHECK .
   methods CONSTRUCTOR
     importing
       !I_O__PARAM type ref to ZCL_BDNL_BADI_PARAMS

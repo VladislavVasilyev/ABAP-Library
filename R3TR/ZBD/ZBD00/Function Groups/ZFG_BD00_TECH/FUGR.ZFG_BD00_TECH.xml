@@ -349,6 +349,11 @@
 					<OPTIONAL>X</OPTIONAL>
 					<TYP>UJ0_S_USER</TYP>
 				</item>
+				<item>
+					<PARAMETER>I_RFCDATA_UC</PARAMETER>
+					<OPTIONAL>X</OPTIONAL>
+					<TYP>XSTRING</TYP>
+				</item>
 			</T_IMPORT>
 			<T_EXPORT>
 				<item>
@@ -449,6 +454,105 @@
 			</T_EXCEPT>
 			<SOURCE>
 				<SOURCEID>FUGR.ZFG_BD00_TECH.ZBD00_DATA_WRAP_LINE.abap</SOURCEID>
+			</SOURCE>
+		</item>
+		<item>
+			<FUNCNAME>ZBD00_RFC_BPC_CLEAR</FUNCNAME>
+			<AREA>ZFG_BD00_TECH</AREA>
+			<REMOTE_CALL>R</REMOTE_CALL>
+			<T_IMPORT>
+				<item>
+					<PARAMETER>I_APPSET_ID</PARAMETER>
+					<TYP>UJ_APPSET_ID</TYP>
+				</item>
+				<item>
+					<PARAMETER>I_APPL_ID</PARAMETER>
+					<TYP>UJ_APPL_ID</TYP>
+				</item>
+				<item>
+					<PARAMETER>I_TYPE_PK</PARAMETER>
+					<DEFAULT>&apos;001&apos;</DEFAULT>
+					<TYP>ZBD00_S_BPC_DIM-TYPE</TYP>
+				</item>
+				<item>
+					<PARAMETER>IF_AUTO_SAVE</PARAMETER>
+					<DEFAULT>ABAP_FALSE</DEFAULT>
+					<TYP>RS_BOOL</TYP>
+				</item>
+				<item>
+					<PARAMETER>IT_ALIAS</PARAMETER>
+					<OPTIONAL>X</OPTIONAL>
+					<TYP>ZBD00_T_ALIAS</TYP>
+				</item>
+				<item>
+					<PARAMETER>IT_RANGE</PARAMETER>
+					<OPTIONAL>X</OPTIONAL>
+					<TYP>UJ0_T_SEL</TYP>
+				</item>
+				<item>
+					<PARAMETER>IT_DIM_LIST</PARAMETER>
+					<OPTIONAL>X</OPTIONAL>
+					<TYP>ZBD00_T_CH_KEY</TYP>
+				</item>
+				<item>
+					<PARAMETER>IF_SUPPRESS_ZERO</PARAMETER>
+					<DEFAULT>ABAP_TRUE</DEFAULT>
+					<TYP>RS_BOOL</TYP>
+				</item>
+				<item>
+					<PARAMETER>I_PACKAGESIZE</PARAMETER>
+					<OPTIONAL>X</OPTIONAL>
+					<TYP>I</TYP>
+				</item>
+				<item>
+					<PARAMETER>IF_INVERT</PARAMETER>
+					<DEFAULT>ABAP_FALSE</DEFAULT>
+					<TYP>RS_BOOL</TYP>
+				</item>
+				<item>
+					<PARAMETER>I_DESTINATION</PARAMETER>
+					<OPTIONAL>X</OPTIONAL>
+					<TYP>STRING</TYP>
+				</item>
+				<item>
+					<PARAMETER>I_TASK_NUM</PARAMETER>
+					<OPTIONAL>X</OPTIONAL>
+					<TYP>I</TYP>
+				</item>
+				<item>
+					<PARAMETER>I_LOOP</PARAMETER>
+					<OPTIONAL>X</OPTIONAL>
+					<TYP>RS_BOOL</TYP>
+				</item>
+			</T_IMPORT>
+			<T_EXPORT>
+				<item>
+					<PARAMETER>E_NUM_READ</PARAMETER>
+					<TYP>I</TYP>
+				</item>
+				<item>
+					<PARAMETER>E_NUM_WRITE</PARAMETER>
+					<TYP>UJR_S_STATUS_RECORDS</TYP>
+				</item>
+				<item>
+					<PARAMETER>E_RAISE_WB</PARAMETER>
+					<TYP>I</TYP>
+				</item>
+			</T_EXPORT>
+			<T_TABLES>
+				<item>
+					<PARAMETER>ET_MESSAGE</PARAMETER>
+					<OPTIONAL>X</OPTIONAL>
+					<TYP>UJ0_T_MESSAGE</TYP>
+				</item>
+			</T_TABLES>
+			<T_EXCEPT>
+				<item>
+					<EXCEPTION>ERR_BD00_CREATE_OBJ</EXCEPTION>
+				</item>
+			</T_EXCEPT>
+			<SOURCE>
+				<SOURCEID>FUGR.ZFG_BD00_TECH.ZBD00_RFC_BPC_CLEAR.abap</SOURCEID>
 			</SOURCE>
 		</item>
 		<item>
@@ -1044,6 +1148,7 @@
 				</item>
 				<item>
 					<PARAMETER>I_V__FORMAT</PARAMETER>
+					<OPTIONAL>X</OPTIONAL>
 					<TYP>UJ_VALUE</TYP>
 				</item>
 				<item>
@@ -1086,6 +1191,13 @@
 					<TYP>UJ0_T_MESSAGE</TYP>
 				</item>
 			</T_EXPORT>
+			<T_TABLES>
+				<item>
+					<PARAMETER>I_T__ENTITY_RANGE</PARAMETER>
+					<OPTIONAL>X</OPTIONAL>
+					<TYP>UJ0_T_SEL</TYP>
+				</item>
+			</T_TABLES>
 			<T_EXCEPT>
 				<item>
 					<EXCEPTION>ERR_TARGET_CREATE</EXCEPTION>

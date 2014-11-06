@@ -1,25 +1,25 @@
 method print_log.
 
   data " data declarations
-  : ls_mailsubject          type sodocchgi1
-  , lt_mailrecipients       type standard table of somlrec90
-  , ls_mailrecipients       type somlrec90
-  , lt_mailtxt              type standard table of soli
-  , ls_mailtxt              type soli
-  , time                    type string
+*  : ls_mailsubject          type sodocchgi1
+*  : lt_mailrecipients       type standard table of somlrec90
+*  : ls_mailrecipients       type somlrec90
+*  , lt_mailtxt              type standard table of soli
+  : ls_mailtxt              type soli
+*  , time                    type string
   , lo_logger               type ref to cl_ujd_logger
-  , lv_buf                  type string
-  , lv_hor_tab              type string
-  , ld_v__mail              type uje_user-email
-  , ld_t__mail              type table of string
-  , ld_v__start_date        type string
-  , ld_v__start_time        type string
-  , ld_v__delta_time        type string
-  , ld_v__str               type string
-  , ld_v__value             type c length 20
-  , ld_v__cnt               type i
-  , ld_v__txt               type string
-  , ld_v__theme             type string
+*  , lv_buf                  type string
+*  , lv_hor_tab              type string
+*  , ld_v__mail              type uje_user-email
+*  , ld_t__mail              type table of string
+*  , ld_v__start_date        type string
+*  , ld_v__start_time        type string
+*  , ld_v__delta_time        type string
+*  , ld_v__str               type string
+*  , ld_v__value             type c length 20
+*  , ld_v__cnt               type i
+*  , ld_v__txt               type string
+*  , ld_v__theme             type string
   .
 
   data
@@ -29,12 +29,12 @@ method print_log.
   , lv_offset               type i
   .
 
-  field-symbols
-  : <ls_mailtxt>            type soli
-  , <ld_s__value>           type string
-  , <ld_s__message>         type uj0_s_message
-  , <ld_v__mail>            type string
-  .
+*  field-symbols
+*  : <ls_mailtxt>            type soli
+*  : <ld_s__value>           type string
+*  : <ld_s__message>         type uj0_s_message
+*  : <ld_v__mail>            type string
+*  .
 
 *--------------------------------------------------------------------*
   split ds_badi_param-parameter at `;` into table lt_value.

@@ -1,4 +1,4 @@
-method PRINT_LOG_FOR_TABLE.
+method print_log_for_table.
 
   constants
   : cs_read               type string value `READ: `
@@ -14,19 +14,20 @@ method PRINT_LOG_FOR_TABLE.
   , ld_t__log_read_dim    type zbd0t_t__log_dimension
   , ld_t__log_write       type zbd0t_t__log_write
   , ld_t__actual_rows	    type zbd0t_t__log_actual
-  , ld_v__start_date      type string
-  , ld_v__start_time      type string
-  , ld_v__delta_time      type string
+*  , ld_v__start_date      type string
+*  , ld_v__start_time      type string
+*  , ld_v__delta_time      type string
   , ld_v__message         type string
   , ld_v__appset_id       type uj_appset_id
   , ld_v__appl_id         type uj_appl_id
   , ld_v__dimension       type uj_dim_name
   , ld_v__infoprovide     type rsinfoprov
   , ld_v__nr_pack         type string
+  , ld_v__nr_cl           type string
   , ld_v__nr_rows         type string
   , ld_v__time            type string
   , ld_v__str             type string
-  , ld_v__len             type i
+*  , ld_v__len             type i
   , ld_f__wcmessage       type rs_bool
   , ld_f__wemessage       type rs_bool
   , ld_s__log             type zcl_bdnl_container=>ty_s__log
@@ -235,6 +236,9 @@ method PRINT_LOG_FOR_TABLE.
           endif.
       endcase.
 
+      " Паралельные блокировки
+      ld_v__nr_cl = get_nr_rows( i_v__num = <ld_s__log_write>-cnt_raise_write  i_v__size = 7 ).
+
       " Номер пакета
       ld_v__nr_pack = get_nr_pack( <ld_s__log_write>-nr_pack ).
 
@@ -245,7 +249,7 @@ method PRINT_LOG_FOR_TABLE.
       ld_v__time = get_time( i_v__start      = <ld_s__log_write>-time_start
                              i_v__end        = <ld_s__log_write>-time_end ).
 
-      concatenate ld_v__str ld_v__nr_pack ld_v__nr_rows ld_v__time <ld_s__log_write>-rfc_task  into ld_v__message separated by cs_space.
+      concatenate ld_v__str ld_v__nr_pack ld_v__nr_rows ld_v__time <ld_s__log_write>-rfc_task  ld_v__nr_cl into ld_v__message separated by cs_space.
 
       print> ld_v__message.
 

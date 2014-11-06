@@ -5,19 +5,20 @@ method send_email.
   , lt_mailrecipients  type standard table of somlrec90
   , ls_mailrecipients  type somlrec90
   , lt_mailtxt         type standard table of soli
+  , lt_searchmailtxt   type standard table of soli
   , ls_mailtxt         type soli
   , time               type string
   , lo_logger          type ref to cl_ujd_logger
   , lv_buf             type string
-  , lv_hor_tab         type string
+*  , lv_hor_tab         type string
   , ld_v__mail         type uje_user-email
   , ld_t__mail         type table of string
   , ld_v__start_date   type string
   , ld_v__start_time   type string
   , ld_v__delta_time   type string
-  , ld_v__str          type string
-  , ld_v__value        type c length 20
-  , ld_v__cnt          type i
+*  , ld_v__str          type string
+*  , ld_v__value        type c length 20
+*  , ld_v__cnt          type i
   , ld_v__txt          type string
   , ld_v__theme        type string
   .
@@ -30,18 +31,16 @@ method send_email.
   .
 
   field-symbols
-  : <ls_mailtxt>       type soli
-  , <ld_s__value>      type string
-  , <ld_s__message>    type uj0_s_message
+*  : <ls_mailtxt>       type soli
+*  : <ld_s__value>      type string
+  : <ld_s__message>    type uj0_s_message
   , <ld_v__mail>       type string
   .
 
-  if gv_f__rspc eq abap_true.
-    select low
-      from tvarvc
-      into table ld_t__mail
-      where name = `ZSENDEMAIL`.
-  endif.
+  select low
+    from tvarvc
+    into table ld_t__mail
+    where name = `ZSENDEMAIL`.
 
   select single email
        from   uje_user
@@ -83,14 +82,15 @@ method send_email.
     lv_buf = hor_tab( in = gd_v__rspc_var n = 1 ).
     message e021(zmx_bdch_badi) into ls_mailtxt with lv_buf ld_v__txt.
     append ls_mailtxt to lt_mailtxt.
-
-    lv_buf = hor_tab( in = sy-sysid n = 2 ).
-    ld_v__txt = sy-sysid.
-    concatenate ld_v__txt ` -> ` ld_v__theme into ld_v__theme.
-    message e022(zmx_bdch_badi) into ls_mailtxt with lv_buf.
-    append ls_mailtxt to lt_mailtxt.
-
   endif.
+
+  lv_buf = hor_tab( in = sy-sysid n = 2 ).
+  ld_v__txt = sy-sysid.
+  concatenate ld_v__txt ` -> ` ld_v__theme into ld_v__theme.
+  message e022(zmx_bdch_badi) into ls_mailtxt with lv_buf.
+  append ls_mailtxt to lt_mailtxt.
+
+
 
   lv_buf = hor_tab( in = d_user_id n = 1 ).
   message e008(zmx_bdch_badi) into ls_mailtxt with lv_buf.
@@ -192,6 +192,7 @@ method send_email.
 
   message e013(zmx_bdch_badi) into ls_mailtxt. " разделитель
   append ls_mailtxt to lt_mailtxt.
+  lt_searchmailtxt = lt_mailtxt.
 *--------------------------------------------------------------------*
   loop at gt_message  assigning <ld_s__message> where msgid is initial. " Сообщения
     append <ld_s__message>-message to lt_mailtxt.
@@ -224,16 +225,21 @@ method send_email.
   ls_mailrecipients-receiver  = ld_v__mail.
   append ls_mailrecipients to lt_mailrecipients .
 
-  loop at ld_t__mail assigning <ld_v__mail>.
-    ls_mailrecipients-rec_type  = 'U'.
-    ls_mailrecipients-receiver = <ld_v__mail>.
-    append ls_mailrecipients to lt_mailrecipients .
-  endloop.
+*  loop at ld_t__mail assigning <ld_v__mail>.
+*    ls_mailrecipients-rec_type  = 'U'.
+*    ls_mailrecipients-receiver = <ld_v__mail>.
+*    append ls_mailrecipients to lt_mailrecipients .
+*  endloop.
 
 * Subject.
   ls_mailsubject-obj_langu = sy-langu.
 
   if not gv_f__rspc eq abap_true.
+*    concatenate d_package_id ` (` sy-sysid `)`    into
+*    : ls_mailsubject-obj_name
+*    , ls_mailsubject-obj_descr
+*    .
+
     ls_mailsubject-obj_name  = d_package_id.
     ls_mailsubject-obj_descr = d_package_id.
   else.
@@ -242,7 +248,7 @@ method send_email.
   endif.
 
   message s035(zbdnl).
-
+*break-point .
 * Send Mail
   if ( d_sendmail = 1 and ( if_succes = abap_false or if_warning = abap_true ) ) or
        d_sendmail = 2.
@@ -269,5 +275,43 @@ method send_email.
     endif.
   endif.
 
+  " Not optimal reading
+  if ( zcl_bdnl_run_logic=>cd_t__searchmessage is not initial and ld_t__mail is not initial ) and
+     gd_f__searchlog is initial.
+    clear lt_mailrecipients.
+
+    loop at ld_t__mail assigning <ld_v__mail>.
+      ls_mailrecipients-rec_type  = 'U'.
+      ls_mailrecipients-receiver = <ld_v__mail>.
+      append ls_mailrecipients to lt_mailrecipients .
+    endloop.
+
+    clear lt_mailtxt.
+    loop at zcl_bdnl_run_logic=>cd_t__searchmessage into ls_mailtxt.
+      append ls_mailtxt to lt_searchmailtxt.
+    endloop.
+
+    call function 'SO_NEW_DOCUMENT_SEND_API1'
+      exporting
+        document_data              = ls_mailsubject
+      tables
+        object_content             = lt_searchmailtxt
+        receivers                  = lt_mailrecipients
+      exceptions
+        too_many_receivers         = 1
+        document_not_sent          = 2
+        document_type_not_exist    = 3
+        operation_no_authorization = 4
+        parameter_error            = 5
+        x_error                    = 6
+        enqueue_error              = 7
+        others                     = 8.
+
+    if sy-subrc eq 0.
+      commit work.
+*   Push mail out from SAP outbox
+      submit rsconn01 with mode = 'INT' and return.
+    endif.
+  endif.
 
 endmethod.

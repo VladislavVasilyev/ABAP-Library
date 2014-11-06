@@ -1,8 +1,8 @@
 method get_nr_rows.
 
   data
-  : ld_v__str       type string
-  , ld_v__len       type i
+*  : ld_v__str       type string
+  : ld_v__len       type i
   , ld_v__let       type string
   , ld_v__size      type i
   , ld_v__numrec    type string
@@ -71,6 +71,12 @@ method get_nr_rows.
       ld_v__fail = get_space_text( ld_v__size ).
     endif.
     concatenate ld_v__succes ld_v__fail into e_v__text.
+  elseif i_v__num is supplied and i_v__num > 0.
+    ld_v__submit = i_v__num.
+    concatenate ld_v__let ld_v__submit  into ld_v__submit.
+    ld_v__len    = strlen( ld_v__submit ) - i_v__size.
+    ld_v__submit = ld_v__submit+ld_v__len(ld_v__size).
+    concatenate `[CL. ` ld_v__submit `]` into e_v__text.
   endif.
 
 endmethod.

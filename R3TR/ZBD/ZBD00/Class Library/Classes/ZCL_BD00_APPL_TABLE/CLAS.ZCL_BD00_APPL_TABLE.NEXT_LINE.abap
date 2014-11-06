@@ -1,8 +1,8 @@
 method next_line.
 
   data
-  : ld_s__class_reg type ty_s_class_reg
-  , ld_v__id        type zbd0t_id_rules
+*  : ld_s__class_reg type ty_s_class_reg
+  : ld_v__id        type zbd0t_id_rules
   .
 
   ld_v__id = id.

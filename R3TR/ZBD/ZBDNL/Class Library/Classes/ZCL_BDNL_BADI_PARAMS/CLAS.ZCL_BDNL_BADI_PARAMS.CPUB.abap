@@ -38,7 +38,9 @@ public section.
       !I_APPL_ID type UJ_APPL_ID
       !IT_PARAM type UJK_T_SCRIPT_LOGIC_HASHTABLE
       !IT_CV type UJK_T_CV
-      !IR_REPLACE type ref to CL_UJK_DO_REPLACE optional .
+      !IR_REPLACE type ref to CL_UJK_DO_REPLACE optional
+    raising
+      CX_UJ_STATIC_CHECK .
   methods SET_SCRIPT
     importing
       !I_T__SCRIPT type TY_T__SCRIPT .

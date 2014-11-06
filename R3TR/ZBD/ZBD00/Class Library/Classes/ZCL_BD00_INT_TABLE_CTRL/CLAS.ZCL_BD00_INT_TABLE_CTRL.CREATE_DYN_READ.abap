@@ -7,6 +7,7 @@ method create_dyn_read.
   , ld_t__constructor_impl             type ty_t_string
   , ld_t__constructor_defn             type ty_t_string
   , ld_t__rule_link                    type zcl_bd00_appl_ctrl=>ty_s_rules_reestr
+  , line                               type string
   .
 
 * правило линковки
@@ -91,6 +92,15 @@ method create_dyn_read.
 
   if prog is initial.
     generate subroutine pool ld_t__code name prog message mess line lin.
+
+    if sy-subrc <> 0.
+      read table ld_t__code index lin into line.
+
+      raise exception type zcx_bd00_create_rule
+        exporting message = mess
+                  line    = line.
+    endif.
+
     concatenate `\PROGRAM=` prog `\CLASS=DYN` into class.
   endif.
 *╚═══════════════════════════════════════════════════════════════════╝

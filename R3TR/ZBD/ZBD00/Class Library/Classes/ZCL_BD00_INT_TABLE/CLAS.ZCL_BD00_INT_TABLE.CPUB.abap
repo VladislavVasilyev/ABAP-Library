@@ -79,15 +79,21 @@ public section.
     importing
       !ID type ZBD0T_ID_RULES
     returning
-      value(EO_CLASS) type ref to ZCL_BD00_INT_TABLE .
+      value(EO_CLASS) type ref to ZCL_BD00_INT_TABLE
+    raising
+      ZCX_BD00_CREATE_RULE .
   class-methods CREATE_ADD
     importing
       !IO_TG type ref to ZCL_BD00_APPL_CTRL
       !IO_LINE type ref to ZCL_BD00_APPL_CTRL optional
     returning
-      value(EO_CLASS) type ref to ZIF_BD00_INT_TABLE .
+      value(EO_CLASS) type ref to ZIF_BD00_INT_TABLE
+    raising
+      ZCX_BD00_CREATE_RULE .
   class-methods CREATE_READ
     importing
       !ID type ZBD0T_ID_RULES
     returning
-      value(EO_CLASS) type ref to ZIF_BD00_INT_TABLE .
+      value(EO_CLASS) type ref to ZIF_BD00_INT_TABLE
+    raising
+      ZCX_BD00_CREATE_RULE .

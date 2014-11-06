@@ -1,42 +1,42 @@
 method if_term.
 
-  return = if_prim( get ).
+  return = if_prim( ).
 
   check get = abap_true.
 
-  case if_prim( abap_true ).
+  case if_prim( ).
     when zblnc_keyword-eq.
-      if return eq if_prim( abap_true )."if_prim( abap_true ).
+      if return eq if_prim(  )."if_prim( abap_true ).
         return = true.
       else.
         return = false.
       endif.
     when zblnc_keyword-ne.
-      if return ne if_prim( abap_true ).
+      if return ne if_prim(  ).
         return = true.
       else.
         return = false.
       endif.
     when zblnc_keyword-gt.
-      if return gt if_prim( abap_true ).
+      if return gt if_prim(  ).
         return = true.
       else.
         return = false.
       endif.
     when zblnc_keyword-lt.
-      if return lt if_prim( abap_true ).
+      if return lt if_prim(  ).
         return = true.
       else.
         return = false.
       endif.
     when zblnc_keyword-ge.
-      if return ge if_prim( abap_true ).
+      if return ge if_prim(  ).
         return = true.
       else.
         return = false.
       endif.
     when zblnc_keyword-le.
-      if return le if_prim( abap_true ).
+      if return le if_prim(  ).
         return = true.
       else.
         return = false.
@@ -55,7 +55,7 @@ method if_term.
       endif.
     when zblnc_keyword-open_parenthesis.
       gr_o__cursor->get_token( esc = abap_true ).
-      return = if_expr( abap_true ).
+      return = if_expr(  ).
 
       if gr_o__cursor->get_token( esc = abap_true ) ne zblnc_keyword-close_parenthesis.
         raise exception type zcx_bdnl_syntax_error

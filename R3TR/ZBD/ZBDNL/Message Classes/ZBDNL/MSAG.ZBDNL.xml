@@ -98,9 +98,14 @@
 			<TEXT>&quot;&amp;1&quot; expected after &quot;FILTERS ...&quot;</TEXT>
 		</item>
 		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>013</MSGNR>
+			<TEXT>Filter &quot;&amp;1&quot; is unknown or contained errors.</TEXT>
+		</item>
+		<item>
 			<SPRSL>R</SPRSL>
 			<MSGNR>013</MSGNR>
-			<TEXT>Filter &quot;&amp;1&quot; is unknown.</TEXT>
+			<TEXT>Filter &quot;&amp;1&quot; is unknown or contained errors.</TEXT>
 		</item>
 		<item>
 			<SPRSL>R</SPRSL>
@@ -320,52 +325,52 @@
 		<item>
 			<SPRSL>E</SPRSL>
 			<MSGNR>041</MSGNR>
-			<TEXT>│││└ Key [ &amp;1 ]. Unique key. Optimal reading.</TEXT>
+			<TEXT>│││└ Unique key. Optimal reading.</TEXT>
 		</item>
 		<item>
 			<SPRSL>R</SPRSL>
 			<MSGNR>041</MSGNR>
-			<TEXT>│││└ Key [ &amp;1 ]. Unique key. Optimal reading.</TEXT>
+			<TEXT>│││└ Unique key. Optimal reading.</TEXT>
 		</item>
 		<item>
 			<SPRSL>E</SPRSL>
 			<MSGNR>042</MSGNR>
-			<TEXT>│││└ Key [ &amp;1 ]. Not Unique key. Not optimal reading.</TEXT>
+			<TEXT>│││└ Not Unique key. Not optimal reading.</TEXT>
 		</item>
 		<item>
 			<SPRSL>R</SPRSL>
 			<MSGNR>042</MSGNR>
-			<TEXT>│││└ Key [ &amp;1 ]. Not Unique key. Not optimal reading.</TEXT>
+			<TEXT>│││└ Not Unique key. Not optimal reading.</TEXT>
 		</item>
 		<item>
 			<SPRSL>E</SPRSL>
 			<MSGNR>043</MSGNR>
-			<TEXT>│││└ Key [ &amp;1 ]. Not Full Unique key. Not optimal reading.</TEXT>
+			<TEXT>│││└ Not Full Unique key. Not optimal reading.</TEXT>
 		</item>
 		<item>
 			<SPRSL>R</SPRSL>
 			<MSGNR>043</MSGNR>
-			<TEXT>│││└ Key [ &amp;1 ]. Not Full Unique key. Not optimal reading.</TEXT>
+			<TEXT>│││└ Not Full Unique key. Not optimal reading.</TEXT>
 		</item>
 		<item>
 			<SPRSL>E</SPRSL>
 			<MSGNR>044</MSGNR>
-			<TEXT>│││└ Key [ &amp;1 ]. Not Full not Unique key. Not optimal reading.</TEXT>
+			<TEXT>│││└ Not Full not Unique key. Not optimal reading.</TEXT>
 		</item>
 		<item>
 			<SPRSL>R</SPRSL>
 			<MSGNR>044</MSGNR>
-			<TEXT>│││└ Key [ &amp;1 ]. Not Full not Unique key. Not optimal reading.</TEXT>
+			<TEXT>│││└ Not Full not Unique key. Not optimal reading.</TEXT>
 		</item>
 		<item>
 			<SPRSL>E</SPRSL>
 			<MSGNR>045</MSGNR>
-			<TEXT>│││└ Key [ &amp;1 ]. Full not Unique key. Optimal reading.</TEXT>
+			<TEXT>│││└ Full not Unique key. Optimal reading.</TEXT>
 		</item>
 		<item>
 			<SPRSL>R</SPRSL>
 			<MSGNR>045</MSGNR>
-			<TEXT>│││└ Key [ &amp;1 ]. Full not Unique key. Optimal reading.</TEXT>
+			<TEXT>│││└ Full not Unique key. Optimal reading.</TEXT>
 		</item>
 		<item>
 			<SPRSL>E</SPRSL>
@@ -466,6 +471,126 @@
 			<SPRSL>R</SPRSL>
 			<MSGNR>056</MSGNR>
 			<TEXT>Can not be saved. The table &quot;&amp;1&quot; contains a complete list of dimensions.</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>057</MSGNR>
+			<TEXT>Error in function &quot;&amp;1&quot;.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>057</MSGNR>
+			<TEXT>Error in function &quot;&amp;1&quot;.</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>058</MSGNR>
+			<TEXT>X &amp;1.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>058</MSGNR>
+			<TEXT>X &amp;1.</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>059</MSGNR>
+			<TEXT>During the execution of the operating cycle, an error occurred.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>059</MSGNR>
+			<TEXT>During the execution of the operating cycle, an error occurred.</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>060</MSGNR>
+			<TEXT>During the execution of the function &quot;&amp;1&quot;, an error occurred.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>060</MSGNR>
+			<TEXT>During the execution of the function &quot;&amp;1&quot;, an error occurred.</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>061</MSGNR>
+			<TEXT>&amp;1 rules for reading from table &quot;&amp;2&quot; type &amp;3:</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>061</MSGNR>
+			<TEXT>&amp;1 rules for reading from table &quot;&amp;2&quot; type &amp;3:</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>062</MSGNR>
+			<TEXT>Not Unique key. Not optimal reading.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>062</MSGNR>
+			<TEXT>Not Unique key. Not optimal reading.</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>063</MSGNR>
+			<TEXT>Not Full Unique key. Not optimal reading.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>063</MSGNR>
+			<TEXT>Not Full Unique key. Not optimal reading.</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>064</MSGNR>
+			<TEXT>Not Full not Unique key. Not optimal reading.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>064</MSGNR>
+			<TEXT>Not Full not Unique key. Not optimal reading.</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>065</MSGNR>
+			<TEXT>Reading file &quot;&amp;1&quot; error has occurred.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>065</MSGNR>
+			<TEXT>Reading file &quot;&amp;1&quot; error has occurred.</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>066</MSGNR>
+			<TEXT>Number of rules $READ and $CALC for one process can not exceed 36.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>066</MSGNR>
+			<TEXT>Number of rules $READ and $CALC for one process can not exceed 36.</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>067</MSGNR>
+			<TEXT>During the execution of the generate rule, an error occurred.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>067</MSGNR>
+			<TEXT>During the execution of the generate rule, an error occurred.</TEXT>
+		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>068</MSGNR>
+			<TEXT>Error gnerate rule.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>068</MSGNR>
+			<TEXT>Error gnerate rule.</TEXT>
 		</item>
 	</T100>
 	<HEADER>

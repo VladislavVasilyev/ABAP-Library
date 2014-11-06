@@ -10,7 +10,9 @@ method get_subtract.
   .
 
   field-symbols
-  : <ld_s__tokenlist> type zbnlt_s__match_res.
+  : <ld_s__tokenlist> type zbnlt_s__match_res
+  , <ld_v__value>     type string
+  .
 
   ld_v__start_index = index.
 
@@ -33,11 +35,12 @@ method get_subtract.
         endif.
       when 3.                                               " param 1
         if <ld_s__tokenlist>-f_letter   = abap_true or
-           <ld_s__tokenlist>-f_variable = abap_true or
-           <ld_s__tokenlist>-f_num      = abap_true.
+           <ld_s__tokenlist>-f_num      = abap_true or
+            <ld_s__tokenlist>-f_variable = abap_true.
 
-          ld_v__param1 = <ld_s__tokenlist>-value.
+          assign <ld_s__tokenlist>-refvalue->* to <ld_v__value>.
 
+          ld_v__param1 = <ld_v__value>.
         else.
           raise exception type zcx_bdnl_syntax_error
                 exporting textid    = zcx_bdnl_syntax_error=>zcx_uncorrect_param
@@ -54,7 +57,8 @@ method get_subtract.
         endif.
       when 5.                                               " param 2
         if <ld_s__tokenlist>-f_num  = abap_true.
-          ld_v__param2 = <ld_s__tokenlist>-value.
+          assign <ld_s__tokenlist>-refvalue->* to <ld_v__value>.
+          ld_v__param2 = <ld_v__value>.
         else.
           raise exception type zcx_bdnl_syntax_error
                 exporting textid    = zcx_bdnl_syntax_error=>zcx_uncorrect_param
@@ -80,7 +84,10 @@ method get_subtract.
 
   read table gd_t__tokenlist index ld_v__start_index assigning <ld_s__tokenlist>.
 
-  <ld_s__tokenlist>-value      = ld_v__return.
+  create data <ld_s__tokenlist>-refvalue type string.
+  assign <ld_s__tokenlist>-refvalue->* to <ld_v__value>.
+  <ld_v__value> = ld_v__return.
+
   <ld_s__tokenlist>-f_variable = abap_true.
 
 endmethod.

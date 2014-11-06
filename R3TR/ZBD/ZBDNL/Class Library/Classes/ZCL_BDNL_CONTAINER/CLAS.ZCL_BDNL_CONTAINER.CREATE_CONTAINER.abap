@@ -13,7 +13,7 @@ method create_container.
 
   if sy-subrc = 0.
 
-        container ?= <ld_s__reestr>-container.
+        container = <ld_s__reestr>-container.
 
   else.
     read table cd_t__table_reestr
@@ -24,7 +24,7 @@ method create_container.
 
     <ld_s__reestr>-container->create_table( f_master = f_master package_size = package_size ).
 
-    container ?= <ld_s__reestr>-container.
+    container = <ld_s__reestr>-container.
 
     insert <ld_s__reestr> into table cd_t__table_for.
 

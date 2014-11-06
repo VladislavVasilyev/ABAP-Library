@@ -14,7 +14,6 @@ public section.
   methods CONSTRUCTOR
     importing
       !I_R__CURSOR type ref to ZCL_BDNL_CURSOR
-      !I_T__CONTAINER type ZBNLT_T__STACK_CONTAINER
       !I_V__TABLENAME type ZBNLT_V__TABLENAME
       !I_V__FOR_TABLE type ZBNLT_V__TABLENAME .
   methods GET_STACK

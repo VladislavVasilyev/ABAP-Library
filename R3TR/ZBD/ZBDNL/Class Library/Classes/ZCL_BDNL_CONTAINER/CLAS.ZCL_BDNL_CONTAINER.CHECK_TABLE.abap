@@ -2,6 +2,7 @@ method check_table.
 
   data
   : ld_s__reestr type ty_s__reestr
+*  , ld_v__string type string
   .
 
   field-symbols

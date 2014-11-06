@@ -37,7 +37,9 @@ method get_value_rspc.
     select single low
       from tvarvc
       into ld_v__value
-      where name = ld_v__value.
+      where name = ld_v__value
+        and type = `P`
+        and numb = space.
   endif.
 
   e_v__value = ld_v__value.

@@ -27,7 +27,8 @@ types: token        type string
        , f_letter   type rs_bool
        , f_variable type rs_bool
        , f_num      type rs_bool
-       , value      type string
+*       , value      type string
+       , refvalue   type ref to string
        , end of zbnlt_s__match_res.
 
 types: zbnlt_t__match_res type sorted table of zbnlt_s__match_res with unique key line offset.
@@ -76,6 +77,7 @@ types: zbnlt_t__container type standard table of zbnlt_s__container with non-uni
 types: begin of zbnlt_s__func_param
        , index type i
        , const  type string
+       , data type ref to data
        , tablename type string
        , field  type zbd0t_ty_s_dim
        , end of zbnlt_s__func_param.
@@ -95,14 +97,6 @@ types: begin of zbnlt_s__cust_link
        .
 
 types: zbnlt_t__cust_link type standard table of zbnlt_s__cust_link with non-unique default key.
-
-types: begin of zbnlt_s__stack_search
-       , tablename type zbnlt_v__tablename
-       , link      type zbnlt_t__cust_link
-       , default   type string
-       , end of zbnlt_s__stack_search.
-
-types: zbnlt_t__stack_search type standard table of zbnlt_s__stack_search with non-unique default key.
 
 types: begin of zbnlt_s__math_var
        , varname   type string
@@ -130,13 +124,24 @@ types
 types: begin of zbnlt_s__stack_check
        , turn       type i
        , left       type zbnlt_s__var_op
-       , log_exp type c length 2
+       , log_exp    type c length 2
        , right      type zbnlt_s__var_op
-       , token     type string
+       , token      type string
+       , in         type rs_bool
        , end of zbnlt_s__stack_check
        .
 
 types: zbnlt_t__stack_check type standard table of zbnlt_s__stack_check with non-unique default key.
+
+types: begin of zbnlt_s__stack_search
+       , check     type zbnlt_t__stack_check
+       , tablename type zbnlt_v__tablename
+       , link      type zbnlt_t__cust_link
+       , default   type string
+       , end of zbnlt_s__stack_search.
+
+types: zbnlt_t__stack_search type standard table of zbnlt_s__stack_search with non-unique default key.
+
 
 types: begin of zbnlt_s__stack_assign
        , tablename type zbnlt_v__tablename " имя внутренней таблицы
@@ -180,22 +185,11 @@ types:
 types:
   zbnlt_t__function type standard table of zbnlt_s__function with non-unique default key .
 
-types: begin of zbnlt_s__search
-       , tablename type zbnlt_v__tablename
-       , object    type ref to zcl_bd00_appl_table
-       , id        type zbd0t_id_rules
-       , f_uk      type rs_bool
-       , turn      type i
-       , function  type zbnlt_t__function
-       , class     type ref to zif_bd00_int_table
-       , end of zbnlt_s__search.
-
-types: zbnlt_t__search type standard table of zbnlt_s__search with non-unique default key.
-
 types: begin of zbnlt_s__log_exp
        , left type ref to data
        , log_exp type c length 2
        , right type ref to data
+*       , in_right type ref to table
        , result type ref to data
        , end of zbnlt_s__log_exp.
 
@@ -214,6 +208,20 @@ types: begin of zbnlt_s__check
        , end of zbnlt_s__check
        .
 
+types zbnlt_t__check type standard table of zbnlt_s__check with non-unique default key.
+
+types: begin of zbnlt_s__search
+       , tablename type zbnlt_v__tablename
+       , object    type ref to zcl_bd00_appl_table
+       , id        type zbd0t_id_rules
+       , f_uk      type rs_bool
+       , turn      type i
+       , function  type zbnlt_t__function
+       , class     type ref to zif_bd00_int_table
+       , check     type zbnlt_t__check
+       , end of zbnlt_s__search.
+
+types: zbnlt_t__search type standard table of zbnlt_s__search with non-unique default key.
 
 types: begin of zbnlt_s__assign
        , id        type zbd0t_id_rules
@@ -222,7 +230,7 @@ types: begin of zbnlt_s__assign
        , command   type string
        , class     type ref to zif_bd00_int_table
        , function  type zbnlt_t__function
-       , check     type standard table of zbnlt_s__check with non-unique default key
+       , check     type zbnlt_t__check
        , end of zbnlt_s__assign.
 
 types: zbnlt_t__assign type standard table of zbnlt_s__assign with non-unique default key.
@@ -242,6 +250,7 @@ types zbnlt_t__commit type hashed table of zbnlt_v__tablename with unique defaul
 types: begin of zbnlt_s__for_rules
        , assign         type zbnlt_t__stack_assign
        , search         type zbnlt_t__stack_search
+       , f_continue     type rs_bool
        , end of zbnlt_s__for_rules.
 
 types: zbnlt_t__for_rules type standard table of zbnlt_s__for_rules with non-unique default key.
@@ -262,8 +271,7 @@ types: zbnlt_t__for type standard table of zbnlt_s__for with non-unique default 
 types: begin of zbnlt_s__stack
        , turn           type i
        , range          type zbnlt_t__stack_range
-       , containers     type zbnlt_t__stack_container
-       , containers1    type zbnlt_t__container
+       , containers     type zbnlt_t__container
        , for            type zbnlt_t__for
        , end of zbnlt_s__stack.
 

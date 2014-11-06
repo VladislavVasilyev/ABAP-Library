@@ -20,6 +20,7 @@ public section.
   data GD_V__TIME_START type TZNTSTMPL .
   data GR_O__BADI_PARAM type ref to ZCL_BDNL_BADI_PARAMS .
   data GV_F__RSPC type RS_BOOL .
+  data GD_F__SEARCHLOG type RS_BOOL .
 
   methods CONSTRUCTOR
     importing

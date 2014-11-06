@@ -6,8 +6,8 @@ method bas.
   , ld_t__param       type zbnlt_t__param
   , ld_v__dimension   type uj_dim_name
   , ld_v__appset_id   type uj_appset_id
-  , lv_user           type uj0_s_user
-  , lo_security       type ref to cl_uje_check_security
+*  , lv_user           type uj0_s_user
+*  , lo_security       type ref to cl_uje_check_security
 
   .
 
@@ -35,9 +35,9 @@ method bas.
 
   ld_v__member = i01.
 
-  create object lo_security.
-  lv_user-user_id = lo_security->d_server_admin_id.
-  cl_uj_context=>set_cur_context( i_appset_id = ld_v__appset_id is_user = lv_user ).
+*  create object lo_security.
+*  lv_user-user_id = lo_security->d_server_admin_id.
+  cl_uj_context=>set_cur_context( i_appset_id = ld_v__appset_id is_user = zcl_bd00_context=>gd_s__user_id ).
 
   condense ld_v__member no-gaps.
   split ld_v__member at `,` into table ld_t__member.

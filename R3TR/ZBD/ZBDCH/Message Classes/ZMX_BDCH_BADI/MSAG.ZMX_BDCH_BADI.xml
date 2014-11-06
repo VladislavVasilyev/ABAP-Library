@@ -115,7 +115,7 @@
 		<item>
 			<SPRSL>E</SPRSL>
 			<MSGNR>011</MSGNR>
-			<TEXT>Work Status: OK</TEXT>
+			<TEXT>Work Status: &amp;1</TEXT>
 		</item>
 		<item>
 			<SPRSL>R</SPRSL>

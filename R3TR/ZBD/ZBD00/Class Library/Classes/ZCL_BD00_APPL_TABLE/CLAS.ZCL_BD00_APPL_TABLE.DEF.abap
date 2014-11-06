@@ -10,7 +10,8 @@ class zcl_bd00_appl_table definition local friends lcl_log.
 *----------------------------------------------------------------------*
 *
 *----------------------------------------------------------------------*
-class lcl_process_data definition friends zcl_bd00_appl_table.
+class lcl_process_data
+  definition final friends zcl_bd00_appl_table .
   public section.
     types ty_read_mode type c length 1.
 
@@ -39,6 +40,7 @@ class lcl_process_data definition friends zcl_bd00_appl_table.
         raising   zcx_bd00_read_data
     , write_data_arfc_receive
         importing p_task type clike
+    , get_ref_range_table returning value(ref) type ref to data
     .
 
   private section.
@@ -54,7 +56,7 @@ class lcl_process_data definition friends zcl_bd00_appl_table.
     , gt_message          type rs_t_msg
     , gf_arfc_read        type rs_bool
     , gf_suppress_zero    type rs_bool
-    , gt_suppress_zero    type zbd0t_ty_t_kf
+*    , gt_suppress_zero    type zbd0t_ty_t_kf
     , gv_table_kind       type abap_tablekind
     , gt_alias            type zbd00_t_alias_rfc
     , gv_nr_pack_read     type i
@@ -69,6 +71,7 @@ class lcl_process_data definition friends zcl_bd00_appl_table.
     : read_data_arfc
          returning value(e_eod) type rs_bool
          raising zcx_bd00_read_data
+                 zcx_bd00_rfc_task
     , read_data_srfc
          returning value(e_eod) type rs_bool
          raising zcx_bd00_read_data
@@ -79,18 +82,21 @@ class lcl_process_data definition friends zcl_bd00_appl_table.
     , generate_data
          importing mode type ty_read_mode
          returning value(e_st) type zbd0c_ty_read_st
-         raising zcx_bd00_read_data
+         raising zcx_bd00_read_data zcx_bd00_create_rule cx_static_check
     , generate_dimension
          returning value(e_st) type zbd0c_ty_read_st
+         raising cx_static_check
     , loop
          importing index type i default 0
                    next_pack type rs_bool
                    packagesize type i
          returning value(e_pack) type rs_bool
+         raising cx_dynamic_check cx_static_check
     , generate
          importing packagesize type i
                    next_pack type rs_bool
          exporting eod  type rs_bool
+         raising cx_dynamic_check cx_static_check
     , next_line
          importing f_read type rs_bool
                    object type ref to zcl_bd00_appl_table
@@ -99,6 +105,7 @@ class lcl_process_data definition friends zcl_bd00_appl_table.
     , write_data_arfc
          importing
           i_mode type zrb_write_back_mode default `A`
+          raising zcx_bd00_rfc_task
     , get_range
          importing it_range type uj0_t_sel
     .
@@ -109,15 +116,15 @@ endclass.                    "cl_access_data DEFINITION
 *----------------------------------------------------------------------*
 *
 *----------------------------------------------------------------------*
-class lcl_log definition.
+class lcl_log definition final.
 
   public section.
 
-    data gd_t__read           type zbd0t_t__log_read.
-    data gd_t__read_dim       type zbd0t_t__log_dimension.
-    data gd_t__write          type zbd0t_t__log_write.
-    data gd_t__open_write     type zbd0t_t__log_write.
-    data gd_t__num_rows       type zbd0t_t__log_actual.
+    data gd_t__read           type zbd0t_t__log_read.       "#EC NEEDED
+    data gd_t__read_dim       type zbd0t_t__log_dimension.  "#EC NEEDED
+    data gd_t__write          type zbd0t_t__log_write.      "#EC NEEDED
+    data gd_t__open_write     type zbd0t_t__log_write.      "#EC NEEDED
+    data gd_t__num_rows       type zbd0t_t__log_actual.     "#EC NEEDED
 
 
     methods

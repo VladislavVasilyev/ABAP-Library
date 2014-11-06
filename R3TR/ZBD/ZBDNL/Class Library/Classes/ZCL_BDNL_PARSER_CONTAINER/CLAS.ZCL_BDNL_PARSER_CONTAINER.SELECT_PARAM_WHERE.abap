@@ -12,13 +12,13 @@ method select_param_where.
   data
   : ld_s__range         type uj0_s_sel
   , ld_v__token         type string
-  , ld_v__express       type string value ``
+*  , ld_v__express       type string value ``
   , ld_v__filter_name   type string
   , ld_s__frange        type zbnlt_s__stack_range
   , ld_t__params        type zbnlt_t__param
   , ld_v__params        type line of zbnlt_t__param
-  , lr_o__appl          type ref to zcl_bd00_application
-  , ld_v__infocube      type rsinfoprov
+*  , lr_o__appl          type ref to zcl_bd00_application
+*  , ld_v__infocube      type rsinfoprov
   , lo_security         type ref to cl_uje_check_security
   , lv_user             type uj0_s_user
   .
@@ -28,7 +28,13 @@ method select_param_where.
 * установка контекста
   create object lo_security.
   lv_user-user_id = lo_security->d_server_admin_id.
-  cl_uj_context=>set_cur_context( i_appset_id = i_appset_id is_user = lv_user ).
+
+  try.
+      cl_uj_context=>set_cur_context( i_appset_id = i_appset_id is_user = lv_user ).
+    catch zcx_bd00_create_obj cx_uj_obj_not_found.
+  endtry.
+
+
 
 *  try.
 *      if i_appset_id = zblnc_keyword-bp.
@@ -115,7 +121,7 @@ method select_param_where.
       if gr_o__cursor->check_tokens( q = 2 regex = cs_dimwattr ) = abap_true.
         ld_s__range-attribute = zcl_bdnl_where_functions=>attribute = gr_o__cursor->get_token( esc = abap_true trn = 2 ).
         if i_appl_id is supplied.
-           if i_appl_obj->check_dimension( dimension = ld_s__range-dimension attribute = ld_s__range-attribute ) = abap_false.
+          if i_appl_obj->check_dimension( dimension = ld_s__range-dimension attribute = ld_s__range-attribute ) = abap_false.
             raise exception type zcx_bdnl_syntax_error
               exporting textid    = zcx_bdnl_syntax_error=>zcx_attribute
                         dimension = ld_s__range-dimension

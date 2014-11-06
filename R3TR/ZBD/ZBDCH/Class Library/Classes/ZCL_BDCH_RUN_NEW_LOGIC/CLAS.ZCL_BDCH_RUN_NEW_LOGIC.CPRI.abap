@@ -3,7 +3,6 @@
 private section.
 
   data DO_CONFIG type ref to CL_UJD_CONFIG .
-  data DO_SELECT_READER type ref to IF_UJD_GET_TRANSFORM .
   data D_PACKAGE_ID type UJ_PACKAGE_ID .
   data D_SENDMAIL type STRING .
   data GD_F__NORUN type RS_BOOL .
@@ -33,12 +32,12 @@ private section.
       !N type I
     returning
       value(OUT) type STRING .
-  type-pools ZBD0T .
   methods GET_NR_ROWS
     importing
       !I_S__READ type ZBD0T_S__LOG_READ optional
       !I_S__WRITE type ZBD0T_S__LOG_WRITE optional
       !I_V__SIZE type I default 7
+      !I_V__NUM type I optional
     returning
       value(E_V__TEXT) type STRING .
   methods SEND_EMAIL
@@ -68,10 +67,11 @@ private section.
       value(E_V__TEXT) type STRING .
   methods PRINT_LOG_FOR_TABLE
     importing
-      !I_T__CONTAINERS type ZBNLT_T__CONTAINERS
       !I_V__PATH type UJ_DOCNAME
     returning
-      value(E_F__WARNING) type RS_BOOL .
+      value(E_F__WARNING) type RS_BOOL
+    raising
+      CX_STATIC_CHECK .
   methods GET_CV_LOGIC
     importing
       !IT_FILTER_TAB type UJD_TH_DIM_MEM

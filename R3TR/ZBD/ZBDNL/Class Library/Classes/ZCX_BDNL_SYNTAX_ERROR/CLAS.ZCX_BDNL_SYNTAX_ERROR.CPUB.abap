@@ -297,6 +297,24 @@ public section.
       attr3 type scx_attrname value '',
       attr4 type scx_attrname value '',
     end of ZCX_NO_CAN_SAVE .
+  constants:
+    begin of ZCX_ERR_IN_FUNCTION,
+      msgid type symsgid value 'ZBDNL',
+      msgno type symsgno value '057',
+      attr1 type scx_attrname value 'TOKEN1',
+      attr2 type scx_attrname value '',
+      attr3 type scx_attrname value '',
+      attr4 type scx_attrname value '',
+    end of ZCX_ERR_IN_FUNCTION .
+  constants:
+    begin of ZCX_READING_FILE,
+      msgid type symsgid value 'ZBDNL',
+      msgno type symsgno value '065',
+      attr1 type scx_attrname value 'TOKEN',
+      attr2 type scx_attrname value '',
+      attr3 type scx_attrname value '',
+      attr4 type scx_attrname value '',
+    end of ZCX_READING_FILE .
   class-data LINE type I .
   class-data OFFSET type I .
   class-data TOKEN type STRING .
@@ -310,6 +328,7 @@ public section.
   class-data TABLENAME type ZBNLT_V__TABLENAME .
   class-data CURSOR type ref to ZCL_BDNL_CURSOR .
   class-data TOKEN1 type STRING .
+  class-data MESSAGE type STRING .
 
   methods CONSTRUCTOR
     importing
@@ -326,4 +345,5 @@ public section.
       !ATTRIBUTE type UJ_ATTR_NAME optional
       !TABLENAME type ZBNLT_V__TABLENAME optional
       !CURSOR type ref to ZCL_BDNL_CURSOR optional
-      !TOKEN1 type STRING optional .
+      !TOKEN1 type STRING optional
+      !MESSAGE type STRING optional .

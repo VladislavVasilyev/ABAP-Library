@@ -1,8 +1,8 @@
 method set_rule_assign.
 
   data
-  : ld_s__rule_math         type ty_s_rule_math
-  , ld_s__rule_reestr       type ty_s_rules_reestr
+*  : ld_s__rule_math         type ty_s_rule_math
+  : ld_s__rule_reestr       type ty_s_rules_reestr
   , ld_s__cust_link         type ty_s_cust_link
   , ld_s__class_reg         type ty_s_class_reg
   , ld_t__cust_link         type ty_t_cust_link
@@ -25,8 +25,8 @@ method set_rule_assign.
 *╠═══════════════════════════════════════════════════════════════════╣
   ld_s__rule_reestr-id                 = e_id = get_rule_id( ).
   ld_s__rule_reestr-type               = zcl_bd00_int_table=>method-assign.
-  ld_s__rule_reestr-main              ?= me.
-  ld_s__rule_reestr-default           ?= io_default.
+  ld_s__rule_reestr-main              = me.
+  ld_s__rule_reestr-default           = io_default.
 
   read table gd_t__reestr_link
        with table key id = ld_s__rule_reestr-id
@@ -39,7 +39,7 @@ method set_rule_assign.
       loop at gr_o__model->gd_t__components
            assigning <ld_s__tg_components>.
 
-        read table io_default->gr_o__model->gd_t__components
+        read table io_default->gr_o__model->gd_t__components "#EC *
              with table key name = <ld_s__tg_components>
              assigning <ld_s__sc_components>.
 
@@ -87,7 +87,7 @@ method set_rule_assign.
                                   dimension = <ld_s__i_cust_link>-sc-dimension
                                   attribute = <ld_s__i_cust_link>-sc-attribute ).
 
-        ld_s__cust_link-object ?= <ld_s__i_cust_link>-sc-object.
+        ld_s__cust_link-object = <ld_s__i_cust_link>-sc-object.
 
       elseif <ld_s__i_cust_link>-sc-data is bound.
         ld_s__cust_link-data    = <ld_s__i_cust_link>-sc-data.
@@ -151,7 +151,7 @@ method set_rule_assign.
     loop at is_math-operand
          assigning <ld_s__rule_operand>.
 
-      read table ld_t__cust_link
+      read table ld_t__cust_link "#EC *
            with key tg = gr_o__model->gd_v__signeddata
            assigning <ld_s__cust_link>.
 
@@ -172,18 +172,18 @@ method set_rule_assign.
       ld_s__cust_link-op = <ld_s__rule_operand>-var.
 
       if <ld_s__rule_operand>-object is bound.
-        move <ld_s__rule_operand>-object ?to ld_s__cust_link-object.
+        move <ld_s__rule_operand>-object to ld_s__cust_link-object.
         if <ld_s__rule_operand>-kyf is not initial.
           lr_o__appl_ctrl_kyf ?= <ld_s__rule_operand>-object.
           ld_s__cust_link-kyf = lr_o__appl_ctrl_kyf->gr_o__model->get_tech_alias( dimension = <ld_s__rule_operand>-kyf-dimension attribute = <ld_s__rule_operand>-kyf-attribute ).
         endif.
       elseif <ld_s__rule_operand>-data is bound.
-        move <ld_s__rule_operand>-data ?to ld_s__cust_link-data.
+        move <ld_s__rule_operand>-data to ld_s__cust_link-data.
       elseif <ld_s__rule_operand>-const is not initial.
         ld_s__cust_link-const = <ld_s__rule_operand>-const.
       endif.
 
-      ld_s__rule_math-object ?= <ld_s__rule_operand>-object.
+*      ld_s__rule_math-object ?= <ld_s__rule_operand>-object.
       insert ld_s__cust_link into table ld_t__cust_link.
     endloop.
 
@@ -193,7 +193,7 @@ method set_rule_assign.
       insert ld_s__cust_link into table ld_t__cust_link assigning <ld_s__cust_link>.
     endif.
 
-    read table ld_t__cust_link
+    read table ld_t__cust_link "#EC *
          with key tg = gr_o__model->gd_v__signeddata
          assigning <ld_s__cust_link>.
 
@@ -205,7 +205,7 @@ method set_rule_assign.
 *╚═══════════════════════════════════════════════════════════════════╝
 
   ld_s__class_reg-id        = e_id.
-  ld_s__class_reg-main     ?= me.
+  ld_s__class_reg-main     = me.
   ld_s__class_reg-class     = zcl_bd00_int_table=>create_rule( e_id ).
   insert ld_s__class_reg into table gd_t__class_reg.
 

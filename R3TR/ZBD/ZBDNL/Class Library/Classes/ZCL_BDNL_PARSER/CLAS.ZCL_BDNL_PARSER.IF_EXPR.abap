@@ -1,13 +1,13 @@
 method if_expr.
 
-  data
-  : ld_s__token         type string
-  , ld_v__token_o       type string
-  .
+*  data
+*  : ld_s__token         type string
+*  : ld_v__token_o       type string
+*  .
 
-  field-symbols
-  : <ld_s__check>       type zbnlt_s__stack_check
-  .
+*  field-symbols
+*  : <ld_s__check>       type zbnlt_s__stack_check
+*  .
 
   return = if_term( abap_true ).
 

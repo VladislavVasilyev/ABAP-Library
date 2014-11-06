@@ -1,12 +1,7 @@
 method CLEAR_CONTAINERS.
 
   data
-  : ld_v__rule_id           type zbd0t_id_rules
-  , ld_s__math              type zbd0t_ty_s_rule_math
-  , ld_s__operand           type zbd0t_ty_s_math_operand
-  , ld_v__str               type string
-  , lr_s__containers        type ref to zbnlt_s__containers
-  , ld_v__cnt               type i
+  : ld_v__cnt               type i
   , ld_v__packsize          type i
   , ld_v__packsize_str      type string
   , ld_v__packstart         type tzntstmpl
@@ -19,7 +14,6 @@ method CLEAR_CONTAINERS.
 
   field-symbols
   : <ld_s__stack>           type zcl_bdnl_container=>ty_s__reestr
-*  , <ld_s__containers>      type zbnlt_s__containers
   .
 
   ld_t__clear = zcl_bdnl_container=>get_container_clear( ).
@@ -27,7 +21,7 @@ method CLEAR_CONTAINERS.
   loop     at ld_t__clear
     assigning <ld_s__stack>.
 
-    lr_o__container ?= zcl_bdnl_container=>create_container( <ld_s__stack>-tablename ).
+    lr_o__container = zcl_bdnl_container=>create_container( <ld_s__stack>-tablename ).
 
     clear ld_v__cnt.
     message s047(zbdnl) with

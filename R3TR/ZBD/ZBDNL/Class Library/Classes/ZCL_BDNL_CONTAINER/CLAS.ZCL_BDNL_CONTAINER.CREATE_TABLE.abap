@@ -5,9 +5,9 @@ method create_table.
   , ld_f__create              type rs_bool
   .
 
-  field-symbols
-  : <ld_s__reestr>            type ty_s__reestr
-  .
+*  field-symbols
+*  : <ld_s__reestr>            type ty_s__reestr
+*  .
 
   case gd_s__param-command.
     when zblnc_keyword-select.
@@ -43,7 +43,7 @@ method create_table.
   ld_s__log-f_master  = f_master.
 
   if ld_f__create = abap_true.
-    ld_s__log-table    ?= gr_o__container.
+    ld_s__log-table    = gr_o__container.
   else.
     clear ld_s__log-table.
   endif.

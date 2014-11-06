@@ -5,7 +5,7 @@ method change_year.
   data
   : ld_t__timelist type standard table of string
   , ld_v__timelist type string
-  , ld_v__e        type line of zbnlt_t__param
+*  , ld_v__e        type line of zbnlt_t__param
   , ld_v__time     type ty_time
   , ld_v__year     type c length 4
   .

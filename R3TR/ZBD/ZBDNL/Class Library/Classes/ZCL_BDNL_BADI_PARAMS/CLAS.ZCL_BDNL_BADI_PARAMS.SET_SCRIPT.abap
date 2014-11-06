@@ -1,6 +1,5 @@
-method SET_SCRIPT.
+method set_script.
 
-  GD_T__SCRIPT = I_T__SCRIPT.
-
+  gd_t__script = i_t__script.
 
 endmethod.

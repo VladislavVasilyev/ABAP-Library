@@ -1,7 +1,7 @@
 method set_param.
 
-  data
-  : result_tab        type match_result_tab.
+*  data
+*  : result_tab        type match_result_tab.
 
   data
   : ld_s__papam       type ujk_s_script_logic_hashentry
@@ -11,7 +11,7 @@ method set_param.
   , ld_v__left        type string
   , ld_v__right       type string
   , ld_v__param_rate  type string
-  , ld_v__string      type string
+*  , ld_v__string      type string
   , l_value1           type string
   , l_value2           type string
   .

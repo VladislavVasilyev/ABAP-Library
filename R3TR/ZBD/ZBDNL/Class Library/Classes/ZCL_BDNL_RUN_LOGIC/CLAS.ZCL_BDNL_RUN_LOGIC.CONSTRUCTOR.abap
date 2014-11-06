@@ -7,6 +7,6 @@ method constructor.
       num           = i_v__num_tasks
       parallel_task = i_f__parallel_task.
 
-  gd_f__rspc = i_f__rspc.
+*  gd_f__rspc = i_f__rspc.
 
 endmethod.

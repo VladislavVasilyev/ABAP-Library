@@ -15,7 +15,7 @@ method map_ext2_license.
   var2_str = i02 + 1.
   var2 = var2_str.
 
-  break-point.
+*  break-point.
 
 *  concatenate var1(4) var1+4(2) into var_s_1.
 *  var_i_1 = var_s_1.

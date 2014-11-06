@@ -3,15 +3,15 @@ method select_param_into.
   constants
   : cs_regex_type_table type string value `^(SORTED\sTABLE|HASHED\sTABLE|STANDARD\sTABLE)\>\s\<([A-Z0-9\_]+)\>`
   , cs_standart_table   type string value `^(TABLE)\>\s\<([A-Z0-9\_]+)\>`
-  , cs_type_table       type string value `^(MASTER|SAVE)\>`
-  , cs_package_size     type string value `^(PACKAGE\sSIZE)\>\s\<([0-9]+)\>`
+*  , cs_type_table       type string value `^(MASTER|SAVE)\>`
+*  , cs_package_size     type string value `^(PACKAGE\sSIZE)\>\s\<([0-9]+)\>`
   .
 
-  data
-  : ld_v__token       type string
-  , ld_v__express     type string value ``
-  , ld_v__mode        type string
-  .
+*  data
+*  : ld_v__token       type string
+*  : ld_v__express     type string value ``
+*  : ld_v__mode        type string
+*  .
 
   if gr_o__cursor->set_cursor( word = zblnc_keyword-into escape = zblnc_keyword-dot fesc = abap_true ) eq err_index.
     raise exception type zcx_bdnl_syntax_error

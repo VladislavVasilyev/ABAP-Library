@@ -1,9 +1,9 @@
 method add_line.
-  data
-     : f_change_class type rs_bool value abap_true
-     , ls_class_reg   like line of gd_t__class_reg
-     , ls_signature   type ty_signature
-     .
+*  data
+*     : f_change_class type rs_bool value abap_true
+*     , ls_class_reg   like line of gd_t__class_reg
+*     , ls_signature   type ty_signature
+*     .
 
 *  ls_signature-type = zcl_bd00_int_table=>method-add.
 *  ls_signature-object = io_line.

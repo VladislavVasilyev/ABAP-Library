@@ -1,16 +1,15 @@
-method RUN.
+method run.
 
   data
-  : ld_s__stack     type zbnlt_s__stack
-  , ld_s__script    type zcl_bdnl_badi_params=>ty_s__script
+  : ld_s__script    type zcl_bdnl_badi_params=>ty_s__script
+  , ld_v__message   type string
   .
 
   field-symbols
-  : <ld_s__script>  type zcl_bdnl_badi_params=>ty_s__script
-  , <ld_s__for>     type zbnlt_s__for
+  : <ld_s__for>     type zbnlt_s__for
   .
 
-  break-point.
+  break-point. "#EC NOBREAK
 
   loop at  gr_o__params->gd_t__script
      into  ld_s__script
@@ -65,8 +64,18 @@ method RUN.
 
     endwhile.
     message s048(zbdnl).
-  endloop.
 
-  sort gd_t__containers  by script turn log_turn ascending.
+    " not optimal reading in script
+    if gd_t__searchmessage is not initial.
+      concatenate `Not optimal reading in script ` ld_s__script-appset_id `/` ld_s__script-appl_id `/` ld_s__script-script into ld_v__message.
+
+      append ld_v__message to cd_t__searchmessage.
+      append lines of gd_t__searchmessage to cd_t__searchmessage.
+
+      clear gd_t__searchmessage.
+
+    endif.
+
+  endloop.
 
 endmethod.

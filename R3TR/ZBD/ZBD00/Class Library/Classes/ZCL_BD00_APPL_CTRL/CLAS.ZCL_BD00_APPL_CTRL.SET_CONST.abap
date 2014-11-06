@@ -22,8 +22,8 @@ method set_const.
     assign gr_o__model->gr_t__dimension->* to <lt_dimension>.
 
     translate
-    : ld_s__dimension-dimension to upper case
-    , ld_s__dimension-attribute to upper case
+    : ld_s__dimension-dimension to upper case "#EC TRANSLANG
+    , ld_s__dimension-attribute to upper case "#EC TRANSLANG
     .
 
     read table     <lt_dimension>

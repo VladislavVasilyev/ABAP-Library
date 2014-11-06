@@ -2,10 +2,10 @@ method select_statements.
 
   data
   : ld_v__index         type i
-  , ld_v__token         type string
+  , ld_s__stack	        type zbnlt_s__stack_container
   .
 
-  clear e_s__stack.
+  clear ld_s__stack.
 
   " обязательные парметры
   ld_v__index = gr_o__cursor->gd_v__index.
@@ -22,11 +22,11 @@ method select_statements.
 
   call method cmd_from
     importing
-      e_appset_id = e_s__stack-appset_id
-      e_appl_id   = e_s__stack-appl_id
-      e_dim_name  = e_s__stack-dim_name
-      e_appl_obj  = e_s__stack-appl_obj
-      e_dist      = e_s__stack-destination.
+      e_appset_id = ld_s__stack-appset_id
+      e_appl_id   = ld_s__stack-appl_id
+      e_dim_name  = ld_s__stack-dim_name
+      e_appl_obj  = ld_s__stack-appl_obj
+      e_dist      = ld_s__stack-destination.
 
   gr_o__cursor->set_token_pos( ld_v__index ).
 
@@ -35,10 +35,10 @@ method select_statements.
 *--------------------------------------------------------------------*
   call method select_param_into
     importing
-      e_v__type_table = e_s__stack-type_table
-      e_v__tablename  = e_s__stack-tablename.
+      e_v__type_table = ld_s__stack-type_table
+      e_v__tablename  = ld_s__stack-tablename.
 
-  e_v__tablename = e_s__stack-tablename.
+  e_v__tablename = ld_s__stack-tablename.
   gr_o__cursor->set_token_pos( ld_v__index ).
 
 *--------------------------------------------------------------------*
@@ -46,17 +46,17 @@ method select_statements.
 *--------------------------------------------------------------------*
   call method select_param_fields
     exporting
-      i_appset_id          = e_s__stack-appset_id
-      i_appl_id            = e_s__stack-appl_id
-      i_v__type_table      = e_s__stack-type_table
-      i_appl_obj           = e_s__stack-appl_obj
+      i_appset_id          = ld_s__stack-appset_id
+      i_appl_id            = ld_s__stack-appl_id
+      i_v__type_table      = ld_s__stack-type_table
+      i_appl_obj           = ld_s__stack-appl_obj
     importing
-      e_t__alias           = e_s__stack-alias
-      e_t__dimlist         = e_s__stack-dim_list
-      e_t__key_list        = e_s__stack-kyf_list
-      e_v__tech_type_table = e_s__stack-tech_type_table
-      e_t__dimension       = e_s__stack-dimension
-      e_f__write           = e_s__stack-f_write.
+      e_t__alias           = ld_s__stack-alias
+      e_t__dimlist         = ld_s__stack-dim_list
+      e_t__key_list        = ld_s__stack-kyf_list
+      e_v__tech_type_table = ld_s__stack-tech_type_table
+      e_t__dimension       = ld_s__stack-dimension
+      e_f__write           = ld_s__stack-f_write.
 
 *--------------------------------------------------------------------*
 * $WHERE - не обязательный параметр
@@ -65,11 +65,11 @@ method select_statements.
     gr_o__cursor->get_token( esc = abap_true ).
     call method select_param_where
       exporting
-        i_appset_id = e_s__stack-appset_id
-        i_appl_id   = e_s__stack-appl_id
-        i_appl_obj  = e_s__stack-appl_obj
+        i_appset_id = ld_s__stack-appset_id
+        i_appl_id   = ld_s__stack-appl_id
+        i_appl_obj  = ld_s__stack-appl_obj
       importing
-        e_t__range  = e_s__stack-range.
+        e_t__range  = ld_s__stack-range.
   endif.
 
 *--------------------------------------------------------------------*
@@ -78,7 +78,7 @@ method select_statements.
   if gr_o__cursor->get_token( ) = zblnc_keyword-notsupress.
     gr_o__cursor->get_token( esc = abap_true ).
     if gr_o__cursor->get_token( esc = abap_true ) = zblnc_keyword-zero.
-      e_s__stack-notsupresszero = abap_true.
+      ld_s__stack-notsupresszero = abap_true.
     else.
       raise exception type zcx_bdnl_syntax_error
       exporting textid    = zcx_bdnl_syntax_error=>zcx_expected
@@ -95,6 +95,6 @@ method select_statements.
                     index     = gr_o__cursor->gd_v__cindex .
   endif.
 
-  e_o__container = ZCL_BDNL_CONTAINER=>get_table( e_s__stack ).
+  e_o__container = zcl_bdnl_container=>get_table( ld_s__stack ).
 
 endmethod.
