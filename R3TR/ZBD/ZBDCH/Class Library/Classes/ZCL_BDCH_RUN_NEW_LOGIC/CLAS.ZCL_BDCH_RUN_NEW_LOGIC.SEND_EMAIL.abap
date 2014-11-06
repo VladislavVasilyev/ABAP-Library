@@ -192,7 +192,7 @@ method send_email.
 
   message e013(zmx_bdch_badi) into ls_mailtxt. " разделитель
   append ls_mailtxt to lt_mailtxt.
-  lt_searchmailtxt = lt_mailtxt.
+
 *--------------------------------------------------------------------*
   loop at gt_message  assigning <ld_s__message> where msgid is initial. " Сообщения
     append <ld_s__message>-message to lt_mailtxt.
@@ -211,6 +211,8 @@ method send_email.
 
     append lines of lt_value to lt_mailtxt.
   endif.
+
+  lt_searchmailtxt = lt_mailtxt.
 
   if if_log = `1`.
     message e013(zmx_bdch_badi) into ls_mailtxt. " разделитель
