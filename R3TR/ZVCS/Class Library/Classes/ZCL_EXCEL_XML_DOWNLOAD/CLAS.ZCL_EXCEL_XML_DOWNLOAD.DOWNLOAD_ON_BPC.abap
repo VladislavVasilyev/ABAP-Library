@@ -55,7 +55,7 @@ method download_on_bpc.
       i_user                      = i_user_id
       i_appset                    = i_appset_id
       i_docname                   = ld_v__docname
-      i_compression               = 'Y'
+      i_compression               = 'N'
 *   I_SPLICE_ZIP                = 'Y'
       i_doc_content               = ld_v__buf
 * IMPORTING

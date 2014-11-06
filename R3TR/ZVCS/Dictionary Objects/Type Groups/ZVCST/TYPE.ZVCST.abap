@@ -172,12 +172,20 @@ types: begin of zvcst_s__sequence
        , field    type string
        , end of zvcst_s__sequence.
 
+types: begin of zvcst_s__rename
+       , field    type string
+       , name     type string
+       , end of zvcst_s__rename.
+
 types zvcst_t__sequence type standard table of zvcst_s__sequence with non-unique default key.
+
+types zvcst_t__rename type hashed table of zvcst_s__rename with unique key field.
 
 types: begin of zvcst_s__xmlworksheet
        , name                 type string
        , table                type ref to data
        , sequence             type zvcst_t__sequence
+       , rename               type zvcst_t__rename
        , f__filter            type rs_bool
        , f__validtextlength   type rs_bool
        , f__splitvertical     type rs_bool

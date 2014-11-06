@@ -34,10 +34,10 @@ method create_worksheet.
   field-symbols
   : <ld_t__table>               type any table
   , <ld_s__table>               type any
-  , <ld_s__comp>                type  abap_compdescr
+  , <ld_s__comp>                type abap_compdescr
   , <ld_v__elem>                type any
   , <ld_s__sequence>            type zvcst_s__sequence
-
+  , <ld_s__rename>              type zvcst_s__rename
   .
 
   assign i_s__worksheet-table->* to <ld_t__table>.
@@ -101,21 +101,24 @@ method create_worksheet.
 
 
   if i_s__worksheet-f__filter = abap_true.
-    set_simp_el>  lr_i__worksheetoptions `WorksheetOptions` `` lr_i__worksheet.
+    set_simp_el>  lr_i__worksheetoptions `WorksheetOptions` ``        lr_i__worksheet.
     set_attr_ns>  lr_i__worksheetoptions `` `xmlns`         `urn:schemas-microsoft-com:office:excel`.
-    set_simp_el>  lr_i__element          `Unsynced`         ``      lr_i__worksheetoptions.
-    set_simp_el>  lr_i__element          `Selected`         ``      lr_i__worksheetoptions.
-    set_simp_el>  lr_i__element          `FreezePanes`      ``      lr_i__worksheetoptions.
-    set_simp_el>  lr_i__element          `FrozenNoSplit`    ``      lr_i__worksheetoptions.
-    set_simp_el>  lr_i__element          `SplitHorizontal`  `1`     lr_i__worksheetoptions.
-    set_simp_el>  lr_i__element          `TopRowBottomPane` `1`     lr_i__worksheetoptions.
+    set_simp_el>  lr_i__element          `Unsynced`         ``        lr_i__worksheetoptions.
+    set_simp_el>  lr_i__element          `Selected`         ``        lr_i__worksheetoptions.
+    set_simp_el>  lr_i__element          `FreezePanes`      ``        lr_i__worksheetoptions.
+    set_simp_el>  lr_i__element          `FrozenNoSplit`    ``        lr_i__worksheetoptions.
+    set_simp_el>  lr_i__element          `SplitHorizontal`  `1`       lr_i__worksheetoptions.
+    set_simp_el>  lr_i__element          `TopRowBottomPane` `1`       lr_i__worksheetoptions.
     if i_s__worksheet-f__splitvertical = abap_true.
-      set_simp_el>  lr_i__element         `SplitVertical`    `1`     lr_i__worksheetoptions.
-      set_simp_el>  lr_i__element         `LeftColumnRightPane` `1`  lr_i__worksheetoptions.
+      set_simp_el>  lr_i__element         `SplitVertical`    `1`      lr_i__worksheetoptions.
+      set_simp_el>  lr_i__element         `LeftColumnRightPane` `1`   lr_i__worksheetoptions.
+      set_simp_el>  lr_i__element         `ActivePane`       `0`       lr_i__worksheetoptions.
+    else.
+      set_simp_el>  lr_i__element         `ActivePane`       `2`       lr_i__worksheetoptions.
+
     endif.
-    set_simp_el>  lr_i__element          `ActivePane`       `0`     lr_i__worksheetoptions.
-    set_simp_el>  lr_i__element          `ProtectObjects`   `False` lr_i__worksheetoptions.
-    set_simp_el>  lr_i__element          `ProtectScenarios` `False` lr_i__worksheetoptions.
+    set_simp_el>  lr_i__element          `ProtectObjects`   `False`   lr_i__worksheetoptions.
+    set_simp_el>  lr_i__element          `ProtectScenarios` `False`   lr_i__worksheetoptions.
 
     concatenate `R1C1:R1C` ld_v__columncount into ld_v__str.
     set_simp_el> lr_i__autofilter  `AutoFilter` `` lr_i__worksheet.
@@ -146,11 +149,19 @@ method create_worksheet.
   set_attr_ns>      lr_i__row `ss` 'AutoFitHeight' `0`.
 
 
-
-
   loop at ld_t__comp assigning <ld_s__comp>.
     add 1 to ld_v__cnt.
     ld_v__value           = <ld_s__comp>-name.
+
+    if i_s__worksheet-rename is not initial.
+      read table i_s__worksheet-rename
+           assigning <ld_s__rename>
+           with table key field = <ld_s__comp>-name.
+
+      if sy-subrc = 0.
+        ld_v__value = <ld_s__rename>-name.
+      endif.
+    endif.
 
     set_simp_el> lr_i__cell `Cell` `` lr_i__row.
     set_attr_ns> lr_i__cell `ss`  'StyleID' 'Header'.
@@ -197,7 +208,15 @@ method create_worksheet.
       case <ld_s__comp>-type_kind.
         when 'I' or 'P' or 'F' or 'N'.
           ld_v__type = 'Number'.
-          ld_v__value = <ld_v__elem>.
+
+          case sign( <ld_v__elem> ).
+            when '-1'.
+              ld_v__value = <ld_v__elem> * -1.
+              concatenate `-` ld_v__value into ld_v__value.
+            when others.
+              ld_v__value = <ld_v__elem>. "ld_v__text.
+          endcase.
+
           condense ld_v__value no-gaps.
         when 'D' or 'T'.
           ld_v__type = 'String'.
@@ -215,8 +234,12 @@ method create_worksheet.
         set_attr_ns> lr_i__cell `ss` `StyleID` `Firstcolumn`.
       endif.
 
-      set_simp_el> lr_i__data `Data` ld_v__value lr_i__cell.
-      set_attr_ns>      lr_i__data `ss` `Type` ld_v__type.
+      if ld_v__type = 'Number'.
+        set_attr_ns> lr_i__cell `ss` `StyleID` `Finance`.
+      endif.
+
+      set_simp_el> lr_i__data `Data`  ld_v__value lr_i__cell.
+      set_attr_ns> lr_i__data `ss`    `Type`      ld_v__type.
     endloop.
   endloop.
 

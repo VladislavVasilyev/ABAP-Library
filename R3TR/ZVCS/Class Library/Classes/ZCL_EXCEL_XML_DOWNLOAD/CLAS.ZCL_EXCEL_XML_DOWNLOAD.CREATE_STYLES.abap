@@ -6,7 +6,6 @@ method create_styles.
   , lr_i__borders         type ref to if_ixml_element
   .
 
-
 * Header row - Yellow, Bold
   set_simp_el> lr_i__style   'Style' `` gr_i__styles.
   set_attr_ns> lr_i__style   `ss`    `ID` `Header`.
@@ -23,29 +22,37 @@ method create_styles.
   " First column
   set_simp_el> lr_i__style    `Style` `` gr_i__styles.
   set_attr_ns> lr_i__style    `ss` `ID` `Firstcolumn`.
+  set_simp_el> lr_i__format   `Aligment` `` lr_i__style.
+  set_attr_ns> lr_i__format   `ss` `Vertical` `Bottom`.
   set_simp_el> lr_i__borders  `Borders`  `` lr_i__style.
   set_simp_el> lr_i__format   `Border` `` lr_i__borders.
   set_attr_ns> lr_i__format   `ss` `Position`  `Bottom`.
   set_attr_ns> lr_i__format   `ss` `LineStyle` `Continuous`.
-  set_attr_ns> lr_i__format   `ss` `Weight`    `1`.
+  "set_attr_ns> lr_i__format   `ss` `Weight`    `1`.
 
   set_simp_el> lr_i__format   `Border` `` lr_i__borders.
   set_attr_ns> lr_i__format   `ss` `Position`  `Left`.
   set_attr_ns> lr_i__format   `ss` `LineStyle` `Continuous`.
-  set_attr_ns> lr_i__format   `ss` `Weight`    `1`.
+  "set_attr_ns> lr_i__format   `ss` `Weight`    `1`.
 
   set_simp_el> lr_i__format   `Border` `` lr_i__borders.
   set_attr_ns> lr_i__format   `ss` `Position`  `Right`.
   set_attr_ns> lr_i__format   `ss` `LineStyle` `Continuous`.
-  set_attr_ns> lr_i__format   `ss` `Weight`    `1`.
+  "set_attr_ns> lr_i__format   `ss` `Weight`    `1`.
 
   set_simp_el> lr_i__format   `Border` `` lr_i__borders.
   set_attr_ns> lr_i__format   `ss` `Position`  `Top`.
   set_attr_ns> lr_i__format   `ss` `LineStyle` `Continuous`.
-  set_attr_ns> lr_i__format   `ss` `Weight`    `1`.
+  "set_attr_ns> lr_i__format   `ss` `Weight`    `1`.
 
   set_simp_el> lr_i__format  `Interior` `` lr_i__style.
   set_attr_ns> lr_i__format  `ss` `Color`   `#F2F2F2`.
   set_attr_ns> lr_i__format  `ss` `Pattern` `Solid`.
+
+  " Finance
+  set_simp_el> lr_i__style    `Style` `` gr_i__styles.
+  set_attr_ns> lr_i__style    `ss` `ID` `Finance`.
+  set_simp_el> lr_i__format   `NumberFormat` `` lr_i__style.
+  set_attr_ns> lr_i__format   `ss` `Format`   `#,##0.00_);[Red](#,##0.00)`.
 
 endmethod.
