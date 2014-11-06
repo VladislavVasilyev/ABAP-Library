@@ -4,7 +4,6 @@ method get_nr_pack.
   : ld_v__str  type string
   , ld_v__len  type i
   , ld_v__let  type string
-  , ld_v__size type i
   .
 
   clear ld_v__let.

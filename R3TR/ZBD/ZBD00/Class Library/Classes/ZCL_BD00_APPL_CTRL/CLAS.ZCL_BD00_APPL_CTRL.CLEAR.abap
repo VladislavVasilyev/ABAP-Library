@@ -2,7 +2,7 @@ method CLEAR.
 
   field-symbols
   : <table>  type any table
-  , <cline>  type any
+*  , <cline>  type any
   .
 
   if gr_o__line is bound.

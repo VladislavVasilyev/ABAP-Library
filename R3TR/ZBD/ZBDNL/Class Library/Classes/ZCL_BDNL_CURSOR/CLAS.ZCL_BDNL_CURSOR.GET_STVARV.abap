@@ -3,13 +3,14 @@ method get_stvarv.
   data
   : ld_v__cnt    type i
   , ld_v__index  type i
-  , ld_v__param1 type string
+*  , ld_v__param1 type string
   , ld_v__return type string
   , ld_v__start_index type i
   .
 
   field-symbols
-  : <ld_s__tokenlist> type zbnlt_s__match_res.
+  : <ld_s__tokenlist> type zbnlt_s__match_res
+  , <ld_v__value> type string.
 
   ld_v__start_index = index.
 
@@ -34,10 +35,14 @@ method get_stvarv.
         if <ld_s__tokenlist>-f_letter   = abap_true or
            <ld_s__tokenlist>-f_variable = abap_true.
 
+          assign <ld_s__tokenlist>-refvalue->* to <ld_v__value>.
+
           select single low
                  from tvarvc
                  into ld_v__return
-                 where name = <ld_s__tokenlist>-value.
+                 where name = <ld_v__value>
+                   and type = `P`
+                   and numb = space.
 
           if sy-subrc ne 0.
             raise exception type zcx_bdnl_syntax_error
@@ -70,7 +75,10 @@ method get_stvarv.
 
   read table gd_t__tokenlist index ld_v__start_index assigning <ld_s__tokenlist>.
 
-  <ld_s__tokenlist>-value      = ld_v__return.
+  create data <ld_s__tokenlist>-refvalue type string.
+  assign <ld_s__tokenlist>-refvalue->* to <ld_v__value>.
+  <ld_v__value> = ld_v__return.
+
   <ld_s__tokenlist>-f_variable = abap_true.
 
 endmethod.

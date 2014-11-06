@@ -10,12 +10,18 @@ public section.
   type-pools ZBLNC .
   type-pools ZBNLT .
 
+  data GD_F__END type RS_BOOL read-only .
+  data GD_T__VARIABLE type ZBNLT_T__VARIABLE read-only .
+  data GD_V__CINDEX type I read-only .
+  data GD_V__CTOKEN type STRING read-only .
   data GD_V__INDEX type I read-only .
   data GD_V__SCRIPT_PATH type STRING read-only .
-  data GD_F__END type RS_BOOL read-only .
-  data GD_V__CTOKEN type STRING read-only .
-  data GD_V__CINDEX type I read-only .
+  data GD_V__VARNAME type STRING read-only .
 
+  methods SET_VARIABLE
+    importing
+      !NAME type STRING
+      !VALUE type STRING .
   methods CHECK_LETTER
     returning
       value(E) type RS_BOOL .
@@ -71,7 +77,9 @@ public section.
       !I_V__FILENAME type UJ_DOCNAME
     exporting
       !E_T__LOGIC type ZBNLT_T__LGFSOURCE
-      !E_S__DOC type UJF_DOC .
+      !E_S__DOC type UJF_DOC
+    raising
+      CX_STATIC_CHECK .
   methods SET_CURSOR
     importing
       !WORD type STRING
@@ -82,17 +90,3 @@ public section.
   methods SET_TOKEN_POS
     importing
       !INDEX type I .
-  methods _DEL_CHECK_NAME
-    raising
-      ZCX_BDNL_EXCEPTION .
-  methods _DEL_GET_INDEX_POS
-    importing
-      !INDEX type I
-    returning
-      value(MATCH) type ZBNLT_S__MATCH_RES .
-  methods _DEL_GET_TOKEN_POS
-    returning
-      value(INDEX) type I .
-  methods _DEL_NEXT_TOKEN
-    returning
-      value(INDEX) type I .

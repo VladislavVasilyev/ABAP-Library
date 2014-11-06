@@ -7,6 +7,7 @@ method create_dyn_add.
   , lt_method              type ty_t_string
   , lt_code                type ty_t_string
   , mess                   type string
+  , line                   type string
   , prog                   type string
   , lin                    type i
   .
@@ -88,6 +89,15 @@ method create_dyn_add.
 *╠═══════════════════════════════════════════════════════════════════╣
   if prog is initial.
     generate subroutine pool lt_code name prog message mess line lin.
+
+    if sy-subrc <> 0.
+      read table lt_code index lin into line.
+
+      raise exception type zcx_bd00_create_rule
+        exporting message = mess
+                  line    = line.
+    endif.
+
     concatenate `\PROGRAM=` prog `\CLASS=DYN` into class.
   endif.
 *╚═══════════════════════════════════════════════════════════════════╝

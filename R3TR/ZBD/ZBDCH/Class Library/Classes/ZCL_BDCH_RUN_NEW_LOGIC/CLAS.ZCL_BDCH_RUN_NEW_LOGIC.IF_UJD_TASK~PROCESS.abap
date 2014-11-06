@@ -71,4 +71,6 @@ method if_ujd_task~process.
 
   et_message = gt_message.
 
+  zcl_bd00_context=>synchr_context( ).
+
 endmethod.

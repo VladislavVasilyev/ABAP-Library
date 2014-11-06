@@ -3,7 +3,6 @@ method work_circle.
   data
   : lr_t__assign                  type hashed table of  ref to zcl_bd00_appl_table with unique default key
   , ld_v__tablename               type zbnlt_v__tablename
-  , lr_s__master                  type ref to zbnlt_s__containers
   , ld_v__turn                    type i
   , ld_v__qlines                  type i
   , ld_s__rules                   type ty_s__rules
@@ -18,23 +17,21 @@ method work_circle.
 *  , lr_o__container               type ref to zcl_bdnl_container
   , lr_o__main                    type ref to zcl_bdnl_container
   , lr_o__container               type ref to zcl_bdnl_container
-  , ld_s__for                     type zbnlt_s__for
-  , ld_s__for_rules               type zbnlt_s__for_rules
+*  , ld_s__for                     type zbnlt_s__for
+*  , ld_s__for_rules               type zbnlt_s__for_rules
   , ld_s__for_search              type zbnlt_s__search
+  , lr_x__root                    type ref to cx_root
+  , ld_v__line                    type string
   .
 
 
   field-symbols
-  : <ld_s__search>                type zbnlt_s__search
-  , <ld_s__tablefordown>          type zbnlt_s__assign
+  : <ld_s__tablefordown>          type zbnlt_s__assign
   , <ld_s__assign_obj>            like line of lr_t__assign
-  , <ld_s__containers>            type zbnlt_s__containers
-*  , <ld_s__master>                type zbnlt_s__containers
   .
 
   clear
-  : gd_t__for_containers1
-  , gd_s__rules
+  : gd_s__rules
   .
 
   zcl_bdnl_container=>clear_for_reestr( ).
@@ -42,7 +39,7 @@ method work_circle.
 *--------------------------------------------------------------------*
 * Create master table
 *--------------------------------------------------------------------*
-  lr_o__main  ?= zcl_bdnl_container=>create_container(
+  lr_o__main  = zcl_bdnl_container=>create_container(
                             tablename    = i_s__for-tablename
                             package_size = i_s__for-packagesize
                             f_master     = abap_true ).
@@ -60,119 +57,145 @@ method work_circle.
     message s040(zbdnl).
   endif.
 
-  do  ld_v__qlines times.
-    clear ld_s__rules.
-    add 1 to ld_v__turn.
+  try.
+      do  ld_v__qlines times.
+        clear ld_s__rules.
+        add 1 to ld_v__turn.
 
-    call method create_search_rule
-      exporting
-        i_s__for    = i_s__for
-        i_v__turn   = ld_v__turn
-      importing
-        e_t__search = ld_s__rules-search
-        e_s__search_for = ld_s__for_search.
+        call method create_search_rule
+          exporting
+            i_s__for        = i_s__for
+            i_v__turn       = ld_v__turn
+          importing
+            e_t__search     = ld_s__rules-search
+            e_s__search_for = ld_s__for_search.
 
-    ld_s__rules-n_search = lines( ld_s__rules-search ).
+        ld_s__rules-n_search = lines( ld_s__rules-search ).
 
-    call method create_assign_rule
-      exporting
-        i_s__for              = i_s__for
-        i_v__turn             = ld_v__turn
-      importing
-        e_t__assign           = ld_s__rules-assign
-        e_t__assign_not_found = ld_s__rules-assign_not_found.
+        call method create_assign_rule
+          exporting
+            i_s__for              = i_s__for
+            i_v__turn             = ld_v__turn
+          importing
+            e_t__assign           = ld_s__rules-assign
+            e_t__assign_not_found = ld_s__rules-assign_not_found
+            e_f__continue         = ld_s__rules-f_continue.
 
-    ld_s__rules-n_assign = lines( ld_s__rules-assign ).
-    ld_s__rules-n_assign_not_found = lines( ld_s__rules-assign_not_found ).
+        ld_s__rules-n_assign = lines( ld_s__rules-assign ).
+        ld_s__rules-n_assign_not_found = lines( ld_s__rules-assign_not_found ).
 
-    append ld_s__rules to ld_t__rules.
-  enddo.
+        append ld_s__rules to ld_t__rules.
+      enddo.
+
+    catch cx_root into lr_x__root. "#EC CATCH_ALL
+      " во время генерации правила возникла ошибка
+      raise exception type zcx_bdnl_work_rule
+            exporting previous = lr_x__root.
+  endtry.
 
   if ld_v__qlines > 0.
     message s050(zbdnl).
   endif.
 
 
-  if lr_o__main->gd_f__init ne abap_true.
-    message s046(zbdnl) with lr_o__main->gd_v__tablename.
+  try.
+      if lr_o__main->gd_f__init ne abap_true.
+        message s046(zbdnl) with lr_o__main->gd_v__tablename.
 
-    while lr_o__main->next_pack( ) eq zbd0c_read_pack.
+        while lr_o__main->next_pack( ) eq zbd0c_read_pack.
 
-      add 1 to ld_v__cnt.
-      get time stamp field ld_v__packstart.
-      ld_v__packsize = lr_o__main->gr_o__container->get_packsize( ).
+          add 1 to ld_v__cnt.
+          get time stamp field ld_v__packstart.
+          ld_v__packsize = lr_o__main->gr_o__container->get_packsize( ).
 
 *--------------------------------------------------------------------*
 * MAIN
 *--------------------------------------------------------------------*
-      while lr_o__main->next_line( ld_s__for_search-id ) eq zbd0c_found.
-        loop at ld_t__rules into gd_s__rules.
-          search( 1 ).
-        endloop.
-      endwhile.
+          while lr_o__main->next_line( ld_s__for_search-id ) eq zbd0c_found.
+            loop at ld_t__rules into gd_s__rules.
+              check  search( 1 ) = abap_true.
+              exit.
+            endloop.
+          endwhile.
 *--------------------------------------------------------------------*
 
 
 *--------------------------------------------------------------------*
 * LOG
 *--------------------------------------------------------------------*
-      get time stamp field ld_v__packend.
-      call method convert_time
-        exporting
-          i_v__start      = ld_v__packstart
-          i_v__end        = ld_v__packend
-        importing
-          e_v__delta_time = ld_v__duration.
+          get time stamp field ld_v__packend.
+          call method convert_time
+            exporting
+              i_v__start      = ld_v__packstart
+              i_v__end        = ld_v__packend
+            importing
+              e_v__delta_time = ld_v__duration.
 
-      ld_v__packsize_str = get_nr_pack( i_v__nr_pack = ld_v__packsize i_v__size = 8 ).
-      ld_v__nr_pack = get_nr_pack(  i_v__nr_pack = ld_v__cnt i_v__size = 4 ).
-      message s029(zbdnl) with ld_v__nr_pack ld_v__packsize_str ld_v__duration.
+          ld_v__packsize_str = get_nr_pack( i_v__nr_pack = ld_v__packsize i_v__size = 8 ).
+          ld_v__nr_pack = get_nr_pack(  i_v__nr_pack = ld_v__cnt i_v__size = 4 ).
+          message s029(zbdnl) with ld_v__nr_pack ld_v__packsize_str ld_v__duration.
 *--------------------------------------------------------------------*
 
-      check lr_o__main->gd_v__read_mode = zbd0c_read_mode-full.
-      exit.
-    endwhile.
+          check lr_o__main->gd_v__read_mode = zbd0c_read_mode-full.
+          exit.
+        endwhile.
 
-    message s050(zbdnl).
-  else.
-    message s046(zbdnl) with lr_o__main->gd_v__tablename.
-    get time stamp field ld_v__packstart.
-    ld_v__packsize = lr_o__main->gr_o__container->get_packsize( ).
+        message s050(zbdnl).
+      else.
+        message s046(zbdnl) with lr_o__main->gd_v__tablename.
+        get time stamp field ld_v__packstart.
+        ld_v__packsize = lr_o__main->gr_o__container->get_packsize( ).
 
 *--------------------------------------------------------------------*
 * MAIN
 *--------------------------------------------------------------------*
-    while lr_o__main->next_line( ld_s__for_search-id ) eq zbd0c_found.
-      loop at ld_t__rules into gd_s__rules.
-        search( 1 ).
-      endloop.
+        while lr_o__main->next_line( ld_s__for_search-id ) eq zbd0c_found.
+          loop at ld_t__rules into gd_s__rules.
+            check  search( 1 ) = abap_true.
+            exit.
+          endloop.
 *--------------------------------------------------------------------*
 
-    endwhile.
+        endwhile.
 *--------------------------------------------------------------------*
+
 
 *--------------------------------------------------------------------*
 * Актуализировать записи
 *--------------------------------------------------------------------*
-    zcl_bdnl_container=>actual_ctables( ).
+        zcl_bdnl_container=>actual_ctables( ).
 
 
 *--------------------------------------------------------------------*
 * LOG
 *--------------------------------------------------------------------*
-    get time stamp field ld_v__packend.
-    call method convert_time
-      exporting
-        i_v__start      = ld_v__packstart
-        i_v__end        = ld_v__packend
-      importing
-        e_v__delta_time = ld_v__duration.
+        get time stamp field ld_v__packend.
+        call method convert_time
+          exporting
+            i_v__start      = ld_v__packstart
+            i_v__end        = ld_v__packend
+          importing
+            e_v__delta_time = ld_v__duration.
 
-    ld_v__packsize_str = get_nr_pack( i_v__nr_pack = ld_v__packsize i_v__size = 8 ).
-    message s029(zbdnl) with `FULL` ld_v__packsize_str ld_v__duration.
-    message s050(zbdnl).
+        ld_v__packsize_str = get_nr_pack( i_v__nr_pack = ld_v__packsize i_v__size = 8 ).
+        message s029(zbdnl) with `FULL` ld_v__packsize_str ld_v__duration.
+        message s050(zbdnl).
 *--------------------------------------------------------------------*
-  endif.
+      endif.
+
+    catch cx_root into lr_x__root. "#EC CATCH_ALL
+      " Во время выполнения рабочего цикла по таблице %tablename%
+      " возникла необработанная локально ситуация
+      ld_v__line = lr_o__main->get_line( ).
+
+      raise exception type zcx_bdnl_work_cycle
+            exporting "textid   = ZCX_BDNL_WORK_CYCLE
+                      package   = ld_v__cnt
+                      line      = ld_v__line
+                      previous  = lr_x__root.
+
+  endtry.
+
 
 *--------------------------------------------------------------------*
 * Сохранение остатков для таблиц для сохранения
@@ -192,7 +215,7 @@ method work_circle.
   loop at lr_t__assign assigning <ld_s__assign_obj>.
     <ld_s__assign_obj>->write_back( abap_true ).
 
-    lr_o__container ?= zcl_bdnl_container=>get_container_object( <ld_s__assign_obj> ).
+    lr_o__container = zcl_bdnl_container=>get_container_object( <ld_s__assign_obj> ).
 
     if lr_o__container is bound .
       lr_o__container->set_clear( ).
@@ -211,7 +234,7 @@ method work_circle.
 * $PRINT
 *--------------------------------------------------------------------*
   loop at i_s__for-print into ld_v__tablename.
-    lr_o__container ?= zcl_bdnl_container=>get_container( ld_v__tablename ).
+    lr_o__container = zcl_bdnl_container=>get_container( ld_v__tablename ).
 
     if lr_o__container is bound.
       lr_o__container->print( ).
@@ -226,13 +249,13 @@ method work_circle.
   message s054(zbdnl).
   loop at i_s__for-commit into ld_v__tablename.
 
-    lr_o__container ?= zcl_bdnl_container=>get_container( ld_v__tablename ).
+    lr_o__container = zcl_bdnl_container=>get_container( ld_v__tablename ).
 
     if lr_o__container is bound.
       ld_v__packsize = lr_o__container->gr_o__container->get_packsize( ).
       ld_v__packsize_str = get_nr_pack( i_v__nr_pack = ld_v__packsize i_v__size = 8 ).
       lr_o__container->gr_o__container->write_back( ).
-      message s055(zbdnl) with <ld_s__containers>-tablename ld_v__packsize_str.
+      message s055(zbdnl) with lr_o__container->gd_v__tablename ld_v__packsize_str.
     endif.
 
   endloop.
@@ -243,7 +266,7 @@ method work_circle.
 *--------------------------------------------------------------------*
   loop at i_s__for-clear into ld_v__tablename.
 
-    lr_o__container ?= zcl_bdnl_container=>get_container( ld_v__tablename ).
+    lr_o__container = zcl_bdnl_container=>get_container( ld_v__tablename ).
 
     if lr_o__container is bound.
       lr_o__container->gr_o__container->clear( ).

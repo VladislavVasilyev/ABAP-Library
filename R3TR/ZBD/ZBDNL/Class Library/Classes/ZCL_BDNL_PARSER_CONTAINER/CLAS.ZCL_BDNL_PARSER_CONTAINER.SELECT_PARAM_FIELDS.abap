@@ -12,7 +12,7 @@ method select_param_fields.
   , ld_v__token         type string
   , ld_s__dim           type zbd00_s_ch_key
   , ld_s__alias         type zbd00_s_alias
-  , ld_v__express       type string
+*  , ld_v__express       type string
   , ld_f__key           type rs_bool
   , ld_f__skipfirst     type rs_bool
   , ld_s__dimension     type zbd0t_ty_s_dim
@@ -141,7 +141,7 @@ method select_param_fields.
       if gr_o__cursor->check_tokens( q = 2 regex = cs_dimwattr ) = abap_true.
         ld_s__dim-attribute = gr_o__cursor->get_token( esc = abap_true trn = 2 ).
 
-        if i_appl_obj->check_dimension( dimension = ld_s__dim-dimension attribute = space ) = abap_false..
+        if i_appl_obj->check_dimension( dimension = ld_s__dim-dimension attribute = ld_s__dim-attribute ) = abap_false.
           raise exception type zcx_bdnl_syntax_error
             exporting textid    = zcx_bdnl_syntax_error=>zcx_attribute
                       dimension = ld_s__dim-dimension

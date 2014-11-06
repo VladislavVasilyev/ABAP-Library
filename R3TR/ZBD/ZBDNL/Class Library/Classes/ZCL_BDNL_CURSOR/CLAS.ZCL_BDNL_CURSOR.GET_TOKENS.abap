@@ -3,7 +3,7 @@ method get_tokens.
   data
   : ld_v__from   type i
   , ld_v__to     type i
-  , ld_v__token  type string
+*  , ld_v__token  type string
   , ld_v__last_tok type string
   .
 

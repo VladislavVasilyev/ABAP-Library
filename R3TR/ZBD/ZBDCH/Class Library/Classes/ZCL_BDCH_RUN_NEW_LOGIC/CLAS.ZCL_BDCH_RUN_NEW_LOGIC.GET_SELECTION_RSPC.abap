@@ -3,20 +3,20 @@ method get_selection_rspc.
   data
   : ld_t__varsetting          type standard table of zbpc_varsetting
   , ld_v__par_name            type rspc_variant
-  , ld_f__initpar             type rs_bool
+*  , ld_f__initpar             type rs_bool
   , ld_v__len                 type i
   , ld_t__param               type table of string
   , ld_v__param               type string
   , ld_v__value               type string
   , ld_v__lenght              type i
   , ld_v__offset              type i
-  , ld_t__results             type match_result_tab
+*  , ld_t__results             type match_result_tab
   , ld_v__tabix               type i
   .
 
   field-symbols
   : <ld_s__varsetting>        type zbpc_varsetting
-  , <ld_s__results>           type match_result
+*  , <ld_s__results>           type match_result
   .
 
   select par_name

@@ -2,4 +2,6 @@
 *"* do not include other source files here!!!
 private section.
 
-  methods SET_PARAM .
+  methods SET_PARAM
+    raising
+      CX_UJ_STATIC_CHECK .

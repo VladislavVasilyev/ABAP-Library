@@ -1,47 +1,45 @@
 method create_token.
 
   data
-   : ld_t__logic     type zbnlt_t__lgfsource
-   , ld_s__logic     type zbnlt_s__lgfsource
-   , ld_v__offset    type i
-   , ld_t__results   type match_result_tab
-   , ld_s__results   type match_result
-   , ld_s__length    type i
-   , ld_s__length1   type i
-   , ld_s__tokenlist type zbnlt_s__match_res
-   , ld_s__variable  type zbnlt_s__variable
-   , ld_v__value     type string
-   , ld_v__i         type i
-   , ld_f__conc      type rs_bool
-   , ld_i__nsymbol   type i
-   , ld_f__lsymbol   type rs_bool
-   , ld_f__rsymbol   type rs_bool
-*   , ld_v__offset    type i
-   , ld_v__length    type i
+   : ld_v__offset             type i
+   , ld_t__results            type match_result_tab
+   , ld_s__results            type match_result
+   , ld_s__tokenlist          type zbnlt_s__match_res
+   , ld_s__variable           type zbnlt_s__variable
+   , ld_v__i                  type i
+   , ld_f__conc               type rs_bool
+   , ld_i__nsymbol            type i
+   , ld_f__lsymbol            type rs_bool
+   , ld_f__rsymbol            type rs_bool
+   , ld_v__length             type i
+*   , ld_v__value              type string
    .
 
   field-symbols
-  : <ld_s__results>   type match_result
-  , <ld_s__logic>     type  zbnlt_s__lgfsource
-  , <ld_s__tokenlist> type zbnlt_s__match_res
+*  : <ld_s__results>           type match_result
+  : <ld_s__logic>             type zbnlt_s__lgfsource
+  , <ld_s__tokenlist>         type zbnlt_s__match_res
+  , <ld_s__variable>          type zbnlt_s__variable
+  , <ld_v__value>             type string
+  , <ld_v__cur_value>         type string
   .
 
   find all occurrences of regex `(`
-                             & `\$([A-Z0-9\_]+)\>|`
-                             & `\$([A-Z0-9\_]+)\$|`
-                             & `\%([A-Z0-9\_]+)\%|`
-                             & `\<([A-Z0-9\_]+)\>|`
-                             & `\/(CPMB)\/([A-Z0-9\_]+)|`
-                             & `([\~\(\)\.\*\\\-\+<>=\,\/])|`
-                             & `(<=|<>|>=)|`
-                             & `'([A-ZА-Я0-9\.\_\+\*\s\$\,]+)'|`
-                             & `''|`
-                             & `&&|`
-                             & `(<\-|\->)|`
-                             & `\$FILTER-POOLS\>|`
-                             & `(\-\d+|\<\d+)(\>|\.\d+\>)|`    " вещественные числа
-                             & `(\/\/\*|\*\\\\|\/\/)`          " коментарии
-                             & `)`
+                              & `\$([A-Z0-9\_]+)\>|`
+                              & `\$([A-Z0-9\_]+)\$|`
+                              & `\%([A-Z0-9\_]+)\%|`
+                              & `\<([A-Z0-9\_]+)\>|`
+                              & `\/(CPMB)\/([A-Z0-9\_]+)|`
+                              & `([\~\(\)\.\*\\\-\+<>=\,\/])|`
+                              & `(<=|<>|>=)|`
+                              & `'([A-ZА-Я0-9\.\_\+\*\s\$\%\,\=]+)'|`
+                              & `''|`
+                              & `&&|`
+                              & `(<\-|\->)|`
+                              & `\$FILTER-POOLS\>|`
+                              & `(\-\d+|\<\d+)(\>|\.\d+\>)|`    " вещественные числа
+                              & `(\/\/\*|\*\\\\|\/\/)`          " коментарии
+                              & `)`
 
  in table gd_t__logic results ld_t__results ignoring case.
 
@@ -63,16 +61,26 @@ method create_token.
     if ld_s__tokenlist-token cp `'*'` or ld_s__tokenlist-token cp `''`.
       ld_s__tokenlist-f_letter = abap_true.
       replace all occurrences of `'` in ld_s__tokenlist-token with ``.
-      ld_s__tokenlist-value = ld_s__tokenlist-token.
+*      ld_s__tokenlist-value = ld_s__tokenlist-token.
+
+      create data ld_s__tokenlist-refvalue type string.
+      assign ld_s__tokenlist-refvalue->* to <ld_v__value>.
+      <ld_v__value> = ld_s__tokenlist-token.
+
     elseif ld_s__tokenlist-token cp `$*$` or ld_s__tokenlist-token cp `%*%`.
       ld_s__tokenlist-f_variable = abap_true.
 
       read table gd_t__variable
-           into ld_s__variable
+           assigning <ld_s__variable>
            with key var = ld_s__tokenlist-token.
 
       if sy-subrc = 0.
-        ld_s__tokenlist-value = ld_s__variable-val.
+        get reference of <ld_s__variable>-val into ld_s__tokenlist-refvalue.
+      else.
+        ld_s__variable-var = ld_s__tokenlist-token.
+        clear ld_s__variable-val.
+        insert ld_s__variable into table gd_t__variable assigning <ld_s__variable>.
+        get reference of <ld_s__variable>-val into ld_s__tokenlist-refvalue.
       endif.
     elseif ld_s__tokenlist-token = zblnc_keyword-conc.
       ld_f__conc = abap_true.
@@ -86,23 +94,33 @@ method create_token.
       ld_f__rsymbol = abap_true.
       continue.
 
-
     else.
       find first occurrence of regex `^(\-\d+|\<\d+)($|\.\d+$)` in ld_s__tokenlist-token.
       if sy-subrc = 0.
         ld_s__tokenlist-f_num = abap_true.
-        ld_s__tokenlist-value = ld_s__tokenlist-token.
+
+        create data ld_s__tokenlist-refvalue type string.
+        assign ld_s__tokenlist-refvalue->* to <ld_v__value>.
+        <ld_v__value> = ld_s__tokenlist-token.
+
       endif.
     endif.
 
-    find first occurrence of regex `^(\-\d+|\<\d+)($|\.\d+$)` in ld_s__tokenlist-value.
-    if sy-subrc = 0.
-      ld_s__tokenlist-f_num = abap_true.
+    if ld_s__tokenlist-refvalue is bound.
+      assign ld_s__tokenlist-refvalue->* to <ld_v__value>.
+      find first occurrence of regex `^(\-\d+|\<\d+)($|\.\d+$)` in <ld_v__value>.
+      if sy-subrc = 0.
+        ld_s__tokenlist-f_num = abap_true.
+      endif.
     endif.
 
     if ld_f__conc = abap_true.
       ld_f__conc = abap_false.
-      concatenate <ld_s__tokenlist>-value ld_s__tokenlist-value into <ld_s__tokenlist>-value.
+
+      assign <ld_s__tokenlist>-refvalue->* to <ld_v__value>.
+      assign ld_s__tokenlist-refvalue->* to <ld_v__cur_value>.
+
+      concatenate <ld_v__value> <ld_v__cur_value> into <ld_v__value>.
       <ld_s__tokenlist>-token      = zblnc_keyword-conc.
       <ld_s__tokenlist>-f_variable = abap_true.
       <ld_s__tokenlist>-f_letter   = abap_false.
@@ -113,13 +131,15 @@ method create_token.
     if ld_i__nsymbol > 0.
       case ld_i__nsymbol.
         when 1.
-          ld_v__offset = ld_s__tokenlist-value.
+          assign ld_s__tokenlist-refvalue->* to <ld_v__cur_value>.
+          ld_v__offset = <ld_v__cur_value>. " ld_s__tokenlist-value.
         when 2.
           if not ld_s__tokenlist-token = zblnc_keyword-open_parenthesis.
             " error.
           endif.
         when 3.
-          ld_v__length = ld_s__tokenlist-value.
+          assign ld_s__tokenlist-refvalue->* to <ld_v__cur_value>.
+          ld_v__length = <ld_v__cur_value>." ld_s__tokenlist-value.
         when 4.
           if not ld_s__tokenlist-token = zblnc_keyword-close_parenthesis.
             " error.
@@ -129,10 +149,13 @@ method create_token.
             <ld_s__tokenlist>-token      = zblnc_keyword-left_symbol.
           elseif ld_f__rsymbol = abap_true.
             <ld_s__tokenlist>-token      = zblnc_keyword-right_symbol.
-            ld_v__offset = strlen( <ld_s__tokenlist>-value ) - ( ld_v__offset + ld_v__length ).
+
+            assign <ld_s__tokenlist>-refvalue->* to <ld_v__value>.
+            ld_v__offset = strlen( <ld_v__value> ) - ( ld_v__offset + ld_v__length ).
           endif.
 
-          <ld_s__tokenlist>-value      = <ld_s__tokenlist>-value+ld_v__offset(ld_v__length).
+          assign <ld_s__tokenlist>-refvalue->* to <ld_v__value>.
+          <ld_v__value>      = <ld_v__value>+ld_v__offset(ld_v__length).
           <ld_s__tokenlist>-f_variable = abap_true.
           <ld_s__tokenlist>-f_letter   = abap_false.
           <ld_s__tokenlist>-f_num      = abap_false.
@@ -165,6 +188,8 @@ method create_token.
     endif.
 
   endloop.
+
+  clear ld_v__i.
 
   " удаление блоков //* *\\, если не указан *\\ удаляется до конца текста
   loop at gd_t__tokenlist

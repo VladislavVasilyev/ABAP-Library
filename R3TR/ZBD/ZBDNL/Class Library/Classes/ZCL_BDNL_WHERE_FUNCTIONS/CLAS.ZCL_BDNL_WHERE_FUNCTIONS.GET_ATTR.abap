@@ -3,11 +3,11 @@ method get_attr.
   data
   : ld_v__member      type string
   , ld_t__member      type table of string
-  , lt_sel            type uj0_t_sel
+*  , lt_sel            type uj0_t_sel
   , ld_s__sel         type uj0_s_sel
-  , lt_member         type uja_t_dim_member
-  , lo_security       type ref to cl_uje_check_security
-  , lv_user           type uj0_s_user
+*  , lt_member         type uja_t_dim_member
+*  , lo_security       type ref to cl_uje_check_security
+*  , lv_user           type uj0_s_user
   , ld_t__param       type zbnlt_t__param
   , ld_t__param1       type zbnlt_t__param
   , ld_v__dimension   type uj_dim_name

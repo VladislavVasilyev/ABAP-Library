@@ -45,6 +45,9 @@ public section.
 
   class-methods ADD_SKIP .
   methods PRINT .
+  methods GET_LINE
+    returning
+      value(LINE) type STRING .
   class-methods ACTUAL_CTABLES .
   methods NEXT_PACK
     returning
@@ -61,6 +64,11 @@ public section.
       !SCRIPT type UJ_DOCNAME
       !APPSET_ID type UJ_APPSET_ID
       !APPL_ID type UJ_APPL_ID .
+  class-methods CHECK_TABLE_DECL
+    importing
+      !TABLENAME type ZBNLT_V__TABLENAME
+    raising
+      ZCX_BDNL_SYNTAX_ERROR .
   class-methods CHECK_TABLE
     importing
       !TABLENAME type ZBNLT_V__TABLENAME
@@ -68,9 +76,13 @@ public section.
       value(E_S__PARAM) type ZBNLT_S__STACK_CONTAINER
     raising
       ZCX_BDNL_SYNTAX_ERROR .
-  class-methods CHECK_TABLE_DECL
+  class-methods CHECK_DIM
     importing
       !TABLENAME type ZBNLT_V__TABLENAME
+      !DIMENSION type UJ_DIM_NAME optional
+      !ATTRIBUTE type UJ_ATTR_NAME optional
+    returning
+      value(E_S__PARAM) type ZBNLT_S__STACK_CONTAINER
     raising
       ZCX_BDNL_SYNTAX_ERROR .
   class-methods SET_CURRENT_TURN
@@ -101,7 +113,9 @@ public section.
       !PACKAGE_SIZE type I default -1
       !F_MASTER type RS_BOOL default ABAP_FALSE
     returning
-      value(CONTAINER) type ref to ZCL_BDNL_CONTAINER .
+      value(CONTAINER) type ref to ZCL_BDNL_CONTAINER
+    raising
+      ZCX_BD00_CREATE_OBJ .
   class-methods GET_CONTAINER
     importing
       !TABLENAME type ZBNLT_V__TABLENAME

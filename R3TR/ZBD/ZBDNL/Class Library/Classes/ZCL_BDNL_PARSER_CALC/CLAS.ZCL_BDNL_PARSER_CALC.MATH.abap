@@ -7,7 +7,6 @@ method math.
   data
   : ld_s__variable      type zbnlt_s__math_var
   , ld_v__variable      type string
-  , ld_v__exp           type string
   , ld_v__varcnt        type c value `0`
   , ld_v__token         type string
   , ld_s__container     type zbnlt_s__stack_container
@@ -22,6 +21,8 @@ method math.
 
   while gr_o__cursor->gd_f__end ne abap_true. "gr_o__cursor->next_token( ) <> end_token.
     ld_v__token = gr_o__cursor->get_token( ).
+
+    clear ld_s__variable.
 
     case ld_v__token.
       when `+` or `-` or `/` or `*` or `(` or `)`.
@@ -39,7 +40,9 @@ method math.
           concatenate e_v__exp ld_v__token  into e_v__exp separated by space.
         elseif gr_o__cursor->check_tokens( q = 2 regex = cs_func ) = abap_true.
           create data ld_s__variable-data type uj_keyfigure.
-          call method process_function
+          call method zcl_bdnl_parser_service=>get_func
+            exporting
+              i_r__cursor   = gr_o__cursor
             importing
               e_v__funcname = ld_s__variable-func_name
               e_t__param    = ld_s__variable-param.
@@ -53,13 +56,11 @@ method math.
           gr_o__cursor->get_token( esc = abap_true ).
           ld_v__variable = ld_s__variable-varname = ld_s__variable-tablename = ld_v__token.
 
-          read table gd_t__containers
-               with key tablename = ld_s__variable-tablename
-               into ld_s__container.
+          zcl_bdnl_container=>check_table( ld_s__variable-tablename ).
 
           if ld_s__container-appset_id = zblnc_keyword-bp.
             ld_v__infocube = ld_s__container-appl_id.
-            lr_o__appl ?= zcl_bd00_application=>get_infocube( i_infocube = ld_v__infocube ).
+            lr_o__appl = zcl_bd00_application=>get_infocube( i_infocube = ld_v__infocube ).
           endif.
 
           if gr_o__cursor->get_token( ) = zblnc_keyword-tilde.

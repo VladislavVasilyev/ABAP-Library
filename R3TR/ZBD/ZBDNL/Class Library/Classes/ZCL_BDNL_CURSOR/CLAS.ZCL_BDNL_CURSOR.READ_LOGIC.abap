@@ -1,4 +1,4 @@
-method READ_LOGIC.
+method read_logic.
 
   data
   : lr_o__dispatch      type ref to cl_ujk_dispatch
@@ -6,8 +6,8 @@ method READ_LOGIC.
   , ld_v__filename      type uj_docname
   , ld_t__lgx           type ujk_t_script_logic_scripttable
   , ld_s__lgx           type ujk_s_script_logic_record
-  , ld_v__offset        type i
-  , ld_v__logic         type zbnlt_s__lgfsource
+  , lr_x__static        type ref to cx_uj_static_check
+  , ld_v__str           type string
   .
 
   refresh e_t__logic.
@@ -30,9 +30,9 @@ method READ_LOGIC.
 *    raise not_existing.
   endif.
 
-  try.
-      call method lr_o__dispatch->validation.
+  call method lr_o__dispatch->validation.
 
+  try.
       call method lr_o__dispatch->get_file
         exporting
           i_appset      = i_v__appset
@@ -42,8 +42,14 @@ method READ_LOGIC.
         importing
           et_lgx        = ld_t__lgx.
 
-    catch cx_uj_static_check.
-*      raise not_existing.
+    catch cx_uj_static_check into lr_x__static.
+      " error process logic
+
+      concatenate i_v__appset `/` i_v__application `/` i_v__filename  into ld_v__str.
+
+      raise exception type zcx_bdnl_script
+            exporting name      = ld_v__str
+                      previous  = lr_x__static.
   endtry.
 
   loop at ld_t__lgx

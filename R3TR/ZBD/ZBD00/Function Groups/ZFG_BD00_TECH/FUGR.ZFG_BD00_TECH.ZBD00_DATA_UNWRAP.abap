@@ -24,8 +24,6 @@ function zbd00_data_unwrap .
 
 * unwrap
   if not i_t_rfcdata is initial.
-
-
     perform data_unwrap_std
       using    i_t_rfcdata
       changing <l_t_data>.

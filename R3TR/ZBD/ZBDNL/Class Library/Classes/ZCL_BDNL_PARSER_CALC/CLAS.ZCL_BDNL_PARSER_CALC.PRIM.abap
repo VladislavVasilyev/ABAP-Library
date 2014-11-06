@@ -12,35 +12,24 @@ method prim.
   , ld_s__container_tg      type zbnlt_s__stack_container
   , ld_s__custlink          type zbnlt_s__cust_link
   , ld_t__custlink          type zbnlt_t__cust_link
-  , ld_v__string            type string
   , ld_f__dimension         type rs_bool
   , ld_f__signeddata        type rs_bool
-  , ld_t__check             type zbnlt_t__stack_check
   , ld_v__turn              type i
   .
 
   gd_s__assign-tablename = gd_v__tablename.
 
-*  read table gd_t__containers
-*       with key tablename = gd_s__assign-tablename
-*       into ld_s__container_tg.
-
   ld_s__container_tg = zcl_bdnl_container=>check_table( gd_s__assign-tablename ).
-
-*  if sy-subrc ne 0.
-*    raise exception type zcx_bdnl_syntax_error
-*            exporting textid = zcx_bdnl_syntax_error=>zcx_table_not_defined
-*                      token  = gd_s__assign-tablename
-*                      index  = gr_o__cursor->gd_v__index .
-*  endif.
 
   while gr_o__cursor->gd_f__end ne abap_true.
 
     if gr_o__cursor->get_token( ) = zblnc_keyword-check.
       add 1 to ld_v__turn.
-*      break-point.
+
       gr_o__cursor->get_token( esc = abap_true ).
-      check_expr( get = abap_false i_v__turn = ld_v__turn ).
+
+      gd_t__check = zcl_bdnl_parser_service=>get_check( i_r__cursor = gr_o__cursor i_v__turn = ld_v__turn ).
+
       append lines of gd_t__check to gd_s__assign-check.
       clear gd_t__check.
       continue.
@@ -90,37 +79,14 @@ method prim.
 
       if gr_o__cursor->check_tokens( q = 2 regex = cs_dimwattr ) = abap_true.
         ld_s__custlink-tg-attribute = gr_o__cursor->get_token( esc = abap_true trn = 2 ).
-
-        "check dimension and attribute
-        read table ld_s__container_tg-dimension
-             with key dimension = ld_s__custlink-tg-dimension
-                      attribute = ld_s__custlink-tg-attribute
-                      transporting no fields.
-
-        if sy-subrc ne 0.
-          concatenate ld_s__custlink-tg-dimension `~` ld_s__custlink-tg-attribute
-                  into ld_v__string.
-          raise exception type zcx_bdnl_syntax_error
-                exporting textid = zcx_bdnl_syntax_error=>zcx_no_component_exists
-                          token  = ld_v__string
-                          tablename = gd_s__assign-tablename
-                          index  = gr_o__cursor->gd_v__index .
-        endif.
-      else.
-        "check dimension
-        read table ld_s__container_tg-dimension
-             with key dimension = ld_s__custlink-tg-dimension
-             transporting no fields.
-
-        if sy-subrc ne 0.
-          ld_v__string = ld_s__custlink-tg-dimension.
-          raise exception type zcx_bdnl_syntax_error
-                exporting textid = zcx_bdnl_syntax_error=>zcx_no_component_exists
-                          token  = ld_v__string
-                          tablename = gd_s__assign-tablename
-                          index  = gr_o__cursor->gd_v__index .
-        endif.
       endif.
+
+      call method zcl_bdnl_container=>check_dim
+        exporting
+          tablename = gd_s__assign-tablename
+          dimension = ld_s__custlink-tg-dimension
+          attribute = ld_s__custlink-tg-attribute.
+
     elseif gr_o__cursor->get_token( ) = zblnc_keyword-signeddata.
       gr_o__cursor->get_token( esc = abap_true ).
 
@@ -138,7 +104,9 @@ method prim.
       case abap_true.
         when ld_f__dimension.
           if gr_o__cursor->check_tokens( q = 2 regex = cs_func ) = abap_true. " Если функция
-            call method process_function
+            call method zcl_bdnl_parser_service=>get_func
+              exporting
+                i_r__cursor   = gr_o__cursor
               importing
                 e_v__funcname = ld_s__custlink-func_name
                 e_t__param    = ld_s__custlink-param
@@ -154,19 +122,6 @@ method prim.
               ld_s__custlink-tablename = gr_o__cursor->get_token( esc = abap_true ).
               ld_s__container = zcl_bdnl_container=>check_table( ld_s__custlink-tablename ).
 
-*              read table gd_t__containers
-*                   with key tablename = ld_s__custlink-tablename
-*                   into ld_s__container.
-*
-*              if sy-subrc ne 0.
-*                raise exception type zcx_bdnl_syntax_error
-*                        exporting textid = zcx_bdnl_syntax_error=>zcx_table_not_defined
-*                                  token  = ld_s__custlink-tablename
-*                                  index  = gr_o__cursor->gd_v__index .
-*              endif.
-*
-*              gr_o__cursor->get_token( esc = abap_true ).
-
               if gr_o__cursor->get_token( ) = zblnc_keyword-tilde.
                 gr_o__cursor->get_token( esc = abap_true ).
 
@@ -175,38 +130,14 @@ method prim.
 
                   if gr_o__cursor->check_tokens( q = 2 regex = cs_dimwattr ) = abap_true.
                     ld_s__custlink-sc-attribute = gr_o__cursor->get_token( esc = abap_true trn = 2 ).
-
-                    "check dimension and attribute
-                    read table ld_s__container-dimension
-                         with key dimension = ld_s__custlink-sc-dimension
-                                  attribute = ld_s__custlink-sc-attribute
-                                  transporting no fields.
-
-                    if sy-subrc ne 0.
-                      concatenate ld_s__custlink-sc-dimension `~` ld_s__custlink-sc-attribute
-                              into ld_v__string.
-                      raise exception type zcx_bdnl_syntax_error
-                            exporting textid = zcx_bdnl_syntax_error=>zcx_no_component_exists
-                                      token  = ld_v__string
-                                      tablename = ld_s__custlink-tablename
-                                      index  = gr_o__cursor->gd_v__index .
-                    endif.
-                  else.
-                    "check dimension
-                    read table ld_s__container-dimension
-                         with key dimension = ld_s__custlink-sc-dimension
-                                  attribute = space
-                         transporting no fields.
-
-                    if sy-subrc ne 0.
-                      ld_v__string = ld_s__custlink-sc-dimension.
-                      raise exception type zcx_bdnl_syntax_error
-                            exporting textid = zcx_bdnl_syntax_error=>zcx_no_component_exists
-                                      token  = ld_v__string
-                                      tablename = ld_s__custlink-tablename
-                                      index  = gr_o__cursor->gd_v__index .
-                    endif.
                   endif.
+
+                  call method zcl_bdnl_container=>check_dim
+                    exporting
+                      tablename = ld_s__custlink-tablename
+                      dimension = ld_s__custlink-sc-dimension
+                      attribute = ld_s__custlink-sc-attribute.
+
                 else.
                   ld_v__token = gr_o__cursor->get_token( ).
                   raise exception type zcx_bdnl_syntax_error
@@ -245,7 +176,7 @@ method prim.
       raise exception type zcx_bdnl_syntax_error
             exporting textid    = zcx_bdnl_syntax_error=>zcx_expected
                       expected  = zblnc_keyword-dot
-                      index     = gr_o__cursor->gd_v__index .
+                      index     = gr_o__cursor->gd_v__cindex .
     endif.
   endwhile.
 

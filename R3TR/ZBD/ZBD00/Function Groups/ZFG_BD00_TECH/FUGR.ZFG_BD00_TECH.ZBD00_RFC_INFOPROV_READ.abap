@@ -103,6 +103,13 @@ function zbd00_rfc_infoprov_read .
   create data lr_t__data like standard table of <ld_s__data> with non-unique default key.
   assign lr_t__data->* to <ld_t__data>.
 
+  data a type i value 0.
+
+*  while a = 0.
+*    break-point.
+*    check a > 1.
+*    exit.
+*  endwhile.
 
   while e_end_of_data = abap_false and lines( <ld_t__data> ) = 0.
 
@@ -113,7 +120,8 @@ function zbd00_rfc_infoprov_read .
         i_th_sfk               = i_th_sfk
         i_t_range              = i_t_range
         i_reference_date       = sy-datum
-        i_rollup_only          = rs_c_false
+        i_rollup_only          = rs_c_true
+        i_use_aggregates       = i_use_aggregates
         i_packagesize          = i_packagesize
       importing
         e_t_data               = <ld_t__data>

@@ -1,25 +1,24 @@
 method get_stack1.
 
   data
-  : lr_o__containers      type ref to zcl_bdnl_parser_container
-  , lr_o__container       type ref to zcl_bdnl_container
-  , lr_o__parser          type ref to zcl_bdnl_parser
-  , lr_o__for             type ref to zcl_bdnl_parser_for
-  , ld_s__script          type ty_s__filterpools
-  , ld_v__pathscript      type string
-  , ld_v__index           type i
-  , ld_s__stack           type zbnlt_s__stack
-  , ld_s__for             type zbnlt_s__for
-  , ld_v__cnt_includeif   type i
-  , ld_f__includeif       type rs_bool
-  , ld_t__includeif       type table of rs_bool
+  : lr_o__containers          type ref to zcl_bdnl_parser_container
+  , lr_o__container           type ref to zcl_bdnl_container
+  , lr_o__parser              type ref to zcl_bdnl_parser
+  , lr_o__for                 type ref to zcl_bdnl_parser_for
+  , lr_o__variables           type ref to zcl_bdnl_parser_variables
+  , ld_s__script              type ty_s__filterpools
+  , ld_v__pathscript          type string
+  , ld_v__index               type i
+  , ld_s__stack               type zbnlt_s__stack
+  , ld_s__for                 type zbnlt_s__for
+  , ld_v__cnt_includeif       type i
+  , ld_f__includeif           type rs_bool
+  , ld_t__includeif           type table of rs_bool
   .
 
   field-symbols
-  : <ld_s__range>         type zbnlt_s__stack_range
-  , <ld_s__containers>    type zbnlt_s__stack_container
-  , <ld_s__containers1>   type zbnlt_s__container
-  , <ld_f__includeif>     type rs_bool
+  : <ld_s__range>             type zbnlt_s__stack_range
+  , <ld_s__containers>        type zbnlt_s__container
   .
 
   create object gr_o__cursor
@@ -58,14 +57,14 @@ method get_stack1.
       when zblnc_keyword-includeif.
         " Чтение условий
         if ld_f__includeif eq abap_false.
-          case if_expr( get = abap_false ).
+          case if_expr( ).
             when true. "
               ld_f__includeif = abap_false.
             when false. " пропустить вложение до $ENDINCLUDEIF или до конца программы.
               ld_f__includeif = abap_true.
           endcase.
         else.
-          if_expr( get = abap_false ).
+          if_expr( ).
           ld_f__includeif =  abap_true.
         endif.
 
@@ -93,6 +92,32 @@ method get_stack1.
           read table ld_t__includeif index ld_v__cnt_includeif into ld_f__includeif.
         endif.
 
+*--------------------------------------------------------------------*
+* $VARIABLES BEGIN.
+*  ...
+* $VARIABLES END.
+*--------------------------------------------------------------------*
+      when zblnc_keyword-variables.
+
+       " check syntax
+       if gr_o__cursor->get_token( esc = abap_true ) ne zblnc_keyword-begin.
+          raise exception type zcx_bdnl_syntax_error
+          exporting textid    = zcx_bdnl_syntax_error=>zcx_expected
+                  expected  = zblnc_keyword-dot
+                  index     = gr_o__cursor->gd_v__cindex .
+        else.
+          if gr_o__cursor->get_token( esc = abap_true ) ne zblnc_keyword-dot.
+            raise exception type zcx_bdnl_syntax_error
+                  exporting textid    = zcx_bdnl_syntax_error=>zcx_expected
+                            expected  = zblnc_keyword-dot
+                            index     = gr_o__cursor->gd_v__cindex .
+          endif.
+        endif.
+
+        create object lr_o__variables
+            exporting i_r__cursor = gr_o__cursor.
+
+        lr_o__variables->get_var( ).
 
 *--------------------------------------------------------------------*
 * $CONTAINERS BEGIN.
@@ -120,31 +145,17 @@ method get_stack1.
 
         create object lr_o__containers
           exporting
-            i_r__cursor     = gr_o__cursor
-            i_t__range      = stack-range
-            i_t__containers = stack-containers.
+            i_r__cursor = gr_o__cursor
+            i_t__range  = stack-range.
 
-        call method lr_o__containers->get_stack
-          importing
-            stack  = ld_s__stack-containers
-            stack1 = ld_s__stack-containers1.
-
-*---> старый стек
-        loop at ld_s__stack-containers assigning <ld_s__containers>.
-          <ld_s__containers>-turn = stack-turn.
-
-          if ld_f__includeif = abap_false.
-            append <ld_s__containers> to stack-containers.
-          endif.
-        endloop.
-*---< старый стек
+        ld_s__stack-containers = lr_o__containers->get_stack( ).
 
         " перевод на новый стек
-        loop at ld_s__stack-containers1 assigning <ld_s__containers1>.
-          lr_o__container ?= <ld_s__containers1>-container.
+        loop at ld_s__stack-containers assigning <ld_s__containers>.
+          lr_o__container ?= <ld_s__containers>-container.
           lr_o__container->set_turn( stack-turn ).
           if ld_f__includeif = abap_false.
-            append <ld_s__containers1> to stack-containers1.
+            append <ld_s__containers> to stack-containers.
           endif.
         endloop.
 
@@ -212,8 +223,6 @@ method get_stack1.
         data ld_f__with_key type rs_bool.
 
         call method parser__for
-          exporting
-            i_t__container   = stack-containers
           importing
             e_v__tablename   = ld_s__for-tablename
             e_v__packagesize = ld_s__for-packagesize
@@ -222,7 +231,6 @@ method get_stack1.
         create object lr_o__for
           exporting
             i_r__cursor    = gr_o__cursor
-            i_t__container = stack-containers
             i_v__for_table = ld_s__for-tablename
             i_f__with_key  = ld_f__with_key.
 

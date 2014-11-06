@@ -28,6 +28,7 @@ constants: begin of zblnc_keyword
            , notsupress         type string value `$NOTSUPRESS`
            , zero               type string value `ZERO`
            , endfor             type string value `$ENDFOR`
+           , continue           type string value `$CONTINUE`
            , check              type string value `$CHECK`
            , includeif          type string value `$INCLUDEIF`
            , endincludeif       type string value `$ENDINCLUDEIF`
@@ -79,6 +80,7 @@ constants: begin of zblnc_keyword
            , is                 type string value `IS`
            , ii                 type string value `II`
            , ni                 type string value `NI`
+           , in                 type string value `IN`
            , between            type string value `BETWEEN`
            , bt                 type string value `BT`
            , and                type string value `AND`
@@ -92,6 +94,8 @@ constants: begin of zblnc_keyword
            , comma              type string value `,`
            , destination        type string value `DESTINATION`
            , tablefordown       type string value `$TABLE FOR DOWNLOAD`
+           , members            type string value `MEMBERS`
+           , variables          type string value `$VARIABLES`
            , end of zblnc_keyword.
 
 

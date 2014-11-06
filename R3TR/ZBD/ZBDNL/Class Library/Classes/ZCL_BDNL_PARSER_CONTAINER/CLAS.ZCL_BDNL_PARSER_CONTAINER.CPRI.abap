@@ -4,33 +4,26 @@ private section.
 
   class-data CD_V__CNT_CLEAR type I .
   type-pools ZBNLT .
-  data GD_T__CONTAINERS type ZBNLT_T__STACK_CONTAINER .
   data GD_T__RANGE type ZBNLT_T__STACK_RANGE .
-  data GD_T__STACK type ZBNLT_T__STACK_CONTAINER .
-  data GD_T__STACK1 type ZBNLT_T__CONTAINER .
-  data GD_V__TURN type I .
+  data GD_T__STACK type ZBNLT_T__CONTAINER .
   data GR_O__CURSOR type ref to ZCL_BDNL_CURSOR .
 
-  methods _CHECK_TABLE
-    importing
-      !TABLENAME type ZBNLT_V__TABLENAME
-    raising
-      ZCX_BDNL_EXCEPTION .
   methods FILTER_STATEMENTS
     exporting
       !E_S__STACK type ZBNLT_S__STACK_RANGE
     raising
       ZCX_BDNL_EXCEPTION
-      ZCX_BD00_CREATE_OBJ .
+      CX_STATIC_CHECK .
   methods FILTER_PRIM
     raising
       ZCX_BDNL_EXCEPTION
-      ZCX_BD00_CREATE_OBJ .
+      CX_STATIC_CHECK .
   methods PROCESS_FUNCTION
     returning
       value(E_T__PARAM) type ZBNLT_T__PARAM
     raising
-      ZCX_BDNL_EXCEPTION .
+      ZCX_BDNL_EXCEPTION
+      CX_STATIC_CHECK .
   type-pools ZBD0T .
   methods SELECT_PARAM_FIELDS
     importing
@@ -67,11 +60,11 @@ private section.
     importing
       !I_APPSET_ID type UJ_APPSET_ID
       !I_APPL_ID type UJ_APPL_ID
-      !I_F__FORDOWN type RS_BOOL
     exporting
       !E_T__CONST type ZBD0T_TY_T_CONSTANT
     raising
-      ZCX_BDNL_EXCEPTION .
+      ZCX_BDNL_EXCEPTION
+      CX_STATIC_CHECK .
   methods SELECT_PARAM_WHERE
     importing
       !I_APPSET_ID type UJ_APPSET_ID
@@ -80,7 +73,8 @@ private section.
     exporting
       !E_T__RANGE type UJ0_T_SEL
     raising
-      ZCX_BDNL_EXCEPTION .
+      ZCX_BDNL_EXCEPTION
+      CX_STATIC_CHECK .
   methods SELECT_WHERE_OPT
     importing
       !TOKEN type STRING
@@ -91,28 +85,25 @@ private section.
   methods PRIM
     raising
       ZCX_BDNL_EXCEPTION
-      ZCX_BD00_CREATE_OBJ .
+      CX_STATIC_CHECK .
   methods SELECT_STATEMENTS
     exporting
-      !E_S__STACK type ZBNLT_S__STACK_CONTAINER
       !E_O__CONTAINER type ref to ZCL_BDNL_CONTAINER
       !E_V__TABLENAME type ZBNLT_V__TABLENAME
     raising
       ZCX_BDNL_EXCEPTION
-      ZCX_BD00_CREATE_OBJ .
+      CX_STATIC_CHECK .
   methods CLEAR_STATEMENTS
     exporting
-      !E_S__STACK type ZBNLT_S__STACK_CONTAINER
       !E_O__CONTAINER type ref to ZCL_BDNL_CONTAINER
       !E_V__TABLENAME type ZBNLT_V__TABLENAME
     raising
       ZCX_BDNL_EXCEPTION
-      ZCX_BD00_CREATE_OBJ .
+      CX_STATIC_CHECK .
   methods TABLE_STATEMENTS
     exporting
-      !E_S__STACK type ZBNLT_S__STACK_CONTAINER
       !E_O__CONTAINER type ref to ZCL_BDNL_CONTAINER
       !E_V__TABLENAME type ZBNLT_V__TABLENAME
     raising
       ZCX_BDNL_EXCEPTION
-      ZCX_BD00_CREATE_OBJ .
+      CX_STATIC_CHECK .

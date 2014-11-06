@@ -19,13 +19,19 @@ method constructor.
   dt_f_parallel = parallel_task.
   ls_rfc_process-st = cs-rfc_free.
 
-  if num <= 0.
-    nr_task = 4.
-  elseif num > 8.
-    nr_task = 8.
+
+  if sy-sysid <> `BP0`.
+    if num <= 0.
+      nr_task = 4.
+    elseif num > 8.
+      nr_task = 8.
+    else.
+      nr_task = num.
+    endif.
   else.
-    nr_task = num.
+    nr_task = 2.
   endif.
+
 
   do nr_task times.
     n = sy-index.

@@ -25,7 +25,9 @@ public section.
   type-pools ABAP .
   methods WRITE_BACK
     importing
-      !IF_CLEAR type RS_BOOL default ABAP_FALSE .
+      !IF_CLEAR type RS_BOOL default ABAP_FALSE
+    raising
+      ZCX_BD00_RFC_TASK .
   type-pools ZBD0C .
   methods ADD_LINE
     importing
@@ -46,7 +48,9 @@ public section.
     importing
       !MODE type C
     returning
-      value(E_ST) type RS_BOOL .
+      value(E_ST) type RS_BOOL
+    raising
+      CX_STATIC_CHECK .
   methods CONSTRUCTOR
     importing
       !I_APPSET_ID type UJ_APPSET_ID optional
@@ -62,7 +66,8 @@ public section.
       !IF_INVERT type RS_BOOL default ABAP_FALSE
       !I_DESTINATION type STRING optional
     raising
-      ZCX_BD00_CREATE_OBJ .
+      ZCX_BD00_CREATE_OBJ
+      ZCX_BD00_CREATE_RULE .
   class-methods GET_INFOCUBE
     importing
       !I_TYPE_PK type ZBD00_S_BPC_DIM-TYPE default ZBD0C_TY_TAB-STD_NON_UNIQUE_DK
@@ -74,7 +79,10 @@ public section.
       !I_INFOCUBE type RSINFOPROV
       !IT_KYF_LIST type ZBD0T_TY_T_KF optional
     returning
-      value(E_INFOCUBE) type ref to ZCL_BD00_APPL_TABLE .
+      value(E_INFOCUBE) type ref to ZCL_BD00_APPL_TABLE
+    raising
+      ZCX_BD00_CREATE_OBJ
+      ZCX_BD00_CREATE_RULE .
   class-methods GET_DIMENSION
     importing
       !IT_ALIAS type ZBD00_T_ALIAS optional
@@ -84,7 +92,10 @@ public section.
       !IT_ATTR_LIST type UJA_T_ATTR_NAME
       !I_TYPE_PK type ZBD00_S_BPC_DIM-TYPE default ZBD0C_TY_TAB-STD_NON_UNIQUE_DK
     returning
-      value(E_INFOCUBE) type ref to ZCL_BD00_APPL_TABLE .
+      value(E_INFOCUBE) type ref to ZCL_BD00_APPL_TABLE
+    raising
+      ZCX_BD00_CREATE_OBJ
+      ZCX_BD00_CREATE_RULE .
   class-methods GET_APPL_CUST
     importing
       !I_TYPE_PK type ZBD00_S_BPC_DIM-TYPE default ZBD0C_TY_TAB-STD_NON_UNIQUE_DK
@@ -96,7 +107,10 @@ public section.
       !IT_KYF_LIST type ZBD0T_TY_T_KF optional
       !I_APPSET_ID type UJ_APPSET_ID
     returning
-      value(E_INFOCUBE) type ref to ZCL_BD00_APPL_TABLE .
+      value(E_INFOCUBE) type ref to ZCL_BD00_APPL_TABLE
+    raising
+      ZCX_BD00_CREATE_OBJ
+      ZCX_BD00_CREATE_RULE .
   methods SET_RULE_SEARCH
     importing
       !IO_DEFAULT type ref to ZCL_BD00_APPL_CTRL optional
@@ -105,4 +119,6 @@ public section.
       !IT_CUST_LINK type ZBD0T_TY_T_CUSTOM_LINK optional
       !IT_CUST_LINK1 type ZBD0T_TY_T_CUSTOM_LINK1 optional
     returning
-      value(E_ID) type ZBD0T_ID_RULES .
+      value(E_ID) type ZBD0T_ID_RULES
+    raising
+      ZCX_BD00_CREATE_RULE .

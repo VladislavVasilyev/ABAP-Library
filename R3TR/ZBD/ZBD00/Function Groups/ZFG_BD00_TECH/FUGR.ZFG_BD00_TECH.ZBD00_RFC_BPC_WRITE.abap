@@ -6,6 +6,7 @@ function zbd00_rfc_bpc_write .
 *"     VALUE(I_APPL_ID) TYPE  UJ_APPL_ID
 *"     VALUE(I_MODE) TYPE  ZRB_WRITE_BACK_MODE
 *"     VALUE(I_BPC_USER) TYPE  UJ0_S_USER OPTIONAL
+*"     VALUE(I_RFCDATA_UC) TYPE  XSTRING OPTIONAL
 *"  EXPORTING
 *"     VALUE(ET_MESSAGE) TYPE  UJ0_T_MESSAGE
 *"     VALUE(ES_STATUS_RECORDS) TYPE  UJR_S_STATUS_RECORDS
@@ -116,9 +117,10 @@ function zbd00_rfc_bpc_write .
   " распаковка данных
   call function 'ZBD00_DATA_UNWRAP'
     exporting
-      i_t_rfcdata = i_t_rfcdata[]
+      i_t_rfcdata  = i_t_rfcdata[]
+      i_rfcdata_uc = i_rfcdata_uc
     changing
-      c_t_data    = <lt_data>.
+      c_t_data     = <lt_data>.
 *╚═══════════════════════════════════════════════════════════════════╝
 
 
@@ -160,6 +162,7 @@ function zbd00_rfc_bpc_write .
         endwhile.
 
         add 1 to ld_v__cnt_raise_write.
+        wait up to 5 seconds.
         continue.
 
         raise error_write_back.

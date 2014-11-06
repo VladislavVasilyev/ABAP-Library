@@ -11,9 +11,9 @@ method if_uj_custom_logic~execute.
   , lr_i__context     type ref to if_uj_context.
   .
 
-  field-symbols
-  : <ld_s__script> type ty_s__script
-  .
+*  field-symbols
+*  : <ld_s__script> type ty_s__script
+*  .
 
 *--------------------------------------------------------------------*
 * GET JOB INFO

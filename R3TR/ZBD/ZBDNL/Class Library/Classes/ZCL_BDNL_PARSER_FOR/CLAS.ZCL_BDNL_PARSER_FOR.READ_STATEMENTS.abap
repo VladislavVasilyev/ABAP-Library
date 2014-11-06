@@ -4,29 +4,14 @@ method read_statements.
   : cs_with_key type string value `^\$WITH\sKEY$`
   .
 
-  data
-  : ld_v__index         type i
-  , ld_v__token         type string
-  , ld_f__fordown       type rs_bool
-  .
-
   clear e_s__stack.
 
   e_s__stack-tablename  = gr_o__cursor->get_token( esc = abap_true ).
 
-  read table gd_t__containers
-       with key tablename = e_s__stack-tablename
-       transporting no fields.
-
-  if sy-subrc <> 0.
-    raise exception type zcx_bdnl_syntax_error
-          exporting textid = zcx_bdnl_syntax_error=>zcx_table_not_defined
-                    token  = e_s__stack-tablename
-                    index  = gr_o__cursor->gd_v__cindex .
-  endif.
+  zcl_bdnl_container=>check_table( e_s__stack-tablename ).
 
   if gr_o__cursor->check_tokens( q = 2 regex = cs_with_key ) = abap_true.
-     gr_o__cursor->get_token( esc = abap_true trn = 2 ).
+    gr_o__cursor->get_token( esc = abap_true trn = 2 ).
 
     call method read_with_key
       exporting

@@ -1,8 +1,8 @@
 method set_actual_rows.
 
   data
-  : ld_s__actual type zbd0t_s__log_actual
-  , ld_v__size   type i
+*  : ld_s__actual type zbd0t_s__log_actual
+  : ld_v__size   type i
   .
 
   field-symbols

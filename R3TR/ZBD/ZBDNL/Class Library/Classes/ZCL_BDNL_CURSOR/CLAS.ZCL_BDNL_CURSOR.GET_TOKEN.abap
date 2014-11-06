@@ -3,14 +3,16 @@ method get_token.
   constants cs_name type string value `^([A-Z\_])([A-Z0-9\_]+)$`.
 
   data
-  : ld_v__tabix     type i
-  , ld_v__from      type i
-  , ld_v__to        type i
-  , ld_v__name      type string.
+  : ld_v__tabix             type i
+  , ld_v__from              type i
+  , ld_v__to                type i
+*  , ld_v__name              type string
+  , ld_v__varname           type string
   .
 
   field-symbols
-  : <ld_s__token_list> type zbnlt_s__match_res
+  : <ld_s__token_list>      type zbnlt_s__match_res
+  , <ld_v__value>           type string
   .
 
   if gd_v__index = 0.
@@ -39,7 +41,9 @@ method get_token.
 
     ld_v__tabix = sy-tabix.
     if <ld_s__token_list>-f_variable = abap_true.
-      token = <ld_s__token_list>-value.
+      ld_v__varname = <ld_s__token_list>-token.
+      assign <ld_s__token_list>-refvalue->* to <ld_v__value>.
+      token = <ld_v__value>.
     else.
       token = <ld_s__token_list>-token.
     endif.
@@ -69,6 +73,7 @@ method get_token.
     return.
   endif.
 
+  gd_v__varname = ld_v__varname.
   gd_v__index = gd_v__cindex = ld_v__tabix.
   gd_v__ctoken = token.
 

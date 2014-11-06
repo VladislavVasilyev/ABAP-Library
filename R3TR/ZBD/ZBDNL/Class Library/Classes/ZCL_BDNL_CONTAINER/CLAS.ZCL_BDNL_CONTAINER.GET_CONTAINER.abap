@@ -14,7 +14,7 @@ method get_container.
 
   if sy-subrc = 0.
 
-    container ?= <ld_s__reestr>-container.
+    container = <ld_s__reestr>-container.
 
   endif.
 

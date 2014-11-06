@@ -52,6 +52,16 @@
 			<MSGNR>008</MSGNR>
 			<TEXT>Был превышен лимит на количество попыток запуска RFC.</TEXT>
 		</item>
+		<item>
+			<SPRSL>E</SPRSL>
+			<MSGNR>009</MSGNR>
+			<TEXT>Ошибка при генерации программы.</TEXT>
+		</item>
+		<item>
+			<SPRSL>R</SPRSL>
+			<MSGNR>009</MSGNR>
+			<TEXT>Ошибка при генерации программы.</TEXT>
+		</item>
 	</T100>
 	<HEADER>
 		<PGMID>R3TR</PGMID>

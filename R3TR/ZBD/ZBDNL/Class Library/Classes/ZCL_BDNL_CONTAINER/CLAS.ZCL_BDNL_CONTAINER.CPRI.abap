@@ -2,55 +2,69 @@
 *"* do not include other source files here!!!
 private section.
 
-  class-data cd_t__table_for type ty_t__reestr .
-  class-data cd_t__table_reestr type ty_t__reestr .
-  class-data cd_v__current_script type string .
-  class-data cd_v__short_script type string .
-  class-data cd_v__n_turn type i .
-  class-data cd_v__n_for type i .
-  class-data cd_v__n_script type i .
-  class-data cr_s__log type ref to ty_s__log .
-  data gd_s__param type zbnlt_s__stack_container .
-  data gd_v__packagesize type i .
-  data gd_v__script type string .
-  data gd_v__turn type i .
+  class-data CD_T__TABLE_FOR type TY_T__REESTR .
+  class-data CD_T__TABLE_REESTR type TY_T__REESTR .
+  class-data CD_V__CURRENT_SCRIPT type STRING .
+  class-data CD_V__SHORT_SCRIPT type STRING .
+  class-data CD_V__N_TURN type I .
+  class-data CD_V__N_FOR type I .
+  class-data CD_V__N_SCRIPT type I .
+  class-data CR_S__LOG type ref to TY_S__LOG .
+  data GD_S__PARAM type ZBNLT_S__STACK_CONTAINER .
+  data GD_V__TURN type I .
 
-  methods create__bpcgen
+  methods CREATE__BPCGEN
     importing
-      !i_v__package_size type i
+      !I_V__PACKAGE_SIZE type I
     returning
-      value(e_f__create) type rs_bool .
-  methods create__bpcdim
+      value(E_F__CREATE) type RS_BOOL
+    raising
+      ZCX_BD00_CREATE_OBJ .
+  methods CREATE__BPCDIM
     returning
-      value(e_f__create) type rs_bool .
-  methods create__bpc
+      value(E_F__CREATE) type RS_BOOL
+    raising
+      ZCX_BD00_CREATE_OBJ .
+  methods CREATE__BPC
     importing
-      !i_v__package_size type i
+      !I_V__PACKAGE_SIZE type I
     returning
-      value(e_f__create) type rs_bool .
-  methods create__bp
+      value(E_F__CREATE) type RS_BOOL
+    raising
+      ZCX_BD00_CREATE_OBJ .
+  methods CREATE__BP
     importing
-      !i_v__package_size type i
+      !I_V__PACKAGE_SIZE type I
     returning
-      value(e_f__create) type rs_bool .
-  methods create_tablefordown
+      value(E_F__CREATE) type RS_BOOL .
+  methods CREATE_TABLEFORDOWN
     returning
-      value(e_f__create) type rs_bool .
-  methods create_ctable
+      value(E_F__CREATE) type RS_BOOL
+    raising
+      ZCX_BD00_CREATE_OBJ .
+  methods CREATE_CTABLE
     returning
-      value(e_f__create) type rs_bool .
-  methods create_clear
+      value(E_F__CREATE) type RS_BOOL
+    raising
+      ZCX_BD00_CREATE_OBJ .
+  methods CREATE_CLEAR
     returning
-      value(e_f__create) type rs_bool .
-  methods create_select
+      value(E_F__CREATE) type RS_BOOL
+    raising
+      ZCX_BD00_CREATE_OBJ .
+  methods CREATE_SELECT
     importing
-      !i_v__package_size type i
+      !I_V__PACKAGE_SIZE type I
     returning
-      value(e_f__create) type rs_bool .
-  methods create_table
+      value(E_F__CREATE) type RS_BOOL
+    raising
+      ZCX_BD00_CREATE_OBJ .
+  methods CREATE_TABLE
     importing
-      !f_master type rs_bool
-      !package_size type i .
-  methods constructor
+      !F_MASTER type RS_BOOL
+      !PACKAGE_SIZE type I
+    raising
+      ZCX_BD00_CREATE_OBJ .
+  methods CONSTRUCTOR
     importing
-      !i_param type zbnlt_s__stack_container .
+      !I_PARAM type ZBNLT_S__STACK_CONTAINER .

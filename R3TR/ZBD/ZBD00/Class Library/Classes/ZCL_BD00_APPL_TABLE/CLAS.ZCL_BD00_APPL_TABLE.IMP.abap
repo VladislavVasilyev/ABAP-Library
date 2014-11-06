@@ -16,8 +16,8 @@ class lcl_process_data implementation.
     : <ld_s__alias>  type zbd00_s_alias
     .
 
-    go_appl_table    ?= io_appl_table.
-    go_appl          ?= go_appl_table->gr_o__model->gr_o__application.
+    go_appl_table    = io_appl_table.
+    go_appl          = go_appl_table->gr_o__model->gr_o__application.
     gr_table          = io_appl_table->gr_t__table.
     gf_suppress_zero  = if_suppress_zero.
     gv_table_kind     = go_appl_table->gr_o__model->gd_s__handle-tab-tech_name->table_kind.
@@ -25,21 +25,22 @@ class lcl_process_data implementation.
     gd_f__invert      = if_invert.
 
 
-    case iv_destination.
+    " table
+    gd_v__destination = iv_destination. "RSLOGSYSDEST
 
-      when `BP2`.
-        if sy-sysid = `BP1` or sy-sysid = `BP0`.
-          gd_v__destination = `BP2CLNT500_FOR_EXP`.
-        endif.
-      when `BP1`.
-        if sy-sysid = `BP0`.
-          gd_v__destination = `BP1CLNT400_FOR_EXP`.
-        endif.
-      when `BP0`. clear gd_v__destination.
-      when others.
-        clear gd_v__destination.
-    endcase.
-
+*    case iv_destination.
+*      when `BP2`.
+*        if sy-sysid = `BP1` or sy-sysid = `BP0`.
+*          gd_v__destination = `BP2CLNT500_FOR_EXP`.
+*        endif.
+*      when `BP1`.
+*        if sy-sysid = `BP0`.
+*          gd_v__destination = `BP1CLNT400_FOR_EXP`.
+*        endif.
+*      when `BP0`. clear gd_v__destination.
+*      when others.
+*        clear gd_v__destination.
+*    endcase.
 
     loop at go_appl_table->gr_o__model->gd_t__bpc_alias
          assigning <ld_s__alias>.
@@ -68,6 +69,13 @@ class lcl_process_data implementation.
     create object go_log.
 
   endmethod.                    "constructor
+  method get_ref_range_table.
+
+    get reference of gt_range into ref.
+
+  endmethod.                    "get_ref_range_table
+
+
 *--------------------------------------------------------------------*
 * READ_DATA
 *--------------------------------------------------------------------*
@@ -77,9 +85,9 @@ class lcl_process_data implementation.
     : l_th_sfc                    type rsdri_th_sfc
     , l_th_sfk                    type rsdri_th_sfk
     , l_packagesize               type i
-    , l_aggregate                 type rsinfocube
-    , l_split_occurred            type rsdr0_split_occurred
-    , l_stepuid                   type sysuuid_25
+    , l_aggregate                 type rsinfocube "#EC NEEDED
+    , l_split_occurred            type rsdr0_split_occurred "#EC NEEDED
+    , l_stepuid                   type sysuuid_25 "#EC NEEDED
     , lr_s_data                   type ref to data
     , lr_t_data                   type ref to data
     , lr_hashed_data              type ref to data
@@ -259,7 +267,7 @@ class lcl_process_data implementation.
 *        i_authority_check      = rsdrc_c_authchk-read
 *        i_currency_conversion  = 'X'
 *        i_use_db_aggregation   = rs_c_true
-*        i_use_aggregates       = rs_c_true
+        i_use_aggregates       = rs_c_false
 *        i_read_ods_delta       = rs_c_false
 *        i_caller               = rsdrs_c_caller-rsdri
 *        i_debug                = rs_c_false
@@ -457,10 +465,10 @@ i_comp_uc = go_appl_table->gr_o__model->gd_v__comp_uc
     data
     : g_t_rfcdata       type rsdri_t_rfcdata
     , g_t_field         type rsdp0_t_field
-    , l_aggregate       type rsinfocube
-    , l_rfcdata_uc      type xstring
-    , l_split_occurred  type rsdr0_split_occurred
-    , l_stepuid         type sysuuid_25
+    , l_aggregate       type rsinfocube "#EC NEEDED
+    , l_rfcdata_uc      type xstring "#EC NEEDED
+    , l_split_occurred  type rsdr0_split_occurred "#EC NEEDED
+    , l_stepuid         type sysuuid_25 "#EC NEEDED
     .
 
     field-symbols
@@ -510,9 +518,9 @@ i_comp_uc = go_appl_table->gr_o__model->gd_v__comp_uc
 * READ_DATA_ARFC
 *--------------------------------------------------------------------*
   method read_data_arfc.
-    type-pools
-    : rsdrc
-    .
+*    type-pools
+*    : rsdrc
+*    .
 
     data
     : task type zbd0t_ty_name_rfc_task
@@ -604,10 +612,10 @@ i_comp_uc = go_appl_table->gr_o__model->gd_v__comp_uc
     data
     : g_t_rfcdata           type rsdri_t_rfcdata
     , g_t_field             type rsdp0_t_field
-    , l_aggregate           type rsinfocube
+    , l_aggregate           type rsinfocube "#EC NEEDED
     , l_rfcdata_uc          type xstring
-    , l_split_occurred      type rsdr0_split_occurred
-    , l_stepuid             type sysuuid_25
+    , l_split_occurred      type rsdr0_split_occurred "#EC NEEDED
+    , l_stepuid             type sysuuid_25 "#EC NEEDED
     , ld_s__log_read        type zbd0t_s__log_read
     .
 
@@ -714,8 +722,8 @@ i_comp_uc = go_appl_table->gr_o__model->gd_v__comp_uc
   method write_data_arfc_receive.
     data
     : task                type zcl_bd00_rfc_task=>ty_name_rfc_task
-    , et_message          type uj0_t_message
-    , es_status_records   type ujr_s_status_records
+*    , et_message          type uj0_t_message
+*    , es_status_records   type ujr_s_status_records
     , ld_s__log_write     type zbd0t_s__log_write
     .
 
@@ -751,14 +759,14 @@ i_comp_uc = go_appl_table->gr_o__model->gd_v__comp_uc
     data
     : ld_t__dimlist     type table of uj_dim_name
     , ld_t__attr_list	  type uja_t_attr_name
-    , ld_t__dim_list    type zbd00_t_ch_key
+*    , ld_t__dim_list    type zbd00_t_ch_key
     , lt_rules_field    type zbd0t_ty_t_rule_field
     , ls_rules_field    type zbd0t_ty_s_rule_field
     , ld_t__sel	        type uj0_t_sel
-    , ld_t__sel_mbr	    type uja_t_dim_member
-    , lr_t__std_data    type ref to data
-    , lr_o__mbr_data    type ref to cl_uja_dim
-    , ld_t__hier_list	  type uja_t_hier_name
+*    , ld_t__sel_mbr      type uja_t_dim_member
+*    , lr_t__std_data    type ref to data
+*    , lr_o__mbr_data    type ref to cl_uja_dim
+*    , ld_t__hier_list    type uja_t_hier_name
     , ld_s__range       type uj0_s_sel
     , ld_s__table       type ty_custom_appl
     , ld_s__log_read    type zbd0t_s__log_read
@@ -809,7 +817,7 @@ i_comp_uc = go_appl_table->gr_o__model->gd_v__comp_uc
              assigning    <ld_s__dimension>
              where        dimension = <ld_s__dimlist>.
 
-          insert <ld_s__dimension> into table ld_t__dim_list.
+*          insert <ld_s__dimension> into table ld_t__dim_list.
 
           if <ld_s__dimension>-attribute is not initial.
             append <ld_s__dimension>-attribute to ld_t__attr_list.
@@ -825,7 +833,7 @@ i_comp_uc = go_appl_table->gr_o__model->gd_v__comp_uc
         endloop.
 
 
-        ld_s__table-object ?= zcl_bd00_appl_table=>get_dimension(
+        ld_s__table-object = zcl_bd00_appl_table=>get_dimension(
                                 i_appset_id   = go_appl->gd_v__appset_id
                                 i_dimension   = <ld_s__dimlist>
                                 it_attr_list  = ld_t__attr_list
@@ -863,7 +871,7 @@ i_comp_uc = go_appl_table->gr_o__model->gd_v__comp_uc
             ls_rules_field-sc-attribute  = <ld_s__dimension>-attribute.
           endif.
 
-          ls_rules_field-sc-object    ?= ld_s__table-object.
+          ls_rules_field-sc-object    = ld_s__table-object.
 
           insert ls_rules_field into table lt_rules_field.
 
@@ -873,9 +881,9 @@ i_comp_uc = go_appl_table->gr_o__model->gd_v__comp_uc
 
         clear
         : ld_t__sel
-        , ld_t__attr_list
-        , ld_t__sel_mbr
-        , ld_t__dim_list.
+        , ld_t__attr_list.
+*        , ld_t__sel_mbr.
+*        , ld_t__dim_list.
 
       endloop.
 
@@ -918,7 +926,7 @@ i_comp_uc = go_appl_table->gr_o__model->gd_v__comp_uc
 
     field-symbols
     : <ld_s__table>     type ty_custom_appl
-    , <ld_t__table>     type any table.
+    , <ld_t__table>     type any table
     .
 
     ld_v__index = 1 + index.
@@ -1014,8 +1022,8 @@ i_comp_uc = go_appl_table->gr_o__model->gd_v__comp_uc
   method generate_dimension.
 
     data
-    : ld_t__dimlist         type table of uj_dim_name
-    , ld_t__attr_list	      type uja_t_attr_name
+*    : ld_t__dimlist         type table of uj_dim_name
+    : ld_t__attr_list	      type uja_t_attr_name
     , ld_t__sel	            type uj0_t_sel
     , lr_t__std_data        type ref to data
     , lr_o__mbr_data        type ref to cl_uja_dim
@@ -1175,12 +1183,13 @@ i_comp_uc = go_appl_table->gr_o__model->gd_v__comp_uc
     data
     : lt_rfcdata        type rsdri_t_rfcdata
     , lt_field          type rsdp0_t_field
-    , task              type zbd0t_ty_name_rfc_task
+*    , task              type zbd0t_ty_name_rfc_task
     , ld_v__cnt_buf     type i
     , ld_v__cnt         type i
     , ld_v__packsize    type i
-    , l_string          type string
+*    , l_string          type string
     , ld_s__log_write   type zbd0t_s__log_write
+    , ld_f__outuc       type rs_bool
     .
 
     field-symbols
@@ -1189,30 +1198,93 @@ i_comp_uc = go_appl_table->gr_o__model->gd_v__comp_uc
     , <ld_s__log_write>  type zbd0t_s__log_write
     .
 
+    if gd_v__destination is initial.
+      ld_f__outuc = abap_false.
+    else.
+      ld_f__outuc = abap_true.
+    endif.
+
     assign gr_table->* to <lt_data>.
     ld_v__packsize = go_appl_table->gr_o__model->gr_o__application->gd_v__package_size.
 
     check lines( <lt_data> ) > 0.
 
-    if lines( <lt_data> ) > ld_v__packsize.
-      loop at <lt_data>
-           assigning <ls_data>.
 
-        add 1 to
-        : ld_v__cnt_buf
-        , ld_v__cnt
-        .
+    if ld_f__outuc = abap_false.
+      if lines( <lt_data> ) > ld_v__packsize.
+        loop at <lt_data>
+             assigning <ls_data>.
 
-        call function 'ZBD00_DATA_WRAP_LINE'
+          add 1 to
+          : ld_v__cnt_buf
+          , ld_v__cnt
+          .
+
+          call function 'ZBD00_DATA_WRAP_LINE'
+            exporting
+              i_s_data         = <ls_data>
+              i_unicode_result = rs_c_false
+            changing
+              e_t_outdata      = lt_rfcdata.
+
+
+          check ld_v__cnt_buf = ld_v__packsize or
+                ld_v__cnt     = lines( <lt_data> ).
+
+          add 1 to gv_nr_pack_write.
+          ld_s__log_write-nr_pack = gv_nr_pack_write.
+          append ld_s__log_write to go_log->gd_t__open_write assigning <ld_s__log_write>.
+
+          <ld_s__log_write>-rfc_task = zcl_bd00_rfc_task=>get_task_run( i_appset_id = go_appl->gd_v__appset_id
+                                                                        i_appl_id   = go_appl->gd_v__appl_id
+                                                                        mode        = zcl_bd00_rfc_task=>cs-rfc_write ).
+
+          while zcl_bd00_rfc_task=>while_task( ) = abap_true.
+
+            get time stamp field <ld_s__log_write>-time_start.
+
+            call function 'ZBD00_RFC_BPC_WRITE'
+              starting new task <ld_s__log_write>-rfc_task
+              destination in group 'parallel_generators'
+              calling write_data_arfc_receive on end of task
+              exporting
+                i_appset_id           = go_appl->gd_v__appset_id
+                i_appl_id             = go_appl->gd_v__appl_id
+                i_mode                = i_mode
+                i_bpc_user            = zcl_bd00_context=>gd_s__user_id
+              tables
+                i_t_rfcdata           = lt_rfcdata
+                i_t_field             = lt_field
+              exceptions
+                communication_failure = 1
+                system_failure        = 2
+                resource_failure      = 3
+                others                = 4.
+
+            if sy-subrc = 0.
+              exit.
+            endif.
+
+          endwhile.
+
+          clear
+          : ld_v__cnt_buf
+          , lt_rfcdata
+          .
+
+          if sy-subrc ne 0.
+            "error
+            exit.
+          endif.
+        endloop.
+
+      else.
+        call function 'ZBD00_DATA_WRAP'
           exporting
-            i_s_data         = <ls_data>
+            i_t_data         = <lt_data>
             i_unicode_result = rs_c_false
-          changing
+          importing
             e_t_outdata      = lt_rfcdata.
-
-
-        check ld_v__cnt_buf = ld_v__packsize or
-              ld_v__cnt     = lines( <lt_data> ).
 
         add 1 to gv_nr_pack_write.
         ld_s__log_write-nr_pack = gv_nr_pack_write.
@@ -1250,48 +1322,130 @@ i_comp_uc = go_appl_table->gr_o__model->gd_v__comp_uc
 
         endwhile.
 
-        clear
-        : ld_v__cnt_buf
-        , lt_rfcdata
-        .
-
-        if sy-subrc ne 0.
-          "error
-          exit.
-        endif.
-      endloop.
-
+      endif.
     else.
-      call function 'ZBD00_DATA_WRAP'
-        exporting
-          i_t_data         = <lt_data>
-          i_unicode_result = rs_c_false
-        importing
-          e_t_outdata      = lt_rfcdata.
+*--------------------------------------------------------------------*
+* Destination
+*--------------------------------------------------------------------*
+      data
+      : ld_v__unicode         type xstring
+      , lr_s__data            type ref to data
+      , lr_t__data            type ref to data
+      .
 
-      add 1 to gv_nr_pack_write.
-      ld_s__log_write-nr_pack = gv_nr_pack_write.
-      append ld_s__log_write to go_log->gd_t__open_write assigning <ld_s__log_write>.
+      field-symbols
+      : <ld_s__data>          type any
+      , <ld_t__data>          type standard table
+      .
 
-      <ld_s__log_write>-rfc_task = zcl_bd00_rfc_task=>get_task_run( i_appset_id = go_appl->gd_v__appset_id
-                                                                    i_appl_id   = go_appl->gd_v__appl_id
-                                                                    mode        = zcl_bd00_rfc_task=>cs-rfc_write ).
 
-      while zcl_bd00_rfc_task=>while_task( ) = abap_true.
+      if lines( <lt_data> ) > ld_v__packsize.
+        create data lr_s__data like line of <lt_data>.
+        assign lr_s__data->* to <ld_s__data>.
+        create data lr_t__data like standard table of <ld_s__data> with non-unique default key.
+        assign lr_t__data->* to <ld_t__data>.
+
+        loop at <lt_data>
+             assigning <ls_data>.
+
+          add 1 to
+          : ld_v__cnt_buf
+          , ld_v__cnt
+          .
+
+          append <ls_data> to <ld_t__data>.
+
+          check ld_v__cnt_buf = ld_v__packsize or
+                ld_v__cnt     = lines( <lt_data> ).
+
+          call function 'ZBD00_DATA_WRAP'
+            exporting
+              i_t_data         = <ld_t__data>
+              i_unicode_result = rs_c_true
+            importing
+              e_outdata_uc     = ld_v__unicode.
+
+          refresh <ld_t__data>.
+
+          add 1 to gv_nr_pack_write.
+          ld_s__log_write-nr_pack = gv_nr_pack_write.
+          append ld_s__log_write to go_log->gd_t__open_write assigning <ld_s__log_write>.
+
+          <ld_s__log_write>-rfc_task = zcl_bd00_rfc_task=>get_task_run( i_appset_id = go_appl->gd_v__appset_id
+                                                                        i_appl_id   = go_appl->gd_v__appl_id
+                                                                        mode        = zcl_bd00_rfc_task=>cs-rfc_write ).
+
+*          while zcl_bd00_rfc_task=>while_task( ) = abap_true.
+
+          get time stamp field <ld_s__log_write>-time_start.
+
+          call function 'ZBD00_RFC_BPC_WRITE'
+            starting new task <ld_s__log_write>-rfc_task
+            destination gd_v__destination
+            calling write_data_arfc_receive on end of task
+            exporting
+              i_appset_id           = go_appl->gd_v__appset_id
+              i_appl_id             = go_appl->gd_v__appl_id
+              i_mode                = i_mode
+              i_bpc_user            = zcl_bd00_context=>gd_s__user_id
+              i_rfcdata_uc          = ld_v__unicode
+            tables
+*                i_t_rfcdata           = lt_rfcdata
+              i_t_field             = lt_field
+            exceptions
+              communication_failure = 1
+              system_failure        = 2
+              resource_failure      = 3
+              others                = 4.
+
+          if sy-subrc = 0.
+            exit.
+          endif.
+
+*          endwhile.
+
+          clear
+          : ld_v__cnt_buf
+          , ld_v__unicode
+          .
+
+          if sy-subrc ne 0.
+            "error
+            exit.
+          endif.
+        endloop.
+      else.
+        call function 'ZBD00_DATA_WRAP'
+          exporting
+            i_t_data         = <lt_data>
+            i_unicode_result = rs_c_true
+          importing
+            e_outdata_uc     = ld_v__unicode.
+
+        add 1 to gv_nr_pack_write.
+        ld_s__log_write-nr_pack = gv_nr_pack_write.
+        append ld_s__log_write to go_log->gd_t__open_write assigning <ld_s__log_write>.
+
+        <ld_s__log_write>-rfc_task = zcl_bd00_rfc_task=>get_task_run( i_appset_id = go_appl->gd_v__appset_id
+                                                                      i_appl_id   = go_appl->gd_v__appl_id
+                                                                      mode        = zcl_bd00_rfc_task=>cs-rfc_write ).
+
+*        while zcl_bd00_rfc_task=>while_task( ) = abap_true.
 
         get time stamp field <ld_s__log_write>-time_start.
 
         call function 'ZBD00_RFC_BPC_WRITE'
           starting new task <ld_s__log_write>-rfc_task
-          destination in group 'parallel_generators'
+          destination gd_v__destination
           calling write_data_arfc_receive on end of task
           exporting
             i_appset_id           = go_appl->gd_v__appset_id
             i_appl_id             = go_appl->gd_v__appl_id
             i_mode                = i_mode
             i_bpc_user            = zcl_bd00_context=>gd_s__user_id
+            i_rfcdata_uc          = ld_v__unicode
           tables
-            i_t_rfcdata           = lt_rfcdata
+*              i_t_rfcdata           = lt_rfcdata
             i_t_field             = lt_field
           exceptions
             communication_failure = 1
@@ -1303,9 +1457,11 @@ i_comp_uc = go_appl_table->gr_o__model->gd_v__comp_uc
           exit.
         endif.
 
-      endwhile.
+*        endwhile.
 
+      endif.
     endif.
+
 
   endmethod.                    "write_data_arfc
 *--------------------------------------------------------------------*

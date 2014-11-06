@@ -6,7 +6,7 @@ method skip_if.
   , left_val_p    type p
   , rigth_val_p   type p
   , op            type string
-  , val           type string
+*  , val           type string
   .
 
 *  zcl_debug=>stop_program( ).

@@ -16,8 +16,8 @@ method get_ref.
   ls_dimension-attribute = attribute.
 
   translate
-  : ls_dimension-dimension to upper case
-  , ls_dimension-attribute to upper case
+  : ls_dimension-dimension to upper case "#EC TRANSLANG
+  , ls_dimension-attribute to upper case "#EC TRANSLANG
   .
 
   read table     <lt_dimension>

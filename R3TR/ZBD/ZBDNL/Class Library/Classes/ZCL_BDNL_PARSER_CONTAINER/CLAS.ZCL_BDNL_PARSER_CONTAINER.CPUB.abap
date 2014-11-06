@@ -14,21 +14,20 @@ public section.
 
   type-pools ZBNLT .
   methods GET_STACK
-    exporting
-      value(STACK) type ZBNLT_T__STACK_CONTAINER
-      !STACK1 type ZBNLT_T__CONTAINER
+    returning
+      value(STACK) type ZBNLT_T__CONTAINER
     raising
       ZCX_BDNL_EXCEPTION
-      ZCX_BD00_CREATE_OBJ .
+      CX_STATIC_CHECK .
   methods GET_FILTERS
     returning
       value(STACK) type ZBNLT_T__STACK_RANGE
     raising
       ZCX_BDNL_EXCEPTION
-      ZCX_BD00_CREATE_OBJ .
+      CX_STATIC_CHECK .
   methods CONSTRUCTOR
     importing
       !I_R__CURSOR type ref to ZCL_BDNL_CURSOR
       !I_T__RANGE type ZBNLT_T__STACK_RANGE optional
       !I_V__TURN type I optional
-      !I_T__CONTAINERS type ZBNLT_T__STACK_CONTAINER optional .
+      !_DEL_I_T__CONTAINERS type ZBNLT_T__STACK_CONTAINER optional .

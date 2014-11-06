@@ -66,9 +66,6 @@ method process_function.
           ld_s__bindparam-name = lt_s__methparam-name.
           insert ld_s__bindparam into table ld_t__bindparam.
       endcase.
-
-
-
     endloop.
 
     call method ('ZCL_BDNL_WHERE_FUNCTIONS')=>(ld_v__funcname)
@@ -79,7 +76,7 @@ method process_function.
       raise exception type zcx_bdnl_syntax_error
             exporting textid = zcx_bdnl_syntax_error=>zcx_func_where_return0
               token  = ld_v__funcname
-              index  = ld_v__funcindex .
+              index  = ld_v__funcindex.
     endif.
   else.
     raise exception type zcx_bdnl_syntax_error

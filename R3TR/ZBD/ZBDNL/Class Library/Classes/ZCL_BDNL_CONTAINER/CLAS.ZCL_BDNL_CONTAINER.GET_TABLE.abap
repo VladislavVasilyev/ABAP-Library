@@ -13,7 +13,7 @@ method get_table.
     exporting
       i_param = i_s__param.
 
-  ld_s__reestr-container ?= e_o__container.
+  ld_s__reestr-container = e_o__container.
 
   insert ld_s__reestr into table cd_t__table_reestr.
 

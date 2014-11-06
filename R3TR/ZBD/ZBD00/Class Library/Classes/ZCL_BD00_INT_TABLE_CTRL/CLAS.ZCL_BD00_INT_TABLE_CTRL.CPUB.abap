@@ -23,13 +23,17 @@ public section.
       !ID type ZBD0T_ID_RULES
     exporting
       value(CLASS) type STRING
-      !ET_OBJECT_REESTR type TY_T_OBJECT_REESTR .
+      !ET_OBJECT_REESTR type TY_T_OBJECT_REESTR
+    raising
+      ZCX_BD00_CREATE_RULE .
   class-methods CREATE_DYN_ADD
     importing
       !IO_TG type ref to ZCL_BD00_APPL_CTRL
       !IO_LINE type ref to ZCL_BD00_APPL_CTRL
     returning
-      value(CLASS) type STRING .
+      value(CLASS) type STRING
+    raising
+      ZCX_BD00_CREATE_RULE .
   class ZCL_BD00_APPL_CTRL definition load .
   methods CONSTRUCTOR
     importing
@@ -39,7 +43,9 @@ public section.
       !ID type ZBD0T_ID_RULES
     exporting
       !CLASS type STRING
-      !ET_OBJECT_REESTR type TY_T_OBJECT_REESTR .
+      !ET_OBJECT_REESTR type TY_T_OBJECT_REESTR
+    raising
+      ZCX_BD00_CREATE_RULE .
 
   methods ZIF_BD00_INT_TABLE~ADD
     redefinition .

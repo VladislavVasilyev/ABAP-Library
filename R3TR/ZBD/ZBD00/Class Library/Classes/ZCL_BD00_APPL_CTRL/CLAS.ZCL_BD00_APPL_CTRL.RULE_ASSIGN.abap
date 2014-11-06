@@ -1,7 +1,7 @@
 method rule_assign.
-  data
-  : ld_s__class_reg     like line of gd_t__class_reg
-  .
+*  data
+*  : ld_s__class_reg     like line of gd_t__class_reg
+*  .
 
   if gd_s__last_rule-id ne id.
     read table gd_t__class_reg

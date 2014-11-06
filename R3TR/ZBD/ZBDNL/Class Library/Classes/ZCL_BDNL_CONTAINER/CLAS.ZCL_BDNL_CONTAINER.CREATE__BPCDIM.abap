@@ -20,7 +20,7 @@ method create__bpcdim.
       endif.
     endloop.
 
-    gr_o__container ?= zcl_bd00_appl_table=>get_dimension(
+    gr_o__container = zcl_bd00_appl_table=>get_dimension(
                                it_alias     = gd_s__param-alias
                                it_range     = gd_s__param-range
                                i_appset_id  = gd_s__param-appset_id

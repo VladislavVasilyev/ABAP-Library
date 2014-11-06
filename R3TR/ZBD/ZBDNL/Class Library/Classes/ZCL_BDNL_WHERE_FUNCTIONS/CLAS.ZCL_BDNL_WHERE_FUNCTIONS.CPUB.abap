@@ -19,35 +19,45 @@ public section.
       !I02 type ANY optional
       !I03 type ANY optional
     exporting
-      !E type ZBNLT_T__PARAM .
+      !E type ZBNLT_T__PARAM
+    raising
+      CX_UJ_OBJ_NOT_FOUND .
   class-methods GET_ATTR
     importing
       !I01 type ANY
       !I02 type ANY
       !I03 type ANY optional
     exporting
-      !E type ZBNLT_T__PARAM .
+      !E type ZBNLT_T__PARAM
+    raising
+      CX_UJA_ADMIN_ERROR .
   class-methods GET_ENT_AS_EG
     importing
       !I01 type ANY
       !I02 type ANY
       !I03 type ANY optional
     exporting
-      !E type ZBNLT_T__PARAM .
+      !E type ZBNLT_T__PARAM
+    raising
+      CX_UJA_ADMIN_ERROR .
   class-methods GET_MONTH
     importing
       !I01 type ANY
       !I02 type ANY
       !I03 type ANY optional
     exporting
-      !E type ZBNLT_T__PARAM .
+      !E type ZBNLT_T__PARAM
+    raising
+      CX_UJA_ADMIN_ERROR .
   class-methods GET_YEARS
     importing
       !I01 type ANY
       !I02 type ANY
       !I03 type ANY optional
     exporting
-      !E type ZBNLT_T__PARAM .
+      !E type ZBNLT_T__PARAM
+    raising
+      CX_UJA_ADMIN_ERROR .
   class-methods CHANGE_YEAR
     importing
       !I01 type ANY

@@ -33,7 +33,7 @@ method create__bpcgen.
     gd_f__init      = abap_false.
   endif.
 
-  gd_v__packagesize = i_v__package_size.
+*  gd_v__packagesize = i_v__package_size.
   e_f__create = abap_true.
 
 endmethod.

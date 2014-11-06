@@ -1,0 +1,14 @@
+method CONSTRUCTOR.
+CALL METHOD SUPER->CONSTRUCTOR
+EXPORTING
+PREVIOUS = PREVIOUS
+.
+me->NAME = NAME .
+me->BINDPARAM = BINDPARAM .
+clear me->textid.
+if textid is initial.
+  IF_T100_MESSAGE~T100KEY = ZCX_BDNL_WORK_FUNC .
+else.
+  IF_T100_MESSAGE~T100KEY = TEXTID.
+endif.
+endmethod.

@@ -3,12 +3,12 @@ method cmd_from.
   constants
   : cs__regex     type string value `^([A-Z0-9\_]+)\>\~(\<([A-Z0-9\_]+)\>|\$GENERATE\>)`
   , cs__regex1    type string value `^\$BP\>\~(\<([A-Z0-9\_]+)\>|\/(CPMB)\/([A-Z0-9\_]+)\>)`
-  , cs__regex2    type string value `^([A-Z0-9\_]+)\>`
+*  , cs__regex2    type string value `^([A-Z0-9\_]+)\>`
   .
 
   data
-  : ld_v__express     type string
-  , ld_v__token       type string
+*  : ld_v__express     type string
+  : ld_v__token       type string
   , ld_v__index       type i
   , ld_v__infocube    type rsinfoprov
   .
@@ -36,13 +36,13 @@ method cmd_from.
 
     if e_appl_id = zblnc_keyword-generate.
       gr_o__cursor->get_token( esc = abap_true ).
-      e_appl_obj ?= zcl_bd00_application=>get_customize_application( i_appset_id = e_appset_id ).
+      e_appl_obj = zcl_bd00_application=>get_customize_application( i_appset_id = e_appset_id ).
       return.
     endif.
 
     if e_appl_id = zblnc_keyword-custom.
       gr_o__cursor->get_token( esc = abap_true ).
-      e_appl_obj ?= zcl_bd00_application=>get_customize_application( i_appset_id = e_appset_id ).
+      e_appl_obj = zcl_bd00_application=>get_customize_application( i_appset_id = e_appset_id ).
       return.
     endif.
 
@@ -67,11 +67,11 @@ method cmd_from.
                    token     = ld_v__token
                    index     = ld_v__index.
       else.
-        e_appl_obj ?= zcl_bd00_application=>get_dimension( i_appset_id = e_appset_id i_dimension = e_dim_name ).
+        e_appl_obj = zcl_bd00_application=>get_dimension( i_appset_id = e_appset_id i_dimension = e_dim_name ).
         clear e_appl_id.
       endif.
     else.
-      e_appl_obj ?= zcl_bd00_application=>get_application( i_appset_id = e_appset_id i_appl_id = e_appl_id ).
+      e_appl_obj = zcl_bd00_application=>get_application( i_appset_id = e_appset_id i_appl_id = e_appl_id ).
     endif.
 
     gr_o__cursor->get_token( esc = abap_true ).
@@ -96,7 +96,7 @@ method cmd_from.
                       appl_id   = e_appl_id
                       index     = ld_v__index.
     else.
-      e_appl_obj ?= zcl_bd00_application=>get_infocube( i_infocube = ld_v__infocube ).
+      e_appl_obj = zcl_bd00_application=>get_infocube( i_infocube = ld_v__infocube ).
     endif.
 
   else.

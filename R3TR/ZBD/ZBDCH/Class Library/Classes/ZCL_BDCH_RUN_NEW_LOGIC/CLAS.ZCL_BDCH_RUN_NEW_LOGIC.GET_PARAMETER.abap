@@ -312,7 +312,7 @@ method get_parameter.
     endtry.
 
     condense l_value no-gaps.
-    split l_value at `|` into d_sendmail dv_f__logmail.
+    split l_value at `|` into d_sendmail dv_f__logmail gd_f__searchlog.
   endif.
 
   " Принт парам
@@ -345,6 +345,7 @@ method get_parameter.
             where variante = gd_v__rspc_var
               and objvers = `A`
               and type  = gd_v__rspc_type.
+
 
     message s021(zmx_bdch_badi) with gd_v__rspc_var ld_v__txt.
   endif.

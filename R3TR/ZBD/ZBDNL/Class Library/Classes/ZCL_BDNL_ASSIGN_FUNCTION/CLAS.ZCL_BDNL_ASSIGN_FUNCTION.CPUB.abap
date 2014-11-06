@@ -7,6 +7,34 @@ class ZCL_BDNL_ASSIGN_FUNCTION definition
 *"* do not include other source files here!!!
 public section.
 
+  class-methods __CONVERT_TO_RANGE_TABLE
+    importing
+      !I01 type ANY
+      !I02 type ANY
+      !I03 type ANY
+    exporting
+      !E type ANY .
+  class-methods X_SELECT
+    importing
+      !I01 type ANY
+      !I02 type ANY
+      !I03 type ANY
+      !I04 type ANY optional
+      !I05 type ANY optional
+    exporting
+      !E type STRING
+    raising
+      CX_UJ_OBJ_NOT_FOUND
+      CX_UJ_STATIC_CHECK .
+  class-methods ROUND
+    importing
+      !I01 type ANY
+      !I02 type ANY
+    exporting
+      !E type UJ_KEYFIGURE
+    raising
+      CX_STATIC_CHECK
+      CX_DYNAMIC_CHECK .
   class-methods RIGHTSYM
     importing
       !I01 type ANY
@@ -20,12 +48,16 @@ public section.
     importing
       !I01 type ANY
     exporting
-      !E type ANY .
+      !E type ANY
+    raising
+      ZCX_BDNL_SKIP_ASSIGN .
   class-methods NUM
     importing
       !I01 type ANY
     exporting
-      !E type UJ_KEYFIGURE .
+      !E type UJ_KEYFIGURE
+    raising
+      CX_SY_CONVERSION_NO_NUMBER .
   class-methods MAP_EXT2_LICENSE
     importing
       !I01 type ANY
@@ -43,6 +75,11 @@ public section.
       !E type ANY
     raising
       ZCX_BDNL_SKIP_ASSIGN .
+  class-methods GET_VAR
+    importing
+      !I01 type ANY
+    exporting
+      !E type ANY .
   class-methods CONCATENATE
     importing
       !I01 type ANY
@@ -52,17 +89,25 @@ public section.
       !I05 type ANY optional
     exporting
       !E type ANY .
-  class-methods GET_VAR
+  class-methods CBG
     importing
       !I01 type ANY
+      !I02 type ANY
     exporting
-      !E type ANY .
+      !E type STRING .
   class-methods GET_EXCEL_DATE
     importing
       !I01 type ANY
     exporting
       !E type ANY .
   class-methods GET_CH
+    importing
+      !I01 type ref to ZCL_BD00_APPL_TABLE
+      !I02 type UJ_DIM_NAME
+      !I03 type UJ_ATTR_NAME
+    exporting
+      !E type ANY .
+  class-methods GET_KF
     importing
       !I01 type ref to ZCL_BD00_APPL_TABLE
       !I02 type UJ_DIM_NAME
@@ -126,7 +171,7 @@ public section.
       !E type ANY
     raising
       ZCX_BDNL_SKIP_ASSIGN .
-  class-methods GET_TIME
+  class-methods CHANGE_MONTH
     importing
       !I01 type ANY
       !I02 type ANY
@@ -138,7 +183,7 @@ public section.
       !I02 type ANY
     exporting
       !E type ANY .
-  class-methods CHANGE_MONTH
+  class-methods GET_TIME
     importing
       !I01 type ANY
       !I02 type ANY

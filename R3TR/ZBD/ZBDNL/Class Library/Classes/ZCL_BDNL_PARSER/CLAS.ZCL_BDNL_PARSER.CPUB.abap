@@ -28,6 +28,7 @@ public section.
 
   constants:
     true type c length 1 value `1`. "#EC NOTEXT
+  class-data CR_O__CURSOR type ref to ZCL_BDNL_CURSOR read-only .
   constants:
     false type c length 1 value `0`. "#EC NOTEXT
 
@@ -36,7 +37,7 @@ public section.
       value(STACK) type ZBNLT_S__STACK
     raising
       ZCX_BDNL_EXCEPTION
-      ZCX_BD00_CREATE_OBJ .
+      CX_STATIC_CHECK .
   methods CONSTRUCTOR
     importing
       !I_V__APPSET type UJ_APPSET_ID

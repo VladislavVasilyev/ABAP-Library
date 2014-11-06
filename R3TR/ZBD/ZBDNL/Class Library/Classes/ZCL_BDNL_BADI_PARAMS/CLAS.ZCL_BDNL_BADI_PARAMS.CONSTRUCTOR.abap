@@ -12,7 +12,7 @@ method constructor.
         i_application = i_appl_id
         i_user        = cl_ujk_model=>g_user_id.
   else.
-    gr_o__replace   ?= ir_replace.
+    gr_o__replace   = ir_replace.
   endif.
 
   call method set_param.

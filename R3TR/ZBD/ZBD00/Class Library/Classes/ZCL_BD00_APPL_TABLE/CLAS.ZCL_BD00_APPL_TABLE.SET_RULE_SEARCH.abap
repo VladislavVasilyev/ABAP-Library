@@ -32,8 +32,8 @@ method set_rule_search.
 
   ld_s__link_reestr-id                = e_id = get_rule_id( ).
   ld_s__link_reestr-type              = zcl_bd00_int_table=>method-search.
-  ld_s__link_reestr-main             ?= me.
-  ld_s__link_reestr-default          ?= io_default.
+  ld_s__link_reestr-main             = me.
+  ld_s__link_reestr-default          = io_default.
 
   read table gd_t__reestr_link
        with table key id = ld_s__link_reestr-id
@@ -102,7 +102,7 @@ method set_rule_search.
       endif.
 
       ld_s__cust_link-data    = <ld_s__i_cust_link>-sc-data.
-      ld_s__cust_link-object ?= <ld_s__i_cust_link>-sc-object.
+      ld_s__cust_link-object  = <ld_s__i_cust_link>-sc-object.
       ld_s__cust_link-const   = <ld_s__i_cust_link>-sc-const.
       ld_s__cust_link-clear   = <ld_s__i_cust_link>-sc-clear.
 
@@ -129,7 +129,7 @@ method set_rule_search.
       endif.
 
       ld_s__cust_link-data    = <ld_s__i_cust_link>-sc-data.
-      ld_s__cust_link-object ?= <ld_s__i_cust_link>-sc-object.
+      ld_s__cust_link-object  = <ld_s__i_cust_link>-sc-object.
       ld_s__cust_link-const   = <ld_s__i_cust_link>-sc-const.
       ld_s__cust_link-clear   = <ld_s__i_cust_link>-sc-clear.
 
@@ -144,9 +144,9 @@ method set_rule_search.
   loop at ld_t__cust_link
        assigning <ld_s__cust_link>.
 
-    read table ld_t__tg_table_key
-         with key table_line = <ld_s__cust_link>-tg
-         transporting no fields.
+    read table ld_t__tg_table_key                   "#EC *
+         with key table_line = <ld_s__cust_link>-tg "#EC *
+         transporting no fields.                    "#EC *
 
     if sy-subrc = 0.
       add 1 to ld_v__cnt.
@@ -180,7 +180,7 @@ method set_rule_search.
   insert ld_s__link_reestr into table gd_t__reestr_link.
 
   ld_s__class_reg-id         = e_id.
-  ld_s__class_reg-main      ?= me.
+  ld_s__class_reg-main       = me.
   ld_s__class_reg-class      = zcl_bd00_int_table=>create_read( e_id ).
   insert ld_s__class_reg into table gd_t__class_reg.
 
