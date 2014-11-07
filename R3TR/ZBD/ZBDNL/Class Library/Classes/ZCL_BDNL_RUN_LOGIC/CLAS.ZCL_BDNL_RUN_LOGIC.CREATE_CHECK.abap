@@ -118,6 +118,7 @@ method create_check.
         endif.
 
         if <ld_s__check>-in = abap_true.
+          clear: ld_s__param, ld_s__link.
 *--------------------------------------------------------------------*
 * CONVERT to RANGE TABLE
 *--------------------------------------------------------------------*

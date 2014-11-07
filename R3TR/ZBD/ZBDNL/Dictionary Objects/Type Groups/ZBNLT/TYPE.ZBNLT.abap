@@ -144,12 +144,13 @@ types: zbnlt_t__stack_search type standard table of zbnlt_s__stack_search with n
 
 
 types: begin of zbnlt_s__stack_assign
-       , tablename type zbnlt_v__tablename " имя внутренней таблицы
-       , link      type zbnlt_t__cust_link
-       , exp       type string
-       , variables type zbnlt_t__math_var
-       , f_found   type rs_bool
-       , check     type zbnlt_t__stack_check
+       , tablename  type zbnlt_v__tablename " имя внутренней таблицы
+       , link       type zbnlt_t__cust_link
+       , exp        type string
+       , variables  type zbnlt_t__math_var
+       , f_found    type rs_bool
+       , check      type zbnlt_t__stack_check
+       , f_continue type rs_bool
        , end of zbnlt_s__stack_assign
        .
 
@@ -224,13 +225,14 @@ types: begin of zbnlt_s__search
 types: zbnlt_t__search type standard table of zbnlt_s__search with non-unique default key.
 
 types: begin of zbnlt_s__assign
-       , id        type zbd0t_id_rules
-       , tablename type zbnlt_v__tablename
-       , object    type ref to zcl_bd00_appl_table
-       , command   type string
-       , class     type ref to zif_bd00_int_table
-       , function  type zbnlt_t__function
-       , check     type zbnlt_t__check
+       , id           type zbd0t_id_rules
+       , tablename    type zbnlt_v__tablename
+       , object       type ref to zcl_bd00_appl_table
+       , command      type string
+       , class        type ref to zif_bd00_int_table
+       , function     type zbnlt_t__function
+       , check        type zbnlt_t__check
+       , f_continue   type rs_bool
        , end of zbnlt_s__assign.
 
 types: zbnlt_t__assign type standard table of zbnlt_s__assign with non-unique default key.

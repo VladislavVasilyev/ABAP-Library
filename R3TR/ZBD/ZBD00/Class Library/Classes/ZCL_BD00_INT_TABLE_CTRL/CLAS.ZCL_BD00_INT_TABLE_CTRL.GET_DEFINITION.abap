@@ -167,12 +167,14 @@ method get_definition.
     lv_length     = lo_elemdescr->output_length.
 
     if lo_elemdescr->help_id is initial.
-    case lo_elemdescr->type_kind.
-      when cl_abap_elemdescr=>typekind_char.
-        concatenate `types ` ls_definition-name ` type c leght ` lv_length `.` into l_string.
-      when cl_abap_elemdescr=>typekind_string.
-        concatenate `types ` ls_definition-name ` type string. ` into l_string.
-    endcase.
+      case lo_elemdescr->type_kind.
+        when cl_abap_elemdescr=>typekind_char.
+          concatenate `types ` ls_definition-name ` type c leght ` lv_length `.` into l_string.
+        when cl_abap_elemdescr=>typekind_string.
+          concatenate `types ` ls_definition-name ` type string. ` into l_string.
+        when cl_abap_elemdescr=>typekind_int.
+          concatenate `types ` ls_definition-name ` type i. ` into l_string.
+      endcase.
     else.
       concatenate `types ` ls_definition-name ` type ` lo_elemdescr->help_id `.` into l_string.
     endif.

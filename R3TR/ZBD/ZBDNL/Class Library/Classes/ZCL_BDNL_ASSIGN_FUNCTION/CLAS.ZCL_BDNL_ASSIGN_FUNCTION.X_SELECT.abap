@@ -6,6 +6,11 @@ method x_select.
   , ld_v__user                              type uj_user_id
   , ld_v_stat                               type string
   , it_script_logic_hashtable	              type ujk_t_script_logic_hashtable
+  , ld_s__result                            type ty_s__result
+  .
+
+  field-symbols
+  : <ld_s__result>                          type ty_s__result
   .
 
   concatenate `%E%` `,` i01 `,` i02 `,` i03 into ld_v_stat.
@@ -22,6 +27,17 @@ method x_select.
     ld_v__appl = zcl_bd00_context=>gv_appl_id.
   endif.
 
+  concatenate ld_v_stat `|` ld_v__appset `|` ld_v__appl into ld_s__result-key.
+
+  read table cd_t__x_select
+    from ld_s__result
+    assigning <ld_s__result>.
+
+  if sy-subrc = 0.
+    e = <ld_s__result>-e.
+    return.
+  endif.
+
   ld_v__user = zcl_bd00_context=>gd_s__user_id-user_id.
 
   cl_uj_context=>set_cur_context( i_appset_id = ld_v__appset i_appl_id = ld_v__appl is_user = zcl_bd00_context=>gd_s__user_id ).
@@ -35,5 +51,9 @@ method x_select.
       it_script_logic_hashtable = it_script_logic_hashtable
     importing
       e_result                  = e.
+
+  ld_s__result-e = e.
+
+  insert ld_s__result into table cd_t__x_select.
 
 endmethod.

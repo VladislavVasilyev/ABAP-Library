@@ -22,6 +22,7 @@ public section.
       !E_V__EXP type STRING
       !E_T__VARIABLE type ZBNLT_T__MATH_VAR
       !E_T__CHECK type ZBNLT_T__STACK_CHECK
+      !E_F__CONTINUE type RS_BOOL
     raising
       ZCX_BDNL_EXCEPTION
       ZCX_BD00_CREATE_OBJ .
