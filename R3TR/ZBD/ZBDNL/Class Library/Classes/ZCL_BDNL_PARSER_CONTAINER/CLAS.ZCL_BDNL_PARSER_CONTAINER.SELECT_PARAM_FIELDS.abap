@@ -2,7 +2,7 @@ method select_param_fields.
 
   constants
   : cs_dimension        type string value `^([A-Z0-9\_]+|\/([A-Z0-9]+)\/([A-Z0-9\_]+))\>`
-  , cs_dimwattr         type string value `^\~\<([A-Z0-9\_]+)\>`
+  , cs_dimwattr         type string value `^(\~\<[A-Z0-9\_]+|\~\/([A-Z0-9]+)\/([A-Z0-9\_]+))\>`
   .
 
   type-pools: zbd0c.

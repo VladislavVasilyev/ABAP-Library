@@ -95,6 +95,7 @@ method prim.
             e_t__link     = ld_s__assign-link
             e_v__exp      = ld_s__assign-exp
             e_t__variable = ld_s__assign-variables
+            e_f__continue = ld_s__assign-f_continue
             e_t__check    = ld_s__assign-check.
 
         append ld_s__assign to  <ld_s__rules>-assign.

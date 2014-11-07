@@ -7,6 +7,23 @@ class ZCL_BDNL_ASSIGN_FUNCTION definition
 *"* do not include other source files here!!!
 public section.
 
+  types:
+    begin of ty_s__result
+    , key type string
+    , e   type string
+    , end of ty_s__result .
+  types:
+    ty_t__result type hashed table of ty_s__result with unique key key .
+
+  class-methods TEST
+    importing
+      !I01 type ANY
+      !I02 type ANY optional
+      !I03 type ANY optional
+    exporting
+      !E type ANY
+    raising
+      ZCX_BDNL_SKIP_ASSIGN .
   class-methods __CONVERT_TO_RANGE_TABLE
     importing
       !I01 type ANY
@@ -14,18 +31,6 @@ public section.
       !I03 type ANY
     exporting
       !E type ANY .
-  class-methods X_SELECT
-    importing
-      !I01 type ANY
-      !I02 type ANY
-      !I03 type ANY
-      !I04 type ANY optional
-      !I05 type ANY optional
-    exporting
-      !E type STRING
-    raising
-      CX_UJ_OBJ_NOT_FOUND
-      CX_UJ_STATIC_CHECK .
   class-methods ROUND
     importing
       !I01 type ANY
@@ -189,3 +194,15 @@ public section.
       !I02 type ANY
     exporting
       !E type ANY .
+  class-methods X_SELECT
+    importing
+      !I01 type ANY
+      !I02 type ANY
+      !I03 type ANY
+      !I04 type ANY optional
+      !I05 type ANY optional
+    exporting
+      !E type STRING
+    raising
+      CX_UJ_OBJ_NOT_FOUND
+      CX_UJ_STATIC_CHECK .

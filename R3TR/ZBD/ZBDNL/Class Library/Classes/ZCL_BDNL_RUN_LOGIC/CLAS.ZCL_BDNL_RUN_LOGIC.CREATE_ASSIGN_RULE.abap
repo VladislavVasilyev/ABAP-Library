@@ -171,8 +171,9 @@ method create_assign_rule.
 
     endloop.
 
-    ld_s__assign-tablename = <ld_s__assign>-tablename.
-    ld_s__assign-command   = lr_o__target->gd_v__command.
+    ld_s__assign-tablename    = <ld_s__assign>-tablename.
+    ld_s__assign-command      = lr_o__target->gd_v__command.
+    ld_s__assign-f_continue   = <ld_s__assign>-f_continue.
 
     if i_s__for-tablename = ld_s__assign-tablename.
       ld_v__mode_add  = zbd0c_mode_add_line-change.

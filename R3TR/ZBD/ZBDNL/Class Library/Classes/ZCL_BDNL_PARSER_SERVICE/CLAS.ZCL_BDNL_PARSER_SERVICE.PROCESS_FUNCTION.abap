@@ -56,6 +56,7 @@ method process_function.
       ld_s__funcparam-const = gr_o__cursor->get_token( ).
       add 1 to ld_v__numparam.
       if ld_s__funcparam-const = zblnc_keyword-comma. " то параметр опциональный
+        gr_o__cursor->get_token( esc = abap_true ).
         continue.
       endif.
 

@@ -14,6 +14,7 @@ method prim.
   , ld_t__custlink          type zbnlt_t__cust_link
   , ld_f__dimension         type rs_bool
   , ld_f__signeddata        type rs_bool
+  , ld_f__continue          type rs_bool
   , ld_v__turn              type i
   .
 
@@ -60,6 +61,7 @@ method prim.
     : ld_s__custlink
     , ld_f__dimension
     , ld_f__signeddata
+    , ld_f__continue
     .
 
     if gr_o__cursor->check_tokens( q = 1 regex = cs_dimension ) = abap_true.
@@ -91,6 +93,10 @@ method prim.
       gr_o__cursor->get_token( esc = abap_true ).
 
       ld_f__signeddata = abap_true.
+    elseif gr_o__cursor->get_token( ) = zblnc_keyword-continue.
+      gr_o__cursor->get_token( esc = abap_true ).
+      ld_f__continue = abap_true.
+
     else.
       ld_v__token = gr_o__cursor->get_token( ).
       raise exception type zcx_bdnl_syntax_error
@@ -99,7 +105,8 @@ method prim.
                       index  = gr_o__cursor->gd_v__index .
     endif.
 
-    if gr_o__cursor->get_token( esc = abap_true ) = zblnc_keyword-equal.
+    if gr_o__cursor->get_token( ) = zblnc_keyword-equal.
+      gr_o__cursor->get_token( esc = abap_true ).
 
       case abap_true.
         when ld_f__dimension.
@@ -165,6 +172,9 @@ method prim.
               e_v__exp     = gd_s__assign-exp.
       endcase.
 
+    elseif ld_f__continue = abap_true.
+      gd_s__assign-f_continue = abap_true.
+      clear ld_f__continue.
     else.
       raise exception type zcx_bdnl_syntax_error
         exporting textid    = zcx_bdnl_syntax_error=>zcx_expected

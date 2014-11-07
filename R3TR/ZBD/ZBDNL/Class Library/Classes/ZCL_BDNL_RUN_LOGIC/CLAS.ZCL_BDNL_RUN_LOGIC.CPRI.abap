@@ -59,6 +59,7 @@ private section.
     importing
       !I type I
       !F_FOUND type RS_BOOL
+      !I_F__CONT type RS_BOOL optional
     returning
       value(E_F__CONTINUE) type RS_BOOL
     raising
