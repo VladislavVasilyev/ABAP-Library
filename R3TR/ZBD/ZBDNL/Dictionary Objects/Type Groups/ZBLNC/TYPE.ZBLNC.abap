@@ -21,6 +21,7 @@ constants: begin of zblnc_keyword
            , where              type string value `$WHERE`
            , from               type string value `$FROM`
            , read               type string value `$READ`
+           , readnext           type string value `$READNEXT`
            , with               type string value `$WITH`
            , commit             type string value `$COMMIT`
            , filterpools        type string value `$FILTER-POOLS`
@@ -33,6 +34,7 @@ constants: begin of zblnc_keyword
            , includeif          type string value `$INCLUDEIF`
            , endincludeif       type string value `$ENDINCLUDEIF`
            , nextfor            type string value `$NEXTFOR`
+           , nextforall         type string value `$NEXTFORALL`
            , exitfor            type string value `$EXITFOR`
            , bp                 type string value `$BP`
            , cbg                type string value `$CBG`
