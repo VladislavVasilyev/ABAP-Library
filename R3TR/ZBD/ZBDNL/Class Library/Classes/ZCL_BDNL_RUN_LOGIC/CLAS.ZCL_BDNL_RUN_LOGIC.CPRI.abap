@@ -13,8 +13,11 @@ private section.
   data GR_O__PARSER type ref to ZCL_BDNL_PARSER .
   data GR_O__RFC_TASK type ref to ZCL_BD00_RFC_TASK .
   data GR_T__CHECK type ref to ZBNLT_S__CHECK .
+  data GD_T__RULENEXT type TY_S__RULESNEXT .
+  data Gd_t__rules                   type ty_t__rules.
+
   data:
-    GD_T__SEARCHMESSAGE type standard table of string .
+    gd_t__searchmessage type standard table of string .
   data GD_V__NUMBER_RULES type I value 0. "#EC NOTEXT .
 
   methods CREATE_RANGE_REF
@@ -84,6 +87,8 @@ private section.
     exporting
       !E_T__SEARCH type ZBNLT_T__SEARCH
       !E_S__SEARCH_FOR type ZBNLT_S__SEARCH
+    changing
+      !E_T__SEARCHNEXT type ZBNLT_T__SEARCH optional
     raising
       ZCX_BD00_CREATE_OBJ
       ZCX_BDNL_WORK_RULE
@@ -93,6 +98,14 @@ private section.
       !I type I
     returning
       value(E_F__CONTINUE) type RS_BOOL
+    raising
+      CX_DYNAMIC_CHECK
+      CX_STATIC_CHECK .
+  methods SEARCHNEXT
+    importing
+      !I type I
+    returning
+      value(E_F__FOUND) type RS_BOOL
     raising
       CX_DYNAMIC_CHECK
       CX_STATIC_CHECK .

@@ -32,6 +32,7 @@ method work_circle.
 
   clear
   : gd_s__rules
+  , gd_t__rules
   .
 
   zcl_bdnl_container=>clear_for_reestr( ).
@@ -68,9 +69,12 @@ method work_circle.
             i_v__turn       = ld_v__turn
           importing
             e_t__search     = ld_s__rules-search
-            e_s__search_for = ld_s__for_search.
+            e_s__search_for = ld_s__for_search
+          changing
+            e_t__searchnext = gd_t__rulenext-search.
 
         ld_s__rules-n_search = lines( ld_s__rules-search ).
+        gd_t__rulenext-n_search = lines( gd_t__rulenext-search ).
 
         call method create_assign_rule
           exporting
@@ -84,10 +88,10 @@ method work_circle.
         ld_s__rules-n_assign = lines( ld_s__rules-assign ).
         ld_s__rules-n_assign_not_found = lines( ld_s__rules-assign_not_found ).
 
-        append ld_s__rules to ld_t__rules.
+        append ld_s__rules to: ld_t__rules.", gd_t__rules.
       enddo.
 
-    catch cx_root into lr_x__root. "#EC CATCH_ALL
+    catch cx_root into lr_x__root.                       "#EC CATCH_ALL
       " во время генерации правила возникла ошибка
       raise exception type zcx_bdnl_work_rule
             exporting previous = lr_x__root.
@@ -150,10 +154,14 @@ method work_circle.
 * MAIN
 *--------------------------------------------------------------------*
         while lr_o__main->next_line( ld_s__for_search-id ) eq zbd0c_found.
-          loop at ld_t__rules into gd_s__rules.
-            check  search( 1 ) = abap_true.
-            exit.
-          endloop.
+*          if zcl_bdch_run_new_logic=>cd_v__version = `NEW`.
+*            searchnext( 1 ).
+*          else.
+            loop at ld_t__rules into gd_s__rules.
+              check  search( 1 ) = abap_true.
+              exit.
+            endloop.
+*          endif.
 *--------------------------------------------------------------------*
 
         endwhile.
@@ -180,9 +188,9 @@ method work_circle.
 *--------------------------------------------------------------------*
 * Актуализировать записи
 *--------------------------------------------------------------------*
-        zcl_bdnl_container=>actual_ctables( ).
+      zcl_bdnl_container=>actual_ctables( ).
 
-    catch cx_root into lr_x__root. "#EC CATCH_ALL
+    catch cx_root into lr_x__root.                       "#EC CATCH_ALL
       " Во время выполнения рабочего цикла по таблице %tablename%
       " возникла необработанная локально ситуация
       ld_v__line = lr_o__main->get_line( ).

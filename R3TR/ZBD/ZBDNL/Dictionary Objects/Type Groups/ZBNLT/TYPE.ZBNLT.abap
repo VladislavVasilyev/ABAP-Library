@@ -134,10 +134,11 @@ types: begin of zbnlt_s__stack_check
 types: zbnlt_t__stack_check type standard table of zbnlt_s__stack_check with non-unique default key.
 
 types: begin of zbnlt_s__stack_search
-       , check     type zbnlt_t__stack_check
-       , tablename type zbnlt_v__tablename
-       , link      type zbnlt_t__cust_link
-       , default   type string
+       , check        type zbnlt_t__stack_check
+       , tablename    type zbnlt_v__tablename
+       , link         type zbnlt_t__cust_link
+       , default      type string
+       , f_readnext   type rs_bool
        , end of zbnlt_s__stack_search.
 
 types: zbnlt_t__stack_search type standard table of zbnlt_s__stack_search with non-unique default key.

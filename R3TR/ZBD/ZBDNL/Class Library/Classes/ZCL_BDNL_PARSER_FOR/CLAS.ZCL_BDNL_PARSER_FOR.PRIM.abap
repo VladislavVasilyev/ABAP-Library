@@ -17,6 +17,7 @@ method prim.
   , ld_v__checkturn           type i
   , ld_t__check               type zbnlt_t__stack_check
   , ld_t__allcheck            type zbnlt_t__stack_check
+  , ld_f__nextforall          type rs_bool
   .
 
   field-symbols
@@ -57,6 +58,10 @@ method prim.
           clear
           : ld_t__allcheck
           , ld_v__checkturn.
+        endif.
+
+        if ld_f__nextforall = abap_true.
+          ld_s__search-f_readnext = abap_true.
         endif.
 
         append ld_s__search to <ld_s__rules>-search.
@@ -116,12 +121,31 @@ method prim.
         endif.
 
 *--------------------------------------------------------------------*
+* NEXTFORALL
+*--------------------------------------------------------------------*
+      when zblnc_keyword-nextforall.
+        ld_f__nextforall = abap_true.
+
+        if gr_o__cursor->get_token( esc = abap_true ) ne zblnc_keyword-dot.
+          raise exception type zcx_bdnl_syntax_error
+                exporting textid    = zcx_bdnl_syntax_error=>zcx_expected
+                          expected  = zblnc_keyword-dot
+                          index     = gr_o__cursor->gd_v__cindex .
+        endif.
+
+*--------------------------------------------------------------------*
 * $NEXTFOR
 *--------------------------------------------------------------------*
       when zblnc_keyword-nextfor.
 
         if ld_t__allcheck is not initial.
           ld_s__search-check = ld_t__allcheck.
+
+          if ld_f__nextforall = abap_true.
+            ld_s__search-f_readnext = abap_true.
+            clear ld_f__nextforall.
+          endif.
+
           append ld_s__search to <ld_s__rules>-search.
           clear
           : ld_t__allcheck
@@ -135,6 +159,7 @@ method prim.
                           index     = gr_o__cursor->gd_v__cindex .
         endif.
 
+        ld_f__nextforall = abap_false.
         append initial line to gd_t__rules assigning <ld_s__rules>.
 
 *--------------------------------------------------------------------*
@@ -144,6 +169,12 @@ method prim.
 
         if ld_t__allcheck is not initial.
           ld_s__search-check = ld_t__allcheck.
+
+          if ld_f__nextforall = abap_true.
+            ld_s__search-f_readnext = abap_true.
+            clear ld_f__nextforall.
+          endif.
+
           append ld_s__search to <ld_s__rules>-search.
           clear
           : ld_t__allcheck

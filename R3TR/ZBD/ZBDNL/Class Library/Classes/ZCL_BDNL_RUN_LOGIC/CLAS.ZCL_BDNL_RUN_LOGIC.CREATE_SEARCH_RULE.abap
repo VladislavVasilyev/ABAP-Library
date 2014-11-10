@@ -199,7 +199,7 @@ method create_search_rule.
         elseif lr_o__target->gd_v__type_table = zblnc_keyword-sorted.
           ld_f__notfullkey = abap_false.
           loop at lr_o__target->gr_o__container->gr_o__model->gd_t__key assigning <ld_v__key>.
-            read table ld_s__reestr_link-rule_link "#EC *
+            read table ld_s__reestr_link-rule_link          "#EC *
                  with key tg = <ld_v__key>
                  transporting no fields.
             if sy-subrc <> 0.
@@ -244,7 +244,11 @@ method create_search_rule.
       e_s__search_for = ld_s__search.
       ld_f__where = abap_false.
     else.
-      append ld_s__search to e_t__search.
+      if <ld_s__search>-f_readnext = abap_true and e_t__searchnext is supplied.
+        append ld_s__search to e_t__searchnext.
+      else.
+        append ld_s__search to e_t__search.
+      endif.
     endif.
 
     clear ld_s__search.
