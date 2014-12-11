@@ -255,6 +255,30 @@ START-OF-SELECTION.
                 INDEX LD_S__SC_FIELD-INDEX
                 INTO  LD_V__MEMBER.
 
+            DATA
+            : LD_V__OFFSET TYPE I
+            , LD_V__LENGTH TYPE I
+            , LD_V__ATTR_NAME TYPE UJ_ATTR_NAME
+            , LD_V__MEMBER_SAVE TYPE STRING
+            .
+
+            FIND REGEX `<\\([A-Z0-9\_]+)>` IN LD_V__MEMBER MATCH OFFSET LD_V__OFFSET MATCH LENGTH LD_V__LENGTH.
+
+            IF SY-SUBRC = 0.
+              LD_V__MEMBER_SAVE = LD_V__MEMBER.
+
+              REPLACE SECTION OFFSET LD_V__OFFSET LENGTH LD_V__LENGTH OF LD_V__MEMBER_SAVE WITH SPACE.
+              SUBTRACT 3 FROM LD_V__LENGTH.
+              ADD 2 TO LD_V__OFFSET.
+              LD_V__ATTR_NAME = LD_V__MEMBER+LD_V__OFFSET(LD_V__LENGTH).
+              LD_V__MEMBER = LD_V__MEMBER_SAVE.
+            ELSE.
+              CLEAR
+              : LD_V__ATTR_NAME
+              , LD_V__MEMBER_SAVE
+              .
+            ENDIF.
+
             READ TABLE LD_T__RB_MP_PL
                  WITH KEY ID_RULE = LD_S__RB_MP_PL-ID_RULE
                           APPSET  = LD_S__RB_MP_PL-APPSET
@@ -264,14 +288,17 @@ START-OF-SELECTION.
             IF SY-SUBRC = 0.
               IF LD_V__MEMBER IS NOT INITIAL.
                 <LD_S__SC_RBMPPL>-SC_VALUE = LD_V__MEMBER.
+                <LD_S__SC_RBMPPL>-SC_ATTR = LD_V__ATTR_NAME.
               ELSE.
                 IF <LD_S__SC_RBMPPL>-TG_VALUE = `<ALL>`.
+                  <LD_S__SC_RBMPPL>-SC_ATTR = LD_V__ATTR_NAME.
                   CLEAR
                   : <LD_S__SC_RBMPPL>-TG_VALUE
                   , <LD_S__SC_RBMPPL>-SC_VALUE.
                 ELSE.
                   CLEAR
                   : <LD_S__SC_RBMPPL>-SC_DIMN
+                  , <LD_S__SC_RBMPPL>-SC_ATTR
                   , <LD_S__SC_RBMPPL>-SC_VALUE
                   .
                 ENDIF.
@@ -282,6 +309,7 @@ START-OF-SELECTION.
 
             ELSEIF LD_V__MEMBER IS NOT INITIAL.
               LD_S__RB_MP_PL-SC_VALUE = LD_V__MEMBER.
+              LD_S__RB_MP_PL-SC_ATTR  = LD_V__ATTR_NAME.
               ADD 1 TO LD_S__RB_MP_PL-NUMBER_KEY.
               INSERT LD_S__RB_MP_PL INTO TABLE LD_T__RB_MP_PL."ld_s__sc_field
             ENDIF.
@@ -290,7 +318,9 @@ START-OF-SELECTION.
             : LD_S__RB_MP_PL-TG_DIMN
             , LD_S__RB_MP_PL-TG_VALUE
             , LD_S__RB_MP_PL-SC_DIMN
-            , LD_S__RB_MP_PL-SC_VALUE.
+            , LD_S__RB_MP_PL-SC_ATTR
+            , LD_S__RB_MP_PL-SC_VALUE
+            .
 
           ENDLOOP.
         ENDIF.
@@ -400,11 +430,42 @@ CLASS LCL_APPLICATION IMPLEMENTATION.
 
   METHOD DIRECTORY_F4.
 
-    CL_GUI_FRONTEND_SERVICES=>DIRECTORY_BROWSE(
-        CHANGING
-          SELECTED_FOLDER      = R_PATH
-        EXCEPTIONS
-          OTHERS               = 4 ).
+*    cl_gui_frontend_services=>directory_browse(
+*        CHANGING
+*          selected_folder      = r_path
+*        EXCEPTIONS
+*          OTHERS               = 4 ).
+
+    DATA: LV_FILE_TABLE TYPE FILETABLE,
+          LV_COUNT      TYPE I.
+
+    CALL METHOD CL_GUI_FRONTEND_SERVICES=>FILE_OPEN_DIALOG
+*  exporting
+*    window_title            =
+*    default_extension       =
+*    default_filename        =
+*    file_filter             =
+*    with_encoding           =
+*    initial_directory       =
+*    multiselection          =
+      CHANGING
+        FILE_TABLE              = LV_FILE_TABLE
+        RC                      = LV_COUNT
+*    user_action             =
+*    file_encoding           =
+      EXCEPTIONS
+        FILE_OPEN_DIALOG_FAILED = 1
+        CNTL_ERROR              = 2
+        ERROR_NO_GUI            = 3
+        NOT_SUPPORTED_BY_GUI    = 4
+        OTHERS                  = 5
+            .
+    IF SY-SUBRC <> 0.
+      MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
+                 WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
+    ENDIF.
+
+    READ TABLE LV_FILE_TABLE INTO R_PATH INDEX 1.
 
   ENDMETHOD.                    "directory_f4
 

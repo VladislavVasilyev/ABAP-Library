@@ -144,9 +144,9 @@ method set_rule_search.
   loop at ld_t__cust_link
        assigning <ld_s__cust_link>.
 
-    read table ld_t__tg_table_key                   "#EC *
-         with key table_line = <ld_s__cust_link>-tg "#EC *
-         transporting no fields.                    "#EC *
+    read table ld_t__tg_table_key                           "#EC *
+         with key table_line = <ld_s__cust_link>-tg         "#EC *
+         transporting no fields.                            "#EC *
 
     if sy-subrc = 0.
       add 1 to ld_v__cnt.
@@ -181,7 +181,7 @@ method set_rule_search.
 
   ld_s__class_reg-id         = e_id.
   ld_s__class_reg-main       = me.
-  ld_s__class_reg-class      = zcl_bd00_int_table=>create_read( e_id ).
+  ld_s__class_reg-class      = zcl_bd00_int_table=>create_read( id = e_id i_f__36 = i_f__36 ).
   insert ld_s__class_reg into table gd_t__class_reg.
 
 endmethod.

@@ -95,6 +95,9 @@ public section.
   events EV_CHANGE_LINE .
   events EV_CHANGE_TABLE .
 
+  class-methods GENERATE_RULE_36
+    raising
+      ZCX_BD00_CREATE_RULE .
   methods GET_PACKSIZE
     returning
       value(E) type I .
@@ -138,6 +141,7 @@ public section.
       !OPERAND type ref to ZCL_BD00_APPL_CTRL optional
       !OPERATION type TY_OPERATION
       !SIGNEDDATA type UJ_KEYFIGURE optional .
+  type-pools ABAP .
   methods SET_RULE_ASSIGN
     importing
       !IT_FIELD type ZBD0T_TY_T_CUSTOM_LINK optional
@@ -145,6 +149,7 @@ public section.
       !IO_DEFAULT type ref to ZCL_BD00_APPL_CTRL optional
       !I_MODE_ADD type ZBD00_MODE_ADD_LINE optional
       !IT_LINK type ZBD0T_TY_T_LINK_KEY optional
+      !I_F__36 type RS_BOOL default ABAP_FALSE
     returning
       value(E_ID) type ZBD0T_ID_RULES
     raising

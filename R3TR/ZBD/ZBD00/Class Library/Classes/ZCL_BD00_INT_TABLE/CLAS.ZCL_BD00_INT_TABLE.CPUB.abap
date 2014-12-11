@@ -30,22 +30,30 @@ public section.
     ty_id_code type c length 2 .
   types:
     begin of ty_s_definition
-       , id type ty_id_code
-       , name type string
-       , code type ty_t_string
-       , end of ty_s_definition .
+         , id type ty_id_code
+         , name type string
+         , code type ty_t_string
+         , end of ty_s_definition .
   types:
     ty_t_definition type hashed table of ty_s_definition with unique key id .
   types:
     begin of ty_s_object_reestr
-        , id     type i
-        , object type ref to zcl_bd00_appl_ctrl
-        , data   type ref to data
-        , name   type string
-        , definition type TY_T_definition
-        , end of ty_s_object_reestr .
+          , id     type i
+          , object type ref to zcl_bd00_appl_ctrl
+          , data   type ref to data
+          , name   type string
+          , definition type ty_t_definition
+          , end of ty_s_object_reestr .
   types:
     ty_t_object_reestr type sorted table of ty_s_object_reestr with unique key id name object data .
+  types:
+    begin of ty_s__reestr_36
+        , id    type i
+        , class type string
+        , t_object type ty_t_object_reestr
+      , end of ty_s__reestr_36 .
+  types:
+    ty_t__reestr_36 type hashed table of ty_s__reestr_36 with unique key id .
 
   constants:
     begin of id_code.
@@ -66,18 +74,22 @@ public section.
     constants end   of id_code .
   constants:
     begin of method.
-    constants add    type zbd0t_ty_method value `ADD`.      "#EC NOTEXT .
-    constants assign type zbd0t_ty_method value `RULE`.     "#EC NOTEXT .
-    constants search type zbd0t_ty_method value `NEXT`.     "#EC NOTEXT .
+    constants add    type zbd0t_ty_method value `ADD`.    "#EC NOTEXT .
+    constants assign type zbd0t_ty_method value `RULE`.   "#EC NOTEXT .
+    constants search type zbd0t_ty_method value `NEXT`.   "#EC NOTEXT .
     constants end of method .
+  class-data CD_T__CODE type TY_T_STRING .
+  class-data CD_T__REESTR_36 type TY_T__REESTR_36 .
 
   class ZCL_BD00_APPL_CTRL definition load .
   methods CONSTRUCTOR
     importing
       !IT_RULE_LINK type ZCL_BD00_APPL_CTRL=>TY_S_RULES_REESTR .
+  type-pools ABAP .
   class-methods CREATE_RULE
     importing
       !ID type ZBD0T_ID_RULES
+      !I_F__36 type RS_BOOL default ABAP_FALSE
     returning
       value(EO_CLASS) type ref to ZCL_BD00_INT_TABLE
     raising
@@ -93,6 +105,7 @@ public section.
   class-methods CREATE_READ
     importing
       !ID type ZBD0T_ID_RULES
+      !I_F__36 type RS_BOOL default ABAP_FALSE
     returning
       value(EO_CLASS) type ref to ZIF_BD00_INT_TABLE
     raising

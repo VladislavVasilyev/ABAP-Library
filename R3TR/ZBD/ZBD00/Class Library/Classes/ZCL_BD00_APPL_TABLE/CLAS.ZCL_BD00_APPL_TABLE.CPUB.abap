@@ -118,6 +118,7 @@ public section.
       !IT_RANGE type ZBD0T_TY_T_RANGE_KF optional
       !IT_CUST_LINK type ZBD0T_TY_T_CUSTOM_LINK optional
       !IT_CUST_LINK1 type ZBD0T_TY_T_CUSTOM_LINK1 optional
+      !I_F__36 type RS_BOOL default ABAP_FALSE
     returning
       value(E_ID) type ZBD0T_ID_RULES
     raising

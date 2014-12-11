@@ -64,8 +64,8 @@ method create_assign_rule.
 
     message s051(zbdnl) with ld_v__number_rules <ld_s__assign>-tablename lr_o__target->gd_v__type_table.
     if gd_v__number_rules > 36.
-      raise exception type zcx_bdnl_work_rule
-            exporting textid = zcx_bdnl_work_rule=>zcx_exceed_36.
+*      raise exception type zcx_bdnl_work_rule
+*            exporting textid = zcx_bdnl_work_rule=>zcx_exceed_36.
     endif.
 
 
@@ -183,7 +183,8 @@ method create_assign_rule.
 
     ld_s__assign-id = lr_o__target->gr_o__container->set_rule_assign( it_field   = ld_t__rules_field
                                                                       i_mode_add = ld_v__mode_add "zbd0c_mode_add_line-collect
-                                                                      is_math    = ld_s__math ).
+                                                                      is_math    = ld_s__math
+                                                                      i_f__36 = abap_true ).
 
     ld_s__assign-class = zcl_bd00_appl_ctrl=>get_rule_class( ld_s__assign-id ).
 

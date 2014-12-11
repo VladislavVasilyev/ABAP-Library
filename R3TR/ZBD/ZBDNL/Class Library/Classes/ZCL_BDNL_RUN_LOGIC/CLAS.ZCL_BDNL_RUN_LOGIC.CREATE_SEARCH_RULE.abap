@@ -78,8 +78,8 @@ method create_search_rule.
       append ld_v__textmessage to ld_t__textmessage.
 
       if gd_v__number_rules > 36.
-        raise exception type zcx_bdnl_work_rule
-              exporting textid = zcx_bdnl_work_rule=>zcx_exceed_36.
+*        raise exception type zcx_bdnl_work_rule
+*              exporting textid = zcx_bdnl_work_rule=>zcx_exceed_36.
       endif.
 
 
@@ -126,7 +126,7 @@ method create_search_rule.
         endloop.
 
         ld_s__search-tablename = <ld_s__search>-tablename.
-        ld_s__search-id = lr_o__target->gr_o__container->set_rule_search( it_cust_link1 = ld_t__rules_field ).
+        ld_s__search-id = lr_o__target->gr_o__container->set_rule_search( it_cust_link1 = ld_t__rules_field i_f__36 = abap_true ).
         ld_s__search-object    = lr_o__target->gr_o__container.
 
         read table zcl_bd00_appl_ctrl=>gd_t__reestr_link
@@ -141,7 +141,7 @@ method create_search_rule.
 
         ld_s__search-tablename = <ld_s__search>-tablename.
         ld_s__search-object    = lr_o__target->gr_o__container.
-        ld_s__search-id        = lr_o__target->gr_o__container->set_rule_search( io_default = lr_o__source->gr_o__container ).
+        ld_s__search-id        = lr_o__target->gr_o__container->set_rule_search( io_default = lr_o__source->gr_o__container i_f__36 = abap_true ).
 
         read table zcl_bd00_appl_ctrl=>gd_t__reestr_link
              with table key id = ld_s__search-id

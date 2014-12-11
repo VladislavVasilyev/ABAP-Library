@@ -18,9 +18,11 @@ public section.
   constants CS_TY_TABLE type TY_S_NAME value `ty_table`. "#EC NOTEXT
 
   type-pools ZBD0T .
+  type-pools ABAP .
   class-methods CREATE_DYN_RULE
     importing
       !ID type ZBD0T_ID_RULES
+      !I_F__36 type RS_BOOL default ABAP_FALSE
     exporting
       value(CLASS) type STRING
       !ET_OBJECT_REESTR type TY_T_OBJECT_REESTR
@@ -41,6 +43,7 @@ public section.
   class-methods CREATE_DYN_READ
     importing
       !ID type ZBD0T_ID_RULES
+      !I_F__36 type RS_BOOL default ABAP_FALSE
     exporting
       !CLASS type STRING
       !ET_OBJECT_REESTR type TY_T_OBJECT_REESTR

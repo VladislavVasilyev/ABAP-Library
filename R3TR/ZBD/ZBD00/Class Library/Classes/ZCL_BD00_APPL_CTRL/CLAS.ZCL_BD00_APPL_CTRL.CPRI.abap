@@ -3,7 +3,7 @@
 private section.
 
   data GD_S__LAST_RULE type TY_S_CLASS_REG .
-  data GD_F__DELETE type RS_BOOL . "#EC NEEDED
+  data GD_F__DELETE type RS_BOOL .
 
   methods AUTO_WRITE_BACK
     importing

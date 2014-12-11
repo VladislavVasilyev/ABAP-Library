@@ -8,6 +8,8 @@ method create_dyn_read.
   , ld_t__constructor_defn             type ty_t_string
   , ld_t__rule_link                    type zcl_bd00_appl_ctrl=>ty_s_rules_reestr
   , line                               type string
+  , ld_v__classname                    type string
+  , ld_v__definition                   type string
   .
 
 * правило линковки
@@ -42,15 +44,29 @@ method create_dyn_read.
   endif.
 
 
+  if i_f__36 = abap_true.
+    ld_v__classname = id.
+    concatenate `DYN_` ld_v__classname into ld_v__classname.
+    condense ld_v__classname no-gaps.
 
+    concatenate `class ` ld_v__classname ` definition inheriting from zcl_bd00_int_table final create public.`
+    into ld_v__definition.
+
+    mac__append_to_itab ld_t__code
+    : ld_v__definition
+    .
+  else.
+    mac__append_to_itab ld_t__code
+    :`program.`
+    , `class dyn definition inheriting from zcl_bd00_int_table final create public.`
+    .
+  endif.
 
 *╔═══════════════════════════════════════════════════════════════════╗
 *║ Формирование текста программы                                     ║
 *╠═══════════════════════════════════════════════════════════════════╣
   mac__append_to_itab ld_t__code
-  :`program.`
-  ,`class dyn definition inheriting from zcl_bd00_int_table final create public.`
-  ,`public section.`
+  :`public section.`
   ,`type-pools: abap, zbd0c, zbd0t.`
   ,`methods next redefinition.`
   ,`methods add  redefinition.`
@@ -66,9 +82,22 @@ method create_dyn_read.
   :`endclass.`
   .
 
+
+  if i_f__36 = abap_true.
+    concatenate `class ` ld_v__classname ` implementation.` into ld_v__definition.
+
+    mac__append_to_itab ld_t__code
+    : ld_v__definition
+    .
+  else.
+    mac__append_to_itab ld_t__code
+    :`class dyn implementation.`
+    .
+  endif.
+
+
   mac__append_to_itab ld_t__code
-  :`class dyn implementation.`
-  ,`method  add. endmethod.`
+  :`method  add. endmethod.`
   ,`method rule. endmethod.`
   .
 
@@ -84,24 +113,30 @@ method create_dyn_read.
 *╔═══════════════════════════════════════════════════════════════════╗
 *║ Генерация программы                                               ║
 *╠═══════════════════════════════════════════════════════════════════╣
-  data
-  : mess   type string
-  , prog   type string
-  , lin    type i
-  .
+  if i_f__36 = abap_true.
+    append lines of ld_t__code to cd_t__code.
+    concatenate  `\CLASS=` ld_v__classname into class.
+  else.
 
-  if prog is initial.
-    generate subroutine pool ld_t__code name prog message mess line lin.
+    data
+    : mess   type string
+    , prog   type string
+    , lin    type i
+    .
 
-    if sy-subrc <> 0.
-      read table ld_t__code index lin into line.
+    if prog is initial.
+      generate subroutine pool ld_t__code name prog message mess line lin.
 
-      raise exception type zcx_bd00_create_rule
-        exporting message = mess
-                  line    = line.
+      if sy-subrc <> 0.
+        read table ld_t__code index lin into line.
+
+        raise exception type zcx_bd00_create_rule
+          exporting message = mess
+                    line    = line.
+      endif.
+
+      concatenate `\PROGRAM=` prog `\CLASS=DYN` into class.
     endif.
-
-    concatenate `\PROGRAM=` prog `\CLASS=DYN` into class.
   endif.
 *╚═══════════════════════════════════════════════════════════════════╝
 

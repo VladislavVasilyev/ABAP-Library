@@ -151,7 +151,7 @@ method set_rule_assign.
     loop at is_math-operand
          assigning <ld_s__rule_operand>.
 
-      read table ld_t__cust_link "#EC *
+      read table ld_t__cust_link                            "#EC *
            with key tg = gr_o__model->gd_v__signeddata
            assigning <ld_s__cust_link>.
 
@@ -193,7 +193,7 @@ method set_rule_assign.
       insert ld_s__cust_link into table ld_t__cust_link assigning <ld_s__cust_link>.
     endif.
 
-    read table ld_t__cust_link "#EC *
+    read table ld_t__cust_link                              "#EC *
          with key tg = gr_o__model->gd_v__signeddata
          assigning <ld_s__cust_link>.
 
@@ -205,8 +205,8 @@ method set_rule_assign.
 *╚═══════════════════════════════════════════════════════════════════╝
 
   ld_s__class_reg-id        = e_id.
-  ld_s__class_reg-main     = me.
-  ld_s__class_reg-class     = zcl_bd00_int_table=>create_rule( e_id ).
+  ld_s__class_reg-main      = me.
+  ld_s__class_reg-class     = zcl_bd00_int_table=>create_rule( id = e_id i_f__36 = i_f__36 ).
   insert ld_s__class_reg into table gd_t__class_reg.
 
 endmethod.

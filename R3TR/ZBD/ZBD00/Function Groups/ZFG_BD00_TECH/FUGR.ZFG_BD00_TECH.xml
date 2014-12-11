@@ -1132,18 +1132,22 @@
 			<T_IMPORT>
 				<item>
 					<PARAMETER>I_V__APPSET_ID</PARAMETER>
+					<DEFAULT>&apos;BUDGET_2015&apos;</DEFAULT>
 					<TYP>UJ_APPSET_ID</TYP>
 				</item>
 				<item>
 					<PARAMETER>I_V__SC_APPL_ID</PARAMETER>
+					<DEFAULT>&apos;GROSSMARGIN&apos;</DEFAULT>
 					<TYP>UJ_APPL_ID</TYP>
 				</item>
 				<item>
 					<PARAMETER>I_V__TG_APPL_ID</PARAMETER>
+					<DEFAULT>&apos;MASTER&apos;</DEFAULT>
 					<TYP>UJ_APPL_ID</TYP>
 				</item>
 				<item>
 					<PARAMETER>I_V__SCENARIO</PARAMETER>
+					<DEFAULT>&apos;PLAN&apos;</DEFAULT>
 					<TYP>UJ_VALUE</TYP>
 				</item>
 				<item>
@@ -1162,12 +1166,18 @@
 				</item>
 				<item>
 					<PARAMETER>I_V__ID_RULE</PARAMETER>
+					<DEFAULT>3</DEFAULT>
 					<TYP>I</TYP>
 				</item>
 				<item>
 					<PARAMETER>I_BPC_USER</PARAMETER>
 					<OPTIONAL>X</OPTIONAL>
 					<TYP>UJ0_S_USER</TYP>
+				</item>
+				<item>
+					<PARAMETER>I_LOOP</PARAMETER>
+					<OPTIONAL>X</OPTIONAL>
+					<TYP>RS_BOOL</TYP>
 				</item>
 			</T_IMPORT>
 			<T_CHANGE>

@@ -1031,6 +1031,55 @@
 	</INCLUDES>
 	<FMODULES>
 		<item>
+			<FUNCNAME>TABLEFRAME_ZRB_MP_PL</FUNCNAME>
+			<AREA>ZRB_MP_PL</AREA>
+			<T_IMPORT>
+				<item>
+					<PARAMETER>VIEW_ACTION</PARAMETER>
+					<DEFAULT>&apos;S&apos;</DEFAULT>
+				</item>
+				<item>
+					<PARAMETER>VIEW_NAME</PARAMETER>
+					<DBFIELD>DD02V-TABNAME</DBFIELD>
+				</item>
+				<item>
+					<PARAMETER>CORR_NUMBER</PARAMETER>
+					<DBFIELD>E070-TRKORR</DBFIELD>
+					<DEFAULT>&apos; &apos;</DEFAULT>
+				</item>
+			</T_IMPORT>
+			<T_TABLES>
+				<item>
+					<PARAMETER>DBA_SELLIST</PARAMETER>
+					<DBSTRUCT>VIMSELLIST</DBSTRUCT>
+				</item>
+				<item>
+					<PARAMETER>DPL_SELLIST</PARAMETER>
+					<DBSTRUCT>VIMSELLIST</DBSTRUCT>
+				</item>
+				<item>
+					<PARAMETER>EXCL_CUA_FUNCT</PARAMETER>
+					<DBSTRUCT>VIMEXCLFUN</DBSTRUCT>
+				</item>
+				<item>
+					<PARAMETER>X_HEADER</PARAMETER>
+					<DBSTRUCT>VIMDESC</DBSTRUCT>
+				</item>
+				<item>
+					<PARAMETER>X_NAMTAB</PARAMETER>
+					<DBSTRUCT>VIMNAMTAB</DBSTRUCT>
+				</item>
+			</T_TABLES>
+			<T_EXCEPT>
+				<item>
+					<EXCEPTION>MISSING_CORR_NUMBER</EXCEPTION>
+				</item>
+			</T_EXCEPT>
+			<SOURCE>
+				<SOURCEID>FUGR.ZRB_MP_PL.TABLEFRAME_ZRB_MP_PL.abap</SOURCEID>
+			</SOURCE>
+		</item>
+		<item>
 			<FUNCNAME>TABLEPROC_ZRB_MP_PL</FUNCNAME>
 			<AREA>ZRB_MP_PL</AREA>
 			<GLOBAL_FLAG>X</GLOBAL_FLAG>
@@ -1108,55 +1157,6 @@
 				<SOURCEID>FUGR.ZRB_MP_PL.TABLEPROC_ZRB_MP_PL.abap</SOURCEID>
 			</SOURCE>
 		</item>
-		<item>
-			<FUNCNAME>TABLEFRAME_ZRB_MP_PL</FUNCNAME>
-			<AREA>ZRB_MP_PL</AREA>
-			<T_IMPORT>
-				<item>
-					<PARAMETER>VIEW_ACTION</PARAMETER>
-					<DEFAULT>&apos;S&apos;</DEFAULT>
-				</item>
-				<item>
-					<PARAMETER>VIEW_NAME</PARAMETER>
-					<DBFIELD>DD02V-TABNAME</DBFIELD>
-				</item>
-				<item>
-					<PARAMETER>CORR_NUMBER</PARAMETER>
-					<DBFIELD>E070-TRKORR</DBFIELD>
-					<DEFAULT>&apos; &apos;</DEFAULT>
-				</item>
-			</T_IMPORT>
-			<T_TABLES>
-				<item>
-					<PARAMETER>DBA_SELLIST</PARAMETER>
-					<DBSTRUCT>VIMSELLIST</DBSTRUCT>
-				</item>
-				<item>
-					<PARAMETER>DPL_SELLIST</PARAMETER>
-					<DBSTRUCT>VIMSELLIST</DBSTRUCT>
-				</item>
-				<item>
-					<PARAMETER>EXCL_CUA_FUNCT</PARAMETER>
-					<DBSTRUCT>VIMEXCLFUN</DBSTRUCT>
-				</item>
-				<item>
-					<PARAMETER>X_HEADER</PARAMETER>
-					<DBSTRUCT>VIMDESC</DBSTRUCT>
-				</item>
-				<item>
-					<PARAMETER>X_NAMTAB</PARAMETER>
-					<DBSTRUCT>VIMNAMTAB</DBSTRUCT>
-				</item>
-			</T_TABLES>
-			<T_EXCEPT>
-				<item>
-					<EXCEPTION>MISSING_CORR_NUMBER</EXCEPTION>
-				</item>
-			</T_EXCEPT>
-			<SOURCE>
-				<SOURCEID>FUGR.ZRB_MP_PL.TABLEFRAME_ZRB_MP_PL.abap</SOURCEID>
-			</SOURCE>
-		</item>
 	</FMODULES>
 	<DYNPROS>
 		<item>
@@ -1190,10 +1190,10 @@
 					<TYPE>TABLE_CTRL</TYPE>
 					<NAME>TCTRL_ZRB_MP_PL</NAME>
 					<ELEMENT_OF>SCREEN</ELEMENT_OF>
-					<LINE>001</LINE>
+					<LINE>002</LINE>
 					<COLUMN>001</COLUMN>
-					<LENGTH>170</LENGTH>
-					<HEIGHT>059</HEIGHT>
+					<LENGTH>188</LENGTH>
+					<HEIGHT>058</HEIGHT>
 					<LOOP_BLOCK>000</LOOP_BLOCK>
 					<LOOP_DISP>000</LOOP_DISP>
 					<C_RESIZE_V>X</C_RESIZE_V>
@@ -1285,10 +1285,10 @@
 					<CONT_NAME>TCTRL_ZRB_MP_PL</CONT_NAME>
 					<TYPE>TEXT</TYPE>
 					<NAME>*ZRB_MP_PL-ID_RULE</NAME>
-					<TEXT>ID_правила</TEXT>
+					<TEXT>ID_правила_______________________________________</TEXT>
 					<LINE>001</LINE>
 					<COLUMN>001</COLUMN>
-					<LENGTH>010</LENGTH>
+					<LENGTH>049</LENGTH>
 					<VISLENGTH>010</VISLENGTH>
 					<HEIGHT>001</HEIGHT>
 					<FORMAT>CHAR</FORMAT>
@@ -1300,10 +1300,10 @@
 					<CONT_NAME>TCTRL_ZRB_MP_PL</CONT_NAME>
 					<TYPE>TEXT</TYPE>
 					<NAME>*ZRB_MP_PL-NUMBER_KEY</NAME>
-					<TEXT>№_строки</TEXT>
+					<TEXT>№_строки___________</TEXT>
 					<LINE>001</LINE>
 					<COLUMN>002</COLUMN>
-					<LENGTH>008</LENGTH>
+					<LENGTH>019</LENGTH>
 					<VISLENGTH>010</VISLENGTH>
 					<HEIGHT>001</HEIGHT>
 					<FORMAT>CHAR</FORMAT>
@@ -1319,7 +1319,7 @@
 					<LINE>001</LINE>
 					<COLUMN>003</COLUMN>
 					<LENGTH>040</LENGTH>
-					<VISLENGTH>020</VISLENGTH>
+					<VISLENGTH>015</VISLENGTH>
 					<HEIGHT>001</HEIGHT>
 					<FORMAT>CHAR</FORMAT>
 					<FROM_DICT>X</FROM_DICT>
@@ -1416,10 +1416,27 @@
 					<CONT_TYPE>TABLE_CTRL</CONT_TYPE>
 					<CONT_NAME>TCTRL_ZRB_MP_PL</CONT_NAME>
 					<TYPE>TEXT</TYPE>
+					<NAME>*ZRB_MP_PL-SC_ATTR</NAME>
+					<TEXT>Имя_атрибута_(SC)____________________________</TEXT>
+					<LINE>001</LINE>
+					<COLUMN>009</COLUMN>
+					<LENGTH>045</LENGTH>
+					<VISLENGTH>020</VISLENGTH>
+					<HEIGHT>001</HEIGHT>
+					<FORMAT>CHAR</FORMAT>
+					<FROM_DICT>X</FROM_DICT>
+					<MODIFIC>F</MODIFIC>
+					<REQU_ENTRY>N</REQU_ENTRY>
+					<TC_HEADING>X</TC_HEADING>
+				</item>
+				<item>
+					<CONT_TYPE>TABLE_CTRL</CONT_TYPE>
+					<CONT_NAME>TCTRL_ZRB_MP_PL</CONT_NAME>
+					<TYPE>TEXT</TYPE>
 					<NAME>*ZRB_MP_PL-SC_VALUE</NAME>
 					<TEXT>Знач._(SC)___________________________________</TEXT>
 					<LINE>001</LINE>
-					<COLUMN>009</COLUMN>
+					<COLUMN>010</COLUMN>
 					<LENGTH>045</LENGTH>
 					<VISLENGTH>020</VISLENGTH>
 					<HEIGHT>001</HEIGHT>
@@ -1490,10 +1507,11 @@
 					<TYPE>TEMPLATE</TYPE>
 					<NAME>ZRB_MP_PL-APPSET</NAME>
 					<TEXT>____________________</TEXT>
+					<ROLLING>X</ROLLING>
 					<LINE>001</LINE>
 					<COLUMN>003</COLUMN>
 					<LENGTH>020</LENGTH>
-					<VISLENGTH>020</VISLENGTH>
+					<VISLENGTH>015</VISLENGTH>
 					<HEIGHT>001</HEIGHT>
 					<GROUP1>KEY</GROUP1>
 					<FORMAT>CHAR</FORMAT>
@@ -1553,6 +1571,7 @@
 					<TYPE>TEMPLATE</TYPE>
 					<NAME>ZRB_MP_PL-TG_DIMN</NAME>
 					<TEXT>____________________</TEXT>
+					<ROLLING>X</ROLLING>
 					<LINE>001</LINE>
 					<COLUMN>006</COLUMN>
 					<LENGTH>020</LENGTH>
@@ -1590,8 +1609,28 @@
 					<TYPE>TEMPLATE</TYPE>
 					<NAME>ZRB_MP_PL-SC_DIMN</NAME>
 					<TEXT>____________________</TEXT>
+					<ROLLING>X</ROLLING>
 					<LINE>001</LINE>
 					<COLUMN>008</COLUMN>
+					<LENGTH>020</LENGTH>
+					<VISLENGTH>020</VISLENGTH>
+					<HEIGHT>001</HEIGHT>
+					<FORMAT>CHAR</FORMAT>
+					<FROM_DICT>X</FROM_DICT>
+					<MODIFIC>X</MODIFIC>
+					<FOREIGNKEY>X</FOREIGNKEY>
+					<INPUT_FLD>X</INPUT_FLD>
+					<OUTPUT_FLD>X</OUTPUT_FLD>
+				</item>
+				<item>
+					<CONT_TYPE>TABLE_CTRL</CONT_TYPE>
+					<CONT_NAME>TCTRL_ZRB_MP_PL</CONT_NAME>
+					<TYPE>TEMPLATE</TYPE>
+					<NAME>ZRB_MP_PL-SC_ATTR</NAME>
+					<TEXT>____________________</TEXT>
+					<ROLLING>X</ROLLING>
+					<LINE>001</LINE>
+					<COLUMN>009</COLUMN>
 					<LENGTH>020</LENGTH>
 					<VISLENGTH>020</VISLENGTH>
 					<HEIGHT>001</HEIGHT>
@@ -1610,7 +1649,7 @@
 					<TEXT>____________________________________________________________</TEXT>
 					<ROLLING>X</ROLLING>
 					<LINE>001</LINE>
-					<COLUMN>009</COLUMN>
+					<COLUMN>010</COLUMN>
 					<LENGTH>060</LENGTH>
 					<VISLENGTH>020</VISLENGTH>
 					<HEIGHT>001</HEIGHT>
@@ -1685,6 +1724,9 @@
 				</item>
 				<item>
 					<LINE>    FIELD ZRB_MP_PL-SC_DIMN .</LINE>
+				</item>
+				<item>
+					<LINE>    FIELD ZRB_MP_PL-SC_ATTR .</LINE>
 				</item>
 				<item>
 					<LINE>    FIELD ZRB_MP_PL-SC_VALUE .</LINE>

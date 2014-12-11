@@ -28,6 +28,9 @@ method work_circle.
   field-symbols
   : <ld_s__tablefordown>          type zbnlt_s__assign
   , <ld_s__assign_obj>            like line of lr_t__assign
+  , <ld_s__search>                type zbnlt_s__search
+  , <ld_s__rules>                 type ty_s__rules
+  , <ld_s__assign>                type zbnlt_s__assign
   .
 
   clear
@@ -90,6 +93,33 @@ method work_circle.
 
         append ld_s__rules to: ld_t__rules.", gd_t__rules.
       enddo.
+
+      clear
+      : ld_s__rules
+      .
+
+*--------------------------------------------------------------------*
+* Обработка правила 36
+*--------------------------------------------------------------------*
+      zcl_bd00_appl_ctrl=>generate_rule_36( ).
+
+      ld_s__for_search-class = zcl_bd00_appl_ctrl=>get_rule_class( ld_s__for_search-id ).
+
+      loop at ld_t__rules assigning <ld_s__rules>.
+        loop at <ld_s__rules>-search assigning <ld_s__search>.
+          <ld_s__search>-class = zcl_bd00_appl_ctrl=>get_rule_class( <ld_s__search>-id ).
+        endloop.
+
+        loop at <ld_s__rules>-assign assigning <ld_s__assign>.
+          <ld_s__assign>-class = zcl_bd00_appl_ctrl=>get_rule_class( <ld_s__assign>-id ).
+        endloop.
+
+        loop at <ld_s__rules>-assign_not_found assigning <ld_s__assign>.
+          <ld_s__assign>-class = zcl_bd00_appl_ctrl=>get_rule_class( <ld_s__assign>-id ).
+        endloop.
+      endloop.
+*--------------------------------------------------------------------*
+
 
     catch cx_root into lr_x__root.                       "#EC CATCH_ALL
       " во время генерации правила возникла ошибка
@@ -157,10 +187,10 @@ method work_circle.
 *          if zcl_bdch_run_new_logic=>cd_v__version = `NEW`.
 *            searchnext( 1 ).
 *          else.
-            loop at ld_t__rules into gd_s__rules.
-              check  search( 1 ) = abap_true.
-              exit.
-            endloop.
+          loop at ld_t__rules into gd_s__rules.
+            check  search( 1 ) = abap_true.
+            exit.
+          endloop.
 *          endif.
 *--------------------------------------------------------------------*
 
