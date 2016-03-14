@@ -169,7 +169,7 @@ method get_definition.
     if lo_elemdescr->help_id is initial.
       case lo_elemdescr->type_kind.
         when cl_abap_elemdescr=>typekind_char.
-          concatenate `types ` ls_definition-name ` type c leght ` lv_length `.` into l_string.
+          concatenate `types ` ls_definition-name ` type c lenght ` lv_length `.` into l_string.
         when cl_abap_elemdescr=>typekind_string.
           concatenate `types ` ls_definition-name ` type string. ` into l_string.
         when cl_abap_elemdescr=>typekind_int.
